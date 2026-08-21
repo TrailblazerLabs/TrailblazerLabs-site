@@ -1,0 +1,105 @@
+---
+---
+@import "{{ site.theme }}";
+
+/* Brand Color Tokens */
+:root {
+  --cloud-blue-68: #00B3FF;
+  --electric-blue-50: #066AFE;
+  --electric-blue-15: #001E5B;
+  --cloud-blue-95: #EAF5FE;
+  --teal-80: #04E1CB;
+  --yellow-80: #FCC003;
+  --pink-60: #FF538A;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1a1a1a;
+  background-color: #ffffff;
+}
+
+/* Evening Gradient Hero Section */
+.hero-gradient {
+  background: linear-gradient(180deg, var(--electric-blue-15) 0%, var(--electric-blue-50) 60%, var(--cloud-blue-68) 100%);
+  color: #ffffff;
+  padding: 4rem 2rem;
+  border-radius: 0 0 24px 24px;
+  text-align: center;
+}
+
+.hero-title {
+  color: #ffffff !important;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  max-width: 800px;
+  margin: 0 auto 2rem auto;
+  opacity: 0.95;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--teal-80);
+  color: var(--electric-blue-15);
+  font-weight: bold;
+  padding: 0.85rem 1.75rem;
+  border-radius: 50px;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(4, 225, 203, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  color: var(--electric-blue-15);
+  text-decoration: none;
+}
+
+/* Layout Grid & Track Cards */
+.tracks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
+
+.track-card {
+  background: var(--cloud-blue-95);
+  border: 2px solid rgba(6, 106, 254, 0.1);
+  border-radius: 16px;
+  padding: 1.75rem;
+  transition: border-color 0.2s ease;
+}
+
+.track-card:hover {
+  border-color: var(--cloud-blue-68);
+}
+
+.track-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.badge-strategist { background: var(--yellow-80); color: var(--electric-blue-15); }
+.badge-declarative { background: var(--pink-60); color: #ffffff; }
+.badge-engineer { background: var(--teal-80); color: var(--electric-blue-15); }
+
+/* Glassmorphism Section for Live Pitch Board */
+.glass-panel {
+  background: rgba(234, 245, 254, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 179, 255, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
