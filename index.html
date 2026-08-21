@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trailblazer Labs Portal</title>
+  <style>
+    /* 2026 Brand Design Tokens */
+    :root {
+      --cloud-blue-68: #00B3FF;
+      --electric-blue-50: #066AFE;
+      --electric-blue-15: #001E5B;
+      --cloud-blue-95: #EAF5FE;
+      --teal-80: #04E1CB;
+      --yellow-80: #FCC003;
+      --pink-60: #FF538A;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #1a1a1a;
+      background-color: #ffffff;
+    }
+
+    /* Evening Gradient Hero Section */
+    .hero {
+      background: linear-gradient(180deg, var(--electric-blue-15) 0%, var(--electric-blue-50) 60%, var(--cloud-blue-68) 100%);
+      color: #ffffff;
+      padding: 5rem 2rem;
+      text-align: center;
+      border-radius: 0 0 24px 24px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+      line-height: 1.6;
+    }
+
+    .btn-primary {
+      background-color: var(--teal-80);
+      color: var(--electric-blue-15);
+      font-weight: bold;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 14px rgba(4, 225, 203, 0.4);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    /* Track Cards */
+    .tracks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .track-card {
+      background: var(--cloud-blue-95);
+      border: 2px solid rgba(6, 106, 254, 0.15);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .track-badge {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .badge-strategist { background: var(--yellow-80); color: var(--electric-blue-15); }
+    .badge-declarative { background: var(--pink-60); color: #ffffff; }
+    .badge-engineer { background: var(--teal-80); color: var(--electric-blue-15); }
+
+    /* Glassmorphism Section */
+    .glass-panel {
+      background: rgba(234, 245, 254, 0.7);
+      border: 1px solid rgba(0, 179, 255, 0.3);
+      border-radius: 16px;
+      padding: 2.5rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <h1>Welcome to Trailblazer Labs</h1>
+    <p>An inclusive co-creation frontier bringing No-Code Strategists, Low-Code Declarative Developers, and Pro-Code Engineers together to build the art of the possible across Salesforce technologies.</p>
+    <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions/new?category=cohort-applications" class="btn-primary">
+      🚀 Submit Your Pitch
+    </a>
+  </header>
+
+  <main class="container">
+    <h2>The Three Development Tracks</h2>
+    <div class="tracks-grid">
+      <div class="track-card">
+        <span class="track-badge badge-strategist">No-Code</span>
+        <h3>The Strategist</h3>
+        <p>Decision-making frameworks, Agentforce prompt libraries, governance models, and architectural blueprints.</p>
+      </div>
+      
+      <div class="track-card">
+        <span class="track-badge badge-declarative">Low-Code</span>
+        <h3>The Declarative Developer</h3>
+        <p>Complex Flow automations, AI Agent configurations, App Builder pages, and Data Cloud transforms.</p>
+      </div>
+      
+      <div class="track-card">
+        <span class="track-badge badge-engineer">Pro-Code</span>
+        <h3>The Engineer</h3>
+        <p>Lightning Web Components (LWC), Apex controllers, external API integrations, and Salesforce CLI plugins.</p>
+      </div>
+    </div>
+
+    <div class="glass-panel">
+      <h2>🗳️ Live Community Upvote Board</h2>
+      <p>Our cohort selection process is community-driven. Browse submitted pitches, upvote your favorite ideas, or join the discussion in our application repository.</p>
+      <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions" class="btn-primary" style="background-color: var(--electric-blue-50); color: #ffffff;">
+        Explore All Applications on GitHub →
+      </a>
+    </div>
+  </main>
+
+</body>
+</html>
