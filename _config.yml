@@ -1,0 +1,5 @@
+title: Trailblazer Labs Portal
+description: The official hub for the Builder in Residence program.
+theme: jekyll-theme-minimal
+plugins:
+  - jekyll-feed
