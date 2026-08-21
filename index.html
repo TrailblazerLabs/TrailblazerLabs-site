@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trailblazer Labs Portal</title>
+  <title>Trailblazer Labs — Exploring the Art of the Possible, Together</title>
   <style>
-    /* 2026 Brand Design Tokens */
+    /* 2026 Trailblazer Brand Design Tokens */
     :root {
       --cloud-blue-68: #00B3FF;
       --electric-blue-50: #066AFE;
@@ -14,133 +14,190 @@
       --teal-80: #04E1CB;
       --yellow-80: #FCC003;
       --pink-60: #FF538A;
+      --text-dark: #0F172A;
+      --text-muted: #475569;
     }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: #1a1a1a;
-      background-color: #ffffff;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--text-dark); background: #ffffff; line-height: 1.6; }
 
-    /* Evening Gradient Hero Section */
-    .hero {
-      background: linear-gradient(180deg, var(--electric-blue-15) 0%, var(--electric-blue-50) 60%, var(--cloud-blue-68) 100%);
-      color: #ffffff;
-      padding: 5rem 2rem;
-      text-align: center;
-      border-radius: 0 0 24px 24px;
-    }
+    /* Navigation */
+    .nav { background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .brand-title { font-weight: 800; font-size: 1.25rem; color: var(--electric-blue-15); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .nav-links { display: flex; gap: 1rem; }
+    .btn { padding: 0.65rem 1.35rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-teal { background: var(--teal-80); color: var(--electric-blue-15); box-shadow: 0 4px 12px rgba(4, 225, 203, 0.3); }
+    .btn-outline { border: 2px solid var(--electric-blue-50); color: var(--electric-blue-50); }
 
-    .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-      font-weight: 800;
-    }
+    /* Hero Section (Evening Gradient) */
+    .hero { background: linear-gradient(180deg, var(--electric-blue-15) 0%, var(--electric-blue-50) 65%, var(--cloud-blue-68) 100%); color: #ffffff; padding: 5.5rem 2rem; text-align: center; border-radius: 0 0 32px 32px; }
+    .hero-badge { background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.35); padding: 0.35rem 1.1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .hero h1 { font-size: 3.2rem; font-weight: 800; margin: 1.2rem 0 0.8rem 0; line-height: 1.2; }
+    .hero p { font-size: 1.25rem; max-width: 820px; margin: 0 auto 2.2rem auto; opacity: 0.95; font-weight: 400; }
+    .hero-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 
-    .hero p {
-      font-size: 1.25rem;
-      max-width: 800px;
-      margin: 0 auto 2rem auto;
-      line-height: 1.6;
-    }
+    /* Container & Layout */
+    .container { max-width: 1140px; margin: 0 auto; padding: 4rem 1.5rem; }
+    .section-title { text-align: center; margin-bottom: 2.5rem; }
+    .section-title h2 { font-size: 2.25rem; font-weight: 800; color: var(--electric-blue-15); }
+    .section-title p { color: var(--text-muted); font-size: 1.1rem; max-width: 650px; margin: 0.5rem auto 0 auto; }
 
-    .btn-primary {
-      background-color: var(--teal-80);
-      color: var(--electric-blue-15);
-      font-weight: bold;
-      padding: 0.9rem 2rem;
-      border-radius: 50px;
-      text-decoration: none;
-      display: inline-block;
-      box-shadow: 0 4px 14px rgba(4, 225, 203, 0.4);
-    }
+    /* Track Cards Grid */
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .card-track { background: var(--cloud-blue-95); border: 2px solid rgba(6, 106, 254, 0.12); border-radius: 16px; padding: 2rem; transition: border-color 0.2s ease; }
+    .card-track:hover { border-color: var(--cloud-blue-68); }
+    .badge-track { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 800; margin-bottom: 1rem; }
+    .badge-no-code { background: var(--yellow-80); color: var(--electric-blue-15); }
+    .badge-low-code { background: var(--pink-60); color: #ffffff; }
+    .badge-pro-code { background: var(--teal-80); color: var(--electric-blue-15); }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem;
-    }
+    /* Featured Spotlight Section */
+    .spotlight-section { background: var(--cloud-blue-95); border-radius: 24px; padding: 3rem 2rem; margin: 3.5rem 0; border: 1px solid rgba(0, 179, 255, 0.2); }
+    .spotlight-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+    .spotlight-card { background: #ffffff; border-radius: 16px; padding: 1.75rem; border: 1px solid #cbd5e1; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+    .spotlight-upvotes { font-size: 0.85rem; font-weight: 800; color: var(--electric-blue-50); background: var(--cloud-blue-95); padding: 0.35rem 0.75rem; border-radius: 12px; width: fit-content; margin-bottom: 0.8rem; }
 
-    /* Track Cards */
-    .tracks-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
+    /* 4-Step Pathway */
+    .pathway-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+    .pathway-step { background: #ffffff; border: 1px solid #e2e8f0; padding: 1.75rem 1.5rem; border-radius: 12px; }
+    .step-num { font-size: 1.8rem; font-weight: 800; color: var(--electric-blue-50); margin-bottom: 0.5rem; }
 
-    .track-card {
-      background: var(--cloud-blue-95);
-      border: 2px solid rgba(6, 106, 254, 0.15);
-      border-radius: 16px;
-      padding: 2rem;
-    }
-
-    .track-badge {
-      display: inline-block;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
-    }
-
-    .badge-strategist { background: var(--yellow-80); color: var(--electric-blue-15); }
-    .badge-declarative { background: var(--pink-60); color: #ffffff; }
-    .badge-engineer { background: var(--teal-80); color: var(--electric-blue-15); }
-
-    /* Glassmorphism Section */
-    .glass-panel {
-      background: rgba(234, 245, 254, 0.7);
-      border: 1px solid rgba(0, 179, 255, 0.3);
-      border-radius: 16px;
-      padding: 2.5rem;
-      margin-top: 3rem;
-      text-align: center;
-    }
+    /* Footer */
+    footer { background: var(--electric-blue-15); color: #ffffff; padding: 3.5rem 2rem; margin-top: 5rem; text-align: center; font-size: 0.9rem; }
   </style>
 </head>
 <body>
 
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="#" class="brand-title">🐻☁️ Trailblazer Labs</a>
+    <div class="nav-links">
+      <a href="directory.html" class="btn btn-outline">Browse Directory</a>
+      <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions/new?category=cohort-applications" class="btn btn-teal">+ Pitch Your Idea</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
   <header class="hero">
-    <h1>Welcome to Trailblazer Labs</h1>
-    <p>An inclusive co-creation frontier bringing No-Code Strategists, Low-Code Declarative Developers, and Pro-Code Engineers together to build the art of the possible across Salesforce technologies.</p>
-    <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions/new?category=cohort-applications" class="btn-primary">
-      🚀 Submit Your Pitch
-    </a>
+    <span class="hero-badge">A Global Community Frontier</span>
+    <h1>Exploring the art of the possible, together.</h1>
+    <p>Trailblazer Labs empowers a global community to innovate, collaborate, and co-create the next era of AI.</p>
+    <div class="hero-buttons">
+      <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions/new?category=cohort-applications" class="btn btn-teal" style="font-size: 1.05rem; padding: 0.85rem 1.85rem;">Submit a Pitch</a>
+      <a href="directory.html" class="btn btn-outline" style="color: white; border-color: white; font-size: 1.05rem; padding: 0.85rem 1.85rem;">Explore All Assets</a>
+    </div>
   </header>
 
   <main class="container">
-    <h2>The Three Development Tracks</h2>
-    <div class="tracks-grid">
-      <div class="track-card">
-        <span class="track-badge badge-strategist">No-Code</span>
-        <h3>The Strategist</h3>
-        <p>Decision-making frameworks, Agentforce prompt libraries, governance models, and architectural blueprints.</p>
-      </div>
-      
-      <div class="track-card">
-        <span class="track-badge badge-declarative">Low-Code</span>
-        <h3>The Declarative Developer</h3>
-        <p>Complex Flow automations, AI Agent configurations, App Builder pages, and Data Cloud transforms.</p>
-      </div>
-      
-      <div class="track-card">
-        <span class="track-badge badge-engineer">Pro-Code</span>
-        <h3>The Engineer</h3>
-        <p>Lightning Web Components (LWC), Apex controllers, external API integrations, and Salesforce CLI plugins.</p>
-      </div>
-    </div>
 
-    <div class="glass-panel">
-      <h2>🗳️ Live Community Upvote Board</h2>
-      <p>Our cohort selection process is community-driven. Browse submitted pitches, upvote your favorite ideas, or join the discussion in our application repository.</p>
-      <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions" class="btn-primary" style="background-color: var(--electric-blue-50); color: #ffffff;">
-        Explore All Applications on GitHub →
-      </a>
-    </div>
+    <!-- Inclusive Tracks Section -->
+    <section>
+      <div class="section-title">
+        <h2>A Seat at the Table for Every Builder</h2>
+        <p>Innovation happens at every level. Choose the track that fits your background and passion.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card-track">
+          <span class="badge-track badge-no-code">No-Code</span>
+          <h3>The Strategist</h3>
+          <p>Prompt libraries, Agentforce guardrail frameworks, governance matrices, and strategic business blueprints[cite: 1].</p>
+        </div>
+        <div class="card-track">
+          <span class="badge-track badge-low-code">Low-Code</span>
+          <h3>The Declarative Developer</h3>
+          <p>Complex Flow automations, AI Agent configurations, App Builder templates, and Data Cloud transforms[cite: 1].</p>
+        </div>
+        <div class="card-track">
+          <span class="badge-track badge-pro-code">Pro-Code</span>
+          <h3>The Engineer</h3>
+          <p>Lightning Web Components (LWC), Apex controllers, external REST integrations, and Salesforce CLI plugins[cite: 1].</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hand-Selected Featured Assets Section -->
+    <section class="spotlight-section">
+      <div class="spotlight-header">
+        <div>
+          <h2 style="color: var(--electric-blue-15); font-size: 1.85rem;">🌟 Community Highlights</h2>
+          <p style="color: var(--text-muted);">Hand-selected community submissions currently in their 180-day residency[cite: 1].</p>
+        </div>
+        <a href="directory.html" style="color: var(--electric-blue-50); font-weight: 700; text-decoration: none;">View All Directory Assets →</a>
+      </div>
+
+      <div class="grid-3">
+        <!-- Asset 1 -->
+        <div class="spotlight-card">
+          <div>
+            <div class="spotlight-upvotes">▲ 42 Upvotes</div>
+            <h3 style="color: var(--electric-blue-15); margin-bottom: 0.4rem;">Agentforce Compliance Checklist</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">by Trailblazer Labs Maintainers[cite: 6]</p>
+            <p style="font-size: 0.95rem; margin-bottom: 1rem;">An automated org scanner that validates AI Agent permissions and Data Cloud security policies prior to deployment.</p>
+          </div>
+          <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions" style="color: var(--electric-blue-50); font-weight: 700; text-decoration: none; font-size: 0.9rem;">View Pitch & Code →</a>
+        </div>
+
+        <!-- Asset 2 -->
+        <div class="spotlight-card">
+          <div>
+            <div class="spotlight-upvotes">▲ 38 Upvotes</div>
+            <h3 style="color: var(--electric-blue-15); margin-bottom: 0.4rem;">Apex Test Generator Agent</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">by Sam Okoro[cite: 6]</p>
+            <p style="font-size: 0.95rem; margin-bottom: 1rem;">Generates unit test classes and mock data directly from highlighted Apex methods using natural language prompts[cite: 6].</p>
+          </div>
+          <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions" style="color: var(--electric-blue-50); font-weight: 700; text-decoration: none; font-size: 0.9rem;">View Pitch & Code →</a>
+        </div>
+
+        <!-- Asset 3 -->
+        <div class="spotlight-card">
+          <div>
+            <div class="spotlight-upvotes">▲ 29 Upvotes</div>
+            <h3 style="color: var(--electric-blue-15); margin-bottom: 0.4rem;">Field History Natural Language Explorer</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">by Marcus Webb[cite: 6]</p>
+            <p style="font-size: 0.95rem; margin-bottom: 1rem;">Traces field history logs and summarizes record audit trails into plain-language digests[cite: 6].</p>
+          </div>
+          <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions" style="color: var(--electric-blue-50); font-weight: 700; text-decoration: none; font-size: 0.9rem;">View Pitch & Code →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How Co-Creation Works -->
+    <section>
+      <div class="section-title">
+        <h2>How We Co-Create</h2>
+        <p>From a community idea to an open-source standard in four steps[cite: 1].</p>
+      </div>
+      <div class="pathway-grid">
+        <div class="pathway-step">
+          <div class="step-num">01</div>
+          <h4 style="margin-bottom: 0.4rem;">Pitch Your Idea</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Share your concept using our structured application template in GitHub Discussions[cite: 1].</p>
+        </div>
+        <div class="pathway-step">
+          <div class="step-num">02</div>
+          <h4 style="margin-bottom: 0.4rem;">Community Upvoting</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">The community votes on ideas to signal real demand and platform utility[cite: 1].</p>
+        </div>
+        <div class="pathway-step">
+          <div class="step-num">03</div>
+          <h4 style="margin-bottom: 0.4rem;">180-Day Residency</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Selected builders build and maintain their open-source assets with community support[cite: 1].</p>
+        </div>
+        <div class="pathway-step">
+          <div class="step-num">04</div>
+          <h4 style="margin-bottom: 0.4rem;">Shared with Everyone</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Assets are published under Apache 2.0 licensing for any Trailblazer to use and adapt[cite: 1].</p>
+        </div>
+      </div>
+    </section>
+
   </main>
+
+  <footer>
+    <p style="font-weight: 700; margin-bottom: 0.5rem;">Trailblazer Labs — Exploring the Art of the Possible, Together</p>
+    <p style="color: #94a3b8; font-size: 0.85rem;">Open Source & Community Governed | Licensed under Apache 2.0[cite: 1].</p>
+  </footer>
 
 </body>
 </html>
