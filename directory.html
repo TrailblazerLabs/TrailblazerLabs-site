@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asset Directory — Trailblazer Labs</title>
+  <style>
+    :root {
+      --cloud-blue-68: #00B3FF;
+      --electric-blue-50: #066AFE;
+      --electric-blue-15: #001E5B;
+      --cloud-blue-95: #EAF5FE;
+      --teal-80: #04E1CB;
+      --yellow-80: #FCC003;
+      --pink-60: #FF538A;
+      --text-dark: #0F172A;
+      --text-muted: #475569;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--text-dark); background: #f8fafc; line-height: 1.6; }
+
+    /* Nav */
+    .nav { background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .brand-title { font-weight: 800; font-size: 1.25rem; color: var(--electric-blue-15); text-decoration: none; }
+    .nav-links { display: flex; gap: 1rem; align-items: center; }
+    .btn { padding: 0.65rem 1.35rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 0.9rem; }
+    .btn-teal { background: var(--teal-80); color: var(--electric-blue-15); }
+    .btn-outline { border: 2px solid var(--electric-blue-50); color: var(--electric-blue-50); }
+
+    /* Header */
+    .header-banner { background: var(--electric-blue-15); color: #ffffff; padding: 3.5rem 2rem; text-align: center; }
+    .header-banner h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .header-banner p { color: #94a3b8; font-size: 1.1rem; }
+
+    /* Container & Search Controls */
+    .container { max-width: 1140px; margin: 0 auto; padding: 3rem 1.5rem; }
+    .controls-bar { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .search-bar { flex: 1; min-width: 280px; padding: 0.75rem 1.25rem; border-radius: 50px; border: 1px solid #cbd5e1; font-size: 0.95rem; }
+    .filter-btn { padding: 0.5rem 1rem; border-radius: 20px; border: 1px solid #cbd5e1; background: #ffffff; cursor: pointer; font-weight: 600; font-size: 0.85rem; }
+    .filter-btn.active { background: var(--electric-blue-50); color: #ffffff; border-color: var(--electric-blue-50); }
+
+    /* Directory Grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+    .card { background: #ffffff; border-radius: 16px; border: 1px solid #e2e8f0; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    .card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .badge { font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.65rem; border-radius: 12px; }
+    .badge-no-code { background: var(--yellow-80); color: var(--electric-blue-15); }
+    .badge-low-code { background: var(--pink-60); color: #ffffff; }
+    .badge-pro-code { background: var(--teal-80); color: var(--electric-blue-15); }
+    .stars { font-size: 0.85rem; font-weight: 700; color: var(--electric-blue-50); }
+    .card-title { font-size: 1.25rem; font-weight: 800; color: var(--electric-blue-15); margin-bottom: 0.5rem; }
+    .card-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; flex-grow: 1; }
+    .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 1rem; }
+    .card-link { color: var(--electric-blue-50); font-weight: 700; text-decoration: none; font-size: 0.9rem; }
+
+    footer { background: var(--electric-blue-15); color: #ffffff; padding: 3rem 2rem; margin-top: 5rem; text-align: center; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="brand-title">🐻☁️ Trailblazer Labs</a>
+    <div class="nav-links">
+      <a href="index.html" class="btn btn-outline">Home</a>
+      <a href="builders.html" class="btn btn-outline">Meet the Builders</a>
+      <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions/new?category=cohort-applications" class="btn btn-teal">+ Pitch Asset</a>
+    </div>
+  </nav>
+
+  <header class="header-banner">
+    <h1>Community Asset Directory</h1>
+    <p>Explore open-source agents, flows, LWCs, and frameworks co-created by Trailblazers.</p>
+  </header>
+
+  <main class="container">
+    <div class="controls-bar">
+      <input type="text" id="searchInput" class="search-bar" placeholder="🔍 Search agents, topics, or maintainers...">
+      <div id="filterGroup">
+        <button class="filter-btn active" data-filter="all">All Tracks</button>
+        <button class="filter-btn" data-filter="no-code">No-Code</button>
+        <button class="filter-btn" data-filter="low-code">Low-Code</button>
+        <button class="filter-btn" data-filter="pro-code">Pro-Code</button>
+      </div>
+    </div>
+
+    <div class="grid" id="assetGrid">
+      <!-- Dynamic assets loaded via GitHub API / Fallback static assets -->
+      <div class="card" data-track="low-code">
+        <div>
+          <div class="card-meta">
+            <span class="badge badge-low-code">Low-Code</span>
+            <span class="stars">★ 42 Stars</span>
+          </div>
+          <div class="card-title">Agentforce Compliance Scanner</div>
+          <div class="card-desc">Validates org configurations, permissions, and Data Cloud security boundaries automatically before deployment.</div>
+        </div>
+        <div class="card-footer">
+          <span style="font-size: 0.85rem; color: var(--text-muted);">by Trailblazer Labs</span>
+          <a href="https://github.com/TrailblazerLabs" class="card-link">Source Code →</a>
+        </div>
+      </div>
+
+      <div class="card" data-track="pro-code">
+        <div>
+          <div class="card-meta">
+            <span class="badge badge-pro-code">Pro-Code</span>
+            <span class="stars">★ 38 Stars</span>
+          </div>
+          <div class="card-title">Apex Test Class Generator</div>
+          <div class="card-desc">Generates unit tests and mock data directly from highlighted Apex methods using natural language prompts.</div>
+        </div>
+        <div class="card-footer">
+          <span style="font-size: 0.85rem; color: var(--text-muted);">by Sam Okoro</span>
+          <a href="https://github.com/TrailblazerLabs" class="card-link">Source Code →</a>
+        </div>
+      </div>
+
+      <div class="card" data-track="no-code">
+        <div>
+          <div class="card-meta">
+            <span class="badge badge-no-code">No-Code</span>
+            <span class="stars">★ 29 Stars</span>
+          </div>
+          <div class="card-title">Field History Natural Language Explorer</div>
+          <div class="card-desc">Traces record audit logs and translates field history changes into plain-language executive digests.</div>
+        </div>
+        <div class="card-footer">
+          <span style="font-size: 0.85rem; color: var(--text-muted);">by Marcus Webb</span>
+          <a href="https://github.com/TrailblazerLabs" class="card-link">Source Code →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Salesforce, Inc. All rights reserved. Various trademarks held by their respective owners.</p>
+    <p>Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States.</p>
+  </footer>
+
+  <script>
+    // Real-Time Search & Filter Functionality
+    const searchInput = document.getElementById('searchInput');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
+
+    searchInput.addEventListener('input', filterAssets);
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        filterAssets();
+      });
+    });
+
+    function filterAssets() {
+      const query = searchInput.value.toLowerCase();
+      const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+
+      cards.forEach(card => {
+        const title = card.querySelector('.card-title').textContent.toLowerCase();
+        const desc = card.querySelector('.card-desc').textContent.toLowerCase();
+        const track = card.dataset.track;
+
+        const matchesSearch = title.includes(query) || desc.includes(query);
+        const matchesTrack = activeFilter === 'all' || track === activeFilter;
+
+        if (matchesSearch && matchesTrack) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
