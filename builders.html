@@ -58,7 +58,7 @@
 
   <!-- Navigation -->
   <nav class="nav">
-    <a href="index.html" class="brand-title">🐻☁️ Trailblazer Labs</a>
+    <a href="index.html" class="brand-title">🐻 Trailblazer Labs</a>
     <div class="nav-links">
       <a href="index.html" class="btn btn-outline">Home</a>
       <a href="directory.html" class="btn btn-outline">Solution Directory</a>
@@ -69,7 +69,7 @@
   <!-- Banner -->
   <header class="header-banner">
     <h1>Meet Our Builders in Residence</h1>
-    <p>The innovators, architects, and community lead maintainers driving open-source AI platform solutions.</p>
+    <p>Much like an "Artist in Residence," these top community contributors have a dedicated stage to share their craft, evangelize their solutions, and scale their impact.</p>
   </header>
 
   <!-- Main Content -->
@@ -90,7 +90,7 @@
           <div class="avatar">🧑‍💻</div>
           <div class="builder-name">Sam Okoro</div>
           <div class="builder-role">Pro-Code Engineer & CTA</div>
-          <div class="builder-bio">Salesforce MVP and technical architect passionate about AI developer productivity and automated Apex tooling.</div>
+          <div class="builder-bio">Salesforce MVP and technical architect passionate about developer productivity and automated Apex tooling.</div>
         </div>
         <div class="residency-box">
           <div class="residency-title">180-Day Residency Project:</div>
@@ -138,7 +138,6 @@
   <!-- Secured Script to Dynamically Fetch Members -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // Configuration
       const CONFIG = {
         footerPath: './footer.html',
         membersApiUrl: 'https://api.github.com/orgs/TrailblazerLabs/members'
@@ -182,20 +181,19 @@
               console.warn('Error fetching user profile:', e);
             }
 
-            // Secure DOM Construction (Prevents XSS)
             const card = document.createElement('div');
             card.className = 'builder-card';
 
             const topDiv = document.createElement('div');
             
             const img = document.createElement('img');
-            img.src = member.avatar_url; // Standard safe attribute
+            img.src = member.avatar_url;
             img.alt = member.login;
             img.className = 'avatar';
 
             const nameDiv = document.createElement('div');
             nameDiv.className = 'builder-name';
-            nameDiv.textContent = `@${member.login}`; // textContent for safety
+            nameDiv.textContent = `@${member.login}`;
 
             const roleDiv = document.createElement('div');
             roleDiv.className = 'builder-role';
@@ -219,8 +217,6 @@
           }
         } catch (err) {
           console.error('Using sample builder cards:', err);
-          
-          // Display Error Banner
           const errorBanner = document.createElement('div');
           errorBanner.style = "background: #fef2f2; color: #ef4444; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; border: 1px solid #fca5a5; text-align: center; font-weight: 600; grid-column: 1 / -1;";
           errorBanner.textContent = "GitHub API rate limit exceeded or connection failed. Displaying cached demonstration data.";
