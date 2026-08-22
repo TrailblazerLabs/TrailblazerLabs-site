@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Builders in Residence — Trailblazer Labs</title>
+  <style>
+    :root {
+      --cloud-blue-68: #00B3FF;
+      --electric-blue-50: #066AFE;
+      --electric-blue-15: #001E5B;
+      --cloud-blue-95: #EAF5FE;
+      --teal-80: #04E1CB;
+      --yellow-80: #FCC003;
+      --pink-60: #FF538A;
+      --text-dark: #0F172A;
+      --text-muted: #475569;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--text-dark); background: #f8fafc; line-height: 1.6; }
+
+    /* Nav */
+    .nav { background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .brand-title { font-weight: 800; font-size: 1.25rem; color: var(--electric-blue-15); text-decoration: none; }
+    .nav-links { display: flex; gap: 1rem; align-items: center; }
+    .btn { padding: 0.65rem 1.35rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 0.9rem; }
+    .btn-teal { background: var(--teal-80); color: var(--electric-blue-15); }
+    .btn-outline { border: 2px solid var(--electric-blue-50); color: var(--electric-blue-50); }
+
+    /* Header */
+    .header-banner { background: linear-gradient(180deg, var(--electric-blue-15) 0%, var(--electric-blue-50) 100%); color: #ffffff; padding: 4rem 2rem; text-align: center; }
+    .header-banner h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .header-banner p { color: #e2e8f0; font-size: 1.15rem; max-width: 700px; margin: 0 auto; }
+
+    .container { max-width: 1140px; margin: 0 auto; padding: 4rem 1.5rem; }
+    .cohort-header { border-bottom: 2px solid var(--electric-blue-50); padding-bottom: 0.5rem; margin-bottom: 2rem; color: var(--electric-blue-15); font-size: 1.75rem; font-weight: 800; }
+
+    /* Builders Grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+    .builder-card { background: #ffffff; border-radius: 20px; border: 1px solid #cbd5e1; padding: 2rem; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .avatar { width: 96px; height: 96px; border-radius: 50%; border: 4px solid var(--cloud-blue-68); margin: 0 auto 1rem auto; background: var(--cloud-blue-95); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+    .builder-name { font-size: 1.3rem; font-weight: 800; color: var(--electric-blue-15); margin-bottom: 0.2rem; }
+    .builder-role { font-size: 0.85rem; color: var(--electric-blue-50); font-weight: 700; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .builder-bio { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .residency-box { background: var(--cloud-blue-95); padding: 1rem; border-radius: 12px; font-size: 0.85rem; text-align: left; }
+    .residency-title { font-weight: 800; color: var(--electric-blue-15); margin-bottom: 0.2rem; }
+
+    footer { background: var(--electric-blue-15); color: #ffffff; padding: 3rem 2rem; margin-top: 5rem; text-align: center; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="index.html" class="brand-title">🐻☁️ Trailblazer Labs</a>
+    <div class="nav-links">
+      <a href="index.html" class="btn btn-outline">Home</a>
+      <a href="directory.html" class="btn btn-outline">Browse Directory</a>
+      <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions/new?category=cohort-applications" class="btn btn-teal">+ Pitch Asset</a>
+    </div>
+  </nav>
+
+  <header class="header-banner">
+    <h1>Meet Our Builders in Residence</h1>
+    <p>The innovators, architects, and community lead maintainers driving open-source AI platform assets[cite: 1].</p>
+  </header>
+
+  <main class="container">
+    
+    <!-- Cohort 1 -->
+    <h2 class="cohort-header">Cohort 01 — Spring 2026</h2>
+    <div class="grid">
+      
+      <!-- Builder 1 -->
+      <div class="builder-card">
+        <div class="avatar">🧑‍💻</div>
+        <div class="builder-name">Sam Okoro</div>
+        <div class="builder-role">Pro-Code Engineer & CTA</div>
+        <div class="builder-bio">Salesforce MVP and technical architect passionate about AI developer productivity and automated Apex tooling[cite: 1, 6].</div>
+        <div class="residency-box">
+          <div class="residency-title">180-Day Residency Asset[cite: 1]:</div>
+          <div>Apex Test Generator Agent[cite: 6]</div>
+        </div>
+      </div>
+
+      <!-- Builder 2 -->
+      <div class="builder-card">
+        <div class="avatar">👩‍💼</div>
+        <div class="builder-name">Priya Nayar</div>
+        <div class="builder-role">Declarative Developer</div>
+        <div class="builder-bio">Service Cloud specialist focusing on automated deflection workflows and Agentforce user experience design[cite: 1, 6].</div>
+        <div class="residency-box">
+          <div class="residency-title">180-Day Residency Asset[cite: 1]:</div>
+          <div>Case Deflection Companion[cite: 6]</div>
+        </div>
+      </div>
+
+      <!-- Builder 3 -->
+      <div class="builder-card">
+        <div class="avatar">🧔‍♂️</div>
+        <div class="builder-name">Marcus Webb</div>
+        <div class="builder-role">No-Code Strategist</div>
+        <div class="builder-bio">Data Cloud enthusiast building natural-language audit tools for enterprise compliance teams[cite: 1, 6].</div>
+        <div class="residency-box">
+          <div class="residency-title">180-Day Residency Asset[cite: 1]:</div>
+          <div>Field History Natural Language Explorer[cite: 6]</div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Salesforce, Inc. All rights reserved. Various trademarks held by their respective owners.</p>
+    <p>Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States.</p>
+  </footer>
+
+</body>
+</html>
