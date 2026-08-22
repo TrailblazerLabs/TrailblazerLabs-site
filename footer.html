@@ -1,0 +1,115 @@
+<!-- Dedicated Global Footer Component -->
+<footer>
+  <style>
+    footer {
+      background: #001E5B; /* Electric Blue 15 */
+      color: #ffffff;
+      padding: 4rem 2rem 2.5rem 2rem;
+      margin-top: 5rem;
+      font-size: 0.875rem;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .footer-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 2.5rem;
+    }
+    .footer-col h4 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: #00B3FF; /* Cloud Blue 68 */
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links li {
+      margin-bottom: 0.6rem;
+    }
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+    .footer-bottom {
+      max-width: 1140px;
+      margin: 3rem auto 0 auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid #1e293b;
+      color: #64748b;
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+    .footer-legal-links a {
+      color: #94a3b8;
+      text-decoration: underline;
+      margin-right: 1.25rem;
+    }
+    .footer-legal-links a:hover {
+      color: #ffffff;
+    }
+    @media (max-width: 768px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+  </style>
+
+  <div class="footer-container">
+    <div>
+      <div style="font-weight: 800; font-size: 1.1rem; margin-bottom: 0.5rem; color: #ffffff;">Trailblazer Labs</div>
+      <p style="color: #94a3b8; font-size: 0.85rem; max-width: 320px; line-height: 1.5;">
+        An open-source community initiative empowering Trailblazers to co-create, upvote, and share AI platform innovations.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h4>DIRECTORY</h4>
+      <ul class="footer-links">
+        <li><a href="directory.html">Asset Directory</a></li>
+        <li><a href="builders.html">Meet the Builders</a></li>
+        <li><a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions/new?category=cohort-applications">Pitch an Asset</a></li>
+        <li><a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions">Community Upvotes</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>GOVERNANCE</h4>
+      <ul class="footer-links">
+        <li><a href="https://github.com/TrailblazerLabs/Cohort-Applications/blob/main/LICENSE">Apache 2.0 License</a></li>
+        <li><a href="https://github.com/TrailblazerLabs/Cohort-Applications/blob/main/CONTRIBUTING.md">Contributing Guidelines</a></li>
+        <li><a href="https://www.salesforce.com/company/legal/code-of-conduct/">Code of Conduct</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>SALESFORCE</h4>
+      <ul class="footer-links">
+        <li><a href="https://trailhead.salesforce.com/">Trailhead</a></li>
+        <li><a href="https://trailhead.salesforce.com/community">Trailblazer Community</a></li>
+        <li><a href="https://trust.salesforce.com/">Trust Status</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Salesforce, Inc. All rights reserved. Various trademarks held by their respective owners.</p>
+    <p>Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States.</p>
+    <p class="footer-legal-links" style="margin-top: 0.75rem;">
+      <a href="https://www.salesforce.com/company/legal/">Legal</a>
+      <a href="https://www.salesforce.com/company/privacy/">Privacy Information</a>
+      <a href="https://www.salesforce.com/company/legal/terms-of-service/">Terms of Service</a>
+      <a href="https://security.salesforce.com/">Responsible Disclosure</a>
+    </p>
+  </div>
+</footer>
