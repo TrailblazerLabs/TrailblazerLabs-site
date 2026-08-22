@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trailblazer Labs — Exploring the Art of the Possible, Together</title>
   <style>
-    /* 2026 Trailblazer Brand Design Tokens */
+    /* 2026 Trailblazer Brand Tokens */
     :root {
       --cloud-blue-68: #00B3FF;
       --electric-blue-50: #066AFE;
@@ -23,48 +23,52 @@
 
     /* Navigation */
     .nav { background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-    .brand-title { font-weight: 800; font-size: 1.25rem; color: var(--electric-blue-15); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-    .nav-links { display: flex; gap: 1rem; }
-    .btn { padding: 0.65rem 1.35rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .brand-title { font-weight: 800; font-size: 1.25rem; color: var(--electric-blue-15); text-decoration: none; }
+    .nav-links { display: flex; gap: 1rem; align-items: center; }
+    .btn { padding: 0.65rem 1.35rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: transform 0.2s ease; }
     .btn:hover { transform: translateY(-2px); }
     .btn-teal { background: var(--teal-80); color: var(--electric-blue-15); box-shadow: 0 4px 12px rgba(4, 225, 203, 0.3); }
     .btn-outline { border: 2px solid var(--electric-blue-50); color: var(--electric-blue-50); }
 
-    /* Hero Section (Evening Gradient) */
+    /* Hero Section */
     .hero { background: linear-gradient(180deg, var(--electric-blue-15) 0%, var(--electric-blue-50) 65%, var(--cloud-blue-68) 100%); color: #ffffff; padding: 5.5rem 2rem; text-align: center; border-radius: 0 0 32px 32px; }
     .hero-badge { background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.35); padding: 0.35rem 1.1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
     .hero h1 { font-size: 3.2rem; font-weight: 800; margin: 1.2rem 0 0.8rem 0; line-height: 1.2; }
-    .hero p { font-size: 1.25rem; max-width: 820px; margin: 0 auto 2.2rem auto; opacity: 0.95; font-weight: 400; }
+    .hero p { font-size: 1.25rem; max-width: 820px; margin: 0 auto 2.2rem auto; opacity: 0.95; }
     .hero-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 
-    /* Container & Layout */
+    /* Container */
     .container { max-width: 1140px; margin: 0 auto; padding: 4rem 1.5rem; }
     .section-title { text-align: center; margin-bottom: 2.5rem; }
     .section-title h2 { font-size: 2.25rem; font-weight: 800; color: var(--electric-blue-15); }
     .section-title p { color: var(--text-muted); font-size: 1.1rem; max-width: 650px; margin: 0.5rem auto 0 auto; }
 
-    /* Track Cards Grid */
+    /* Grid Layouts */
     .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .card-track { background: var(--cloud-blue-95); border: 2px solid rgba(6, 106, 254, 0.12); border-radius: 16px; padding: 2rem; transition: border-color 0.2s ease; }
-    .card-track:hover { border-color: var(--cloud-blue-68); }
+    .card-track { background: var(--cloud-blue-95); border: 2px solid rgba(6, 106, 254, 0.12); border-radius: 16px; padding: 2rem; }
     .badge-track { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 800; margin-bottom: 1rem; }
     .badge-no-code { background: var(--yellow-80); color: var(--electric-blue-15); }
     .badge-low-code { background: var(--pink-60); color: #ffffff; }
     .badge-pro-code { background: var(--teal-80); color: var(--electric-blue-15); }
 
-    /* Featured Spotlight Section */
+    /* Spotlight Section */
     .spotlight-section { background: var(--cloud-blue-95); border-radius: 24px; padding: 3rem 2rem; margin: 3.5rem 0; border: 1px solid rgba(0, 179, 255, 0.2); }
     .spotlight-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
-    .spotlight-card { background: #ffffff; border-radius: 16px; padding: 1.75rem; border: 1px solid #cbd5e1; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+    .spotlight-card { background: #ffffff; border-radius: 16px; padding: 1.75rem; border: 1px solid #cbd5e1; display: flex; flex-direction: column; justify-content: space-between; }
     .spotlight-upvotes { font-size: 0.85rem; font-weight: 800; color: var(--electric-blue-50); background: var(--cloud-blue-95); padding: 0.35rem 0.75rem; border-radius: 12px; width: fit-content; margin-bottom: 0.8rem; }
 
-    /* 4-Step Pathway */
-    .pathway-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
-    .pathway-step { background: #ffffff; border: 1px solid #e2e8f0; padding: 1.75rem 1.5rem; border-radius: 12px; }
-    .step-num { font-size: 1.8rem; font-weight: 800; color: var(--electric-blue-50); margin-bottom: 0.5rem; }
+    /* Disclaimer Callout Box */
+    .disclaimer-box { background: #f8fafc; border-left: 4px solid var(--electric-blue-50); padding: 1.25rem 1.5rem; border-radius: 0 12px 12px 0; margin: 3rem 0; font-size: 0.9rem; color: var(--text-muted); }
 
     /* Footer */
-    footer { background: var(--electric-blue-15); color: #ffffff; padding: 3.5rem 2rem; margin-top: 5rem; text-align: center; font-size: 0.9rem; }
+    footer { background: var(--electric-blue-15); color: #ffffff; padding: 4rem 2rem 2rem 2rem; margin-top: 5rem; font-size: 0.875rem; }
+    .footer-container { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 2.5rem; }
+    .footer-col h4 { font-size: 0.95rem; font-weight: 800; margin-bottom: 1rem; color: var(--cloud-blue-68); }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.6rem; }
+    .footer-links a { color: #94a3b8; text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: #ffffff; }
+    .footer-bottom { max-width: 1140px; margin: 3rem auto 0 auto; padding-top: 1.5rem; border-top: 1px solid #1e293b; color: #64748b; font-size: 0.8rem; line-height: 1.5; }
   </style>
 </head>
 <body>
@@ -91,7 +95,7 @@
 
   <main class="container">
 
-    <!-- Inclusive Tracks Section -->
+    <!-- Tracks Section -->
     <section>
       <div class="section-title">
         <h2>A Seat at the Table for Every Builder</h2>
@@ -116,7 +120,7 @@
       </div>
     </section>
 
-    <!-- Hand-Selected Featured Assets Section -->
+    <!-- Featured Spotlight -->
     <section class="spotlight-section">
       <div class="spotlight-header">
         <div>
@@ -127,7 +131,6 @@
       </div>
 
       <div class="grid-3">
-        <!-- Asset 1 -->
         <div class="spotlight-card">
           <div>
             <div class="spotlight-upvotes">▲ 42 Upvotes</div>
@@ -138,7 +141,6 @@
           <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions" style="color: var(--electric-blue-50); font-weight: 700; text-decoration: none; font-size: 0.9rem;">View Pitch & Code →</a>
         </div>
 
-        <!-- Asset 2 -->
         <div class="spotlight-card">
           <div>
             <div class="spotlight-upvotes">▲ 38 Upvotes</div>
@@ -149,7 +151,6 @@
           <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions" style="color: var(--electric-blue-50); font-weight: 700; text-decoration: none; font-size: 0.9rem;">View Pitch & Code →</a>
         </div>
 
-        <!-- Asset 3 -->
         <div class="spotlight-card">
           <div>
             <div class="spotlight-upvotes">▲ 29 Upvotes</div>
@@ -162,41 +163,61 @@
       </div>
     </section>
 
-    <!-- How Co-Creation Works -->
-    <section>
-      <div class="section-title">
-        <h2>How We Co-Create</h2>
-        <p>From a community idea to an open-source standard in four steps[cite: 1].</p>
-      </div>
-      <div class="pathway-grid">
-        <div class="pathway-step">
-          <div class="step-num">01</div>
-          <h4 style="margin-bottom: 0.4rem;">Pitch Your Idea</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Share your concept using our structured application template in GitHub Discussions[cite: 1].</p>
-        </div>
-        <div class="pathway-step">
-          <div class="step-num">02</div>
-          <h4 style="margin-bottom: 0.4rem;">Community Upvoting</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">The community votes on ideas to signal real demand and platform utility[cite: 1].</p>
-        </div>
-        <div class="pathway-step">
-          <div class="step-num">03</div>
-          <h4 style="margin-bottom: 0.4rem;">180-Day Residency</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Selected builders build and maintain their open-source assets with community support[cite: 1].</p>
-        </div>
-        <div class="pathway-step">
-          <div class="step-num">04</div>
-          <h4 style="margin-bottom: 0.4rem;">Shared with Everyone</h4>
-          <p style="font-size: 0.85rem; color: var(--text-muted);">Assets are published under Apache 2.0 licensing for any Trailblazer to use and adapt[cite: 1].</p>
-        </div>
-      </div>
-    </section>
+    <!-- Open Source Disclaimer Callout -->
+    <div class="disclaimer-box">
+      <strong>⚠️ Open Source & Non-Production Notice:</strong> Trailblazer Labs projects are open-source community solutions licensed under Apache 2.0[cite: 1]. They are community-built, provided "as-is" without warranty, and not officially supported by Salesforce Customer Support. Always test solutions in a Developer Org or Sandbox environment prior to deployment.
+    </div>
 
   </main>
 
+  <!-- Complete Legal & Corporate Footer -->
   <footer>
-    <p style="font-weight: 700; margin-bottom: 0.5rem;">Trailblazer Labs — Exploring the Art of the Possible, Together</p>
-    <p style="color: #94a3b8; font-size: 0.85rem;">Open Source & Community Governed | Licensed under Apache 2.0[cite: 1].</p>
+    <div class="footer-container">
+      <div>
+        <div style="font-weight: 800; font-size: 1.1rem; margin-bottom: 0.5rem; color: #ffffff;">Trailblazer Labs</div>
+        <p style="color: #94a3b8; font-size: 0.85rem; max-width: 320px;">
+          An open-source community initiative empowering Trailblazers to co-create, upvote, and share AI platform innovations[cite: 1].
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>DIRECTORY</h4>
+        <ul class="footer-links">
+          <li><a href="directory.html">Browse All Assets</a></li>
+          <li><a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions/new?category=cohort-applications">Pitch an Asset</a></li>
+          <li><a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions">Community Upvotes</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>GOVERNANCE</h4>
+        <ul class="footer-links">
+          <li><a href="https://github.com/TrailblazerLabs/Cohort-Applications/blob/main/LICENSE">Apache 2.0 License</a></li>
+          <li><a href="https://github.com/TrailblazerLabs/Cohort-Applications/blob/main/CONTRIBUTING.md">Contributing Guidelines</a></li>
+          <li><a href="https://www.salesforce.com/company/legal/code-of-conduct/">Code of Conduct</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>SALESFORCE</h4>
+        <ul class="footer-links">
+          <li><a href="https://trailhead.salesforce.com/">Trailhead</a></li>
+          <li><a href="https://trailhead.salesforce.com/community">Trailblazer Community</a></li>
+          <li><a href="https://trust.salesforce.com/">Trust Status</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Salesforce, Inc. All rights reserved. Various trademarks held by their respective owners.</p>
+      <p>Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States.</p>
+      <p style="margin-top: 0.5rem;">
+        <a href="https://www.salesforce.com/company/legal/" style="color: #64748b; text-decoration: underline; margin-right: 1rem;">Legal</a>
+        <a href="https://www.salesforce.com/company/privacy/" style="color: #64748b; text-decoration: underline; margin-right: 1rem;">Privacy Information</a>
+        <a href="https://www.salesforce.com/company/legal/terms-of-service/" style="color: #64748b; text-decoration: underline; margin-right: 1rem;">Terms of Service</a>
+        <a href="https://security.salesforce.com/" style="color: #64748b; text-decoration: underline;">Responsible Disclosure</a>
+      </p>
+    </div>
   </footer>
 
 </body>
