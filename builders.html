@@ -135,31 +135,40 @@
   <!-- Dynamic Footer Placeholder -->
   <div id="footer-placeholder"></div>
 
-  <!-- Script to Dynamically Fetch Real Members from GitHub Org / Teams -->
+  <!-- Secured Script to Dynamically Fetch Members -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // Load Footer
-      fetch('footer.html')
-        .then(response => response.text())
+      // Configuration
+      const CONFIG = {
+        footerPath: './footer.html',
+        membersApiUrl: 'https://api.github.com/orgs/TrailblazerLabs/members'
+      };
+
+      // Load Footer Securely
+      fetch(CONFIG.footerPath)
+        .then(response => {
+          if (!response.ok) throw new Error('Footer fetch failed');
+          return response.text();
+        })
         .then(data => {
           document.getElementById('footer-placeholder').innerHTML = data;
-        });
+        })
+        .catch(err => console.warn('Footer could not be loaded:', err));
 
       const buildersGrid = document.getElementById('buildersGrid');
 
       async function fetchTeamMembers() {
         try {
-          // Attempts to fetch public members from TrailblazerLabs
-          const response = await fetch('https://api.github.com/orgs/TrailblazerLabs/members');
-          if (!response.ok) return;
+          const response = await fetch(CONFIG.membersApiUrl);
+          if (!response.ok) throw new Error(`API Rate limit or fetch error: ${response.status}`);
 
           const members = await response.json();
           if (!Array.isArray(members) || members.length === 0) return;
 
-          let liveCards = '';
+          // Clear mock data if API call succeeds
+          buildersGrid.innerHTML = '';
 
           for (const member of members) {
-            // Fetch individual user bio details
             let userBio = 'Trailblazer Labs Maintainer & Builder in Residence.';
             let userRole = 'Cohort Builder';
 
@@ -170,31 +179,52 @@
                 if (userData.bio) userBio = userData.bio;
               }
             } catch (e) {
-              console.log('Error fetching user profile:', e);
+              console.warn('Error fetching user profile:', e);
             }
 
-            liveCards += `
-              <div class="builder-card">
-                <div>
-                  <img src="${member.avatar_url}" alt="${member.login}" class="avatar">
-                  <div class="builder-name">@${member.login}</div>
-                  <div class="builder-role">${userRole}</div>
-                  <div class="builder-bio">${userBio}</div>
-                </div>
-                <div class="residency-box">
-                  <div class="residency-title">180-Day Residency Cohort:</div>
-                  <div>DF26 Cohort Maintainer</div>
-                </div>
-              </div>
-            `;
-          }
+            // Secure DOM Construction (Prevents XSS)
+            const card = document.createElement('div');
+            card.className = 'builder-card';
 
-          if (liveCards.length > 0) {
-            // Appends live members above fallback sample cards
-            buildersGrid.insertAdjacentHTML('afterbegin', liveCards);
+            const topDiv = document.createElement('div');
+            
+            const img = document.createElement('img');
+            img.src = member.avatar_url; // Standard safe attribute
+            img.alt = member.login;
+            img.className = 'avatar';
+
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'builder-name';
+            nameDiv.textContent = `@${member.login}`; // textContent for safety
+
+            const roleDiv = document.createElement('div');
+            roleDiv.className = 'builder-role';
+            roleDiv.textContent = userRole;
+
+            const bioDiv = document.createElement('div');
+            bioDiv.className = 'builder-bio';
+            bioDiv.textContent = userBio;
+
+            topDiv.append(img, nameDiv, roleDiv, bioDiv);
+
+            const residencyBox = document.createElement('div');
+            residencyBox.className = 'residency-box';
+            residencyBox.innerHTML = `
+              <div class="residency-title">180-Day Residency Cohort:</div>
+              <div>DF26 Cohort Maintainer</div>
+            `;
+
+            card.append(topDiv, residencyBox);
+            buildersGrid.appendChild(card);
           }
         } catch (err) {
-          console.log('Using sample builder cards:', err);
+          console.error('Using sample builder cards:', err);
+          
+          // Display Error Banner
+          const errorBanner = document.createElement('div');
+          errorBanner.style = "background: #fef2f2; color: #ef4444; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; border: 1px solid #fca5a5; text-align: center; font-weight: 600; grid-column: 1 / -1;";
+          errorBanner.textContent = "GitHub API rate limit exceeded or connection failed. Displaying cached demonstration data.";
+          buildersGrid.parentElement.insertBefore(errorBanner, buildersGrid);
         }
       }
 
