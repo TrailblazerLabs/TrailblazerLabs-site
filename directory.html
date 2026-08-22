@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Asset Directory — Trailblazer Labs</title>
   <style>
+    /* 2026 Trailblazer Brand Tokens */
     :root {
       --cloud-blue-68: #00B3FF;
       --electric-blue-50: #066AFE;
@@ -20,38 +21,40 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--text-dark); background: #f8fafc; line-height: 1.6; }
 
-    /* Nav */
+    /* Navigation */
     .nav { background: #ffffff; border-bottom: 1px solid #e2e8f0; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
     .brand-title { font-weight: 800; font-size: 1.25rem; color: var(--electric-blue-15); text-decoration: none; }
     .nav-links { display: flex; gap: 1rem; align-items: center; }
-    .btn { padding: 0.65rem 1.35rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 0.9rem; }
+    .btn { padding: 0.65rem 1.35rem; border-radius: 50px; font-weight: 700; text-decoration: none; font-size: 0.9rem; transition: transform 0.2s ease; }
+    .btn:hover { transform: translateY(-2px); }
     .btn-teal { background: var(--teal-80); color: var(--electric-blue-15); }
     .btn-outline { border: 2px solid var(--electric-blue-50); color: var(--electric-blue-50); }
 
-    /* Header */
+    /* Header Banner */
     .header-banner { background: var(--electric-blue-15); color: #ffffff; padding: 3.5rem 2rem; text-align: center; }
     .header-banner h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
     .header-banner p { color: #94a3b8; font-size: 1.1rem; }
 
-    /* Container & Search Controls */
+    /* Container & Controls */
     .container { max-width: 1140px; margin: 0 auto; padding: 3rem 1.5rem; }
     .controls-bar { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
     .search-bar { flex: 1; min-width: 280px; padding: 0.75rem 1.25rem; border-radius: 50px; border: 1px solid #cbd5e1; font-size: 0.95rem; }
     .filter-btn { padding: 0.5rem 1rem; border-radius: 20px; border: 1px solid #cbd5e1; background: #ffffff; cursor: pointer; font-weight: 600; font-size: 0.85rem; }
     .filter-btn.active { background: var(--electric-blue-50); color: #ffffff; border-color: var(--electric-blue-50); }
 
-    /* Directory Grid */
+    /* Cards Grid */
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
     .card { background: #ffffff; border-radius: 16px; border: 1px solid #e2e8f0; padding: 1.75rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-    .card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
     .badge { font-size: 0.75rem; font-weight: 800; padding: 0.25rem 0.65rem; border-radius: 12px; }
     .badge-no-code { background: var(--yellow-80); color: var(--electric-blue-15); }
     .badge-low-code { background: var(--pink-60); color: #ffffff; }
     .badge-pro-code { background: var(--teal-80); color: var(--electric-blue-15); }
+    .mock-tag { font-size: 0.7rem; font-weight: 700; color: #ef4444; background: #fef2f2; padding: 0.2rem 0.5rem; border-radius: 6px; border: 1px solid #fca5a5; }
     .stars { font-size: 0.85rem; font-weight: 700; color: var(--electric-blue-50); }
-    .card-title { font-size: 1.25rem; font-weight: 800; color: var(--electric-blue-15); margin-bottom: 0.5rem; }
+    .card-title { font-size: 1.2rem; font-weight: 800; color: var(--electric-blue-15); margin-bottom: 0.4rem; }
     .card-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem; flex-grow: 1; }
-    .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 1rem; }
+    .card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9; padding-top: 0.85rem; }
     .card-link { color: var(--electric-blue-50); font-weight: 700; text-decoration: none; font-size: 0.9rem; }
 
     footer { background: var(--electric-blue-15); color: #ffffff; padding: 3rem 2rem; margin-top: 5rem; text-align: center; font-size: 0.85rem; }
@@ -59,6 +62,7 @@
 </head>
 <body>
 
+  <!-- Navigation -->
   <nav class="nav">
     <a href="index.html" class="brand-title">🐻☁️ Trailblazer Labs</a>
     <div class="nav-links">
@@ -68,11 +72,13 @@
     </div>
   </nav>
 
+  <!-- Banner -->
   <header class="header-banner">
     <h1>Community Asset Directory</h1>
     <p>Explore open-source agents, flows, LWCs, and frameworks co-created by Trailblazers.</p>
   </header>
 
+  <!-- Main Directory Container -->
   <main class="container">
     <div class="controls-bar">
       <input type="text" id="searchInput" class="search-bar" placeholder="🔍 Search agents, topics, or maintainers...">
@@ -84,12 +90,17 @@
       </div>
     </div>
 
+    <!-- Asset Cards Grid (Dynamically Populated / Fallback Sample Tiles) -->
     <div class="grid" id="assetGrid">
-      <!-- Dynamic assets loaded via GitHub API / Fallback static assets -->
+      
+      <!-- Sample Tile 1 [Mock Data] -->
       <div class="card" data-track="low-code">
         <div>
           <div class="card-meta">
-            <span class="badge badge-low-code">Low-Code</span>
+            <div>
+              <span class="badge badge-low-code">Low-Code</span>
+              <span class="mock-tag">[Mock Data]</span>
+            </div>
             <span class="stars">★ 42 Stars</span>
           </div>
           <div class="card-title">Agentforce Compliance Scanner</div>
@@ -101,10 +112,14 @@
         </div>
       </div>
 
+      <!-- Sample Tile 2 [Mock Data] -->
       <div class="card" data-track="pro-code">
         <div>
           <div class="card-meta">
-            <span class="badge badge-pro-code">Pro-Code</span>
+            <div>
+              <span class="badge badge-pro-code">Pro-Code</span>
+              <span class="mock-tag">[Mock Data]</span>
+            </div>
             <span class="stars">★ 38 Stars</span>
           </div>
           <div class="card-title">Apex Test Class Generator</div>
@@ -116,10 +131,14 @@
         </div>
       </div>
 
+      <!-- Sample Tile 3 [Mock Data] -->
       <div class="card" data-track="no-code">
         <div>
           <div class="card-meta">
-            <span class="badge badge-no-code">No-Code</span>
+            <div>
+              <span class="badge badge-no-code">No-Code</span>
+              <span class="mock-tag">[Mock Data]</span>
+            </div>
             <span class="stars">★ 29 Stars</span>
           </div>
           <div class="card-title">Field History Natural Language Explorer</div>
@@ -130,33 +149,37 @@
           <a href="https://github.com/TrailblazerLabs" class="card-link">Source Code →</a>
         </div>
       </div>
+
     </div>
   </main>
 
+  <!-- Legal & Corporate Footer -->
   <footer>
     <p>© 2026 Salesforce, Inc. All rights reserved. Various trademarks held by their respective owners.</p>
     <p>Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States.</p>
   </footer>
 
+  <!-- Search, Filter, and GitHub API Dynamic Engine -->
   <script>
-    // Real-Time Search & Filter Functionality
     const searchInput = document.getElementById('searchInput');
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.card');
+    const assetGrid = document.getElementById('assetGrid');
 
-    searchInput.addEventListener('input', filterAssets);
-
+    // Filter Button Clicks
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        filterAssets();
+        filterLocalCards();
       });
     });
 
-    function filterAssets() {
+    searchInput.addEventListener('input', filterLocalCards);
+
+    function filterLocalCards() {
       const query = searchInput.value.toLowerCase();
       const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+      const cards = document.querySelectorAll('.card');
 
       cards.forEach(card => {
         const title = card.querySelector('.card-title').textContent.toLowerCase();
@@ -173,6 +196,63 @@
         }
       });
     }
+
+    // Dynamic GitHub API Fetcher (Queries TrailblazerLabs Repos Automatically)
+    async function fetchGitHubAssets() {
+      try {
+        const response = await fetch('https://api.github.com/orgs/TrailblazerLabs/repos?per_page=100');
+        if (!response.ok) return; // Fallback to mock data if API fails or org is private
+
+        const repos = await response.json();
+        // Exclude system configuration repos
+        const assetRepos = repos.filter(repo => 
+          !['TrailblazerLabs-site', 'Cohort-Applications', 'community-hub', '.github'].includes(repo.name)
+        );
+
+        if (assetRepos.length === 0) return; // Keep mock cards if no project repos exist yet
+
+        // Clear mock tiles once real repos are found
+        assetGrid.innerHTML = '';
+
+        assetRepos.forEach(repo => {
+          let trackClass = 'badge-no-code';
+          let trackName = 'No-Code';
+          let trackData = 'no-code';
+
+          if (repo.topics.includes('low-code') || repo.topics.includes('flow')) {
+            trackClass = 'badge-low-code';
+            trackName = 'Low-Code';
+            trackData = 'low-code';
+          } else if (repo.topics.includes('pro-code') || repo.topics.includes('apex') || repo.topics.includes('lwc')) {
+            trackClass = 'badge-pro-code';
+            trackName = 'Pro-Code';
+            trackData = 'pro-code';
+          }
+
+          const cardHTML = `
+            <div class="card" data-track="${trackData}">
+              <div>
+                <div class="card-meta">
+                  <span class="badge ${trackClass}">${trackName}</span>
+                  <span class="stars">★ ${repo.stargazers_count} Stars</span>
+                </div>
+                <div class="card-title">${repo.name.replace(/-/g, ' ')}</div>
+                <div class="card-desc">${repo.description || 'Open-source Salesforce community asset.'}</div>
+              </div>
+              <div class="card-footer">
+                <span style="font-size: 0.85rem; color: var(--text-muted);">by @${repo.owner.login}</span>
+                <a href="${repo.html_url}" class="card-link" target="_blank">Source Code →</a>
+              </div>
+            </div>
+          `;
+          assetGrid.insertAdjacentHTML('beforeend', cardHTML);
+        });
+      } catch (err) {
+        console.log('Using static sample tiles:', err);
+      }
+    }
+
+    fetchGitHubAssets();
   </script>
 </body>
 </html>
