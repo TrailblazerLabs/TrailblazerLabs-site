@@ -155,45 +155,50 @@
   <!-- Dynamic Footer Placeholder -->
   <div id="footer-placeholder"></div>
 
-  <!-- Fixed Search, Track Filter & Dynamic GitHub API Script -->
+  <!-- Secured Fixed Search, Track Filter & Dynamic API Script -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // Load Footer
-      fetch('footer.html')
-        .then(response => response.text())
+      // 1. Configuration Constants
+      const CONFIG = {
+        githubOrg: 'TrailblazerLabs',
+        footerPath: './footer.html',
+        repoApiUrl: 'https://api.github.com/orgs/TrailblazerLabs/repos?per_page=100'
+      };
+
+      // 2. Load Footer securely
+      fetch(CONFIG.footerPath)
+        .then(response => {
+          if (!response.ok) throw new Error('Footer fetch failed');
+          return response.text();
+        })
         .then(data => {
           document.getElementById('footer-placeholder').innerHTML = data;
-        });
+        })
+        .catch(err => console.warn('Footer could not be loaded:', err));
 
       const searchInput = document.getElementById('searchInput');
       const filterBtns = document.querySelectorAll('.filter-btn');
       const assetGrid = document.getElementById('assetGrid');
 
-      // 1. Live Client-Side Search and Track Filter
+      // 3. Live Search and Filter
       function filterAssets() {
         const query = searchInput.value.trim().toLowerCase();
         const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
         const cards = document.querySelectorAll('.card');
 
         cards.forEach(card => {
-          const title = card.querySelector('.card-title') ? card.querySelector('.card-title').textContent.toLowerCase() : '';
-          const desc = card.querySelector('.card-desc') ? card.querySelector('.card-desc').textContent.toLowerCase() : '';
+          const title = card.querySelector('.card-title')?.textContent.toLowerCase() || '';
+          const desc = card.querySelector('.card-desc')?.textContent.toLowerCase() || '';
           const track = card.dataset.track || '';
 
           const matchesSearch = title.includes(query) || desc.includes(query);
           const matchesTrack = (activeFilter === 'all') || (track === activeFilter);
 
-          if (matchesSearch && matchesTrack) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
+          card.style.display = (matchesSearch && matchesTrack) ? 'flex' : 'none';
         });
       }
 
-      // Event Listeners for Search Input & Filter Buttons
       searchInput.addEventListener('input', filterAssets);
-
       filterBtns.forEach(btn => {
         btn.addEventListener('click', (e) => {
           filterBtns.forEach(b => b.classList.remove('active'));
@@ -202,59 +207,75 @@
         });
       });
 
-      // 2. Dynamic GitHub API Repositories Fetcher
+      // 4. Secure API Fetch & DOM Creation (XSS Prevented)
       async function fetchGitHubAssets() {
         try {
-          // Queries org repositories from GitHub
-          const response = await fetch('https://api.github.com/orgs/TrailblazerLabs/repos?per_page=100');
-          if (!response.ok) return;
+          const response = await fetch(CONFIG.repoApiUrl);
+          if (!response.ok) {
+            throw new Error(`API Rate limit or fetch error: ${response.status}`);
+          }
 
           const repos = await response.json();
           if (!Array.isArray(repos) || repos.length === 0) return;
 
-          // If real public repos exist, render them and append to grid
-          let dynamicCards = '';
-          repos.forEach(repo => {
-            let trackClass = 'badge-low-code';
-            let trackName = 'Low-Code';
-            let trackData = 'low-code';
+          // Clear mock data if API succeeds
+          assetGrid.innerHTML = ''; 
 
-            if (repo.topics && (repo.topics.includes('no-code') || repo.topics.includes('prompt'))) {
-              trackClass = 'badge-no-code';
-              trackName = 'No-Code';
-              trackData = 'no-code';
-            } else if (repo.topics && (repo.topics.includes('pro-code') || repo.topics.includes('apex') || repo.topics.includes('lwc'))) {
-              trackClass = 'badge-pro-code';
-              trackName = 'Pro-Code';
-              trackData = 'pro-code';
+          repos.forEach(repo => {
+            // Determine Track
+            let trackClass = 'badge-low-code', trackName = 'Low-Code', trackData = 'low-code';
+            if (repo.topics?.includes('no-code') || repo.topics?.includes('prompt')) {
+              trackClass = 'badge-no-code'; trackName = 'No-Code'; trackData = 'no-code';
+            } else if (repo.topics?.includes('pro-code') || repo.topics?.includes('apex') || repo.topics?.includes('lwc')) {
+              trackClass = 'badge-pro-code'; trackName = 'Pro-Code'; trackData = 'pro-code';
             }
 
-            dynamicCards += `
-              <div class="card" data-track="${trackData}">
-                <div>
-                  <div class="card-meta">
-                    <div>
-                      <span class="badge ${trackClass}">${trackName}</span>
-                    </div>
-                    <span class="stars">★ ${repo.stargazers_count} Stars</span>
-                  </div>
-                  <div class="card-title">${repo.name.replace(/-/g, ' ')}</div>
-                  <div class="card-desc">${repo.description || 'Open-source Salesforce community project.'}</div>
-                </div>
-                <div class="card-footer">
-                  <span style="font-size: 0.85rem; color: var(--text-muted);">by @${repo.owner.login}</span>
-                  <a href="${repo.html_url}" class="card-link" target="_blank">Source Code →</a>
-                </div>
-              </div>
-            `;
+            // Build DOM securely using textContent
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.dataset.track = trackData;
+
+            const topDiv = document.createElement('div');
+            const metaDiv = document.createElement('div');
+            metaDiv.className = 'card-meta';
+            metaDiv.innerHTML = `<div><span class="badge ${trackClass}">${trackName}</span></div><span class="stars">★ ${repo.stargazers_count} Stars</span>`;
+
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'card-title';
+            titleDiv.textContent = repo.name.replace(/-/g, ' '); // SECURE: textContent prevents XSS
+
+            const descDiv = document.createElement('div');
+            descDiv.className = 'card-desc';
+            descDiv.textContent = repo.description || 'Open-source Salesforce community project.'; // SECURE
+
+            topDiv.append(metaDiv, titleDiv, descDiv);
+
+            const footerDiv = document.createElement('div');
+            footerDiv.className = 'card-footer';
+            
+            const authorSpan = document.createElement('span');
+            authorSpan.style = 'font-size: 0.85rem; color: var(--text-muted);';
+            authorSpan.textContent = `by @${repo.owner.login}`; // SECURE
+
+            const linkTag = document.createElement('a');
+            linkTag.href = repo.html_url;
+            linkTag.className = 'card-link';
+            linkTag.target = '_blank';
+            linkTag.textContent = 'Source Code →';
+
+            footerDiv.append(authorSpan, linkTag);
+            card.append(topDiv, footerDiv);
+            assetGrid.appendChild(card);
           });
 
-          if (dynamicCards.length > 0) {
-            assetGrid.insertAdjacentHTML('afterbegin', dynamicCards);
-            filterAssets(); // Re-apply search/filter index on new cards
-          }
+          filterAssets(); 
         } catch (err) {
-          console.log('GitHub API fetch bypassed (using static preview cards):', err);
+          console.error('Using sample cards due to API block:', err);
+          // Display Error Banner
+          const errorBanner = document.createElement('div');
+          errorBanner.style = "background: #fef2f2; color: #ef4444; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; border: 1px solid #fca5a5; text-align: center; font-weight: 600; grid-column: 1 / -1;";
+          errorBanner.textContent = "GitHub API rate limit exceeded or connection failed. Displaying cached demonstration data.";
+          assetGrid.parentElement.insertBefore(errorBanner, assetGrid);
         }
       }
 
