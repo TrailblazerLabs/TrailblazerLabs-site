@@ -33,7 +33,7 @@
     /* Header Banner */
     .header-banner { background: var(--electric-blue-15); color: #ffffff; padding: 3.5rem 2rem; text-align: center; }
     .header-banner h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem; }
-    .header-banner p { color: #94a3b8; font-size: 1.1rem; }
+    .header-banner p { color: #94a3b8; font-size: 1.1rem; max-width: 800px; margin: 0 auto; }
 
     /* Container & Controls */
     .container { max-width: 1140px; margin: 0 auto; padding: 3rem 1.5rem; }
@@ -63,7 +63,7 @@
 
   <!-- Navigation -->
   <nav class="nav">
-    <a href="index.html" class="brand-title">🐻☁️ Trailblazer Labs</a>
+    <a href="index.html" class="brand-title">🐻 Trailblazer Labs</a>
     <div class="nav-links">
       <a href="index.html" class="btn btn-outline">Home</a>
       <a href="builders.html" class="btn btn-outline">Meet the Builders</a>
@@ -74,7 +74,7 @@
   <!-- Banner -->
   <header class="header-banner">
     <h1>Community Solution Directory</h1>
-    <p>Explore open-source agents, flows, LWCs, and frameworks co-created by Trailblazers.</p>
+    <p>Explore open-source, GitHub-native repositories containing Markdown frameworks and deployable code co-created by the Trailblazer ecosystem.</p>
   </header>
 
   <!-- Main Directory Container -->
@@ -107,7 +107,7 @@
         </div>
         <div class="card-footer">
           <span style="font-size: 0.85rem; color: var(--text-muted);">by Trailblazer Labs</span>
-          <a href="https://github.com/TrailblazerLabs" class="card-link" target="_blank">Source Code →</a>
+          <a href="https://github.com/TrailblazerLabs" class="card-link" target="_blank">View GitHub Repo →</a>
         </div>
       </div>
 
@@ -126,7 +126,7 @@
         </div>
         <div class="card-footer">
           <span style="font-size: 0.85rem; color: var(--text-muted);">by Sam Okoro</span>
-          <a href="https://github.com/TrailblazerLabs" class="card-link" target="_blank">Source Code →</a>
+          <a href="https://github.com/TrailblazerLabs" class="card-link" target="_blank">View GitHub Repo →</a>
         </div>
       </div>
 
@@ -145,7 +145,7 @@
         </div>
         <div class="card-footer">
           <span style="font-size: 0.85rem; color: var(--text-muted);">by Marcus Webb</span>
-          <a href="https://github.com/TrailblazerLabs" class="card-link" target="_blank">Source Code →</a>
+          <a href="https://github.com/TrailblazerLabs" class="card-link" target="_blank">View GitHub Repo →</a>
         </div>
       </div>
 
@@ -222,7 +222,6 @@
           assetGrid.innerHTML = ''; 
 
           repos.forEach(repo => {
-            // Determine Track
             let trackClass = 'badge-low-code', trackName = 'Low-Code', trackData = 'low-code';
             if (repo.topics?.includes('no-code') || repo.topics?.includes('prompt')) {
               trackClass = 'badge-no-code'; trackName = 'No-Code'; trackData = 'no-code';
@@ -230,7 +229,6 @@
               trackClass = 'badge-pro-code'; trackName = 'Pro-Code'; trackData = 'pro-code';
             }
 
-            // Build DOM securely using textContent
             const card = document.createElement('div');
             card.className = 'card';
             card.dataset.track = trackData;
@@ -242,11 +240,11 @@
 
             const titleDiv = document.createElement('div');
             titleDiv.className = 'card-title';
-            titleDiv.textContent = repo.name.replace(/-/g, ' '); // SECURE: textContent prevents XSS
+            titleDiv.textContent = repo.name.replace(/-/g, ' ');
 
             const descDiv = document.createElement('div');
             descDiv.className = 'card-desc';
-            descDiv.textContent = repo.description || 'Open-source Salesforce community project.'; // SECURE
+            descDiv.textContent = repo.description || 'Open-source Salesforce community project.';
 
             topDiv.append(metaDiv, titleDiv, descDiv);
 
@@ -255,13 +253,13 @@
             
             const authorSpan = document.createElement('span');
             authorSpan.style = 'font-size: 0.85rem; color: var(--text-muted);';
-            authorSpan.textContent = `by @${repo.owner.login}`; // SECURE
+            authorSpan.textContent = `by @${repo.owner.login}`;
 
             const linkTag = document.createElement('a');
             linkTag.href = repo.html_url;
             linkTag.className = 'card-link';
             linkTag.target = '_blank';
-            linkTag.textContent = 'Source Code →';
+            linkTag.textContent = 'View GitHub Repo →';
 
             footerDiv.append(authorSpan, linkTag);
             card.append(topDiv, footerDiv);
@@ -271,7 +269,6 @@
           filterAssets(); 
         } catch (err) {
           console.error('Using sample cards due to API block:', err);
-          // Display Error Banner
           const errorBanner = document.createElement('div');
           errorBanner.style = "background: #fef2f2; color: #ef4444; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; border: 1px solid #fca5a5; text-align: center; font-weight: 600; grid-column: 1 / -1;";
           errorBanner.textContent = "GitHub API rate limit exceeded or connection failed. Displaying cached demonstration data.";
