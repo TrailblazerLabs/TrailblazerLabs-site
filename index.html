@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trailblazer Labs — Exploring the Art of the Possible, Together</title>
   <style>
-    /* 2026 Trailblazer Brand Tokens */
+    /* 2026 Trailblazer Brand Design Tokens */
     :root {
       --cloud-blue-68: #00B3FF;
       --electric-blue-50: #066AFE;
@@ -57,27 +57,39 @@
     .spotlight-card { background: #ffffff; border-radius: 16px; padding: 1.75rem; border: 1px solid #cbd5e1; display: flex; flex-direction: column; justify-content: space-between; }
     .spotlight-upvotes { font-size: 0.85rem; font-weight: 800; color: var(--electric-blue-50); background: var(--cloud-blue-95); padding: 0.35rem 0.75rem; border-radius: 12px; width: fit-content; margin-bottom: 0.8rem; }
 
+    /* Builders Section */
+    .builders-section { background: #ffffff; border-radius: 24px; padding: 3rem 2rem; margin: 3.5rem 0; border: 1px solid #e2e8f0; text-align: center; }
+    .builder-avatar { width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--cloud-blue-68); margin: 0 auto 0.75rem auto; background: var(--cloud-blue-95); display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+
+    /* Pathway */
+    .pathway-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+    .pathway-step { background: #ffffff; border: 1px solid #e2e8f0; padding: 1.75rem 1.5rem; border-radius: 12px; }
+    .step-num { font-size: 1.8rem; font-weight: 800; color: var(--electric-blue-50); margin-bottom: 0.5rem; }
+
     /* Disclaimer Callout Box */
     .disclaimer-box { background: #f8fafc; border-left: 4px solid var(--electric-blue-50); padding: 1.25rem 1.5rem; border-radius: 0 12px 12px 0; margin: 3rem 0; font-size: 0.9rem; color: var(--text-muted); }
 
     /* Footer */
-    footer { background: var(--electric-blue-15); color: #ffffff; padding: 4rem 2rem 2rem 2rem; margin-top: 5rem; font-size: 0.875rem; }
+    footer { background: var(--electric-blue-15); color: #ffffff; padding: 4rem 2rem 2.5rem 2rem; margin-top: 5rem; font-size: 0.875rem; }
     .footer-container { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 2.5rem; }
     .footer-col h4 { font-size: 0.95rem; font-weight: 800; margin-bottom: 1rem; color: var(--cloud-blue-68); }
     .footer-links { list-style: none; }
     .footer-links li { margin-bottom: 0.6rem; }
     .footer-links a { color: #94a3b8; text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: #ffffff; }
-    .footer-bottom { max-width: 1140px; margin: 3rem auto 0 auto; padding-top: 1.5rem; border-top: 1px solid #1e293b; color: #64748b; font-size: 0.8rem; line-height: 1.5; }
+    .footer-bottom { max-width: 1140px; margin: 3rem auto 0 auto; padding-top: 1.5rem; border-top: 1px solid #1e293b; color: #64748b; font-size: 0.8rem; line-height: 1.6; }
+    .footer-legal-links a { color: #94a3b8; text-decoration: underline; margin-right: 1.25rem; }
+    .footer-legal-links a:hover { color: #ffffff; }
   </style>
 </head>
 <body>
 
   <!-- Navigation -->
   <nav class="nav">
-    <a href="#" class="brand-title">🐻☁️ Trailblazer Labs</a>
+    <a href="index.html" class="brand-title">🐻☁️ Trailblazer Labs</a>
     <div class="nav-links">
-      <a href="directory.html" class="btn btn-outline">Browse Directory</a>
+      <a href="directory.html" class="btn btn-outline">Asset Directory</a>
+      <a href="builders.html" class="btn btn-outline">Meet the Builders</a>
       <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions/new?category=cohort-applications" class="btn btn-teal">+ Pitch Your Idea</a>
     </div>
   </nav>
@@ -89,7 +101,7 @@
     <p>Trailblazer Labs empowers a global community to innovate, collaborate, and co-create the next era of AI.</p>
     <div class="hero-buttons">
       <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions/new?category=cohort-applications" class="btn btn-teal" style="font-size: 1.05rem; padding: 0.85rem 1.85rem;">Submit a Pitch</a>
-      <a href="directory.html" class="btn btn-outline" style="color: white; border-color: white; font-size: 1.05rem; padding: 0.85rem 1.85rem;">Explore All Assets</a>
+      <a href="directory.html" class="btn btn-outline" style="color: white; border-color: white; font-size: 1.05rem; padding: 0.85rem 1.85rem;">Browse Marketplace Directory</a>
     </div>
   </header>
 
@@ -105,17 +117,17 @@
         <div class="card-track">
           <span class="badge-track badge-no-code">No-Code</span>
           <h3>The Strategist</h3>
-          <p>Prompt libraries, Agentforce guardrail frameworks, governance matrices, and strategic business blueprints[cite: 1].</p>
+          <p>Prompt libraries, Agentforce guardrail frameworks, governance matrices, and strategic business blueprints.</p>
         </div>
         <div class="card-track">
           <span class="badge-track badge-low-code">Low-Code</span>
           <h3>The Declarative Developer</h3>
-          <p>Complex Flow automations, AI Agent configurations, App Builder templates, and Data Cloud transforms[cite: 1].</p>
+          <p>Complex Flow automations, AI Agent configurations, App Builder templates, and Data Cloud transforms.</p>
         </div>
         <div class="card-track">
           <span class="badge-track badge-pro-code">Pro-Code</span>
           <h3>The Engineer</h3>
-          <p>Lightning Web Components (LWC), Apex controllers, external REST integrations, and Salesforce CLI plugins[cite: 1].</p>
+          <p>Lightning Web Components (LWC), Apex controllers, external REST integrations, and Salesforce CLI plugins.</p>
         </div>
       </div>
     </section>
@@ -124,48 +136,111 @@
     <section class="spotlight-section">
       <div class="spotlight-header">
         <div>
-          <h2 style="color: var(--electric-blue-15); font-size: 1.85rem;">🌟 Community Highlights</h2>
-          <p style="color: var(--text-muted);">Hand-selected community submissions currently in their 180-day residency[cite: 1].</p>
+          <h2 style="color: var(--electric-blue-15); font-size: 1.85rem;">🌟 Marketplace Highlights</h2>
+          <p style="color: var(--text-muted);">Hand-selected open-source community solutions currently in their 180-day residency.</p>
         </div>
-        <a href="directory.html" style="color: var(--electric-blue-50); font-weight: 700; text-decoration: none;">View All Directory Assets →</a>
+        <a href="directory.html" style="color: var(--electric-blue-50); font-weight: 700; text-decoration: none;">View Full Directory →</a>
       </div>
 
       <div class="grid-3">
         <div class="spotlight-card">
           <div>
-            <div class="spotlight-upvotes">▲ 42 Upvotes</div>
-            <h3 style="color: var(--electric-blue-15); margin-bottom: 0.4rem;">Agentforce Compliance Checklist</h3>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">by Trailblazer Labs Maintainers[cite: 6]</p>
+            <div class="spotlight-upvotes">★ 42 Community Stars</div>
+            <h3 style="color: var(--electric-blue-15); margin-bottom: 0.4rem;">Agentforce Compliance Scanner</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">by Trailblazer Labs Maintainers</p>
             <p style="font-size: 0.95rem; margin-bottom: 1rem;">An automated org scanner that validates AI Agent permissions and Data Cloud security policies prior to deployment.</p>
           </div>
-          <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions" style="color: var(--electric-blue-50); font-weight: 700; text-decoration: none; font-size: 0.9rem;">View Pitch & Code →</a>
+          <a href="directory.html" style="color: var(--electric-blue-50); font-weight: 700; text-decoration: none; font-size: 0.9rem;">View Marketplace Asset →</a>
         </div>
 
         <div class="spotlight-card">
           <div>
-            <div class="spotlight-upvotes">▲ 38 Upvotes</div>
+            <div class="spotlight-upvotes">★ 38 Community Stars</div>
             <h3 style="color: var(--electric-blue-15); margin-bottom: 0.4rem;">Apex Test Generator Agent</h3>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">by Sam Okoro[cite: 6]</p>
-            <p style="font-size: 0.95rem; margin-bottom: 1rem;">Generates unit test classes and mock data directly from highlighted Apex methods using natural language prompts[cite: 6].</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">by Sam Okoro</p>
+            <p style="font-size: 0.95rem; margin-bottom: 1rem;">Generates unit test classes and mock data directly from highlighted Apex methods using natural language prompts.</p>
           </div>
-          <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions" style="color: var(--electric-blue-50); font-weight: 700; text-decoration: none; font-size: 0.9rem;">View Pitch & Code →</a>
+          <a href="directory.html" style="color: var(--electric-blue-50); font-weight: 700; text-decoration: none; font-size: 0.9rem;">View Marketplace Asset →</a>
         </div>
 
         <div class="spotlight-card">
           <div>
-            <div class="spotlight-upvotes">▲ 29 Upvotes</div>
+            <div class="spotlight-upvotes">★ 29 Community Stars</div>
             <h3 style="color: var(--electric-blue-15); margin-bottom: 0.4rem;">Field History Natural Language Explorer</h3>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">by Marcus Webb[cite: 6]</p>
-            <p style="font-size: 0.95rem; margin-bottom: 1rem;">Traces field history logs and summarizes record audit trails into plain-language digests[cite: 6].</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">by Marcus Webb</p>
+            <p style="font-size: 0.95rem; margin-bottom: 1rem;">Traces field history logs and summarizes record audit trails into plain-language digests.</p>
           </div>
-          <a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions" style="color: var(--electric-blue-50); font-weight: 700; text-decoration: none; font-size: 0.9rem;">View Pitch & Code →</a>
+          <a href="directory.html" style="color: var(--electric-blue-50); font-weight: 700; text-decoration: none; font-size: 0.9rem;">View Marketplace Asset →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet the Builders Teaser Section -->
+    <section class="builders-section">
+      <div class="section-title">
+        <h2>Meet the Builders in Residence</h2>
+        <p>The MVPs, architects, and community leads driving open-source AI platform innovation.</p>
+      </div>
+
+      <div class="grid-3" style="margin-bottom: 2rem;">
+        <div style="background: #f8fafc; border-radius: 16px; padding: 1.5rem; border: 1px solid #e2e8f0;">
+          <div class="builder-avatar">🧑‍💻</div>
+          <h4 style="color: var(--electric-blue-15);">Sam Okoro</h4>
+          <p style="font-size: 0.85rem; color: var(--electric-blue-50); font-weight: 700;">Pro-Code Engineer & CTA</p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Leading the Apex Test Generator residency project.</p>
+        </div>
+
+        <div style="background: #f8fafc; border-radius: 16px; padding: 1.5rem; border: 1px solid #e2e8f0;">
+          <div class="builder-avatar">👩‍💼</div>
+          <h4 style="color: var(--electric-blue-15);">Priya Nayar</h4>
+          <p style="font-size: 0.85rem; color: var(--electric-blue-50); font-weight: 700;">Declarative Developer</p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Building AI Agent deflection workflows for Service Cloud.</p>
+        </div>
+
+        <div style="background: #f8fafc; border-radius: 16px; padding: 1.5rem; border: 1px solid #e2e8f0;">
+          <div class="builder-avatar">🧔‍♂️</div>
+          <h4 style="color: var(--electric-blue-15);">Marcus Webb</h4>
+          <p style="font-size: 0.85rem; color: var(--electric-blue-50); font-weight: 700;">No-Code Strategist</p>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Architecting Data Cloud audit frameworks.</p>
+        </div>
+      </div>
+
+      <a href="builders.html" class="btn btn-outline">View All Cohort Builders & Bios →</a>
+    </section>
+
+    <!-- How We Co-Create -->
+    <section>
+      <div class="section-title">
+        <h2>How We Co-Create</h2>
+        <p>From a community idea to an open-source standard in four steps.</p>
+      </div>
+      <div class="pathway-grid">
+        <div class="pathway-step">
+          <div class="step-num">01</div>
+          <h4 style="margin-bottom: 0.4rem;">Pitch Your Idea</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Share your concept using our structured application template in GitHub Discussions.</p>
+        </div>
+        <div class="pathway-step">
+          <div class="step-num">02</div>
+          <h4 style="margin-bottom: 0.4rem;">Community Upvoting</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">The community votes on ideas to signal real demand and platform utility.</p>
+        </div>
+        <div class="pathway-step">
+          <div class="step-num">03</div>
+          <h4 style="margin-bottom: 0.4rem;">180-Day Residency</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Selected builders build and maintain their open-source assets with community support.</p>
+        </div>
+        <div class="pathway-step">
+          <div class="step-num">04</div>
+          <h4 style="margin-bottom: 0.4rem;">Shared with Everyone</h4>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">Assets are published under Apache 2.0 licensing for any Trailblazer to use and adapt.</p>
         </div>
       </div>
     </section>
 
     <!-- Open Source Disclaimer Callout -->
     <div class="disclaimer-box">
-      <strong>⚠️ Open Source & Non-Production Notice:</strong> Trailblazer Labs projects are open-source community solutions licensed under Apache 2.0[cite: 1]. They are community-built, provided "as-is" without warranty, and not officially supported by Salesforce Customer Support. Always test solutions in a Developer Org or Sandbox environment prior to deployment.
+      <strong>⚠️ Open Source & Non-Production Notice:</strong> Trailblazer Labs projects are open-source community solutions licensed under Apache 2.0. They are community-built, provided "as-is" without warranty, and not officially supported by Salesforce Customer Support. Always test solutions in a Developer Org or Sandbox environment prior to deployment.
     </div>
 
   </main>
@@ -176,14 +251,15 @@
       <div>
         <div style="font-weight: 800; font-size: 1.1rem; margin-bottom: 0.5rem; color: #ffffff;">Trailblazer Labs</div>
         <p style="color: #94a3b8; font-size: 0.85rem; max-width: 320px;">
-          An open-source community initiative empowering Trailblazers to co-create, upvote, and share AI platform innovations[cite: 1].
+          An open-source community initiative empowering Trailblazers to co-create, upvote, and share AI platform innovations.
         </p>
       </div>
 
       <div class="footer-col">
         <h4>DIRECTORY</h4>
         <ul class="footer-links">
-          <li><a href="directory.html">Browse All Assets</a></li>
+          <li><a href="directory.html">Browse Marketplace</a></li>
+          <li><a href="builders.html">Meet the Builders</a></li>
           <li><a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions/new?category=cohort-applications">Pitch an Asset</a></li>
           <li><a href="https://github.com/TrailblazerLabs/Cohort-Applications/discussions">Community Upvotes</a></li>
         </ul>
@@ -211,11 +287,11 @@
     <div class="footer-bottom">
       <p>© 2026 Salesforce, Inc. All rights reserved. Various trademarks held by their respective owners.</p>
       <p>Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105, United States.</p>
-      <p style="margin-top: 0.5rem;">
-        <a href="https://www.salesforce.com/company/legal/" style="color: #64748b; text-decoration: underline; margin-right: 1rem;">Legal</a>
-        <a href="https://www.salesforce.com/company/privacy/" style="color: #64748b; text-decoration: underline; margin-right: 1rem;">Privacy Information</a>
-        <a href="https://www.salesforce.com/company/legal/terms-of-service/" style="color: #64748b; text-decoration: underline; margin-right: 1rem;">Terms of Service</a>
-        <a href="https://security.salesforce.com/" style="color: #64748b; text-decoration: underline;">Responsible Disclosure</a>
+      <p class="footer-legal-links" style="margin-top: 0.75rem;">
+        <a href="https://www.salesforce.com/company/legal/">Legal</a>
+        <a href="https://www.salesforce.com/company/privacy/">Privacy Information</a>
+        <a href="https://www.salesforce.com/company/legal/terms-of-service/">Terms of Service</a>
+        <a href="https://security.salesforce.com/">Responsible Disclosure</a>
       </p>
     </div>
   </footer>
