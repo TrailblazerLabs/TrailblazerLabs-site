@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Priya Nayar",
+    "github": "priyanayar",
+    "avatar": "https://avatars.githubusercontent.com/u/9919?v=4",
+    "country": "India",
+    "role": "Pro-Code Engineer & CTA",
+    "bio": "Salesforce Certified Technical Architect focused on agent orchestration and deflection. Ten years shipping Service Cloud at scale, now building open agents for the community.",
+    "project": {
+      "title": "Case Deflection Companion",
+      "url": "https://github.com/priyanayar/case-deflection-companion"
+    }
+  },
+  {
+    "name": "Marcus Antwi",
+    "github": "marcusantwi",
+    "avatar": "https://avatars.githubusercontent.com/u/583231?v=4",
+    "country": "Ghana",
+    "role": "Solutions Engineer & MVP",
+    "bio": "Trailblazer Community MVP and low-code tinkerer turned agent builder. Passionate about making Agentforce approachable for admins with no pro-code background.",
+    "project": {
+      "title": "Field Service Route Planner",
+      "url": "https://github.com/marcusantwi/field-service-route-planner"
+    }
+  },
+  {
+    "name": "Sofia Reyes",
+    "github": "sofiareyes",
+    "avatar": "https://avatars.githubusercontent.com/u/1024025?v=4",
+    "country": "Mexico",
+    "role": "Developer Advocate",
+    "bio": "Independent developer and Trailhead instructor. Prototypes agents that connect Data Cloud to real customer journeys and shares every build as open source.",
+    "project": {
+      "title": "Journey Insights Agent",
+      "url": "https://github.com/sofiareyes/journey-insights-agent"
+    }
+  }
+]

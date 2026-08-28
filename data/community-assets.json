@@ -1,0 +1,137 @@
+[
+  {
+    "authorName": "priyanayar",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/9919?v=4",
+    "title": "Case Deflection Companion",
+    "description": "Lightweight service agent that suggests knowledge articles before a case is created. Built with Agentforce Vibes.",
+    "tags": ["Customer Service", "Productivity"],
+    "repo": "https://github.com/priyanayar/case-deflection-companion",
+    "license": "Apache 2.0"
+  },
+  {
+    "authorName": "samokoro",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/810438?v=4",
+    "title": "Apex Test Generator",
+    "description": "Dev-tools agent that generates Apex test classes from a highlighted method. Vibe-coded, open-source, and unsupported.",
+    "tags": ["IT & Administration", "Productivity"],
+    "repo": "https://github.com/samokoro/apex-test-generator",
+    "license": "Apache 2.0"
+  },
+  {
+    "authorName": "diegofuentes",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/1024025?v=4",
+    "title": "Renewal Reminder Agent",
+    "description": "Scans contracts and drafts renewal outreach 90/60/30 days out. Community-maintained via GitHub Issues.",
+    "tags": ["Sales", "Finance", "Analytics"],
+    "repo": "https://github.com/diegofuentes/renewal-reminder-agent",
+    "license": "Apache 2.0"
+  },
+  {
+    "authorName": "meilinzhao",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/1500684?v=4",
+    "title": "Lead Scoring Assistant",
+    "description": "Ranks inbound leads against your closed-won history and explains each score in plain language for reps.",
+    "tags": ["Sales", "Analytics"],
+    "repo": "https://github.com/meilinzhao/lead-scoring-assistant",
+    "license": "Apache 2.0"
+  },
+  {
+    "authorName": "tomvandenberg",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/204765?v=4",
+    "title": "Campaign Brief Builder",
+    "description": "Turns a short prompt into a structured campaign brief with audience, channels, and suggested copy variants.",
+    "tags": ["Marketing", "Productivity", "Collaboration"],
+    "repo": "https://github.com/tomvandenberg/campaign-brief-builder",
+    "license": "Apache 2.0"
+  },
+  {
+    "authorName": "aishawilliams",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/3369400?v=4",
+    "title": "Invoice Triage Agent",
+    "description": "Reads inbound invoice emails, matches them to purchase orders, and flags mismatches for finance review.",
+    "tags": ["Finance", "IT & Administration"],
+    "repo": "https://github.com/aishawilliams/invoice-triage-agent",
+    "license": "Apache 2.0"
+  },
+  {
+    "authorName": "kenjinakamura",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/4420654?v=4",
+    "title": "Order Status Concierge",
+    "description": "Answers where-is-my-order questions by joining commerce order data with carrier tracking updates.",
+    "tags": ["Commerce", "Customer Service"],
+    "repo": "https://github.com/kenjinakamura/order-status-concierge",
+    "license": "Apache 2.0"
+  },
+  {
+    "authorName": "luciaromano",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/2891920?v=4",
+    "title": "Onboarding Checklist Bot",
+    "description": "Guides new hires through IT provisioning and HR tasks, opening tickets automatically as each step completes.",
+    "tags": ["IT & Administration", "Productivity", "Collaboration"],
+    "repo": "https://github.com/luciaromano/onboarding-checklist-bot",
+    "license": "Apache 2.0"
+  },
+  {
+    "authorName": "marcusbell",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/583231?v=4",
+    "title": "Pipeline Health Analyst",
+    "description": "Summarizes stalled opportunities each morning and recommends the next best action per deal.",
+    "tags": ["Sales", "Analytics"],
+    "repo": "https://github.com/marcusbell/pipeline-health-analyst",
+    "license": "Apache 2.0"
+  },
+  {
+    "authorName": "farahhassan",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/6820226?v=4",
+    "title": "Knowledge Article Drafter",
+    "description": "Converts resolved support cases into first-draft knowledge articles for an agent to review and publish.",
+    "tags": ["Customer Service", "Productivity"],
+    "repo": "https://github.com/farahhassan/knowledge-article-drafter",
+    "license": "Apache 2.0"
+  },
+  {
+    "authorName": "olivgreen",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/9063550?v=4",
+    "title": "Expense Policy Checker",
+    "description": "Reviews submitted expenses against company policy and explains any exceptions before manager approval.",
+    "tags": ["Finance", "IT & Administration"],
+    "repo": "https://github.com/olivgreen/expense-policy-checker",
+    "license": "Apache 2.0"
+  },
+  {
+    "authorName": "raviteja",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/1114949?v=4",
+    "title": "Inventory Reorder Advisor",
+    "description": "Watches stock levels across ERP records and drafts reorder requests before popular SKUs run out.",
+    "tags": ["Enterprise Resource Planning", "Commerce", "Analytics"],
+    "repo": "https://github.com/raviteja/inventory-reorder-advisor",
+    "license": "Apache 2.0"
+  },
+  {
+    "authorName": "hannahschmidt",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/7143520?v=4",
+    "title": "Meeting Notes Synthesizer",
+    "description": "Joins a call, captures action items, and syncs follow-ups to the right records without manual entry.",
+    "tags": ["Productivity", "Collaboration"],
+    "repo": "https://github.com/hannahschmidt/meeting-notes-synthesizer",
+    "license": "Apache 2.0"
+  },
+  {
+    "authorName": "carlosmendez",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/2255839?v=4",
+    "title": "Quote Approval Router",
+    "description": "Routes discount requests to the right approver based on margin thresholds and logs the decision trail.",
+    "tags": ["Sales", "Finance"],
+    "repo": "https://github.com/carlosmendez/quote-approval-router",
+    "license": "Apache 2.0"
+  },
+  {
+    "authorName": "yukitanaka",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/1841056?v=4",
+    "title": "Churn Signal Detector",
+    "description": "Flags at-risk customers from support and usage trends, then drafts a save-play for the account owner.",
+    "tags": ["Analytics", "Customer Service", "Sales"],
+    "repo": "https://github.com/yukitanaka/churn-signal-detector",
+    "license": "Apache 2.0"
+  }
+]

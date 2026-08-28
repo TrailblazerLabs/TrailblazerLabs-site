@@ -1,0 +1,13 @@
+{
+  "name": "trailblazerlabs-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Trailblazer Labs community agent-publishing masthead — static, no-build (Three.js via CDN importmap).",
+  "scripts": {
+    "start": "python3 -m http.server 5173",
+    "deploy": "gh-pages -d . -b gh-pages"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
+  }
+}

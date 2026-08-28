@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en" data-theme="day">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trailblazer Labs — Community Agent Publishing | Salesforce</title>
+
+    <!-- ═══ BRAND FONTS (Avant Garde + Salesforce Sans) ═══ -->
+    <style>
+      @font-face {
+        font-family: "Avant Garde For Salesforce";
+        src: url("https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/fonts/AvantGardeForSalesforceW05-Dm.woff2") format("woff2");
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Salesforce Sans";
+        src: url("https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/fonts/SalesforceSans-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Salesforce Sans";
+        src: url("https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/fonts/SalesforceSans-Bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+
+    <!-- ═══ DESIGN TOKENS (271 flat-hyphenated custom properties) ═══ -->
+    <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/tokens.css" />
+
+    <!-- ═══ SALESFORCE ICONS (496 icon set via CSS mask-image classes) ═══ -->
+    <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/icons.css" />
+
+    <!-- Pre-paint theme restore — mirrors the runtime toggle so a reload
+         renders the stored theme immediately (no default-look flash). -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('tl.theme');
+          if (t === 'night' || t === 'day') {
+            document.documentElement.dataset.theme = t;
+          }
+        } catch (e) { /* private mode — fall back to default (day) */ }
+      })();
+    </script>
+
+    <!-- ═══ PAGE STYLES (nav, hero/compass, blades, cards, footer) ═══ -->
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+
+  <body>
+    <!-- ═══ GLOBAL HEADER ═══ -->
+    <header class="sf-nav" role="banner" data-theme="day">
+      <div class="sf-nav__inner">
+        <a href="/" class="sf-nav__logo" aria-label="Trailblazer Labs home">
+          <img class="sf-nav__logo-bug"
+               src="./images/trailblazer-labs-logo.png"
+               alt="" width="32" height="32" />
+          <img class="sf-nav__wordmark"
+               src="./images/trailblazer-labs-wordmark.svg"
+               alt="Trailblazer Labs" height="18" />
+        </a>
+
+        <button class="sf-nav__hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="sf-nav__links" aria-label="Main navigation">
+          <a href="#assets">Discover Solutions</a>
+          <a href="#builders">Meet our Builders</a>
+          <a href="#how">How it Works</a>
+          <a href="https://github.com/TrailblazerLabs/community-hub" target="_blank" rel="noopener">Community</a>
+        </nav>
+
+        <div class="sf-nav__utilities">
+          <a href="https://github.com/TrailblazerLabs/Cohort-Applications" target="_blank" rel="noopener" class="sf-cta sf-cta--primary sf-cta--small sf-nav__cta">Pitch Your Idea</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ═══ HERO BLADE ═══ -->
+    <section class="hero-blade hero-blade--2col">
+      <div id="compass-mount" aria-hidden="true"></div>
+      <div class="hero-blade__cap">
+        <div class="hero-blade__grid">
+          <div class="hero-blade__content">
+            <!-- <p class="hero-blade__eyebrow">Trailblazer Labs · Community Agent Publishing</p> -->
+            <h1 class="hero-blade__headline">Built by Trailblazers. Shared with everyone.</h1>
+            <p class="hero-blade__body">
+              Discover open-source solutions built by the community, for the community.
+              Explore business frameworks, code, Slack skills, and more to accelerate your
+              own projects and learning.
+            </p>
+            <div class="hero-blade__ctas">
+              <a class="sf-cta sf-cta--hero sf-cta--primary" href="#assets">Browse Community Assets</a>
+              <a class="sf-cta sf-cta--hero sf-cta--secondary sf-cta--on-dark" href="https://github.com/TrailblazerLabs/Cohort-Applications" target="_blank" rel="noopener">Pitch Your Build</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ COMMUNITY ASSET GRID (3-up) ═══ -->
+    <section class="sf-blade" id="assets">
+      <div class="sf-blade__cap">
+        <div class="sf-blade__header">
+          <!-- <p class="sf-blade__eyebrow">Community assets · Trailblazer Labs pilot</p> -->
+          <h2 class="sf-blade__title">A Platform for Every Trailblazer</h2>
+          <p class="sf-blade__subtitle">
+            Whether you're an Accidental Admin, Expert Sales Ops, Developer, or Architect,
+            Trailblazer Labs is your hub to learn and build. Explore business frameworks,
+            code, and Slack skills to accelerate your own projects, or pitch your own idea to
+            contribute. If selected, your innovation&mdash;whether no-code, low-code, or
+            pro-code&mdash;will get a platform to scale.
+          </p>
+          <p class="sf-blade__subtitle" style="font-size: 14px; opacity: 0.75;">
+            Community assets are unsupported, third-party, and provided as-is. GitHub-hosted
+            assets pass an automated security scan on submit — review the source and use at
+            your own risk.
+          </p>
+        </div>
+
+        <div class="sf-card-grid sf-card-grid--3up" id="assets-grid" data-page-size="6">
+          <!-- Cards render here from ./data/community-assets.json (see script at end of body). -->
+        </div>
+
+        <div class="sf-blade__actions">
+          <button type="button" class="sf-cta sf-cta--hero sf-cta--secondary" id="assets-load-more" hidden>
+            Load more
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SECTION TRANSITION — bottom mountains (Solutions → Builders) ═══ -->
+    <div class="mountain-transition" aria-hidden="true">
+      <img class="mountain-transition__l" src="./images/transition-mountains-l.png" alt="" />
+      <img class="mountain-transition__r" src="./images/transition-mountains-r.png" alt="" />
+    </div>
+
+    <!-- ═══ MEET THE BUILDERS (3-up) ═══ -->
+    <section class="sf-blade" id="builders" style="background: var(--color-background-1);">
+      <div class="sf-blade__cap">
+        <div class="sf-blade__header">
+          <p class="sf-blade__eyebrow">DF26 Cohort</p>
+          <h2 class="sf-blade__title">The &ldquo;Builder in Residence&rdquo; Model</h2>
+          <p class="sf-blade__subtitle">
+            Inspired by &ldquo;Artist in Residence&rdquo; programs, we elevate top community
+            contributors by providing a dedicated platform to evangelize their solutions and
+            scale their impact.
+          </p>
+          <span class="sf-blade__badge">Active Residency</span>
+        </div>
+
+        <div class="sf-card-grid sf-card-grid--3up" id="builders-grid">
+          <!-- Cards render here from ./data/builders.json (see script at end of body). -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SECTION TRANSITION — top forest (Builders → How it Works) ═══ -->
+    <div class="forest-transition" aria-hidden="true">
+      <img class="forest-transition__bg" src="./images/forest-bg.png" alt="" />
+      <img class="forest-transition__fg" src="./images/forest-fg.png" alt="" />
+    </div>
+
+    <!-- ═══ HOW WE CO-CREATE (4-up) ═══ -->
+    <section class="sf-blade" id="how" style="background: var(--color-background-1);">
+      <div class="sf-blade__cap">
+        <div class="sf-blade__header">
+          <p class="sf-blade__eyebrow">Our process</p>
+          <h2 class="sf-blade__title">How We Co-Create</h2>
+          <p class="sf-blade__subtitle">
+            Our 100% GitHub-native architecture makes sharing and adopting solutions
+            frictionless.
+          </p>
+        </div>
+
+        <div class="sf-card-grid sf-card-grid--3up sf-card-grid--4up">
+          <article class="sf-card">
+            <div class="sf-card__copy">
+              <span class="sf-card__eyebrow sf-badge">Step 1</span>
+              <img src="./images/3d-icons/touch.png" alt="" />
+              <p class="sf-card__label">Pitch Your Idea</p>
+              <p class="sf-card__desc">
+                We're looking for real platform challenges and bold solutions from the
+                community.
+              </p>
+            </div>
+          </article>
+
+          <article class="sf-card">
+            <div class="sf-card__copy">
+              <span class="sf-card__eyebrow sf-badge">Step 2</span>
+              <img src="./images/3d-icons/plus.png" alt="" />
+              <p class="sf-card__label">Community Upvoting</p>
+              <p class="sf-card__desc">
+                The Trailblazer ecosystem votes on ideas to signal real demand.
+              </p>
+            </div>
+          </article>
+
+          <article class="sf-card">
+            <div class="sf-card__copy">
+              <span class="sf-card__eyebrow sf-badge">Step 3</span>
+              <img src="./images/3d-icons/handshake.png" alt="" />
+              <p class="sf-card__label">Cohort Selection</p>
+              <p class="sf-card__desc">
+                Top ideas are selected for the upcoming Builder in Residence cohort.
+              </p>
+            </div>
+          </article>
+
+          <article class="sf-card">
+            <div class="sf-card__copy">
+              <span class="sf-card__eyebrow sf-badge">Step 4</span>
+              <img src="./images/3d-icons/jetpack.png" alt="" />
+              <p class="sf-card__label">Shared with Everyone</p>
+              <p class="sf-card__desc">
+                Assets are hosted in transparent GitHub repositories for anyone to explore
+                and adopt.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CTA BLADE ═══ -->
+    <section class="cta-blade" id="guidelines">
+      <div class="cta-blade__cap">
+        <h2 class="cta-blade__title">Ready to share what you built?</h2>
+        <!-- <p class="cta-blade__body">
+          Link a GitHub repo, pass the automated security scan, and list to the community
+          lane — free and open-source.
+        </p> -->
+        <div class="cta-blade__ctas">
+          <a class="sf-cta sf-cta--hero sf-cta--primary" href="https://github.com/TrailblazerLabs/Cohort-Applications" target="_blank" rel="noopener">Pitch Your Build</a>
+          <a class="sf-cta sf-cta--hero sf-cta--secondary sf-cta--on-dark" href="#assets">Browse Community Assets</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ LEGAL FOOTER ═══ -->
+    <footer class="sf-footer" role="contentinfo" data-theme="day" id="community">
+      <div class="sf-footer__links">
+        <div class="sf-footer__brand">
+          <img class="sf-footer__logo"
+               src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/salesforce-logo.svg"
+               alt="Salesforce" width="92" height="65" />
+          <div class="sf-footer__social">
+            <a href="#" aria-label="Facebook"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/facebook.svg" alt="Facebook" width="32" height="32" /></a>
+            <a href="#" aria-label="X (Twitter)"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/twitter.svg" alt="X (Twitter)" width="32" height="32" /></a>
+            <a href="#" aria-label="LinkedIn"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/linkedin.svg" alt="LinkedIn" width="32" height="32" /></a>
+            <a href="#" aria-label="Instagram"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/instagram.svg" alt="Instagram" width="32" height="32" /></a>
+            <a href="#" aria-label="YouTube"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/youtube.svg" alt="YouTube" width="32" height="32" /></a>
+            <a href="#" aria-label="TikTok"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/tik-tok.svg" alt="TikTok" width="32" height="32" /></a>
+          </div>
+          <p class="sf-footer__phone">Call us at 1-800-664-9073</p>
+          <a href="#" class="sf-footer__contact-link">See all ways to contact us</a>
+        </div>
+
+        <div class="sf-footer__columns">
+          <div class="sf-footer__column">
+            <h3>Trailblazer Labs</h3>
+            <ul>
+              <li><a href="#assets">Browse community assets</a></li>
+              <li><a href="https://github.com/TrailblazerLabs/Cohort-Applications" target="_blank" rel="noopener">Pitch your idea</a></li>
+              <li><a href="#">Publishing guidelines</a></li>
+              <li><a href="#">Open-source license help</a></li>
+            </ul>
+          </div>
+          <div class="sf-footer__column">
+            <h3>Agent Exchange</h3>
+            <ul>
+              <li><a href="#">Featured agents</a></li>
+              <li><a href="#">Become a partner</a></li>
+              <li><a href="#">Developer docs</a></li>
+              <li><a href="#">Security review</a></li>
+            </ul>
+          </div>
+          <div class="sf-footer__column">
+            <h3>Community</h3>
+            <ul>
+              <li><a href="#">Trailblazer Community</a></li>
+              <li><a href="#">Agentforce Vibes</a></li>
+              <li><a href="#">Trailhead</a></li>
+              <li><a href="#">Dreamforce &rsquo;26</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="sf-footer__bottom">
+        <div class="sf-footer__bottom-inner">
+          <button class="sf-footer__region">
+            <i class="icon icon--world"></i>
+            Worldwide <span aria-hidden="true">&#9662;</span>
+          </button>
+          <div class="sf-footer__legal">
+            <div class="sf-footer__legal-links">
+              <a href="#">Legal</a>
+              <a href="#">Terms of Service</a>
+              <a href="#">Privacy Information</a>
+              <a href="#">Responsible Disclosure</a>
+              <a href="#">Trust</a>
+              <a href="#">Contact</a>
+              <a href="#">Cookie Preferences</a>
+              <a href="#">Your Privacy Choices</a>
+            </div>
+            <p class="sf-footer__copyright">
+              &copy; Copyright 2026 Salesforce, Inc. <a href="#">All rights reserved</a>.
+              Various trademarks held by their respective owners. Salesforce, Inc.
+              Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105,
+              United States
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ═══ 3D COMPASS (Three.js) — mounts into the masthead ═══ -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="./js/compass-hero.js"></script>
+
+    <!-- ═══ VANILLA JS — hamburger + theme toggle ═══ -->
+    <script>
+      // Hamburger drawer
+      document.querySelector('.sf-nav__hamburger')?.addEventListener('click', function () {
+        const nav = document.querySelector('.sf-nav__links');
+        const open = nav.classList.toggle('is-open');
+        this.setAttribute('aria-expanded', open);
+      });
+
+      // Day/Night theme toggle — attribute change only; cascade does the rest.
+      document.querySelector('.tl-theme-toggle')?.addEventListener('click', function () {
+        const root = document.documentElement;
+        const next = root.dataset.theme === 'night' ? 'day' : 'night';
+        root.dataset.theme = next;
+        try { localStorage.setItem('tl.theme', next); } catch (e) { /* storage disabled */ }
+      });
+
+      // Nav fade — dark (theater) over the masthead, light once scrolled past
+      // the first 100vh. The masthead is the sticky nav + full-height hero.
+      (function () {
+        const nav = document.querySelector('.sf-nav');
+        const hero = document.querySelector('.hero-blade');
+        if (!nav || !hero) return;
+
+        let ticking = false;
+        function update() {
+          const navH = nav.offsetHeight;
+          const threshold = hero.offsetTop + hero.offsetHeight - navH;
+          nav.classList.toggle('is-scrolled', window.scrollY >= threshold);
+          ticking = false;
+        }
+        function onScroll() {
+          if (!ticking) { ticking = true; requestAnimationFrame(update); }
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', update);
+        update();
+      })();
+    </script>
+
+    <!-- ═══ COMMUNITY ASSETS — data-driven grid + Load more ═══ -->
+    <script>
+      (function () {
+        const grid = document.getElementById('assets-grid');
+        const loadMore = document.getElementById('assets-load-more');
+        if (!grid || !loadMore) return;
+
+        const PAGE = parseInt(grid.dataset.pageSize, 10) || 6;
+        const GH_ICON = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>';
+
+        let assets = [];
+        let shown = 0;
+
+        const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
+          ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+        function cardHTML(a) {
+          const tags = (a.tags || []).slice(0, 3)
+            .map((t) => `<li class="sf-asset-card__tag">${esc(t)}</li>`).join('');
+          const license = esc(a.license || '').replace(/ /g, '&nbsp;');
+          return `<article class="sf-asset-card">
+            <div class="sf-asset-card__author">
+              <img class="sf-asset-card__avatar" src="${esc(a.authorAvatar)}" alt="" width="32" height="32" loading="lazy" />
+              <span class="sf-asset-card__author-name">${esc(a.authorName)}</span>
+            </div>
+            <h3 class="sf-asset-card__title">${esc(a.title)}</h3>
+            <p class="sf-asset-card__desc">${esc(a.description)}</p>
+            <ul class="sf-asset-card__tags">${tags}</ul>
+            <div class="sf-asset-card__footer">
+              <span class="sf-asset-card__license">${license}</span>
+              <a class="sf-asset-card__repo" href="${esc(a.repo)}" rel="noopener" target="_blank">
+                ${GH_ICON}<span>View on GitHub</span>
+              </a>
+            </div>
+          </article>`;
+        }
+
+        function renderNext() {
+          const next = assets.slice(shown, shown + PAGE);
+          grid.insertAdjacentHTML('beforeend', next.map(cardHTML).join(''));
+          shown += next.length;
+          loadMore.hidden = shown >= assets.length;
+        }
+
+        loadMore.addEventListener('click', renderNext);
+
+        fetch('./data/community-assets.json')
+          .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+          .then((data) => {
+            assets = Array.isArray(data) ? data : [];
+            renderNext();
+          })
+          .catch((err) => {
+            grid.innerHTML = '<p class="sf-asset-card__desc">Unable to load community assets right now.</p>';
+            console.error('community-assets:', err);
+          });
+      })();
+    </script>
+    <!-- ═══ MEET THE BUILDERS — data-driven cards ═══ -->
+    <script>
+      (function () {
+        const grid = document.getElementById('builders-grid');
+        if (!grid) return;
+
+        const PIN_ICON = '<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C5.24 0 3 2.24 3 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg>';
+        const ARROW_ICON = '<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M1 8h11.17l-3.58-3.59L10 3l6 6-6 6-1.41-1.41L12.17 10H1z"/></svg>';
+
+        const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
+          ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+        function cardHTML(b) {
+          const project = b.project || {};
+          return `<article class="sf-builder-card">
+            <img class="sf-builder-card__avatar" src="${esc(b.avatar)}" alt="" width="96" height="96" loading="lazy" />
+            <h3 class="sf-builder-card__name">${esc(b.name)}</h3>
+            <p class="sf-builder-card__role">${esc(b.role)}</p>
+            <span class="sf-builder-card__country">${PIN_ICON}${esc(b.country)}</span>
+            <p class="sf-builder-card__bio">${esc(b.bio)}</p>
+            <div class="sf-builder-card__project">
+              <span class="sf-builder-card__project-label">180-Day Residency Project</span>
+              <a class="sf-builder-card__project-link" href="${esc(project.url)}" rel="noopener" target="_blank">
+                <span>${esc(project.title)}</span>${ARROW_ICON}
+              </a>
+            </div>
+          </article>`;
+        }
+
+        fetch('./data/builders.json')
+          .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+          .then((data) => {
+            const builders = Array.isArray(data) ? data : [];
+            grid.insertAdjacentHTML('beforeend', builders.map(cardHTML).join(''));
+          })
+          .catch((err) => {
+            grid.innerHTML = '<p class="sf-builder-card__bio">Unable to load builder profiles right now.</p>';
+            console.error('builders:', err);
+          });
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,868 @@
+[data-theme='day'] {
+  --color-background-1: var(--color-white);
+  --color-surface-1: var(--color-neutral-95);
+  --color-surface-container-1: var(--color-neutral-90);
+}
+[data-theme='night'] {
+  --color-background-1: var(--color-neutral-10);
+  --color-surface-1: var(--color-neutral-15);
+  --color-surface-container-1: var(--color-neutral-30);
+}
+
+
+
+/* ═══ RESET ═══ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+/* Nav links jump to in-page anchors; offset the scroll stop for the 72px
+   sticky nav so section headings aren't tucked underneath it. */
+:target, .sf-blade, .cta-blade, .sf-footer { scroll-margin-top: 88px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
+  color: var(--color-on-surface-2, #181818);
+  background: var(--color-background-1);
+}
+img { max-width: 100%; }
+
+/* ═══════════════════════════════════════════════════════════
+   GLOBAL NAV  (recipe-page-chrome — copied verbatim)
+   ═══════════════════════════════════════════════════════════ */
+.sf-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--color-neutral-10);
+  transition: background 0.45s ease, box-shadow 0.45s ease;
+  /* border-bottom: 1px solid rgba(255,255,255,0.12); */
+}
+/* Dark nav (default — theater over the masthead): white inks across
+   links, utilities, wordmark, hamburger. Transitions carry the fade to
+   light once .is-scrolled is set (past the first 100vh). */
+.sf-nav .sf-nav__wordmark,
+.sf-nav .sf-nav__links a,
+.sf-nav .sf-nav__icon,
+.sf-nav .sf-nav__login-label,
+.tl-theme-toggle { color: #FFFFFF; transition: color 0.45s ease, background 0.45s ease; }
+.sf-nav .sf-nav__links a:hover,
+.sf-nav .sf-nav__icon:hover,
+.tl-theme-toggle:hover { background: rgba(255,255,255,0.12); }
+.sf-nav .sf-nav__icon .icon,
+.tl-theme-toggle .icon { background-color: #FFFFFF; transition: background-color 0.45s ease; }
+.sf-nav .sf-nav__hamburger span { background: #FFFFFF; transition: background 0.45s ease; }
+/* Script wordmark ships as black vector paths → invert to white on the dark nav */
+.sf-nav__wordmark { filter: brightness(0) invert(1); transition: filter 0.45s ease; }
+
+/* Scrolled state — nav fades to light once the masthead is behind it */
+.sf-nav.is-scrolled {
+  background: var(--color-white, #FFFFFF);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+.sf-nav.is-scrolled .sf-nav__links a,
+.sf-nav.is-scrolled .sf-nav__icon,
+.sf-nav.is-scrolled .sf-nav__login-label,
+.sf-nav.is-scrolled .tl-theme-toggle { color: var(--color-on-surface-1, #001E5B); }
+.sf-nav.is-scrolled .sf-nav__links a:hover,
+.sf-nav.is-scrolled .sf-nav__icon:hover,
+.sf-nav.is-scrolled .tl-theme-toggle:hover { background: var(--color-surface-container-1, #F3F3F3); }
+.sf-nav.is-scrolled .sf-nav__icon .icon,
+.sf-nav.is-scrolled .tl-theme-toggle .icon { background-color: var(--color-on-surface-1, #001E5B); }
+.sf-nav.is-scrolled .sf-nav__hamburger span { background: var(--color-on-surface-1, #001E5B); }
+.sf-nav.is-scrolled .sf-nav__wordmark { filter: none; }
+.sf-nav__inner {
+  display: flex;
+  justify-content: space-between;
+  height: 72px;
+  padding-inline: 40px;
+  margin: 0;
+}
+.sf-nav__logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.sf-nav__logo-bug { display: block; width: 32px; height: auto; }
+.sf-nav__wordmark { display: block; height: 18px; width: auto; }
+.sf-nav__hamburger { display: none; }
+
+.sf-nav__links { display: flex; align-items: center; gap: 0; }
+.sf-nav__links a {
+  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--color-on-surface-1, #001E5B);
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.sf-nav__links a:hover { background: var(--color-surface-container-1, #F3F3F3); }
+
+.sf-nav__utilities { display: flex; align-items: center; gap: 0; }
+.sf-nav__icon {
+  display: flex; align-items: center; justify-content: center;
+  padding: 13px; border-radius: 100px;
+  background: none; border: none; cursor: pointer;
+  color: var(--color-on-surface-1, #001E5B);
+  text-decoration: none;
+}
+.sf-nav__icon .icon { width: 18px; height: 18px; }
+.sf-nav__icon:hover { background: var(--color-surface-container-1, #F3F3F3); }
+.sf-nav__login { gap: 4px; }
+.sf-nav__login-label {
+  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 16px; line-height: 24px;
+  color: var(--color-on-surface-1, #001E5B);
+}
+.sf-nav__cta { margin-left: 16px; }
+
+/* ═══════════════════════════════════════════════════════════
+   CTA SYSTEM  (recipe-cta-buttons)
+   ═══════════════════════════════════════════════════════════ */
+.sf-cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px;
+  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius-4);
+  border: 2px solid transparent;
+  cursor: pointer;
+  /* transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; */
+  transition: all 0.15s ease-in-out;
+  white-space: nowrap;
+}
+/* Sizes */
+.sf-cta--hero   { font-size: 18px; line-height: 24px; padding: 16px 32px; }
+.sf-cta--medium { font-size: 16px; line-height: 24px; padding: 12px 24px; }
+.sf-cta--small  { font-size: 14px; line-height: 20px; padding: 8px 16px; }
+/* Primary — brand blue fill */
+.sf-cta--primary {
+  background: var(--color-fill-accent, #066AFE);
+  color: var(--color-on-fill-accent, #FFFFFF);
+}
+.sf-cta--primary:hover { 
+  box-shadow: 0 2px 8px -2px rgba(6,106,254,0.32), 0 8px 12px -2px rgba(6,106,254,0.24);
+  transform: scale(1.03); 
+}
+/* Secondary — white inner fill, translucent border, brand-navy label */
+.sf-cta--secondary {
+  background: transparent;
+  color: var(--color-on-surface-highlight);
+  border-color: var(--color-on-surface-highlight);
+}
+.sf-cta--secondary:hover { transform: scale(1.03); }
+/* Special — green "Try for free" pill */
+.sf-cta--special {
+  background: var(--color-green-50, #2E844A);
+  color: #FFFFFF;
+}
+.sf-cta--special:hover { transform: translateY(-1px); }
+/* On-dark — Secondary variant repainted for dark blades */
+.hero-blade .sf-cta--secondary {
+  background: transparent;
+  color: var(--color-white);
+  border-color: var(--color-alpha-white-50);
+  box-shadow: none;
+}
+.sf-cta--on-dark.sf-cta--secondary:hover,
+[data-theme='night'] .hero-blade .sf-cta--secondary:hover {
+  border-color: rgba(255,255,255,1);
+}
+.sf-cta:focus-visible {
+  outline: 3px solid var(--color-border-focus, #066AFE);
+  outline-offset: 2px;
+}
+/* Link-type CTA — underlined accent + chevron */
+.sf-cta-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 16px; line-height: 24px;
+  color: var(--color-link, #022AC0);
+  text-decoration: none;
+}
+.sf-cta-link span { text-decoration: underline; }
+.sf-cta-link::after { content: "\2192"; text-decoration: none; }
+.sf-cta-link:hover span { text-decoration: none; }
+
+/* ═══════════════════════════════════════════════════════════
+   HERO BLADE  (recipe-hero — .hero-blade--2col, Day Morning)
+   ═══════════════════════════════════════════════════════════ */
+.hero-blade {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center;
+  height: calc(100vh - 72px);
+  width: 100%; overflow: hidden;
+  padding-inline: var(--space-grid-mobile-margin, 24px);
+  padding-block: 48px;
+  /* Masthead backdrop: dark "space" base. The blue earthly glow lives on the
+     ::before layer below so it can rise into frame in sync with the compass
+     camera pan (see compass-shape.js intro). */
+  background-color: var(--color-neutral-10);
+}
+/* Blue earthly glow — anchored bottom-centre, rises up as the hero loads so it
+   moves with the downward camera pan instead of sitting static behind it. */
+.hero-blade::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(67% 81% at 50% 100%, var(--color-electric-blue-30) 20.67%, transparent 100%);
+  animation: hero-glow-rise 3.6s cubic-bezier(0.592, 0.162, 0.34, 1) both;
+}
+@keyframes hero-glow-rise {
+  from { transform: translateY(55%); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-blade::before { animation: none; transform: none; opacity: 1; }
+}
+/* Ground arc — a very large circle anchored to the bottom whose shallow top cap
+   bows across the lower frame, blending the dark masthead into the white page
+   below (mirrors .scenic-hero__arc in index-scenic-light.html). Width ≫ viewport
+   so only the gentle curve shows. Sits above the 3D canvas, below the copy. */
+.hero-blade::after {
+  content: "";
+  position: absolute; z-index: 1;
+  left: 50%; top: 82%;
+  width: 320vw; height: 320vw;
+  transform: translateX(-50%);
+  background: var(--color-background-1);
+  border-radius: 50%;
+  pointer-events: none;
+  /* Rises up from below on load, in sync with the blue-glow ::before. Keyframe
+     keeps the translateX(-50%) centring while animating Y. Gentle, near-linear
+     ease so nothing races through the middle of the move. */
+  animation: hero-arc-rise 3.6s cubic-bezier(0.592, 0.162, 0.34, 1) both;
+}
+@keyframes hero-arc-rise {
+  from { transform: translateX(-50%) translateY(30vh); opacity: 1; }
+  to   { transform: translateX(-50%) translateY(0);    opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-blade::after { animation: none; transform: translateX(-50%); opacity: 1; }
+}
+.hero-blade__cap { position: relative; z-index: 2; width: 100%; margin-inline: auto; }
+/* Hero copy fades in on load, sequenced heading → paragraph → buttons. Straight
+   opacity fade, ~1.2s total. */
+.hero-blade__headline,
+.hero-blade__body,
+.hero-blade__ctas {
+  animation: hero-copy-fade 0.7s ease both;
+}
+.hero-blade__headline { animation-delay: 0.1s; }
+.hero-blade__body     { animation-delay: 0.35s; }
+.hero-blade__ctas     { animation-delay: 0.6s; }
+@keyframes hero-copy-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-blade__headline,
+  .hero-blade__body,
+  .hero-blade__ctas { animation: none; opacity: 1; }
+}
+/* 3D compass canvas layer — behind the copy, above the gradient.
+   On wide screens it sits in the right half, clear of the headline. */
+#compass-mount {
+  position: absolute; inset: 0; z-index: 1;
+  pointer-events: none;
+}
+@media (min-width: 1024px) {
+  #compass-mount { left: 0%; right: 0; }
+}
+#compass-mount canvas { width: 100%; height: 100%; display: block; }
+/* Masthead copy sits on the deep-blue background → white inks; the actual
+   color values are set with theme-independent white tokens in the
+   typographic rules below (.hero-blade__eyebrow/__headline/__body). */
+.hero-blade__grid {
+  display: flex; flex-direction: column;
+  gap: var(--space-content-2xl, 48px);
+}
+.hero-blade__content, .hero-blade__asset { width: 100%; min-width: 0; }
+.hero-blade__asset { aspect-ratio: 3 / 2; }
+.hero-blade__eyebrow {
+  margin: 0 0 var(--space-content-sm, 12px) 0;
+  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: var(--font-style-body-copy-2-bold-weight, 700);
+  font-size: var(--font-style-body-copy-2-bold-size, 18px);
+  line-height: var(--font-style-body-copy-2-bold-line-height, 1.5);
+  letter-spacing: var(--font-style-body-copy-2-bold-letter-spacing, 0.00125em);
+  /* Masthead is an always-dark theater (theme-independent), so use the
+     theme-independent white primitives — NOT --color-on-surface-* (dark in
+     day) or --color-on-surface-brand-* (flips to navy in night). */
+  color: var(--color-alpha-white-85, rgba(255,255,255,0.85));
+}
+.hero-blade__headline {
+  margin: 0;
+  font-family: var(--font-style-display-4-family, "Avant Garde For Salesforce", Arial, sans-serif);
+  font-weight: var(--font-style-display-4-weight, 600);
+  font-size: var(--font-style-display-4-size, 40px);
+  line-height: var(--font-style-display-4-line-height, 1.125);
+  letter-spacing: var(--font-style-display-4-letter-spacing, -0.0025em);
+  color: var(--color-white, #FFFFFF);
+}
+.hero-blade__body {
+  margin-top: var(--space-content-lg, 24px);
+  font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: var(--font-style-body-copy-1-weight, 400);
+  font-size: var(--font-style-body-copy-1-size, 20px);
+  line-height: var(--font-style-body-copy-1-line-height, 1.5);
+  letter-spacing: var(--font-style-body-copy-1-letter-spacing, 0.00125em);
+  color: var(--color-alpha-white-85, rgba(255,255,255,0.85));
+}
+.hero-blade__ctas {
+  display: inline-flex; gap: var(--space-4, 16px);
+  flex-wrap: wrap; align-items: center;
+  margin-top: var(--space-8, 48px);
+}
+/* Hero asset placeholder — fills its container per image-placeholders.md */
+.placeholder {
+  position: relative; width: 100%; height: 100%;
+  border-radius: var(--radius-card, 12px);
+  background:
+    linear-gradient(135deg, rgba(6,106,254,0.12), rgba(0,179,255,0.12)),
+    var(--color-neutral-90, #E5E5E5);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.placeholder .icon {
+  width: 64px; height: 64px;
+  background-color: var(--color-fill-accent, #066AFE);
+  opacity: 0.35;
+}
+
+@media (min-width: 768px) {
+  .hero-blade {
+    padding-inline: var(--space-grid-tablet-portrait-margin, 32px);
+    padding-block: 48px;
+  }
+  .hero-blade__asset { max-width: 66.667%; margin-inline: auto; }
+}
+@media (min-width: 1024px) {
+  .hero-blade {
+    padding-inline: var(--space-grid-tablet-landscape-margin, 48px);
+    padding-block: 64px;
+  }
+  .hero-blade__grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--space-grid-tablet-landscape-gutter, 32px);
+    align-items: center; row-gap: 0;
+  }
+  .hero-blade__content { grid-column: 1 / span 6; grid-row: 1; }
+  .hero-blade__asset { grid-column: 7 / span 6; grid-row: 1; max-width: none; margin-inline: 0; }
+  .hero-blade__headline {
+    font-size: var(--font-style-display-3-size, 48px);
+    letter-spacing: var(--font-style-display-3-letter-spacing, -0.0025em);
+  }
+  .hero-blade__body { padding-right: calc((100% + var(--space-grid-tablet-landscape-gutter, 32px)) / 6); }
+}
+@media (min-width: 1440px) {
+  .hero-blade {
+    padding-inline: var(--space-grid-desktop-margin, 48px);
+    padding-block: 64px;
+  }
+  .hero-blade__cap { max-width: var(--space-grid-desktop-max-content-width, 1280px); }
+  .hero-blade__grid { column-gap: var(--space-grid-desktop-gutter, 40px); }
+  .hero-blade__headline {
+    font-size: var(--font-style-display-2-size, 56px);
+    letter-spacing: var(--font-style-display-2-letter-spacing, -0.003em);
+  }
+  .hero-blade__body { padding-right: calc((100% + var(--space-grid-desktop-gutter, 40px)) / 6); }
+}
+
+.sf-badge, 
+.sf-asset-card__tag {
+  display: inline-block;
+  padding: 4px 10px; border-radius: 100px;
+  background: var(--color-electric-blue-95); 
+  color: var(--color-on-surface-1);
+  font-family: var(--font-style-body-copy-3-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 12px; line-height: 18px;
+  white-space: nowrap;
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   BODY BLADE + CARD GRID  (recipe-page + recipe-card-grid)
+   ═══════════════════════════════════════════════════════════ */
+.sf-blade {
+  width: 100%;
+  min-height: 100vh; min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding-inline: var(--space-grid-mobile-margin, 24px);
+  padding-block: 64px;
+  /* background: var(--color-background-1); */
+}
+.sf-blade__cap { width: 100%; margin-inline: auto; }
+.sf-blade__header { text-align: center; margin: 0 auto 48px; max-width: 720px; }
+.sf-blade__eyebrow {
+  margin: 0 0 var(--space-content-sm, 12px) 0;
+  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 18px; line-height: 1.5;
+  color: var(--color-on-surface-1, #001E5B);
+}
+.sf-blade__title {
+  margin: 0;
+  font-family: var(--font-style-display-4-family, "Avant Garde For Salesforce", Arial, sans-serif);
+  font-weight: var(--font-style-display-4-weight, 600);
+  font-size: var(--font-style-display-4-size, 40px);
+  line-height: var(--font-style-display-4-line-height, 1.125);
+  letter-spacing: var(--font-style-display-4-letter-spacing, -0.0025em);
+  color: var(--color-on-surface-1, #001E5B);
+}
+.sf-blade__subtitle {
+  margin: var(--space-content-lg, 24px) 0 0;
+  font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 20px; line-height: 1.5;
+  color: var(--color-on-surface-2, #181818);
+}
+.sf-blade__actions {
+  display: flex;
+  margin: var(--space-8) 0;
+  justify-content: center;
+}
+
+.sf-card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-content-xl, 32px);
+  align-items: stretch;
+}
+.sf-card-grid > * { min-width: 0; }
+.sf-card-grid :where(p, h1, h2, h3, h4) { overflow-wrap: anywhere; }
+@media (min-width: 768px) {
+  .sf-blade { padding-inline: var(--space-grid-tablet-portrait-margin, 32px); }
+  .sf-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .sf-blade { padding-inline: var(--space-grid-tablet-landscape-margin, 48px); }
+  .sf-card-grid--3up { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .sf-card-grid--4up { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (min-width: 1440px) {
+  .sf-blade { padding-inline: var(--space-grid-desktop-margin, 48px); }
+  .sf-blade__cap { max-width: var(--space-grid-desktop-max-content-width, 1280px); }
+}
+
+/* ── Card (Day-island, recipe-card) ── */
+.sf-card, .sf-card *, .sf-card *::before, .sf-card *::after { box-sizing: border-box; }
+.sf-card, .sf-asset-card, .sf-builder-card {
+  display: flex; flex-direction: column;
+  width: 100%; text-align: left;
+  padding: var(--space-6, 32px) var(--space-5, 24px);
+  gap: var(--space-content-md, 16px);
+  background: var(--color-container-1);
+  box-shadow: 2px 2px 18px rgba(24, 24, 24, 0.16);
+  border-radius: 16px;
+  overflow-wrap: anywhere; word-break: normal; hyphens: auto;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.sf-card__image {
+  aspect-ratio: 271 / 180;
+  background: var(--color-neutral-80, #C9C9C9);
+  border-radius: var(--radius-card-nested, 8px) var(--radius-card-nested, 8px) 0 0;
+}
+.sf-card__copy {
+  flex: 1 0 auto; display: flex; flex-direction: column; align-items: flex-start;
+  gap: var(--space-content-md, 16px);
+}
+.sf-card__copy img {
+  display: block;
+  width: auto;
+  height: 128px;
+  margin: 0 auto;
+}
+
+/* .sf-card__eyebrow {
+  display: inline-block;
+  padding: 4px 10px; border-radius: 100px;
+  background: #EAF5FE; color: #032D60;
+  font-family: var(--font-style-body-copy-3-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 12px; line-height: 18px;
+} */
+.sf-card__label {
+  margin: 0;
+  font-family: var(--font-style-display-8-family, "Avant Garde For Salesforce", Arial, sans-serif);
+  font-weight: var(--font-style-display-8-weight, 600);
+  font-size: var(--font-style-display-8-size, 18px);
+  line-height: var(--font-style-display-8-line-height, 1.25);
+  color: var(--color-on-surface-1, #001E5B);
+}
+.sf-card__desc {
+  margin: 0;
+  font-family: var(--font-style-body-copy-2-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 16px; line-height: 24px;
+  color: var(--color-on-surface-3, #444444);
+}
+
+/* ── Asset card (imageless, community-published) ── */
+.sf-asset-card, .sf-asset-card *, .sf-asset-card *::before, .sf-asset-card *::after { box-sizing: border-box; }
+.sf-asset-card {
+}
+.sf-asset-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px -2px rgba(24,24,24,0.12), 0 12px 20px -2px rgba(24,24,24,0.20);
+}
+.sf-asset-card__author {
+  display: flex; align-items: center; gap: 10px;
+}
+.sf-asset-card__avatar {
+  width: 32px; height: 32px; flex-shrink: 0;
+  border-radius: 100px; object-fit: cover;
+  background: var(--color-neutral-90, #E5E5E5);
+  border: 1px solid rgba(24,24,24,0.06);
+}
+.sf-asset-card__author-name {
+  font-family: var(--font-style-body-copy-3-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 14px; line-height: 20px;
+  color: var(--color-on-surface-1, #001E5B);
+}
+.sf-asset-card__title {
+  margin: 0;
+  font-family: var(--font-style-display-8-family, "Avant Garde For Salesforce", Arial, sans-serif);
+  font-weight: var(--font-style-display-8-weight, 600);
+  font-size: var(--font-style-display-8-size, 18px);
+  line-height: var(--font-style-display-8-line-height, 1.25);
+  color: var(--color-on-surface-1, #001E5B);
+}
+.sf-asset-card__desc {
+  margin: 0;
+  font-family: var(--font-style-body-copy-2-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 16px; line-height: 24px;
+  color: var(--color-on-surface-3, #444444);
+}
+.sf-asset-card__tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  list-style: none; margin: 0; padding: 0;
+}
+.sf-asset-card__tag {
+}
+.sf-asset-card__footer {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+  margin-top: auto; padding-top: var(--space-content-md, 16px);
+  border-top: 1px solid rgba(24,24,24,0.08);
+}
+.sf-asset-card__license {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-style-body-copy-3-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 13px; line-height: 18px;
+  color: var(--color-on-surface-3, #444444);
+}
+.sf-asset-card__repo {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 14px; line-height: 20px;
+  color: var(--color-link, #022AC0);
+  text-decoration: none;
+}
+.sf-asset-card__repo:hover { text-decoration: underline; }
+.sf-asset-card__repo svg { flex-shrink: 0; }
+
+/* ── Builder card (Meet the builders — DF26 residency cohort) ── */
+.sf-builder-card, .sf-builder-card *, .sf-builder-card *::before, .sf-builder-card *::after { box-sizing: border-box; }
+.sf-builder-card {
+  align-items: center;
+}
+.sf-builder-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px -2px rgba(24,24,24,0.12), 0 12px 20px -2px rgba(24,24,24,0.20);
+}
+.sf-builder-card__avatar {
+  width: 96px; height: 96px; flex-shrink: 0;
+  border-radius: 100px; object-fit: cover;
+  background: var(--color-neutral-90, #E5E5E5);
+  border: 3px solid var(--color-surface-1, #fff);
+  box-shadow: 0 0 0 2px rgba(2,42,192,0.18);
+}
+.sf-builder-card__name {
+  margin: 0;
+  font-family: var(--font-style-display-8-family, "Avant Garde For Salesforce", Arial, sans-serif);
+  font-weight: var(--font-style-display-8-weight, 600);
+  font-size: 22px; line-height: 1.2;
+  color: var(--color-on-surface-1, #001E5B);
+}
+.sf-builder-card__role {
+  margin: -8px 0 0;
+  font-family: var(--font-style-body-copy-3-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 12px; line-height: 18px;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--color-link, #022AC0);
+}
+.sf-builder-card__country {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-style-body-copy-3-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 13px; line-height: 18px;
+  color: var(--color-on-surface-3, #444444);
+}
+.sf-builder-card__bio {
+  margin: 0;
+  font-family: var(--font-style-body-copy-2-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 15px; line-height: 22px;
+  color: var(--color-on-surface-3, #444444);
+}
+.sf-builder-card__project {
+  width: 100%; margin-top: auto;
+  padding: var(--space-content-md, 16px);
+  border-radius: var(--radius-card-nested, 8px);
+  background: #EAF5FE; text-align: left;
+}
+.sf-builder-card__project-label {
+  display: block; margin: 0 0 4px;
+  font-family: var(--font-style-body-copy-3-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 11px; line-height: 16px;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: #032D60;
+}
+.sf-builder-card__project-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 15px; line-height: 20px;
+  color: var(--color-link, #022AC0);
+  text-decoration: none;
+}
+.sf-builder-card__project-link:hover { text-decoration: underline; }
+.sf-builder-card__project-link svg { flex-shrink: 0; }
+
+/* Residency pill in the section header. */
+.sf-blade__badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: var(--space-content-sm, 12px);
+  padding: 6px 14px; border-radius: 100px;
+  background: #EAF5FE; color: #032D60;
+  font-family: var(--font-style-body-copy-3-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 13px; line-height: 18px;
+}
+.sf-blade__badge::before {
+  content: ""; width: 8px; height: 8px; border-radius: 100px;
+  background: #04844B; box-shadow: 0 0 0 3px rgba(4,132,75,0.2);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CTA BLADE  (recipe-page — closing conversion blade, Night)
+   ═══════════════════════════════════════════════════════════ */
+.cta-blade {
+  width: 100%;
+  padding-inline: var(--space-grid-mobile-margin, 24px);
+  padding-block: 64px;
+  background: linear-gradient(0deg, var(--color-electric-blue-95) 0%, var(--color-white) 100%);
+  text-align: center;
+  border-bottom: 1px solid var(--color-neutral-90);
+}
+.cta-blade__cap { width: 100%; margin-inline: auto; max-width: 720px; }
+.cta-blade__title {
+  margin: 0;
+  font-family: var(--font-style-display-4-family, "Avant Garde For Salesforce", Arial, sans-serif);
+  font-weight: var(--font-style-display-4-weight, 600);
+  font-size: var(--font-style-display-4-size, 40px);
+  line-height: var(--font-style-display-4-line-height, 1.125);
+  letter-spacing: var(--font-style-display-4-letter-spacing, -0.0025em);
+  color: var(--color-on-surface-1);
+}
+.cta-blade__body {
+  margin: var(--space-content-lg, 24px) auto 0;
+  font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 20px; line-height: 1.5;
+  color: var(--color-on-surface-2);
+}
+.cta-blade__ctas {
+  display: inline-flex; gap: var(--space-4, 16px);
+  flex-wrap: wrap; align-items: center; justify-content: center;
+  margin-top: var(--space-8, 48px);
+}
+@media (min-width: 1024px) {
+  .cta-blade { padding-inline: var(--space-grid-tablet-landscape-margin, 48px); padding-block: 96px; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   LEGAL FOOTER  (recipe-page-chrome — copied verbatim)
+   ═══════════════════════════════════════════════════════════ */
+.sf-footer__links {
+  display: flex; gap: 24px; padding: 64px;
+  background: var(--color-surface-1, #FFFFFF);
+}
+.sf-footer__brand {
+  display: flex; flex-direction: column; gap: 28px;
+  width: 280px; flex-shrink: 0;
+}
+.sf-footer__logo { display: block; }
+.sf-footer__social { display: flex; flex-wrap: wrap; gap: 14px; }
+.sf-footer__social a { display: block; line-height: 0; }
+.sf-footer__phone, .sf-footer__contact-link {
+  font-family: var(--font-style-body-copy-3-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 14px; line-height: 20px; color: #444;
+  margin: 0;
+}
+.sf-footer__contact-link { text-decoration: underline; }
+.sf-footer__columns { display: flex; flex: 1; gap: 30px; }
+.sf-footer__column { flex: 1; }
+.sf-footer__column h3 {
+  font-family: var(--font-style-body-copy-3-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 14px; line-height: 20px; color: #444;
+  margin: 0 0 36px;
+}
+.sf-footer__column ul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.sf-footer__column a {
+  font-family: var(--font-style-body-copy-4-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 12px; line-height: 18px; letter-spacing: 0.03px;
+  color: #0B5CAB; text-decoration: none;
+}
+.sf-footer__column a:hover { text-decoration: underline; }
+.sf-footer__bottom { background: #032D60; padding: 20px 64px; }
+.sf-footer__bottom-inner {
+  display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;
+}
+.sf-footer__region {
+  display: flex; align-items: center; gap: 6px;
+  background: none; border: none; cursor: pointer; color: #fff;
+  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 16px; line-height: 24px;
+  padding: 0 24px 11px;
+}
+.sf-footer__region .icon { width: 18px; height: 18px; background-color: #fff; }
+.sf-footer__legal { flex: 1; min-width: 320px; display: flex; flex-direction: column; gap: 24px; }
+.sf-footer__legal-links { display: flex; flex-wrap: wrap; gap: 10px 20px; }
+.sf-footer__legal-links a, .sf-footer__copyright, .sf-footer__copyright a {
+  font-family: var(--font-style-body-copy-4-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 12px; line-height: 18px; letter-spacing: 0.03px;
+  color: #fff; text-decoration: underline;
+}
+.sf-footer__copyright { margin: 0; text-decoration: none; }
+
+@media (max-width: 1023px) {
+  .sf-footer__links { padding: 40px; }
+  .sf-footer__bottom { padding: 20px 40px; }
+}
+@media (max-width: 767px) {
+  .sf-footer__links { display: none; }
+  .sf-footer__bottom { padding: 20px 24px; }
+  .sf-footer__bottom-inner { flex-direction: column; align-items: center; text-align: center; }
+  .sf-footer__region { padding-bottom: 0; }
+  .sf-footer__legal-links { justify-content: center; }
+}
+
+/* ═══ NAV COMPACT (< 1024px) ═══ */
+@media (max-width: 1023px) {
+  .sf-nav__inner { height: 56px; padding-inline: 16px; }
+  .sf-nav__wordmark { display: none; }
+  .sf-nav__logo-bug { display: block; }
+  .sf-nav__hamburger {
+    display: flex; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 8px; order: -1;
+  }
+  .sf-nav__hamburger span {
+    display: block; width: 20px; height: 2px;
+    background: var(--color-on-surface-1, #001E5B); border-radius: 1px;
+  }
+  .sf-nav .sf-nav__cta {
+    padding-inline: 12px; padding-block: 4px; font-size: 14px;
+  }
+  .sf-nav__links { display: none; }
+  .sf-nav__links.is-open {
+    display: flex; flex-direction: column;
+    position: absolute; top: 56px; left: 0; right: 0;
+    background: #001E5B;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding: 16px; gap: 4px; z-index: 49;
+  }
+  .sf-nav__icon--desktop-only { display: none; }
+  .sf-nav__login-label { display: none; }
+}
+@media (max-width: 767px) {
+  .sf-nav__icon[aria-label="Call us"] { display: none; }
+}
+
+/* Theme toggle button */
+.tl-theme-toggle {
+  display: flex; align-items: center; justify-content: center;
+  padding: 13px; border-radius: 100px;
+  background: none; border: none; cursor: pointer;
+  color: var(--color-on-surface-1, #001E5B);
+}
+.tl-theme-toggle .icon { width: 18px; height: 18px; }
+.tl-theme-toggle:hover { background: var(--color-surface-container-1, #F3F3F3); }
+
+/* ═══ SECTION TRANSITION — bottom mountains (Solutions → Builders) ═══
+   Reproduces Figma "L Bottom Mountains 03" (node 64:4933): two separate
+   mountain masses meeting in a gentle central valley over a periwinkle
+   gradient arc. The left image is placed in-flow at frame scale (its natural
+   1512×528 = the design frame width) so it sets the band height; the right
+   mass (986px = 65.2% of the frame) is bottom/right-anchored at the same
+   scale, so the two slopes recompose the valley exactly as designed. The
+   vertical gradient is the "arc with a gradient" showing through the valley. */
+.mountain-transition {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  background: linear-gradient(180deg, transparent 30%, #C6CFF2 100%);
+  height: 30vw;
+  clip-path: circle(150vw at 50% -120vw);
+  margin-top: -15vw;
+  z-index: -1;
+}
+.mountain-transition__l {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.mountain-transition__r {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 65.2%;
+  height: auto;
+}
+
+/* ═══ SECTION TRANSITION — top forest (Builders → How it Works) ═══
+   Reproduces Figma "L Top Forest 02" (node 64:4961), rebuilt in layers so the
+   flat colour is CSS, not baked pixels:
+     • the pale sky-blue gradient (transparent → #C6E9FF) is the band background;
+     • the white ground is a ::before clipped to the Figma contour ellipse
+       (node 64:4974, centre (756,3336) r2835 in the 1512-wide frame → vw units),
+       giving the gentle arc via clip-path;
+     • the forest itself ships as two transparent PNGs — background (teal
+       mountains + mid-conifers descending the ridge) and foreground (the two
+       large conifers + brush) — both bottom/left-anchored so they recompose the
+       scene exactly as designed.
+   Aspect matches the 1512×605 frame (605/1512 ≈ 40%), so 40vw tall. */
+.forest-transition {
+  position: relative;
+  width: 100%;
+  height: 40vw;
+  overflow: hidden;
+  line-height: 0;
+  background: linear-gradient(180deg, rgba(198, 233, 255, 0) 30%, #c6e9ff 100%);
+  margin-top: -15vw;
+  margin-bottom: -5vw;
+
+  clip-path: shape(
+      from 0% 0%, 
+      line to 100% 0%, 
+      line to 100% 100%, 
+      curve to 0% 100% with 50% 70%, 
+      close
+    );
+}
+/* white ground — the arc is the Figma contour ellipse expressed as a clip-path */
+/* .forest-transition::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  clip-path: circle(187.5vw at 50% 220.6vw);
+  z-index: 0;
+} */
+.forest-transition__bg,
+.forest-transition__fg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: auto;
+  z-index: 1;
+}
+.forest-transition__bg { width: 52.1%; } /* 961×0.82 / 1512 */
+.forest-transition__fg { width: 33.2%; } /* 502 / 1512 */
