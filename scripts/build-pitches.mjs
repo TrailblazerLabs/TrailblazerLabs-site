@@ -158,7 +158,8 @@ function excerptOf(bodyText) {
   return clamp(pick);
 }
 
-// "[Pitch]: My idea" -> "My idea"; leave other titles as-is.
+// New pitches submit a bare title. Older discussions used a "[Pitch]: " prefix;
+// strip it so those cards match. Leaves other titles as-is.
 function cleanTitle(title) {
   return (title || '').replace(/^\s*\[pitch\]:\s*/i, '').trim();
 }
