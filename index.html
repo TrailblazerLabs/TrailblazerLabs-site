@@ -621,6 +621,12 @@
             showError('Please fill out every field before continuing.');
             return;
           }
+          // GitHub usernames: letters/numbers/hyphens, 1-39 chars. Reject the
+          // literal "me" — @me links to a real unrelated account, not the author.
+          if (!/^[A-Za-z0-9-]{1,39}$/.test(username) || username.toLowerCase() === 'me') {
+            showError('Please enter your real GitHub username (e.g. your-handle), not "me".');
+            return;
+          }
           if (!acks().every((c) => c.checked)) {
             showError('Please confirm all four acknowledgments.');
             return;
