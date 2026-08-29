@@ -1,7 +1,7 @@
 [
   {
-    "authorName": "SamirSalih1",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/318347216?v=4",
+    "authorName": "dcstuff",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/44416270?v=4",
     "title": "Permishifizer9000",
     "description": "Generate a \"Salesforce Backup\" permission set XML from live org metadata — ensuring your backup/restore integration user has access to every restorable object, field, and record type.",
     "tags": [],
