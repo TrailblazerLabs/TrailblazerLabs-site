@@ -1,0 +1,41 @@
+# -----------------------------------------------------------------------------
+# Trailblazer Labs - Community assets config
+#
+# The TrailblazerLabs org's repos are the SOURCE OF TRUTH for community assets.
+# Only the program creates repos, so every org repo is an asset EXCEPT the
+# infra/admin repos listed in exclude_repos below.
+# This file only holds what the GitHub API cannot tell us:
+#   - which org repos are infra/admin, not assets (exclude_repos)
+#   - which org members must never be shown as the asset's builder (exclude_authors)
+#   - an optional friendly title override per repo (titles)
+# tags come from each repo's GitHub Topics; description/license from the repo.
+# -----------------------------------------------------------------------------
+
+# GitHub org the Action lists repos from.
+org: TrailblazerLabs
+
+# Repo visibility gate. Controls which repos are published as assets.
+#   all         -> include every repo, even private ones. Use this NOW to
+#                  preview the full set pre-launch. Requires a token that can
+#                  read private repos (BUILDERS_TOKEN secret).
+#   public-only -> publish a repo ONLY IF it is public. Use this for LAUNCH.
+visibility_mode: all
+
+# Org repos that are infra/admin, never community assets.
+exclude_repos:
+  - TrailblazerLabs-site
+  - Cohort-Repo-Template
+  - community-hub
+  - cohort-applications
+
+# Org members never shown as an asset's builder/author (program staff).
+# The repo's admin collaborator drives the "author" shown on the card; anyone
+# listed here is skipped so the builder (not staff) is credited.
+exclude_authors:
+  - sklaride-Salesforce   # Sharon Klardie - program owner
+
+# OPTIONAL: override the auto-friendlied title for a repo.
+# Key = repo name, value = the title to show. If omitted, the Action title-cases
+# the repo name (case-deflection-companion -> "Case Deflection Companion").
+titles:
+  # case-deflection-companion: "Case Deflection Companion"
