@@ -17,7 +17,7 @@ repo: Cohort-Applications
 
 # Only discussions in this category are treated as pitches. Match the category
 # NAME exactly as it appears in GitHub (case-insensitive here).
-category: Cohort Applications
+category: Pitch an Idea
 
 # Repo visibility gate.
 #   all         -> read discussions even from the private repo. Use this NOW,
