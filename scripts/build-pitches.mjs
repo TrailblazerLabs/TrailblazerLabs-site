@@ -122,11 +122,40 @@ async function fetchDiscussions(owner, repo) {
   return { discussions: all, isPrivate };
 }
 
-// First non-empty line of the body, trimmed to a card-sized excerpt.
+// Trim a chunk of text to a card-sized excerpt.
+function clamp(text, max = 180) {
+  const t = (text || '').replace(/\s+/g, ' ').trim();
+  if (t.length <= max) return t;
+  return t.slice(0, max - 3).replace(/\s+\S*$/, '') + '...';
+}
+
+// The form writes the body as "## Heading\nanswer" blocks. bodyText strips the
+// markdown, so headings arrive as plain lines. Pull the answer under a given
+// heading (e.g. "Elevator Pitch") rather than flattening the whole body.
+function sectionUnder(bodyText, heading) {
+  const lines = (bodyText || '').split('\n');
+  const start = lines.findIndex((l) => l.trim().toLowerCase() === heading.toLowerCase());
+  if (start === -1) return '';
+  const known = new Set([
+    'elevator pitch', 'problem statement', 'development track',
+    'builder profile', 'required acknowledgments', 'submitted by',
+  ]);
+  const answer = [];
+  for (let i = start + 1; i < lines.length; i++) {
+    if (known.has(lines[i].trim().toLowerCase())) break;
+    answer.push(lines[i]);
+  }
+  return answer.join(' ').trim();
+}
+
+// Card excerpt: prefer the Elevator Pitch answer, then Problem Statement,
+// then whatever the body starts with (older/free-form discussions).
 function excerptOf(bodyText) {
-  const text = (bodyText || '').replace(/\s+/g, ' ').trim();
-  if (text.length <= 180) return text;
-  return text.slice(0, 177).replace(/\s+\S*$/, '') + '...';
+  const pick =
+    sectionUnder(bodyText, 'Elevator Pitch') ||
+    sectionUnder(bodyText, 'Problem Statement') ||
+    (bodyText || '');
+  return clamp(pick);
 }
 
 // "[Pitch]: My idea" -> "My idea"; leave other titles as-is.
