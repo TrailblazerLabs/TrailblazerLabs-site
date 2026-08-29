@@ -33,6 +33,15 @@ exclude_repos:
 # listed here is skipped so the builder (not staff) is credited.
 exclude_authors:
   - sklaride-Salesforce   # Sharon Klardie - program owner
+  - SamirSalih1           # internal staff / org admin
+  - mrbmc-sfdc-tbl        # internal staff / org admin
+
+# OPTIONAL: pin a repo to its builder by hand. Use when auto-detection picks
+# the wrong person (e.g. multiple admins) or the builder isn't a detectable
+# admin yet. Key = repo name, value = the builder's GitHub login. A pin always
+# wins over auto-detection.
+builders:
+  # permishifizer9000: dcstuff
 
 # OPTIONAL: override the auto-friendlied title for a repo.
 # Key = repo name, value = the title to show. If omitted, the Action title-cases
