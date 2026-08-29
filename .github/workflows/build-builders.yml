@@ -3,10 +3,7 @@ on:
     workflow_dispatch:
     push:
       branches: [main]
-      paths:
-        - 'data/builders-config.yml'
-        - 'scripts/build-builders.mjs'
-        - '.github/workflows/build-builders.yml'
+      paths: ['data/builders-config.yml', 'scripts/build-builders.mjs', '.github/workflows/build-builders.yml']
   permissions:
     contents: write
   jobs:
@@ -15,20 +12,15 @@ on:
       steps:
         - uses: actions/checkout@v4
         - uses: actions/setup-node@v4
-          with:
-            node-version: 20
+          with: {node-version: 20}
         - name: Generate builders.json
-          env:
-            GITHUB_TOKEN: ${{ secrets.BUILDERS_TOKEN || secrets.GITHUB_TOKEN }}
+          env: {GITHUB_TOKEN: "${{ secrets.BUILDERS_TOKEN || secrets.GITHUB_TOKEN }}"}
           run: node scripts/build-builders.mjs
         - name: Commit if changed
           run: |
-            if git diff --quiet -- data/builders.json; then
-              echo "No change to data/builders.json"
-              exit 0
-            fi
+            if git diff --quiet -- data/builders.json; then echo "no change"; exit 0; fi
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add data/builders.json
-            git commit -m "chore: refresh builders.json from df26-cohort team"
+            git commit -m "chore: refresh builders.json"
             git push
