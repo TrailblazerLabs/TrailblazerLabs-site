@@ -1,0 +1,35 @@
+# -----------------------------------------------------------------------------
+# Trailblazer Labs - Pitches config
+#
+# The read-side "What the ecosystem is backing" grid is generated from the
+# GitHub Discussions in the Cohort-Applications repo (category below). Builders
+# submit a pitch via the on-brand form on the site, which opens a prefilled new
+# discussion; the ecosystem upvotes it on GitHub. This file only holds what the
+# GitHub API cannot tell us: which repo/category to read and which authors are
+# staff test pitches to hide.
+# -----------------------------------------------------------------------------
+
+# GitHub org that owns the applications repo.
+org: TrailblazerLabs
+
+# Repo whose Discussions hold the pitches.
+repo: Cohort-Applications
+
+# Only discussions in this category are treated as pitches. Match the category
+# NAME exactly as it appears in GitHub (case-insensitive here).
+category: Cohort Applications
+
+# Repo visibility gate.
+#   all         -> read discussions even from the private repo. Use this NOW,
+#                  pre-launch. Requires a token that can read the private repo's
+#                  discussions (BUILDERS_TOKEN with Discussions: Read).
+#   public-only -> only publish pitches if the repo is public. At launch, once
+#                  Cohort-Applications is public, the built-in GITHUB_TOKEN works.
+visibility_mode: all
+
+# Authors never shown on the pitch grid (program staff test pitches).
+# Same internal-staff list as the builders/assets pipelines.
+exclude_authors:
+  - sklaride-Salesforce   # Sharon Klardie - program owner
+  - SamirSalih1           # internal staff / org admin
+  - mrbmc-sfdc-tbl        # internal staff / org admin
