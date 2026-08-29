@@ -30,6 +30,8 @@ visibility_mode: all
 # Authors never shown on the pitch grid (program staff test pitches).
 # Same internal-staff list as the builders/assets pipelines.
 exclude_authors:
-  - sklaride-Salesforce   # Sharon Klardie - program owner
+  # - sklaride-Salesforce # TEMPORARILY un-excluded to test the read grid with an
+  #                         owner-authored pitch. RE-ADD THIS LINE BEFORE LAUNCH so
+  #                         staff pitches are hidden again.
   - SamirSalih1           # internal staff / org admin
   - mrbmc-sfdc-tbl        # internal staff / org admin
