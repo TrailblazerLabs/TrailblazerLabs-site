@@ -1,0 +1,44 @@
+# ─────────────────────────────────────────────────────────────────────────────
+  # Trailblazer Labs — Builders config
+  #
+  # The df26-cohort GitHub team is the SOURCE OF TRUTH for who is a builder.
+  # Add/remove people in the GitHub team UI — the site follows automatically.
+  # This file only holds what the GitHub API cannot tell us:
+  #   • which team members are program staff (exclude them)
+  #   • each builder's human-readable role/title
+  #   • an optional pinned residency project repo (otherwise auto-picked)
+  # ─────────────────────────────────────────────────────────────────────────────
+  
+  # GitHub org + team the Action reads membership from.
+  org: TrailblazerLabs
+  # GitHub org + team the Action reads membership from.
+  org: TrailblazerLabs
+  team: df26-cohort
+
+  # Repo visibility gate.  Controls which builders are published.
+  #   all         → include everyone, even builders whose residency repo is
+  #                 private. Use this NOW to preview the full cohort. Requires a
+  #                 token that can read the private repos (BUILDERS_TOKEN secret).
+  #   public-only → publish a builder ONLY IF their residency repo is public AND
+  #                 the builder is an admin of it. Use this for LAUNCH.
+  visibility_mode: all
+
+  # Program staff on the team who must never appear on the public site.
+  # Membership churn is handled in the GitHub team UI; only add a NEW staffer
+  # here (one line) so they stay off the builders grid.
+  exclude:
+    - sklaride-Salesforce   # Sharon Klardie — program owner
+    # - <add any other internal / program-management logins here>
+
+  # Human-readable role shown under each builder's name. GitHub has no such field.
+  # Key = GitHub login. Omit a builder to leave their role blank.
+  roles:
+    # ohadios: "Pro-Code Engineer"
+    # houssamsaoudy: "Solutions Engineer & MVP"
+    # pennysavage-1: "Developer Advocate"
+
+  # OPTIONAL: pin the exact residency project repo for a builder.
+  # Key = GitHub login, value = owner/repo. If omitted, the Action auto-picks the
+  # builder's most-recently-updated repo in the org that they admin.
+  projects:
+    # ohadios: TrailblazerLabs/case-deflection-companion
