@@ -866,3 +866,92 @@ img { max-width: 100%; }
 }
 .forest-transition__bg { width: 52.1%; } /* 961×0.82 / 1512 */
 .forest-transition__fg { width: 33.2%; } /* 502 / 1512 */
+
+/* ═══════════════════════════════════════════════════════════
+   PITCH AN IDEA — on-brand form (#pitch) + pitch cards (#pitches)
+   ═══════════════════════════════════════════════════════════ */
+
+/* A narrower content cap so the form doesn't stretch full-bleed. */
+.sf-blade__cap--narrow { max-width: 720px; }
+
+.sf-form, .sf-form *, .sf-form *::before, .sf-form *::after { box-sizing: border-box; }
+.sf-form {
+  display: flex; flex-direction: column;
+  gap: var(--space-content-xl, 32px);
+  padding: var(--space-6, 32px) var(--space-5, 24px);
+  background: var(--color-container-1);
+  box-shadow: 2px 2px 18px rgba(24, 24, 24, 0.16);
+  border-radius: 16px;
+}
+.sf-form__group { display: flex; flex-direction: column; gap: 8px; }
+.sf-form__label {
+  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 16px; line-height: 24px;
+  color: var(--color-on-surface-1, #001E5B);
+}
+.sf-form__req { color: #B60554; margin-left: 2px; }
+.sf-form__input, .sf-form__textarea, .sf-form__select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--color-neutral-80, #C9C9C9);
+  border-radius: var(--radius-4, 8px);
+  background: var(--color-surface-1, #FFFFFF);
+  font-family: var(--font-style-body-copy-2-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 16px; line-height: 24px;
+  color: var(--color-on-surface-2, #181818);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.sf-form__textarea { min-height: 120px; resize: vertical; }
+.sf-form__input:focus, .sf-form__textarea:focus, .sf-form__select:focus {
+  outline: none;
+  border-color: var(--color-link, #022AC0);
+  box-shadow: 0 0 0 3px rgba(2, 42, 192, 0.18);
+}
+.sf-form__input::placeholder, .sf-form__textarea::placeholder {
+  color: var(--color-on-surface-3, #444444); opacity: 0.6;
+}
+
+.sf-form__acks { display: flex; flex-direction: column; gap: 12px; }
+.sf-form__ack {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-family: var(--font-style-body-copy-2-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 15px; line-height: 22px;
+  color: var(--color-on-surface-3, #444444);
+  cursor: pointer;
+}
+.sf-form__check {
+  flex-shrink: 0; width: 20px; height: 20px; margin-top: 1px;
+  accent-color: var(--color-link, #022AC0); cursor: pointer;
+}
+
+.sf-form__error {
+  margin: 0;
+  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 14px; line-height: 20px;
+  color: #B60554;
+}
+.sf-form__error:empty { display: none; }
+.sf-form__hint {
+  margin: 0;
+  font-family: var(--font-style-body-copy-3-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 13px; line-height: 18px;
+  color: var(--color-on-surface-3, #444444);
+}
+.sf-cta:disabled, .sf-cta[disabled] {
+  opacity: 0.45; cursor: not-allowed; pointer-events: none;
+}
+
+/* ── Pitch card (read side, cloned from .sf-asset-card) ── */
+.sf-pitch-card__excerpt {
+  margin: 0;
+  font-family: var(--font-style-body-copy-2-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 16px; line-height: 24px;
+  color: var(--color-on-surface-3, #444444);
+}
+.sf-pitch-card__votes {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 14px; line-height: 20px;
+  color: var(--color-on-surface-1, #001E5B);
+}
+.sf-pitch-card__votes svg { flex-shrink: 0; }
