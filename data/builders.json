@@ -1,38 +1,98 @@
 [
   {
-    "name": "Priya Nayar",
-    "github": "priyanayar",
-    "avatar": "https://avatars.githubusercontent.com/u/9919?v=4",
-    "country": "India",
-    "role": "Pro-Code Engineer & CTA",
-    "bio": "Salesforce Certified Technical Architect focused on agent orchestration and deflection. Ten years shipping Service Cloud at scale, now building open agents for the community.",
+    "name": "Ohad Idan",
+    "github": "ohadios",
+    "avatar": "https://avatars.githubusercontent.com/u/7719114?v=4",
+    "country": "",
+    "role": "",
+    "bio": "",
     "project": {
-      "title": "Case Deflection Companion",
-      "url": "https://github.com/priyanayar/case-deflection-companion"
+      "title": "",
+      "url": ""
     }
   },
   {
-    "name": "Marcus Antwi",
-    "github": "marcusantwi",
-    "avatar": "https://avatars.githubusercontent.com/u/583231?v=4",
-    "country": "Ghana",
-    "role": "Solutions Engineer & MVP",
-    "bio": "Trailblazer Community MVP and low-code tinkerer turned agent builder. Passionate about making Agentforce approachable for admins with no pro-code background.",
+    "name": "ssisson",
+    "github": "ssisson",
+    "avatar": "https://avatars.githubusercontent.com/u/11198368?v=4",
+    "country": "",
+    "role": "",
+    "bio": "",
     "project": {
-      "title": "Field Service Route Planner",
-      "url": "https://github.com/marcusantwi/field-service-route-planner"
+      "title": "",
+      "url": ""
     }
   },
   {
-    "name": "Sofia Reyes",
-    "github": "sofiareyes",
-    "avatar": "https://avatars.githubusercontent.com/u/1024025?v=4",
-    "country": "Mexico",
-    "role": "Developer Advocate",
-    "bio": "Independent developer and Trailhead instructor. Prototypes agents that connect Data Cloud to real customer journeys and shares every build as open source.",
+    "name": "dcstuff",
+    "github": "dcstuff",
+    "avatar": "https://avatars.githubusercontent.com/u/44416270?v=4",
+    "country": "",
+    "role": "",
+    "bio": "",
     "project": {
-      "title": "Journey Insights Agent",
-      "url": "https://github.com/sofiareyes/journey-insights-agent"
+      "title": "",
+      "url": ""
+    }
+  },
+  {
+    "name": "Houssam SAOUDY",
+    "github": "houssamsaoudy",
+    "avatar": "https://avatars.githubusercontent.com/u/77637247?v=4",
+    "country": "",
+    "role": "",
+    "bio": "",
+    "project": {
+      "title": "",
+      "url": ""
+    }
+  },
+  {
+    "name": "pennysavage-1",
+    "github": "pennysavage-1",
+    "avatar": "https://avatars.githubusercontent.com/u/178824867?v=4",
+    "country": "",
+    "role": "",
+    "bio": "",
+    "project": {
+      "title": "",
+      "url": ""
+    }
+  },
+  {
+    "name": "Kathy Lueckeman",
+    "github": "klueckeman-edutb",
+    "avatar": "https://avatars.githubusercontent.com/u/217978407?v=4",
+    "country": "",
+    "role": "",
+    "bio": "Higher ed professional active in the Salesforce for Education community, Salesforce MVP Hall of Fame, Golden Hoodie recipient, founder and chair of EDUtb.org",
+    "project": {
+      "title": "",
+      "url": ""
+    }
+  },
+  {
+    "name": "Sharon Klardie",
+    "github": "sklaride-Salesforce",
+    "avatar": "https://avatars.githubusercontent.com/u/315593742?v=4",
+    "country": "New Hampshire",
+    "role": "",
+    "bio": "Sr. Director of AgentExchange Security, Labs & Innovation at Salesforce. Program lead for Salesforce Labs since 2018 & program design/lead for Trailblazer Labs.",
+    "project": {
+      "title": "",
+      "url": ""
+    }
+  },
+  {
+    "name": "Shonnah",
+    "github": "shonnah-dev",
+    "avatar": "https://avatars.githubusercontent.com/u/322238027?v=4",
+    "country": "Minnesota",
+    "role": "",
+    "bio": "Shonnah Hughes is the CEO and Founder of Valkyree, a Salesforce-native AI implementation and consulting firm helping enterprises close the AI gap",
+    "project": {
+      "title": "",
+      "url": ""
     }
   }
 ]
