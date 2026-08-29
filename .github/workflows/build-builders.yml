@@ -9,8 +9,10 @@ on:
     paths:
       - 'data/builders-config.yml'
       - 'data/community-assets-config.yml'
+      - 'data/pitches-config.yml'
       - 'scripts/build-builders.mjs'
       - 'scripts/build-assets.mjs'
+      - 'scripts/build-pitches.mjs'
       - '.github/workflows/build-builders.yml'
 
 permissions:
@@ -32,7 +34,7 @@ jobs:
           # the private residency repos + org team membership. Add a
           # fine-grained PAT as the BUILDERS_TOKEN repo secret.
           # For launch (visibility_mode: public-only, public repos only), the
-          # built-in secrets.GITHUB_TOKEN below is sufficient — you can delete
+          # built-in secrets.GITHUB_TOKEN below is sufficient - you can delete
           # the BUILDERS_TOKEN and this fallback line will use GITHUB_TOKEN.
           GITHUB_TOKEN: ${{ secrets.BUILDERS_TOKEN || secrets.GITHUB_TOKEN }}
         run: node scripts/build-builders.mjs
@@ -42,14 +44,22 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BUILDERS_TOKEN || secrets.GITHUB_TOKEN }}
         run: node scripts/build-assets.mjs
 
+      - name: Generate pitches.json
+        env:
+          # Needs Repository -> Discussions: Read on the fine-grained PAT while
+          # Cohort-Applications is private. At launch (public repo), the built-in
+          # GITHUB_TOKEN is sufficient.
+          GITHUB_TOKEN: ${{ secrets.BUILDERS_TOKEN || secrets.GITHUB_TOKEN }}
+        run: node scripts/build-pitches.mjs
+
       - name: Commit if changed
         run: |
-          if git diff --quiet -- data/builders.json data/community-assets.json; then
+          if git diff --quiet -- data/builders.json data/community-assets.json data/pitches.json; then
             echo "No change to generated data"
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/builders.json data/community-assets.json
-          git commit -m "chore: refresh builders.json + community-assets.json"
+          git add data/builders.json data/community-assets.json data/pitches.json
+          git commit -m "chore: refresh builders.json + community-assets.json + pitches.json"
           git push
