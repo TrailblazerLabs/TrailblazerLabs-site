@@ -955,3 +955,94 @@ img { max-width: 100%; }
   color: var(--color-on-surface-1, #001E5B);
 }
 .sf-pitch-card__votes svg { flex-shrink: 0; }
+
+/* ── Pitch filter controls ── */
+.sf-pitch-controls {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;
+  margin-bottom: 20px;
+}
+.sf-pitch-search { flex: 1 1 260px; max-width: 380px; }
+.sf-pitch-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.sf-pitch-chip {
+  padding: 8px 16px; border-radius: 999px;
+  border: 1px solid var(--color-neutral-90, #E5E5E5);
+  background: var(--color-container-1, #FFFFFF);
+  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 14px; line-height: 20px;
+  color: var(--color-on-surface-1, #001E5B);
+  cursor: pointer; transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.sf-pitch-chip:hover { border-color: var(--color-link, #022AC0); }
+.sf-pitch-chip.is-active {
+  background: var(--color-link, #022AC0);
+  border-color: var(--color-link, #022AC0);
+  color: #FFFFFF;
+}
+.sf-pitch-empty {
+  margin: 20px 0 0;
+  font-family: var(--font-style-body-copy-2-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 16px; line-height: 24px;
+  color: var(--color-on-surface-3, #444444);
+}
+
+/* ── Pitch ranked list (read side) ── */
+.sf-pitch-list {
+  list-style: none; margin: 0; padding: 0;
+  border: 1px solid var(--color-neutral-90, #E5E5E5);
+  border-radius: 16px; overflow: hidden;
+  background: var(--color-container-1, #FFFFFF);
+}
+.sf-pitch-row + .sf-pitch-row {
+  border-top: 1px solid var(--color-neutral-90, #E5E5E5);
+}
+.sf-pitch-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px;
+}
+.sf-pitch-row__votes {
+  display: inline-flex; align-items: center; gap: 6px;
+  flex-shrink: 0; min-width: 52px;
+  padding: 6px 12px; border-radius: 999px;
+  border: 1px solid var(--color-neutral-90, #E5E5E5);
+  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 14px; line-height: 20px;
+  color: var(--color-on-surface-1, #001E5B);
+}
+.sf-pitch-row__votes svg { flex-shrink: 0; }
+.sf-pitch-row__body { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1 1 auto; }
+.sf-pitch-row__title {
+  font-family: var(--font-style-body-copy-1-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 18px; line-height: 24px;
+  color: var(--color-on-surface-1, #001E5B);
+  text-decoration: none;
+}
+.sf-pitch-row__title:hover,
+.sf-pitch-row__title:focus-visible {
+  color: var(--color-link, #022AC0); text-decoration: underline;
+}
+.sf-pitch-row__meta {
+  font-family: var(--font-style-body-copy-3-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 14px; line-height: 20px;
+  color: var(--color-on-surface-3, #444444);
+}
+.sf-pitch-row__upvote {
+  display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0;
+  padding: 8px 14px; border-radius: 999px;
+  border: 1px solid var(--color-link, #022AC0);
+  background: var(--color-container-1, #FFFFFF);
+  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 14px; line-height: 20px;
+  color: var(--color-link, #022AC0); text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.sf-pitch-row__upvote:hover,
+.sf-pitch-row__upvote:focus-visible {
+  background: var(--color-link, #022AC0); color: #FFFFFF;
+}
+.sf-pitch-row__upvote svg { flex-shrink: 0; }
+.sf-blade__note {
+  margin: 8px 0 0;
+  font-family: var(--font-style-body-copy-3-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 14px; line-height: 20px;
+  color: var(--color-on-surface-3, #444444);
+}
