@@ -338,11 +338,27 @@
             Real pitches from the community. Upvotes signal demand and help shape who joins the
             next cohort &mdash; add yours on GitHub.
           </p>
+          <p class="sf-blade__note">
+            Upvoting happens on GitHub &mdash; a free GitHub account is required.
+          </p>
         </div>
 
-        <div class="sf-card-grid sf-card-grid--3up" id="pitches-grid" data-page-size="6">
-          <!-- Cards render here from ./data/pitches.json (see script at end of body). -->
+        <div class="sf-pitch-controls">
+          <input type="search" id="pitches-search" class="sf-form__input sf-pitch-search"
+                 placeholder="Search by GitHub user or title&hellip;" aria-label="Search pitches" />
+          <div class="sf-pitch-chips" id="pitches-tracks" role="group" aria-label="Filter by track">
+            <button type="button" class="sf-pitch-chip is-active" data-track="">All</button>
+            <button type="button" class="sf-pitch-chip" data-track="The Strategist">Strategist</button>
+            <button type="button" class="sf-pitch-chip" data-track="The Builder">Builder</button>
+            <button type="button" class="sf-pitch-chip" data-track="The Engineer">Engineer</button>
+          </div>
         </div>
+
+        <ol class="sf-pitch-list" id="pitches-grid" data-page-size="10">
+          <!-- Rows render here from ./data/pitches.json (see script at end of body). -->
+        </ol>
+
+        <p class="sf-pitch-empty" id="pitches-empty" hidden>No pitches match your filter.</p>
 
         <div class="sf-blade__actions">
           <button type="button" class="sf-cta sf-cta--hero sf-cta--secondary" id="pitches-load-more" hidden>
@@ -669,47 +685,83 @@
 
         const PAGE = parseInt(grid.dataset.pageSize, 10) || 6;
         const UP_ICON = '<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2l6 7h-4v5H6V9H2z"/></svg>';
+        const EXT_ICON = '<svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6 2h8v8h-2V5.4L5.4 12 4 10.6 10.6 4H6z"/><path d="M2 4h4v2H4v6h6v-2h2v4H2z"/></svg>';
 
-        let pitches = [];
+        const searchEl = document.getElementById('pitches-search');
+        const chipsEl = document.getElementById('pitches-tracks');
+        const emptyEl = document.getElementById('pitches-empty');
+
+        let pitches = [];    // all, upvote-sorted
+        let filtered = [];   // after search + track filter
         let shown = 0;
+        let query = '';
+        let track = '';      // '' = All
 
         const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
           ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
         function cardHTML(p) {
-          return `<article class="sf-asset-card sf-pitch-card">
-            <div class="sf-asset-card__author">
-              <img class="sf-asset-card__avatar" src="${esc(p.avatar)}" alt="" width="32" height="32" loading="lazy" />
-              <span class="sf-asset-card__author-name">${esc(p.author)}</span>
-            </div>
-            <h3 class="sf-asset-card__title">${esc(p.title)}</h3>
-            <p class="sf-asset-card__desc">${esc(p.excerpt)}</p>
-            <div class="sf-asset-card__footer">
-              <span class="sf-pitch-card__votes">${UP_ICON}<span>${esc(String(p.upvotes ?? 0))}</span></span>
-              <a class="sf-asset-card__repo" href="${esc(p.url)}" rel="noopener" target="_blank">
-                <span>Upvote on GitHub</span>
-              </a>
-            </div>
-          </article>`;
+          const meta = [p.author ? '@' + p.author : '', p.track]
+            .filter(Boolean).map(esc).join(' &middot; ');
+          const url = esc(p.url);
+          return `<li class="sf-pitch-row">
+            <span class="sf-pitch-row__votes">${UP_ICON}<span>${esc(String(p.upvotes ?? 0))}</span></span>
+            <span class="sf-pitch-row__body">
+              <a class="sf-pitch-row__title" href="${url}" rel="noopener" target="_blank">${esc(p.title)}</a>
+              <span class="sf-pitch-row__meta">${meta}</span>
+            </span>
+            <a class="sf-pitch-row__upvote" href="${url}" rel="noopener" target="_blank">
+              ${EXT_ICON}<span>Upvote on GitHub</span>
+            </a>
+          </li>`;
+        }
+
+        function applyFilter() {
+          const q = query.trim().toLowerCase();
+          filtered = pitches.filter((p) => {
+            if (track && !(p.track || '').toLowerCase().startsWith(track.toLowerCase())) return false;
+            if (!q) return true;
+            return (p.title || '').toLowerCase().includes(q) ||
+                   (p.author || '').toLowerCase().includes(q);
+          });
+          grid.innerHTML = '';
+          shown = 0;
+          renderNext();
+          emptyEl.hidden = filtered.length > 0;
         }
 
         function renderNext() {
-          const next = pitches.slice(shown, shown + PAGE);
+          const next = filtered.slice(shown, shown + PAGE);
           grid.insertAdjacentHTML('beforeend', next.map(cardHTML).join(''));
           shown += next.length;
-          loadMore.hidden = shown >= pitches.length;
+          loadMore.hidden = shown >= filtered.length;
         }
 
         loadMore.addEventListener('click', renderNext);
+
+        if (searchEl) {
+          searchEl.addEventListener('input', () => { query = searchEl.value; applyFilter(); });
+        }
+        if (chipsEl) {
+          chipsEl.addEventListener('click', (e) => {
+            const btn = e.target.closest('.sf-pitch-chip');
+            if (!btn) return;
+            track = btn.dataset.track || '';
+            chipsEl.querySelectorAll('.sf-pitch-chip').forEach((b) =>
+              b.classList.toggle('is-active', b === btn));
+            applyFilter();
+          });
+        }
 
         fetch('./data/pitches.json')
           .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
           .then((data) => {
             pitches = Array.isArray(data) ? data : [];
-            renderNext();
+            applyFilter();
           })
           .catch((err) => {
-            grid.innerHTML = '<p class="sf-asset-card__desc">No pitches to show yet — be the first to pitch your idea.</p>';
+            grid.innerHTML = '<li class="sf-pitch-row"><span class="sf-pitch-row__meta" style="padding:16px 20px">No pitches to show yet — be the first to pitch your idea.</span></li>';
+            loadMore.hidden = true;
             console.error('pitches:', err);
           });
       })();
