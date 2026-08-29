@@ -1,21 +1,55 @@
 name: Build builders.json
-'on': {workflow_dispatch: null, push: {branches: [main], paths: ['data/builders-config.yml', 'scripts/build-builders.mjs', '.github/workflows/build-builders.yml']}}
-permissions: {contents: write}
+
+# Regenerates data/builders.json from the df26-cohort GitHub team.
+# Runs on demand and whenever the builder config changes.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/builders-config.yml'
+      - 'data/community-assets-config.yml'
+      - 'scripts/build-builders.mjs'
+      - 'scripts/build-assets.mjs'
+      - '.github/workflows/build-builders.yml'
+
+permissions:
+  contents: write   # commit the regenerated JSON back to the repo
+
 jobs:
-    build:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v4
-        - uses: actions/setup-node@v4
-          with: {node-version: 20}
-        - name: Generate builders.json
-          env: {GITHUB_TOKEN: "${{ secrets.BUILDERS_TOKEN || secrets.GITHUB_TOKEN }}"}
-          run: node scripts/build-builders.mjs
-        - name: Commit if changed
-          run: |
-            if git diff --quiet -- data/builders.json; then echo "no change"; exit 0; fi
-            git config user.name "github-actions[bot]"
-            git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add data/builders.json
-            git commit -m "chore: refresh builders.json"
-            git push
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Generate builders.json
+        env:
+          # While visibility_mode is "all", this must be a token that can read
+          # the private residency repos + org team membership. Add a
+          # fine-grained PAT as the BUILDERS_TOKEN repo secret.
+          # For launch (visibility_mode: public-only, public repos only), the
+          # built-in secrets.GITHUB_TOKEN below is sufficient — you can delete
+          # the BUILDERS_TOKEN and this fallback line will use GITHUB_TOKEN.
+          GITHUB_TOKEN: ${{ secrets.BUILDERS_TOKEN || secrets.GITHUB_TOKEN }}
+        run: node scripts/build-builders.mjs
+
+      - name: Generate community-assets.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.BUILDERS_TOKEN || secrets.GITHUB_TOKEN }}
+        run: node scripts/build-assets.mjs
+
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- data/builders.json data/community-assets.json; then
+            echo "No change to generated data"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/builders.json data/community-assets.json
+          git commit -m "chore: refresh builders.json + community-assets.json"
+          git push
