@@ -1,0 +1,24 @@
+# -----------------------------------------------------------------------------
+# Trailblazer Labs - Community discussions config
+#
+# The Community Hub tab on engage.html shows recent discussions from the
+# community-hub repo across ALL categories. Unlike pitches, this list does NOT
+# exclude any authors - internal Salesforce folks are welcome, and a program
+# Announcement should appear. Announcements float to the top; everything else
+# follows by most-recent activity. This file only holds what the GitHub API
+# cannot tell us: which repo to read and the visibility gate.
+# -----------------------------------------------------------------------------
+
+# GitHub org that owns the community repo.
+org: TrailblazerLabs
+
+# Repo whose Discussions power the Community Hub list.
+repo: community-hub
+
+# Repo visibility gate.
+#   all         -> read discussions even from the private repo. Use this NOW,
+#                  pre-launch. Requires a token that can read the private repo's
+#                  discussions (BUILDERS_TOKEN with Discussions: Read).
+#   public-only -> only publish once the repo is public. At launch, the built-in
+#                  GITHUB_TOKEN is sufficient.
+visibility_mode: all
