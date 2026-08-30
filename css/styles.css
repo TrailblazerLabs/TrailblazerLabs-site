@@ -956,6 +956,9 @@ img { max-width: 100%; }
 }
 .sf-pitch-card__votes svg { flex-shrink: 0; }
 
+/* ── Partial-include mounts (reserve header height to avoid layout shift) ── */
+[data-include="header"] { display: block; min-height: 64px; }
+
 /* ── Pitch filter controls ── */
 .sf-pitch-controls {
   display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;
