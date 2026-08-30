@@ -10,9 +10,11 @@ on:
       - 'data/builders-config.yml'
       - 'data/community-assets-config.yml'
       - 'data/pitches-config.yml'
+      - 'data/discussions-config.yml'
       - 'scripts/build-builders.mjs'
       - 'scripts/build-assets.mjs'
       - 'scripts/build-pitches.mjs'
+      - 'scripts/build-discussions.mjs'
       - '.github/workflows/build-builders.yml'
 
 permissions:
@@ -52,14 +54,22 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.BUILDERS_TOKEN || secrets.GITHUB_TOKEN }}
         run: node scripts/build-pitches.mjs
 
+      - name: Generate discussions.json
+        env:
+          # Needs Repository -> Discussions: Read on the fine-grained PAT while
+          # community-hub is private. At launch (public repo), the built-in
+          # GITHUB_TOKEN is sufficient.
+          GITHUB_TOKEN: ${{ secrets.BUILDERS_TOKEN || secrets.GITHUB_TOKEN }}
+        run: node scripts/build-discussions.mjs
+
       - name: Commit if changed
         run: |
-          if git diff --quiet -- data/builders.json data/community-assets.json data/pitches.json; then
+          if git diff --quiet -- data/builders.json data/community-assets.json data/pitches.json data/discussions.json; then
             echo "No change to generated data"
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/builders.json data/community-assets.json data/pitches.json
-          git commit -m "chore: refresh builders.json + community-assets.json + pitches.json"
+          git add data/builders.json data/community-assets.json data/pitches.json data/discussions.json
+          git commit -m "chore: refresh builders.json + community-assets.json + pitches.json + discussions.json"
           git push
