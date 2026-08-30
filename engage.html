@@ -57,34 +57,47 @@
     <!-- ═══ GLOBAL HEADER (injected from partials/header.html) ═══ -->
     <div data-include="header"></div>
 
-    <!-- ═══ PAGE INTRO ═══ -->
+    <!-- ═══ PAGE INTRO + SUB-TABS ═══ -->
     <section class="sf-blade" id="engage-intro">
       <div class="sf-blade__cap">
         <div class="sf-blade__header">
           <p class="sf-blade__eyebrow">Get Involved</p>
           <h1 class="sf-blade__title">Pitch an Idea &amp; Back the Community</h1>
           <p class="sf-blade__subtitle">
-            Submit your own build and see what the ecosystem is already backing. Upvotes and an
-            internal rubric shape who joins the next cohort. A free GitHub account is required to
-            submit or upvote.
+            Submit your own build, see what the ecosystem is already backing, and join the
+            conversation in the Community Hub. A free GitHub account is required to submit,
+            upvote, or post &mdash; each action opens GitHub in a new tab.
           </p>
+        </div>
+
+        <div class="sf-tabs" role="tablist" aria-label="Get Involved sections">
+          <button type="button" class="sf-tab is-active" id="tab-pitch"
+                  role="tab" aria-selected="true" aria-controls="panel-pitch">
+            Pitch Your Idea
+          </button>
+          <button type="button" class="sf-tab" id="tab-pitches"
+                  role="tab" aria-selected="false" aria-controls="panel-pitches" tabindex="-1">
+            Explore Pitches
+          </button>
+          <button type="button" class="sf-tab" id="tab-community"
+                  role="tab" aria-selected="false" aria-controls="panel-community" tabindex="-1">
+            Community Hub
+          </button>
         </div>
       </div>
     </section>
 
-    <!-- ═══ PITCH AN IDEA — on-brand form (submits via prefilled GitHub Discussion) ═══ -->
-    <section class="sf-blade" id="pitch" style="background: var(--color-background-1);">
-      <div class="sf-blade__cap sf-blade__cap--narrow">
+    <!-- ═══ TAB 1 — PITCH AN IDEA (on-brand form, prefilled GitHub Discussion) ═══ -->
+    <section class="sf-blade sf-tab-panel" id="panel-pitch" role="tabpanel"
+             aria-labelledby="tab-pitch" style="background: var(--color-background-1);">
+      <div class="sf-blade__cap sf-blade__cap--narrow" id="pitch">
         <div class="sf-blade__header">
           <p class="sf-blade__eyebrow">Apply to a future cohort</p>
           <h2 class="sf-blade__title">Pitch Your Idea</h2>
           <p class="sf-blade__subtitle">
             Tell us what you want to build. Pitches are reviewed with the community and an
-            internal rubric for feasibility, security, and quality.
-          </p>
-          <p class="sf-blade__subtitle" style="font-size: 14px; opacity: 0.75;">
-            A free GitHub account is required &mdash; you&rsquo;ll review and post your pitch on
-            GitHub after filling this out.
+            internal rubric for feasibility, security, and quality. A free GitHub account is
+            required &mdash; you&rsquo;ll review and post your pitch on GitHub after filling this out.
           </p>
         </div>
 
@@ -154,9 +167,10 @@
       </div>
     </section>
 
-    <!-- ═══ ECOSYSTEM PITCHES — data-driven ranked list + Load more ═══ -->
-    <section class="sf-blade" id="pitches">
-      <div class="sf-blade__cap">
+    <!-- ═══ TAB 2 — ECOSYSTEM PITCHES (data-driven ranked list + Load more) ═══ -->
+    <section class="sf-blade sf-tab-panel" id="panel-pitches" role="tabpanel"
+             aria-labelledby="tab-pitches" hidden>
+      <div class="sf-blade__cap" id="pitches">
         <div class="sf-blade__header">
           <p class="sf-blade__eyebrow">Community demand</p>
           <h2 class="sf-blade__title">What the Ecosystem Is Backing</h2>
@@ -188,6 +202,53 @@
 
         <div class="sf-blade__actions">
           <button type="button" class="sf-cta sf-cta--hero sf-cta--secondary" id="pitches-load-more" hidden>
+            Load more
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ TAB 3 — COMMUNITY HUB (data-driven discussion list + Start a discussion) ═══ -->
+    <section class="sf-blade sf-tab-panel" id="panel-community" role="tabpanel"
+             aria-labelledby="tab-community" hidden>
+      <div class="sf-blade__cap" id="community">
+        <div class="sf-blade__header">
+          <p class="sf-blade__eyebrow">Join the conversation</p>
+          <h2 class="sf-blade__title">Community Hub</h2>
+          <p class="sf-blade__subtitle">
+            Announcements, ideas, questions, and show-and-tell from across the ecosystem.
+            Anyone with a free GitHub account can join in &mdash; every link opens GitHub in a
+            new tab.
+          </p>
+          <p class="sf-blade__note">
+            Posting and replying happen on GitHub &mdash; a free GitHub account is required.
+          </p>
+        </div>
+
+        <div class="sf-pitch-controls">
+          <input type="search" id="community-search" class="sf-form__input sf-pitch-search"
+                 placeholder="Search by GitHub user or title&hellip;" aria-label="Search discussions" />
+          <div class="sf-pitch-chips" id="community-cats" role="group" aria-label="Filter by category">
+            <button type="button" class="sf-pitch-chip is-active" data-cat="">All</button>
+            <button type="button" class="sf-pitch-chip" data-cat="Announcements">Announcements</button>
+            <button type="button" class="sf-pitch-chip" data-cat="General">General</button>
+            <button type="button" class="sf-pitch-chip" data-cat="Ideas">Ideas</button>
+            <button type="button" class="sf-pitch-chip" data-cat="Q&amp;A">Q&amp;A</button>
+            <button type="button" class="sf-pitch-chip" data-cat="Show and tell">Show &amp; tell</button>
+          </div>
+        </div>
+
+        <ol class="sf-pitch-list" id="community-grid" data-page-size="10">
+          <!-- Rows render here from ./data/discussions.json (see script at end of body). -->
+        </ol>
+
+        <p class="sf-pitch-empty" id="community-empty" hidden>No discussions match your filter.</p>
+
+        <div class="sf-blade__actions">
+          <a class="sf-cta sf-cta--hero sf-cta--primary" href="https://github.com/TrailblazerLabs/community-hub/discussions/new/choose" target="_blank" rel="noopener">
+            Start a discussion on GitHub
+          </a>
+          <button type="button" class="sf-cta sf-cta--hero sf-cta--secondary" id="community-load-more" hidden>
             Load more
           </button>
         </div>
@@ -289,6 +350,7 @@
         const PAGE = parseInt(grid.dataset.pageSize, 10) || 6;
         const UP_ICON = '<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2l6 7h-4v5H6V9H2z"/></svg>';
         const EXT_ICON = '<svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6 2h8v8h-2V5.4L5.4 12 4 10.6 10.6 4H6z"/><path d="M2 4h4v2H4v6h6v-2h2v4H2z"/></svg>';
+        const CHV_ICON = '<svg class="sf-pitch-row__chev" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 6l4 4 4-4z"/></svg>';
 
         const searchEl = document.getElementById('pitches-search');
         const chipsEl = document.getElementById('pitches-tracks');
@@ -303,15 +365,35 @@
         const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
           ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+        let uid = 0;
+        function detailRow(label, value) {
+          if (!value) return '';
+          return `<div class="sf-pitch-detail__row">
+            <span class="sf-pitch-detail__label">${esc(label)}</span>
+            <span class="sf-pitch-detail__value">${esc(value)}</span>
+          </div>`;
+        }
+
         function cardHTML(p) {
           const meta = [p.author ? '@' + p.author : '', p.track]
             .filter(Boolean).map(esc).join(' &middot; ');
           const url = esc(p.url);
+          const id = 'pd-' + (uid++);
+          const details =
+            detailRow('Elevator Pitch', p.elevator || p.excerpt) +
+            detailRow('Problem', p.problem) +
+            detailRow('Builder', p.profile);
+          const hasDetails = details !== '';
           return `<li class="sf-pitch-row">
             <span class="sf-pitch-row__votes">${UP_ICON}<span>${esc(String(p.upvotes ?? 0))}</span></span>
             <span class="sf-pitch-row__body">
-              <a class="sf-pitch-row__title" href="${url}" rel="noopener" target="_blank">${esc(p.title)}</a>
+              <button type="button" class="sf-pitch-row__title" aria-expanded="false" aria-controls="${id}"${hasDetails ? '' : ' disabled'}>
+                <span>${esc(p.title)}</span>${hasDetails ? CHV_ICON : ''}
+              </button>
               <span class="sf-pitch-row__meta">${meta}</span>
+              <div class="sf-pitch-detail" id="${id}" hidden>
+                ${details}
+              </div>
             </span>
             <a class="sf-pitch-row__upvote" href="${url}" rel="noopener" target="_blank">
               ${EXT_ICON}<span>Upvote on GitHub</span>
@@ -342,6 +424,17 @@
 
         loadMore.addEventListener('click', renderNext);
 
+        // Expand/collapse a pitch's detail panel when its title is clicked.
+        grid.addEventListener('click', (e) => {
+          const btn = e.target.closest('.sf-pitch-row__title');
+          if (!btn || btn.disabled) return;
+          const panel = document.getElementById(btn.getAttribute('aria-controls'));
+          if (!panel) return;
+          const open = panel.hidden;
+          panel.hidden = !open;
+          btn.setAttribute('aria-expanded', String(open));
+        });
+
         if (searchEl) {
           searchEl.addEventListener('input', () => { query = searchEl.value; applyFilter(); });
         }
@@ -366,6 +459,148 @@
             grid.innerHTML = '<li class="sf-pitch-row"><span class="sf-pitch-row__meta" style="padding:16px 20px">No pitches to show yet — be the first to pitch your idea.</span></li>';
             loadMore.hidden = true;
             console.error('pitches:', err);
+          });
+      })();
+    </script>
+
+    <!-- ═══ SUB-TABS — show one panel at a time; deep-link via #pitch/#pitches/#community ═══ -->
+    <script>
+      (function () {
+        const tablist = document.querySelector('.sf-tabs');
+        if (!tablist) return;
+        const tabs = Array.from(tablist.querySelectorAll('.sf-tab'));
+
+        // Map a URL hash to the tab that owns it.
+        const HASH_TO_TAB = {
+          '#pitch': 'tab-pitch',
+          '#pitches': 'tab-pitches',
+          '#community': 'tab-community',
+        };
+
+        function activate(tab) {
+          tabs.forEach((t) => {
+            const on = t === tab;
+            t.classList.toggle('is-active', on);
+            t.setAttribute('aria-selected', String(on));
+            t.tabIndex = on ? 0 : -1;
+            const panel = document.getElementById(t.getAttribute('aria-controls'));
+            if (panel) panel.hidden = !on;
+          });
+        }
+
+        tabs.forEach((tab) => tab.addEventListener('click', () => activate(tab)));
+
+        // Left/right arrow keys move between tabs (WAI-ARIA tab pattern).
+        tablist.addEventListener('keydown', (e) => {
+          if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+          const i = tabs.indexOf(document.activeElement);
+          if (i === -1) return;
+          const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+          next.focus();
+          activate(next);
+          e.preventDefault();
+        });
+
+        // Honor a deep link (e.g. engage.html#community) on load.
+        const fromHash = HASH_TO_TAB[window.location.hash];
+        const start = (fromHash && document.getElementById(fromHash)) || tabs[0];
+        activate(start);
+      })();
+    </script>
+
+    <!-- ═══ COMMUNITY HUB — data-driven discussion list + Load more ═══ -->
+    <script>
+      (function () {
+        const grid = document.getElementById('community-grid');
+        const loadMore = document.getElementById('community-load-more');
+        if (!grid || !loadMore) return;
+
+        const PAGE = parseInt(grid.dataset.pageSize, 10) || 10;
+        const EXT_ICON = '<svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6 2h8v8h-2V5.4L5.4 12 4 10.6 10.6 4H6z"/><path d="M2 4h4v2H4v6h6v-2h2v4H2z"/></svg>';
+
+        const searchEl = document.getElementById('community-search');
+        const catsEl = document.getElementById('community-cats');
+        const emptyEl = document.getElementById('community-empty');
+
+        let items = [];      // all, announcement-first (as generated)
+        let filtered = [];
+        let shown = 0;
+        let query = '';
+        let category = '';   // '' = All
+
+        const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
+          ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+        function rowHTML(d) {
+          const isAnn = (d.category || '').toLowerCase() === 'announcements';
+          const badge = d.category
+            ? `<span class="sf-disc-badge${isAnn ? ' sf-disc-badge--ann' : ''}">${esc(d.category)}</span>`
+            : '';
+          const meta = [d.author ? '@' + d.author : '',
+                        d.comments ? d.comments + (d.comments === 1 ? ' reply' : ' replies') : '']
+            .filter(Boolean).map(esc).join(' &middot; ');
+          const url = esc(d.url);
+          return `<li class="sf-pitch-row">
+            <span class="sf-pitch-row__body">
+              <a class="sf-pitch-row__title sf-disc-title" href="${url}" rel="noopener" target="_blank">
+                <span>${esc(d.title)}</span>
+              </a>
+              <span class="sf-pitch-row__meta">${badge}${badge && meta ? ' &middot; ' : ''}${meta}</span>
+              ${d.excerpt ? `<span class="sf-disc-excerpt">${esc(d.excerpt)}</span>` : ''}
+            </span>
+            <a class="sf-pitch-row__upvote" href="${url}" rel="noopener" target="_blank">
+              ${EXT_ICON}<span>View on GitHub</span>
+            </a>
+          </li>`;
+        }
+
+        function applyFilter() {
+          const q = query.trim().toLowerCase();
+          filtered = items.filter((d) => {
+            if (category && (d.category || '').toLowerCase() !== category.toLowerCase()) return false;
+            if (!q) return true;
+            return (d.title || '').toLowerCase().includes(q) ||
+                   (d.author || '').toLowerCase().includes(q);
+          });
+          grid.innerHTML = '';
+          shown = 0;
+          renderNext();
+          emptyEl.hidden = filtered.length > 0;
+        }
+
+        function renderNext() {
+          const next = filtered.slice(shown, shown + PAGE);
+          grid.insertAdjacentHTML('beforeend', next.map(rowHTML).join(''));
+          shown += next.length;
+          loadMore.hidden = shown >= filtered.length;
+        }
+
+        loadMore.addEventListener('click', renderNext);
+
+        if (searchEl) {
+          searchEl.addEventListener('input', () => { query = searchEl.value; applyFilter(); });
+        }
+        if (catsEl) {
+          catsEl.addEventListener('click', (e) => {
+            const btn = e.target.closest('.sf-pitch-chip');
+            if (!btn) return;
+            category = btn.dataset.cat || '';
+            catsEl.querySelectorAll('.sf-pitch-chip').forEach((b) =>
+              b.classList.toggle('is-active', b === btn));
+            applyFilter();
+          });
+        }
+
+        fetch('./data/discussions.json')
+          .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+          .then((data) => {
+            items = Array.isArray(data) ? data : [];
+            applyFilter();
+          })
+          .catch((err) => {
+            grid.innerHTML = '<li class="sf-pitch-row"><span class="sf-pitch-row__meta" style="padding:16px 20px">No discussions yet — start the first one on GitHub.</span></li>';
+            loadMore.hidden = true;
+            console.error('discussions:', err);
           });
       })();
     </script>
