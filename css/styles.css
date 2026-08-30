@@ -406,7 +406,8 @@ img { max-width: 100%; }
 .sf-disclaimer__label { font-weight: 700; color: var(--color-on-surface-1, #001E5B); }
 
 /* Development track personas (How it Works) */
-.sf-tracks { margin-top: 56px; }
+.sf-tracks { margin-top: 0; }
+.sf-card-grid--steps { margin-top: 56px; }
 .sf-tracks__header { text-align: center; max-width: 720px; margin: 0 auto 28px; }
 .sf-tracks__title {
   margin: 0 0 8px;
@@ -495,7 +496,7 @@ img { max-width: 100%; }
 .sf-card, .sf-card *, .sf-card *::before, .sf-card *::after { box-sizing: border-box; }
 .sf-card, .sf-asset-card, .sf-builder-card {
   display: flex; flex-direction: column;
-  width: 100%; text-align: left;
+  width: 100%; height: 100%; text-align: left;
   padding: var(--space-6, 32px) var(--space-5, 24px);
   gap: var(--space-content-md, 16px);
   background: var(--color-container-1);
@@ -516,7 +517,7 @@ img { max-width: 100%; }
 .sf-card__copy img {
   display: block;
   width: auto;
-  height: 128px;
+  height: 88px;
   margin: 0 auto;
 }
 
@@ -575,7 +576,7 @@ img { max-width: 100%; }
 .sf-asset-card__desc {
   margin: 0;
   font-family: var(--font-style-body-copy-2-family, "Salesforce Sans", Arial, sans-serif);
-  font-weight: 400; font-size: 16px; line-height: 24px;
+  font-weight: 400; font-size: 14px; line-height: 20px;
   color: var(--color-on-surface-3, #444444);
 }
 .sf-asset-card__tags {
