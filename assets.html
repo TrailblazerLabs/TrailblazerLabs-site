@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en" data-theme="day">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community Assets | Trailblazer Labs</title>
+
+    <!-- ═══ BRAND FONTS (Avant Garde + Salesforce Sans) ═══ -->
+    <style>
+      @font-face {
+        font-family: "Avant Garde For Salesforce";
+        src: url("https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/fonts/AvantGardeForSalesforceW05-Dm.woff2") format("woff2");
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Salesforce Sans";
+        src: url("https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/fonts/SalesforceSans-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Salesforce Sans";
+        src: url("https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/fonts/SalesforceSans-Bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+
+    <!-- ═══ DESIGN TOKENS (271 flat-hyphenated custom properties) ═══ -->
+    <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/tokens.css" />
+
+    <!-- ═══ SALESFORCE ICONS (496 icon set via CSS mask-image classes) ═══ -->
+    <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/icons.css" />
+
+    <!-- Pre-paint theme restore — mirrors the runtime toggle so a reload
+         renders the stored theme immediately (no default-look flash). -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('tl.theme');
+          if (t === 'night' || t === 'day') {
+            document.documentElement.dataset.theme = t;
+          }
+        } catch (e) { /* private mode — fall back to default (day) */ }
+      })();
+    </script>
+
+    <!-- ═══ PAGE STYLES (nav, hero/compass, blades, cards, footer) ═══ -->
+    <link rel="stylesheet" href="./css/styles.css?v=12" />
+  </head>
+
+  <body>
+    <!-- ═══ GLOBAL HEADER (injected from partials/header.html) ═══ -->
+    <div data-include="header"></div>
+
+    <!-- ═══ PAGE INTRO ═══ -->
+    <section id="engage-intro">
+      <div class="sf-engage-intro">
+        <p class="sf-engage-intro__eyebrow">Community Assets</p>
+        <h1 class="sf-engage-intro__title">Browse Everything the Community Has Built</h1>
+        <p class="sf-engage-intro__lede">
+          Open-source Salesforce solutions from Trailblazer Labs builders. Filter by track,
+          search by topic, and sort by popularity. Every asset opens on GitHub in a new tab.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ ASSETS LIST ═══ -->
+    <div class="sf-tab-panel">
+      <div class="sf-panel">
+        <div class="sf-pitch-controls">
+          <input type="search" id="assets-search" class="sf-form__input sf-pitch-search"
+                 placeholder="Search by title or topic…" aria-label="Search assets" />
+          <div class="sf-pitch-chips" id="assets-tracks" role="group" aria-label="Filter by track">
+            <button type="button" class="sf-pitch-chip is-active" data-track="">All</button>
+            <button type="button" class="sf-pitch-chip" data-track="Strategist">Strategist</button>
+            <button type="button" class="sf-pitch-chip" data-track="Builder">Builder</button>
+            <button type="button" class="sf-pitch-chip" data-track="Engineer">Engineer</button>
+          </div>
+          <label class="sf-assets-sort">
+            <span>Sort</span>
+            <select id="assets-sort" aria-label="Sort assets">
+              <option value="stars">Most stars</option>
+              <option value="forks">Most forks</option>
+              <option value="az">A–Z</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="sf-assets-topics" id="assets-topics" role="group" aria-label="Filter by topic"></div>
+
+        <p class="sf-assets-count" id="assets-count" aria-live="polite"></p>
+
+        <ul class="sf-pitch-list" id="assets-list"></ul>
+      </div>
+    </div>
+
+    <!-- ═══ GLOBAL FOOTER (injected from partials/footer.html) ═══ -->
+    <div data-include="footer"></div>
+
+    <!-- ═══ SHARED HEADER/FOOTER INJECTOR + nav behaviors ═══ -->
+    <script src="./js/partials.js"></script>
+
+    <!-- ═══ COMMUNITY ASSETS — data-driven filterable list ═══ -->
+    <script>
+      (function () {
+        const list = document.getElementById('assets-list');
+        if (!list) return;
+
+        const STAR_ICON = '<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 12.2l-3.7 2 .7-4.1L2 7.2l4.1-.6L8 2.8l1.9 3.8 4.1.6-3 2.9.7 4.1z"/></svg>';
+        const FORK_ICON = '<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3.5a1.5 1.5 0 10-2 1.4V7a3 3 0 003 3h1v1.6a1.5 1.5 0 101 0V10h1a3 3 0 003-3V4.9a1.5 1.5 0 10-1 0V7a2 2 0 01-2 2H6a2 2 0 01-2-2V4.9A1.5 1.5 0 005 3.5z"/></svg>';
+        const GH_ICON = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>';
+
+        const BADGE = { Strategist: 'strat', Builder: 'build', Engineer: 'eng' };
+
+        const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
+          ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+        let assets = [];
+        let activeTrack = '';
+        let activeTopic = '';
+        let activeAuthor = new URLSearchParams(location.search).get('author') || '';
+        let sortBy = 'stars';
+        let query = '';
+
+        function initials(name) { return String(name || '?').slice(0, 2).toUpperCase(); }
+
+        function rowHTML(a) {
+          const badge = a.track && BADGE[a.track]
+            ? `<span class="sf-disc-badge sf-disc-badge--${BADGE[a.track]}">${esc(a.track)}</span>`
+            : '';
+          const topics = (a.tags || []).map(esc).join(' &middot; ');
+          const metaBits = [badge, topics ? `<span class="sf-assets-row__topics">${topics}</span>` : '',
+            a.license ? `<span class="sf-assets-row__license">${esc(a.license)}</span>` : '']
+            .filter(Boolean).join(' ');
+          return `<li class="sf-pitch-row sf-assets-row">
+            <span class="sf-assets-row__avatar" aria-hidden="true">${initials(a.authorName)}</span>
+            <span class="sf-pitch-row__body">
+              <a class="sf-assets-row__title" href="${esc(a.repo)}" target="_blank" rel="noopener">${esc(a.title)}</a>
+              ${a.description ? `<span class="sf-assets-row__desc">${esc(a.description)}</span>` : ''}
+              <span class="sf-pitch-row__meta sf-assets-row__meta">${metaBits}</span>
+            </span>
+            <span class="sf-assets-row__stats">
+              <span class="sf-assets-stat">${STAR_ICON}<b>${a.stars || 0}</b><span>stars</span></span>
+              <span class="sf-assets-stat">${FORK_ICON}<b>${a.forks || 0}</b><span>forks</span></span>
+            </span>
+            <a class="sf-pitch-row__upvote" href="${esc(a.repo)}" target="_blank" rel="noopener">${GH_ICON}<span>View</span></a>
+          </li>`;
+        }
+
+        function render() {
+          let rows = assets.filter((a) => {
+            if (activeAuthor && String(a.authorName).toLowerCase() !== activeAuthor.toLowerCase()) return false;
+            if (activeTrack && a.track !== activeTrack) return false;
+            if (activeTopic && !(a.tags || []).includes(activeTopic)) return false;
+            if (query) {
+              const hay = (a.title + ' ' + (a.tags || []).join(' ')).toLowerCase();
+              if (!hay.includes(query.toLowerCase())) return false;
+            }
+            return true;
+          });
+          rows.sort((x, y) => {
+            if (sortBy === 'az') return String(x.title).localeCompare(String(y.title));
+            if (sortBy === 'forks') return (y.forks || 0) - (x.forks || 0) || String(x.title).localeCompare(String(y.title));
+            return (y.stars || 0) - (x.stars || 0) || String(x.title).localeCompare(String(y.title));
+          });
+          const count = document.getElementById('assets-count');
+          const label = `${rows.length} asset${rows.length === 1 ? '' : 's'}`;
+          count.innerHTML = activeAuthor
+            ? `${label} by <b>@${esc(activeAuthor)}</b> <button type="button" class="sf-assets-clear" id="assets-clear-author">Clear</button>`
+            : label;
+          list.innerHTML = rows.length
+            ? rows.map(rowHTML).join('')
+            : '<li class="sf-pitch-empty">No assets match your filters.</li>';
+        }
+
+        function buildTopics() {
+          const set = new Set();
+          assets.forEach((a) => (a.tags || []).forEach((t) => set.add(t)));
+          const bar = document.getElementById('assets-topics');
+          bar.innerHTML = [...set].sort().map((t) =>
+            `<button type="button" class="sf-assets-topic" data-topic="${esc(t)}">${esc(t)}</button>`).join('');
+          bar.addEventListener('click', (e) => {
+            const c = e.target.closest('.sf-assets-topic');
+            if (!c) return;
+            const t = c.dataset.topic;
+            activeTopic = activeTopic === t ? '' : t;
+            [...bar.children].forEach((x) => x.classList.toggle('is-active', x.dataset.topic === activeTopic));
+            render();
+          });
+        }
+
+        document.getElementById('assets-tracks').addEventListener('click', (e) => {
+          const c = e.target.closest('.sf-pitch-chip');
+          if (!c) return;
+          activeTrack = c.dataset.track;
+          [...document.getElementById('assets-tracks').children]
+            .forEach((x) => x.classList.toggle('is-active', x === c));
+          render();
+        });
+        document.getElementById('assets-sort').addEventListener('change', (e) => { sortBy = e.target.value; render(); });
+        document.getElementById('assets-search').addEventListener('input', (e) => { query = e.target.value; render(); });
+        document.getElementById('assets-count').addEventListener('click', (e) => {
+          if (!e.target.closest('#assets-clear-author')) return;
+          activeAuthor = '';
+          history.replaceState(null, '', location.pathname);
+          render();
+        });
+
+        fetch('./data/community-assets.json')
+          .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+          .then((data) => {
+            assets = Array.isArray(data) ? data : [];
+            buildTopics();
+            render();
+          })
+          .catch((err) => {
+            list.innerHTML = '<li class="sf-pitch-empty">Unable to load community assets right now.</li>';
+            console.error('community-assets:', err);
+          });
+      })();
+    </script>
+  </body>
+</html>
