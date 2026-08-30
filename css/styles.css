@@ -612,6 +612,7 @@ img { max-width: 100%; }
 .sf-carousel__view { overflow: hidden; }
 .sf-carousel__track {
   display: flex;
+  align-items: stretch;
   gap: var(--space-content-xl, 32px);
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -622,12 +623,15 @@ img { max-width: 100%; }
 .sf-carousel__track::-webkit-scrollbar { display: none; }
 .sf-carousel__track > * { scroll-snap-align: start; }
 /* one card per view on small screens; a peek of the next as it widens */
-.sf-carousel .sf-asset-card { flex: 0 0 88%; }
+.sf-carousel .sf-asset-card,
+.sf-carousel .sf-builder-card { flex: 0 0 88%; }
 @media (min-width: 768px) {
-  .sf-carousel .sf-asset-card { flex: 0 0 calc((100% - 32px) / 1.4); }
+  .sf-carousel .sf-asset-card,
+  .sf-carousel .sf-builder-card { flex: 0 0 calc((100% - 32px) / 1.4); }
 }
 @media (min-width: 1024px) {
-  .sf-carousel .sf-asset-card { flex: 0 0 calc((100% - 64px) / 2.2); }
+  .sf-carousel .sf-asset-card,
+  .sf-carousel .sf-builder-card { flex: 0 0 calc((100% - 64px) / 2.2); }
 }
 
 .sf-carousel__btn {
@@ -793,9 +797,13 @@ img { max-width: 100%; }
 /* Builder cards in the carousel: size like asset cards, top-align content. */
 .sf-carousel #builders-grid .sf-builder-card { align-items: flex-start; text-align: left; }
 .sf-carousel #builders-grid .sf-builder-card__avatar { align-self: center; }
-.sf-carousel #builders-grid .sf-builder-card__name { align-self: center; }
+.sf-carousel #builders-grid .sf-builder-card__name { align-self: center; text-align: center; }
 .sf-carousel #builders-grid .sf-builder-card__country { align-self: center; }
 .sf-carousel #builders-grid .sf-builder-card__tracks { justify-content: center; align-self: center; }
+/* Clamp bio so one long profile doesn't set the height for all cards. */
+.sf-carousel #builders-grid .sf-builder-card__bio {
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+}
 
 /* Residency pill in the section header. */
 .sf-blade__badge {
