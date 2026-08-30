@@ -54,34 +54,8 @@
   </head>
 
   <body>
-    <!-- ═══ GLOBAL HEADER ═══ -->
-    <header class="sf-nav" role="banner" data-theme="day">
-      <div class="sf-nav__inner">
-        <a href="/" class="sf-nav__logo" aria-label="Trailblazer Labs home">
-          <img class="sf-nav__logo-bug"
-               src="./images/trailblazer-labs-logo.png"
-               alt="" width="32" height="32" />
-          <img class="sf-nav__wordmark"
-               src="./images/trailblazer-labs-wordmark.svg"
-               alt="Trailblazer Labs" height="18" />
-        </a>
-
-        <button class="sf-nav__hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-
-        <nav class="sf-nav__links" aria-label="Main navigation">
-          <a href="#assets">Discover Solutions</a>
-          <a href="#builders">Meet our Builders</a>
-          <a href="#how">How it Works</a>
-          <a href="https://github.com/TrailblazerLabs/community-hub" target="_blank" rel="noopener">Community</a>
-        </nav>
-
-        <div class="sf-nav__utilities">
-          <a href="#pitch" class="sf-cta sf-cta--primary sf-cta--small sf-nav__cta">Pitch Your Idea</a>
-        </div>
-      </div>
-    </header>
+    <!-- ═══ GLOBAL HEADER (injected from partials/header.html) ═══ -->
+    <div data-include="header"></div>
 
     <!-- ═══ HERO BLADE ═══ -->
     <section class="hero-blade hero-blade--2col">
@@ -98,7 +72,7 @@
             </p>
             <div class="hero-blade__ctas">
               <a class="sf-cta sf-cta--hero sf-cta--primary" href="#assets">Browse Community Assets</a>
-              <a class="sf-cta sf-cta--hero sf-cta--secondary sf-cta--on-dark" href="#pitch">Pitch Your Build</a>
+              <a class="sf-cta sf-cta--hero sf-cta--secondary sf-cta--on-dark" href="./engage.html#pitch">Pitch Your Build</a>
             </div>
           </div>
         </div>
@@ -246,205 +220,26 @@
       </div>
     </section>
 
-    <!-- ═══ PITCH AN IDEA — on-brand form (submits via prefilled GitHub Discussion) ═══ -->
-    <section class="sf-blade" id="pitch" style="background: var(--color-background-1);">
+    <!-- ═══ PITCH TEASER — links to the Get Involved page ═══ -->
+    <section class="sf-blade" id="pitch-teaser" style="background: var(--color-background-1);">
       <div class="sf-blade__cap sf-blade__cap--narrow">
         <div class="sf-blade__header">
           <p class="sf-blade__eyebrow">Apply to a future cohort</p>
-          <h2 class="sf-blade__title">Pitch Your Idea</h2>
+          <h2 class="sf-blade__title">Have an idea to build?</h2>
           <p class="sf-blade__subtitle">
-            Tell us what you want to build. Pitches are reviewed with the community and an
-            internal rubric for feasibility, security, and quality.
-          </p>
-          <p class="sf-blade__subtitle" style="font-size: 14px; opacity: 0.75;">
-            A free GitHub account is required &mdash; you&rsquo;ll review and post your pitch on
-            GitHub after filling this out.
+            Pitch it to the community. Browse what the ecosystem is already backing, then submit
+            your own &mdash; upvotes and an internal rubric shape who joins the next cohort.
           </p>
         </div>
-
-        <form class="sf-form" id="pitch-form" novalidate>
-          <div class="sf-form__group">
-            <label class="sf-form__label" for="pf-username">GitHub username <span class="sf-form__req">*</span></label>
-            <input class="sf-form__input" id="pf-username" name="username" type="text" placeholder="octocat" required />
-          </div>
-
-          <div class="sf-form__group">
-            <label class="sf-form__label" for="pf-elevator">Elevator Pitch <span class="sf-form__req">*</span></label>
-            <input class="sf-form__input" id="pf-elevator" name="elevator" type="text" placeholder="One sentence: what does your idea do?" required />
-          </div>
-
-          <div class="sf-form__group">
-            <label class="sf-form__label" for="pf-problem">Problem Statement <span class="sf-form__req">*</span></label>
-            <textarea class="sf-form__textarea" id="pf-problem" name="problem" rows="4" placeholder="What problem does this solve, and for whom?" required></textarea>
-          </div>
-
-          <div class="sf-form__group">
-            <label class="sf-form__label" for="pf-track">Development Track <span class="sf-form__req">*</span></label>
-            <select class="sf-form__select" id="pf-track" name="track" required>
-              <option value="" disabled selected>Select a track&hellip;</option>
-              <option value="The Strategist (No-Code: Prompt Libraries, Governance Models, Frameworks)">The Strategist (No-Code: Prompt Libraries, Governance Models, Frameworks)</option>
-              <option value="The Builder (Low-Code: Flows, Agentforce, App Config)">The Builder (Low-Code: Flows, Agentforce, App Config)</option>
-              <option value="The Engineer (Pro-Code: Apex, LWC, APIs)">The Engineer (Pro-Code: Apex, LWC, APIs)</option>
-            </select>
-          </div>
-
-          <div class="sf-form__group">
-            <label class="sf-form__label" for="pf-profile">Builder Profile <span class="sf-form__req">*</span></label>
-            <textarea class="sf-form__textarea" id="pf-profile" name="profile" rows="4" placeholder="Tell us about you and why you're the right person to build this." required></textarea>
-          </div>
-
-          <fieldset class="sf-form__acks">
-            <legend class="sf-form__label">Required Acknowledgments <span class="sf-form__req">*</span></legend>
-            <label class="sf-form__ack">
-              <input type="checkbox" class="sf-form__check" name="ack" data-ack="Selection Process: I understand pitches are selected based on community upvotes and an internal rubric evaluating feasibility, security, and quality." required />
-              <span>Selection Process: I understand pitches are selected based on community upvotes and an internal rubric evaluating feasibility, security, and quality.</span>
-            </label>
-            <label class="sf-form__ack">
-              <input type="checkbox" class="sf-form__check" name="ack" data-ack="Production Deadline: If accepted, I agree to complete, document, and pass technical reviews on my asset before the official cohort launch." required />
-              <span>Production Deadline: If accepted, I agree to complete, document, and pass technical reviews on my asset before the official cohort launch.</span>
-            </label>
-            <label class="sf-form__ack">
-              <input type="checkbox" class="sf-form__check" name="ack" data-ack="Open Source Licensing: I am the original creator and agree to release this asset under the Apache 2.0 license." required />
-              <span>Open Source Licensing: I am the original creator and agree to release this asset under the Apache 2.0 license.</span>
-            </label>
-            <label class="sf-form__ack">
-              <input type="checkbox" class="sf-form__check" name="ack" data-ack="180-Day Commitment: I agree to serve as lead maintainer for 6 months (triage issues and review PRs) before community handoff or deprecation." required />
-              <span>180-Day Commitment: I agree to serve as lead maintainer for 6 months (triage issues and review PRs) before community handoff or deprecation.</span>
-            </label>
-          </fieldset>
-
-          <p class="sf-form__error" id="pf-error" role="alert" hidden></p>
-
-          <div class="sf-blade__actions">
-            <button type="submit" class="sf-cta sf-cta--hero sf-cta--primary" id="pf-submit" disabled>
-              Review &amp; post on GitHub
-            </button>
-          </div>
-          <p class="sf-form__hint">
-            We&rsquo;ll open GitHub with your pitch pre-filled. Review it and click
-            &ldquo;Start discussion&rdquo; there to submit.
-          </p>
-        </form>
-      </div>
-    </section>
-
-    <!-- ═══ ECOSYSTEM PITCHES — data-driven grid + Load more ═══ -->
-    <section class="sf-blade" id="pitches">
-      <div class="sf-blade__cap">
-        <div class="sf-blade__header">
-          <p class="sf-blade__eyebrow">Community demand</p>
-          <h2 class="sf-blade__title">What the Ecosystem Is Backing</h2>
-          <p class="sf-blade__subtitle">
-            Real pitches from the community. Upvotes signal demand and help shape who joins the
-            next cohort &mdash; add yours on GitHub.
-          </p>
-          <p class="sf-blade__note">
-            Upvoting happens on GitHub &mdash; a free GitHub account is required.
-          </p>
-        </div>
-
-        <div class="sf-pitch-controls">
-          <input type="search" id="pitches-search" class="sf-form__input sf-pitch-search"
-                 placeholder="Search by GitHub user or title&hellip;" aria-label="Search pitches" />
-          <div class="sf-pitch-chips" id="pitches-tracks" role="group" aria-label="Filter by track">
-            <button type="button" class="sf-pitch-chip is-active" data-track="">All</button>
-            <button type="button" class="sf-pitch-chip" data-track="The Strategist">Strategist</button>
-            <button type="button" class="sf-pitch-chip" data-track="The Builder">Builder</button>
-            <button type="button" class="sf-pitch-chip" data-track="The Engineer">Engineer</button>
-          </div>
-        </div>
-
-        <ol class="sf-pitch-list" id="pitches-grid" data-page-size="10">
-          <!-- Rows render here from ./data/pitches.json (see script at end of body). -->
-        </ol>
-
-        <p class="sf-pitch-empty" id="pitches-empty" hidden>No pitches match your filter.</p>
-
         <div class="sf-blade__actions">
-          <button type="button" class="sf-cta sf-cta--hero sf-cta--secondary" id="pitches-load-more" hidden>
-            Load more
-          </button>
+          <a class="sf-cta sf-cta--hero sf-cta--primary" href="./engage.html#pitch">Pitch Your Idea</a>
+          <a class="sf-cta sf-cta--hero sf-cta--secondary" href="./engage.html#pitches">Browse Pitches</a>
         </div>
       </div>
     </section>
 
-    <!-- ═══ LEGAL FOOTER ═══ -->
-    <footer class="sf-footer" role="contentinfo" data-theme="day" id="community">
-      <div class="sf-footer__links">
-        <div class="sf-footer__brand">
-          <img class="sf-footer__logo"
-               src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/salesforce-logo.svg"
-               alt="Salesforce" width="92" height="65" />
-          <div class="sf-footer__social">
-            <a href="#" aria-label="Facebook"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/facebook.svg" alt="Facebook" width="32" height="32" /></a>
-            <a href="#" aria-label="X (Twitter)"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/twitter.svg" alt="X (Twitter)" width="32" height="32" /></a>
-            <a href="#" aria-label="LinkedIn"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/linkedin.svg" alt="LinkedIn" width="32" height="32" /></a>
-            <a href="#" aria-label="Instagram"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/instagram.svg" alt="Instagram" width="32" height="32" /></a>
-            <a href="#" aria-label="YouTube"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/youtube.svg" alt="YouTube" width="32" height="32" /></a>
-            <a href="#" aria-label="TikTok"><img src="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/dms-design-tokens/images/footer-social/tik-tok.svg" alt="TikTok" width="32" height="32" /></a>
-          </div>
-          <p class="sf-footer__phone">Call us at 1-800-664-9073</p>
-          <a href="#" class="sf-footer__contact-link">See all ways to contact us</a>
-        </div>
-
-        <div class="sf-footer__columns">
-          <div class="sf-footer__column">
-            <h3>Trailblazer Labs</h3>
-            <ul>
-              <li><a href="#assets">Browse community assets</a></li>
-              <li><a href="#pitch">Pitch your idea</a></li>
-              <li><a href="#">Publishing guidelines</a></li>
-              <li><a href="#">Open-source license help</a></li>
-            </ul>
-          </div>
-          <div class="sf-footer__column">
-            <h3>Agent Exchange</h3>
-            <ul>
-              <li><a href="#">Featured agents</a></li>
-              <li><a href="#">Become a partner</a></li>
-              <li><a href="#">Developer docs</a></li>
-              <li><a href="#">Security review</a></li>
-            </ul>
-          </div>
-          <div class="sf-footer__column">
-            <h3>Community</h3>
-            <ul>
-              <li><a href="#">Trailblazer Community</a></li>
-              <li><a href="#">Agentforce Vibes</a></li>
-              <li><a href="#">Trailhead</a></li>
-              <li><a href="#">Dreamforce &rsquo;26</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="sf-footer__bottom">
-        <div class="sf-footer__bottom-inner">
-          <button class="sf-footer__region">
-            <i class="icon icon--world"></i>
-            Worldwide <span aria-hidden="true">&#9662;</span>
-          </button>
-          <div class="sf-footer__legal">
-            <div class="sf-footer__legal-links">
-              <a href="#">Legal</a>
-              <a href="#">Terms of Service</a>
-              <a href="#">Privacy Information</a>
-              <a href="#">Responsible Disclosure</a>
-              <a href="#">Trust</a>
-              <a href="#">Contact</a>
-              <a href="#">Cookie Preferences</a>
-              <a href="#">Your Privacy Choices</a>
-            </div>
-            <p class="sf-footer__copyright">
-              &copy; Copyright 2026 Salesforce, Inc. <a href="#">All rights reserved</a>.
-              Various trademarks held by their respective owners. Salesforce, Inc.
-              Salesforce Tower, 415 Mission Street, 3rd Floor, San Francisco, CA 94105,
-              United States
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <!-- ═══ GLOBAL FOOTER (injected from partials/footer.html) ═══ -->
+    <div data-include="footer"></div>
 
     <!-- ═══ 3D COMPASS (Three.js) — mounts into the masthead ═══ -->
     <script type="importmap">
@@ -457,45 +252,8 @@
     </script>
     <script type="module" src="./js/compass-hero.js"></script>
 
-    <!-- ═══ VANILLA JS — hamburger + theme toggle ═══ -->
-    <script>
-      // Hamburger drawer
-      document.querySelector('.sf-nav__hamburger')?.addEventListener('click', function () {
-        const nav = document.querySelector('.sf-nav__links');
-        const open = nav.classList.toggle('is-open');
-        this.setAttribute('aria-expanded', open);
-      });
-
-      // Day/Night theme toggle — attribute change only; cascade does the rest.
-      document.querySelector('.tl-theme-toggle')?.addEventListener('click', function () {
-        const root = document.documentElement;
-        const next = root.dataset.theme === 'night' ? 'day' : 'night';
-        root.dataset.theme = next;
-        try { localStorage.setItem('tl.theme', next); } catch (e) { /* storage disabled */ }
-      });
-
-      // Nav fade — dark (theater) over the masthead, light once scrolled past
-      // the first 100vh. The masthead is the sticky nav + full-height hero.
-      (function () {
-        const nav = document.querySelector('.sf-nav');
-        const hero = document.querySelector('.hero-blade');
-        if (!nav || !hero) return;
-
-        let ticking = false;
-        function update() {
-          const navH = nav.offsetHeight;
-          const threshold = hero.offsetTop + hero.offsetHeight - navH;
-          nav.classList.toggle('is-scrolled', window.scrollY >= threshold);
-          ticking = false;
-        }
-        function onScroll() {
-          if (!ticking) { ticking = true; requestAnimationFrame(update); }
-        }
-        window.addEventListener('scroll', onScroll, { passive: true });
-        window.addEventListener('resize', update);
-        update();
-      })();
-    </script>
+    <!-- ═══ SHARED HEADER/FOOTER INJECTOR + nav behaviors ═══ -->
+    <script src="./js/partials.js"></script>
 
     <!-- ═══ COMMUNITY ASSETS — data-driven grid + Load more ═══ -->
     <script>
@@ -597,174 +355,5 @@
       })();
     </script>
 
-    <!-- ═══ PITCH FORM — assembles a prefilled GitHub Discussion and opens it ═══ -->
-    <script>
-      (function () {
-        const form = document.getElementById('pitch-form');
-        if (!form) return;
-
-        const NEW_DISCUSSION =
-          'https://github.com/TrailblazerLabs/Cohort-Applications/discussions/new';
-        const CATEGORY = 'pitch-an-idea';
-
-        const submit = document.getElementById('pf-submit');
-        const errorEl = document.getElementById('pf-error');
-        const acks = () => Array.from(form.querySelectorAll('input[name="ack"]'));
-
-        // Enable submit only when all acknowledgments are checked.
-        function refreshSubmit() {
-          submit.disabled = !acks().every((c) => c.checked);
-        }
-        acks().forEach((c) => c.addEventListener('change', refreshSubmit));
-        refreshSubmit();
-
-        function showError(msg) {
-          errorEl.textContent = msg;
-          errorEl.hidden = false;
-        }
-
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-          errorEl.hidden = true;
-
-          const username = form.username.value.trim().replace(/^@/, '');
-          const elevator = form.elevator.value.trim();
-          const problem = form.problem.value.trim();
-          const track = form.track.value;
-          const profile = form.profile.value.trim();
-
-          if (!username || !elevator || !problem || !track || !profile) {
-            showError('Please fill out every field before continuing.');
-            return;
-          }
-          // GitHub usernames: letters/numbers/hyphens, 1-39 chars. Reject the
-          // literal "me" — @me links to a real unrelated account, not the author.
-          if (!/^[A-Za-z0-9-]{1,39}$/.test(username) || username.toLowerCase() === 'me') {
-            showError('Please enter your real GitHub username (e.g. your-handle), not "me".');
-            return;
-          }
-          if (!acks().every((c) => c.checked)) {
-            showError('Please confirm all four acknowledgments.');
-            return;
-          }
-
-          const ackLines = acks()
-            .map((c) => `- [x] ${c.dataset.ack}`)
-            .join('\n');
-
-          const body = [
-            '## Elevator Pitch', elevator, '',
-            '## Problem Statement', problem, '',
-            '## Development Track', track, '',
-            '## Builder Profile', profile, '',
-            '## Required Acknowledgments', ackLines, '',
-            '## Submitted by', '@' + username, '',
-          ].join('\n');
-
-          const url = NEW_DISCUSSION +
-            '?category=' + encodeURIComponent(CATEGORY) +
-            '&title=' + encodeURIComponent(elevator) +
-            '&body=' + encodeURIComponent(body);
-
-          if (url.length > 8000) {
-            showError('Your pitch is a bit long — please shorten it and try again.');
-            return;
-          }
-
-          window.open(url, '_blank', 'noopener');
-        });
-      })();
-    </script>
-
-    <!-- ═══ ECOSYSTEM PITCHES — data-driven grid + Load more ═══ -->
-    <script>
-      (function () {
-        const grid = document.getElementById('pitches-grid');
-        const loadMore = document.getElementById('pitches-load-more');
-        if (!grid || !loadMore) return;
-
-        const PAGE = parseInt(grid.dataset.pageSize, 10) || 6;
-        const UP_ICON = '<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 2l6 7h-4v5H6V9H2z"/></svg>';
-        const EXT_ICON = '<svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M6 2h8v8h-2V5.4L5.4 12 4 10.6 10.6 4H6z"/><path d="M2 4h4v2H4v6h6v-2h2v4H2z"/></svg>';
-
-        const searchEl = document.getElementById('pitches-search');
-        const chipsEl = document.getElementById('pitches-tracks');
-        const emptyEl = document.getElementById('pitches-empty');
-
-        let pitches = [];    // all, upvote-sorted
-        let filtered = [];   // after search + track filter
-        let shown = 0;
-        let query = '';
-        let track = '';      // '' = All
-
-        const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
-          ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-
-        function cardHTML(p) {
-          const meta = [p.author ? '@' + p.author : '', p.track]
-            .filter(Boolean).map(esc).join(' &middot; ');
-          const url = esc(p.url);
-          return `<li class="sf-pitch-row">
-            <span class="sf-pitch-row__votes">${UP_ICON}<span>${esc(String(p.upvotes ?? 0))}</span></span>
-            <span class="sf-pitch-row__body">
-              <a class="sf-pitch-row__title" href="${url}" rel="noopener" target="_blank">${esc(p.title)}</a>
-              <span class="sf-pitch-row__meta">${meta}</span>
-            </span>
-            <a class="sf-pitch-row__upvote" href="${url}" rel="noopener" target="_blank">
-              ${EXT_ICON}<span>Upvote on GitHub</span>
-            </a>
-          </li>`;
-        }
-
-        function applyFilter() {
-          const q = query.trim().toLowerCase();
-          filtered = pitches.filter((p) => {
-            if (track && !(p.track || '').toLowerCase().startsWith(track.toLowerCase())) return false;
-            if (!q) return true;
-            return (p.title || '').toLowerCase().includes(q) ||
-                   (p.author || '').toLowerCase().includes(q);
-          });
-          grid.innerHTML = '';
-          shown = 0;
-          renderNext();
-          emptyEl.hidden = filtered.length > 0;
-        }
-
-        function renderNext() {
-          const next = filtered.slice(shown, shown + PAGE);
-          grid.insertAdjacentHTML('beforeend', next.map(cardHTML).join(''));
-          shown += next.length;
-          loadMore.hidden = shown >= filtered.length;
-        }
-
-        loadMore.addEventListener('click', renderNext);
-
-        if (searchEl) {
-          searchEl.addEventListener('input', () => { query = searchEl.value; applyFilter(); });
-        }
-        if (chipsEl) {
-          chipsEl.addEventListener('click', (e) => {
-            const btn = e.target.closest('.sf-pitch-chip');
-            if (!btn) return;
-            track = btn.dataset.track || '';
-            chipsEl.querySelectorAll('.sf-pitch-chip').forEach((b) =>
-              b.classList.toggle('is-active', b === btn));
-            applyFilter();
-          });
-        }
-
-        fetch('./data/pitches.json')
-          .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
-          .then((data) => {
-            pitches = Array.isArray(data) ? data : [];
-            applyFilter();
-          })
-          .catch((err) => {
-            grid.innerHTML = '<li class="sf-pitch-row"><span class="sf-pitch-row__meta" style="padding:16px 20px">No pitches to show yet — be the first to pitch your idea.</span></li>';
-            loadMore.hidden = true;
-            console.error('pitches:', err);
-          });
-      })();
-    </script>
   </body>
 </html>
