@@ -980,14 +980,18 @@ img { max-width: 100%; }
   border-bottom-color: var(--color-link, #022AC0);
 }
 .sf-tab-panel[hidden] { display: none; }
-/* Tab panels stack under the intro, so they must NOT be full-viewport blades
-   that vertically-center their content (that leaves a huge gap above short
-   panels). Top-align and use normal section padding instead. */
+/* The intro blade AND the tab panels stack vertically, so none of them should
+   be full-viewport blades that vertically-center their content (that leaves a
+   huge gap above short sections). Top-align and use normal section padding. */
+#engage-intro,
 .sf-tab-panel {
   min-height: 0;
   justify-content: flex-start;
   padding-block: 48px;
 }
+/* The intro carries the tabs; give it a little breathing room below the nav
+   without the full 100vh box. */
+#engage-intro { padding-top: 72px; padding-bottom: 24px; }
 
 /* ── Community discussion rows (reuse .sf-pitch-list / .sf-pitch-row) ── */
 .sf-disc-title { text-decoration: none; }
