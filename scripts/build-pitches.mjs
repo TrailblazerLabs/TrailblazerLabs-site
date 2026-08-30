@@ -199,6 +199,7 @@ async function main() {
       avatar: d.author?.avatarUrl || '',
       title: cleanTitle(d.title),
       excerpt: excerptOf(d.bodyText),
+      track: sectionUnder(d.bodyText, 'Development Track'),
       url: d.url,
       upvotes: d.upvoteCount || 0,
     });
