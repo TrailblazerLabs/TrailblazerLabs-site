@@ -117,6 +117,7 @@ img { max-width: 100%; }
 /* ═══════════════════════════════════════════════════════════
    CTA SYSTEM  (recipe-cta-buttons)
    ═══════════════════════════════════════════════════════════ */
+.sf-cta[hidden] { display: none; }
 .sf-cta {
   display: inline-flex; align-items: center; justify-content: center;
   gap: 8px;
@@ -979,6 +980,14 @@ img { max-width: 100%; }
   border-bottom-color: var(--color-link, #022AC0);
 }
 .sf-tab-panel[hidden] { display: none; }
+/* Tab panels stack under the intro, so they must NOT be full-viewport blades
+   that vertically-center their content (that leaves a huge gap above short
+   panels). Top-align and use normal section padding instead. */
+.sf-tab-panel {
+  min-height: 0;
+  justify-content: flex-start;
+  padding-block: 48px;
+}
 
 /* ── Community discussion rows (reuse .sf-pitch-list / .sf-pitch-row) ── */
 .sf-disc-title { text-decoration: none; }
@@ -1077,6 +1086,7 @@ img { max-width: 100%; }
   border-top: 1px solid var(--color-neutral-90, #E5E5E5);
   display: flex; flex-direction: column; gap: 10px;
 }
+.sf-pitch-detail[hidden] { display: none; }
 .sf-pitch-detail__row { display: flex; flex-direction: column; gap: 2px; }
 .sf-pitch-detail__label {
   font-family: var(--font-style-body-copy-3-family, "Salesforce Sans", Arial, sans-serif);
