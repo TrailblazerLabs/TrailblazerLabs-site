@@ -4,6 +4,11 @@ name: Build builders.json
 # Runs on demand and whenever the builder config changes.
 on:
   workflow_dispatch:
+  # Fired by the "Notify site to rebuild" relay in the community-hub and
+  # Cohort-Applications repos whenever a discussion or comment changes there,
+  # so the site's JSON refreshes automatically (near-real-time).
+  repository_dispatch:
+    types: [discussion-changed]
   push:
     branches: [main]
     paths:
