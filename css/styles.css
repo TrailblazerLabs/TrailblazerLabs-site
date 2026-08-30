@@ -959,6 +959,48 @@ img { max-width: 100%; }
 /* ── Partial-include mounts (reserve header height to avoid layout shift) ── */
 [data-include="header"] { display: block; min-height: 64px; }
 
+/* ── Sub-tabs (Get Involved: Pitch / Explore / Community) ── */
+.sf-tabs {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 28px;
+  border-bottom: 1px solid var(--color-neutral-90, #E5E5E5);
+}
+.sf-tab {
+  padding: 12px 20px; border: none; background: none; cursor: pointer;
+  border-bottom: 3px solid transparent; margin-bottom: -1px;
+  font-family: var(--font-style-body-copy-1-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 16px; line-height: 24px;
+  color: var(--color-on-surface-3, #444444);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.sf-tab:hover, .sf-tab:focus-visible { color: var(--color-link, #022AC0); }
+.sf-tab.is-active {
+  color: var(--color-on-surface-1, #001E5B);
+  border-bottom-color: var(--color-link, #022AC0);
+}
+.sf-tab-panel[hidden] { display: none; }
+
+/* ── Community discussion rows (reuse .sf-pitch-list / .sf-pitch-row) ── */
+.sf-disc-title { text-decoration: none; }
+.sf-disc-badge {
+  display: inline-block; padding: 2px 10px; border-radius: 999px;
+  border: 1px solid var(--color-neutral-90, #E5E5E5);
+  font-family: var(--font-style-body-copy-3-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 12px; line-height: 18px;
+  color: var(--color-on-surface-3, #444444);
+}
+.sf-disc-badge--ann {
+  border-color: var(--color-link, #022AC0);
+  background: rgba(2, 42, 192, 0.08);
+  color: var(--color-link, #022AC0);
+}
+.sf-disc-excerpt {
+  margin-top: 4px;
+  font-family: var(--font-style-body-copy-2-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 15px; line-height: 22px;
+  color: var(--color-on-surface-3, #444444);
+}
+
 /* ── Pitch filter controls ── */
 .sf-pitch-controls {
   display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;
@@ -999,7 +1041,7 @@ img { max-width: 100%; }
   border-top: 1px solid var(--color-neutral-90, #E5E5E5);
 }
 .sf-pitch-row {
-  display: flex; align-items: center; gap: 16px;
+  display: flex; align-items: flex-start; gap: 16px;
   padding: 16px 20px;
 }
 .sf-pitch-row__votes {
@@ -1014,14 +1056,37 @@ img { max-width: 100%; }
 .sf-pitch-row__votes svg { flex-shrink: 0; }
 .sf-pitch-row__body { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1 1 auto; }
 .sf-pitch-row__title {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 0; border: none; background: none; text-align: left; cursor: pointer;
   font-family: var(--font-style-body-copy-1-bold-family, "Salesforce Sans", Arial, sans-serif);
   font-weight: 700; font-size: 18px; line-height: 24px;
   color: var(--color-on-surface-1, #001E5B);
-  text-decoration: none;
 }
-.sf-pitch-row__title:hover,
+.sf-pitch-row__title:hover:not([disabled]),
 .sf-pitch-row__title:focus-visible {
   color: var(--color-link, #022AC0); text-decoration: underline;
+}
+.sf-pitch-row__title[disabled] { cursor: default; }
+.sf-pitch-row__chev {
+  flex-shrink: 0; transition: transform 0.15s ease;
+  color: var(--color-on-surface-3, #444444);
+}
+.sf-pitch-row__title[aria-expanded="true"] .sf-pitch-row__chev { transform: rotate(180deg); }
+.sf-pitch-detail {
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px solid var(--color-neutral-90, #E5E5E5);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.sf-pitch-detail__row { display: flex; flex-direction: column; gap: 2px; }
+.sf-pitch-detail__label {
+  font-family: var(--font-style-body-copy-3-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 12px; line-height: 16px; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--color-on-surface-3, #444444);
+}
+.sf-pitch-detail__value {
+  font-family: var(--font-style-body-copy-2-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 400; font-size: 15px; line-height: 22px;
+  color: var(--color-on-surface-1, #001E5B); white-space: pre-wrap;
 }
 .sf-pitch-row__meta {
   font-family: var(--font-style-body-copy-3-family, "Salesforce Sans", Arial, sans-serif);
