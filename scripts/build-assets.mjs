@@ -29,8 +29,8 @@ const API = 'https://api.github.com';
 // `- item` lists under a key, and `key: value` maps under a key. Comments and
 // blank lines ignored. Deliberately not a general YAML parser.
 function parseConfig(text) {
-  const cfg = { exclude_repos: [], exclude_authors: [], titles: {} };
-  let section = null; // 'exclude_repos' | 'exclude_authors' | 'titles' | null
+  const cfg = { exclude_repos: [], exclude_authors: [], builders: {}, titles: {} };
+  let section = null; // 'exclude_repos' | 'exclude_authors' | 'builders' | 'titles' | null
   for (const raw of text.split('\n')) {
     const line = raw.replace(/#.*$/, '').replace(/\s+$/, '');
     if (!line.trim()) continue;
@@ -45,9 +45,9 @@ function parseConfig(text) {
     } else if (section === 'exclude_repos' || section === 'exclude_authors') {
       const m = line.match(/^\s*-\s*(.+)$/);
       if (m) cfg[section].push(m[1].trim());
-    } else if (section === 'titles') {
+    } else if (section === 'builders' || section === 'titles') {
       const m = line.match(/^\s*([\w.-]+):\s*(.+)$/);
-      if (m) cfg.titles[m[1].trim()] = m[2].trim().replace(/^["']|["']$/g, '');
+      if (m) cfg[section][m[1].trim()] = m[2].trim().replace(/^["']|["']$/g, '');
     }
   }
   return cfg;
@@ -82,10 +82,17 @@ async function fetchOrgRepos(org) {
   return repos;
 }
 
-// The builder credited on the card: the first admin collaborator whose login
-// is not program staff (exclude_authors). Falls back to the org itself.
-async function resolveBuilder(fullName, org, excludeAuthors) {
-  const collabs = await gh(`/repos/${fullName}/collaborators?permission=admin&per_page=100`);
+// The builder credited on the card. Priority:
+//   1. config `builders:` pin for this repo (always wins)
+//   2. the first admin collaborator whose login is not program staff
+//      (exclude_authors) AND is a direct collaborator (not org base-role)
+//   3. fallback to the org itself
+async function resolveBuilder(repoName, fullName, org, excludeAuthors, pin) {
+  if (pin) {
+    const user = await gh(`/users/${pin}`);
+    return { login: pin, avatar: user?.avatar_url || '' };
+  }
+  const collabs = await gh(`/repos/${fullName}/collaborators?affiliation=direct&per_page=100`);
   if (Array.isArray(collabs)) {
     const builder = collabs.find(
       (c) => c.permissions?.admin && !excludeAuthors.has(c.login.toLowerCase())
@@ -96,6 +103,21 @@ async function resolveBuilder(fullName, org, excludeAuthors) {
   }
   const orgProfile = await gh(`/orgs/${org}`);
   return { login: org, avatar: orgProfile?.avatar_url || '' };
+}
+
+// The three development tracks are set as a GitHub topic on each repo.
+// Pull the track out of the topic list so the site can filter/badge by it;
+// remaining topics stay as free-form category tags.
+const TRACK_TOPICS = { strategist: 'Strategist', builder: 'Builder', engineer: 'Engineer' };
+function splitTrack(names) {
+  let track = '';
+  const tags = [];
+  for (const n of names) {
+    const label = TRACK_TOPICS[String(n).toLowerCase()];
+    if (label && !track) track = label;
+    else tags.push(n);
+  }
+  return { track, tags };
 }
 
 // case-deflection-companion -> "Case Deflection Companion"
@@ -138,20 +160,25 @@ async function main() {
     }
 
     const topicsRes = await gh(`/repos/${repo.full_name}/topics`);
-    const tags = (topicsRes?.names || []).slice(0, 3);
+    const { track, tags } = splitTrack(topicsRes?.names || []);
 
-    const builder = await resolveBuilder(repo.full_name, org, excludeAuthors);
+    const builder = await resolveBuilder(
+      repo.name, repo.full_name, org, excludeAuthors, cfg.builders?.[repo.name]
+    );
 
     out.push({
       authorName: builder.login,
       authorAvatar: builder.avatar,
       title: cfg.titles?.[repo.name] || friendlyTitle(repo.name),
       description: repo.description || '',
+      track,
       tags,
       repo: repo.html_url,
       license: licenseLabel(repo.license),
+      stars: repo.stargazers_count || 0,
+      forks: repo.forks_count || 0,
     });
-    console.log(`  + ${repo.name}${repo.private ? ' (private)' : ''} -> ${builder.login} [${tags.join(', ')}]`);
+    console.log(`  + ${repo.name}${repo.private ? ' (private)' : ''} -> ${builder.login} [${track || 'no-track'}: ${tags.join(', ')}]`);
   }
 
   writeFileSync(OUT_PATH, JSON.stringify(out, null, 2) + '\n');
