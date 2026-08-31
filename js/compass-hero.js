@@ -160,8 +160,11 @@ if (container) {
 
   // --- Load the swappable shape ---------------------------------------------
   const SHAPE_PARAM = new URLSearchParams(window.location.search).get('shape');
-  const SHAPE_MODE = SHAPE_PARAM || container.dataset.shape || 'compass';
-  const loadShape = SHAPE_LOADERS[SHAPE_MODE] || SHAPE_LOADERS.compass;
+  const REQUESTED_SHAPE = SHAPE_PARAM || container.dataset.shape || 'compass';
+  // Narrow to a known key so the loader lookup + logging can't be driven by
+  // arbitrary URL input (unknown values fall back to the default shape).
+  const SHAPE_MODE = Object.hasOwn(SHAPE_LOADERS, REQUESTED_SHAPE) ? REQUESTED_SHAPE : 'compass';
+  const loadShape = SHAPE_LOADERS[SHAPE_MODE];
 
   let shape = null; // { object, frame, applyAspect, update }
 
@@ -185,7 +188,7 @@ if (container) {
       sync();
     })
     .catch((err) => {
-      console.error(`[hero] failed to load shape "${SHAPE_MODE}":`, err);
+      console.error('[hero] failed to load shape "%s":', SHAPE_MODE, err);
     });
 
   // --- fps cap + visibility gating ------------------------------------------
