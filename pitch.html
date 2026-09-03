@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en" data-theme="day">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pitch Your Idea | Trailblazer Labs</title>
+    <style>
+      @font-face {
+        font-family: "Avant Garde For Salesforce";
+        src: url("https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/fonts/AvantGardeForSalesforceW05-Dm.woff2") format("woff2");
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Salesforce Sans";
+        src: url("https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/fonts/SalesforceSans-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Salesforce Sans";
+        src: url("https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/fonts/SalesforceSans-Bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+    <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/tokens.css" />
+    <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/icons.css" />
+    <link rel="stylesheet" href="./css/trailhead-tokens.css?v=1" />
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('tl.theme');
+          if (theme === 'night' || theme === 'day') document.documentElement.dataset.theme = theme;
+        } catch (error) { /* Use the default day theme when storage is unavailable. */ }
+      })();
+    </script>
+    <link rel="stylesheet" href="./css/styles.css?v=17" />
+  </head>
+  <body>
+    <div data-include="header"></div>
+
+    <main>
+      <section id="involved-intro">
+        <div class="sf-intro">
+          <h1 class="sf-intro__title">How We Co-Create</h1>
+          <p class="sf-intro__lede">
+              Choose a track to follow and then contribute your Salesforce asset to our github community.
+          </p>
+        </div>
+      </section>
+
+      <section class="sf-blade" id="how">
+        <div class="sf-blade__cap">
+          <div class="sf-tracks">
+            <div class="sf-tracks__header">
+              <!-- <p class="sf-tracks__eyebrow">Before You Begin</p> -->
+              <h2 class="sf-tracks__title">Choose Your Development Track</h2>
+              <p class="sf-tracks__lede">
+                Pitches fall into one of three tracks. Find the one that fits your idea before you pitch.
+              </p>
+            </div>
+            <div class="sf-tracks__grid">
+              <article class="sf-track sf-track--strat tds2-card">
+                <span class="sf-track__name">Strategist</span>
+                <p class="sf-track__desc">
+                  Business blueprints, adoption dashboards, change management frameworks, and
+                  solution architectures that drive Agentforce ROI.
+                </p>
+              </article>
+              <article class="sf-track sf-track--build tds2-card">
+                <span class="sf-track__name">Builder</span>
+                <p class="sf-track__desc">
+                  Declarative flows, Agentforce prompts, custom skills, and low-code automations
+                  designed for rapid deployment.
+                </p>
+              </article>
+              <article class="sf-track sf-track--eng tds2-card">
+                <span class="sf-track__name">Engineer</span>
+                <p class="sf-track__desc">
+                  Custom Lightning Web Components (LWCs), Slackbots, API integrations, and
+                  developer tooling pushing the boundaries of the platform.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sf-blade" id="how">
+        <div class="sf-blade__cap">
+            <div class="sf-tracks__header">
+              <!-- <p class="sf-tracks__eyebrow">Get On Track</p> -->
+              <h2 class="sf-tracks__title">Contribute An Asset</h2>
+              <p class="sf-tracks__lede">
+                Our 100% GitHub-native architecture makes sharing and adopting solutions
+              frictionless.
+              </p>
+            </div>
+
+            <ol class="sf-path">
+              <li class="sf-path__step">
+                <span class="sf-path__marker" aria-hidden="true"></span>
+                <article class="sf-path__card tds2-card">
+                  <img class="sf-path__icon" src="./images/3d-icons/touch.png" alt="" />
+                  <div class="sf-path__copy">
+                    <span class="sf-path__eyebrow tds2-badge">Step 1</span>
+                    <p class="sf-path__label">Pitch Your Idea</p>
+                    <p class="sf-path__desc">We're looking for real platform challenges and bold solutions from the community.</p>
+                  </div>
+                </article>
+              </li>
+              <li class="sf-path__step">
+                <span class="sf-path__marker" aria-hidden="true"></span>
+                <article class="sf-path__card tds2-card">
+                  <img class="sf-path__icon" src="./images/3d-icons/plus.png" alt="" />
+                  <div class="sf-path__copy">
+                    <span class="sf-path__eyebrow tds2-badge">Step 2</span>
+                    <p class="sf-path__label">Community Upvoting</p>
+                    <p class="sf-path__desc">The Trailblazer ecosystem votes on ideas to signal real demand.</p>
+                  </div>
+                </article>
+              </li>
+              <li class="sf-path__step">
+                <span class="sf-path__marker" aria-hidden="true"></span>
+                <article class="sf-path__card tds2-card">
+                  <img class="sf-path__icon" src="./images/3d-icons/handshake.png" alt="" />
+                  <div class="sf-path__copy">
+                    <span class="sf-path__eyebrow tds2-badge">Step 3</span>
+                    <p class="sf-path__label">Cohort Selection</p>
+                    <p class="sf-path__desc">Top ideas are selected for the upcoming Builder in Residence cohort.</p>
+                  </div>
+                </article>
+              </li>
+              <li class="sf-path__step">
+                <span class="sf-path__marker" aria-hidden="true"></span>
+                <article class="sf-path__card tds2-card">
+                  <img class="sf-path__icon" src="./images/3d-icons/jetpack.png" alt="" />
+                  <div class="sf-path__copy">
+                    <span class="sf-path__eyebrow tds2-badge">Step 4</span>
+                    <p class="sf-path__label">Shared with Everyone</p>
+                    <p class="sf-path__desc">Assets are hosted in transparent GitHub repositories for anyone to explore and adopt.</p>
+                  </div>
+                </article>
+              </li>
+            </ol>
+        </div>
+      </section>
+
+      <div data-include="pitch-form"></div>
+    </main>
+
+    <div data-include="footer"></div>
+    <script src="./js/partials.js"></script>
+    <script src="./js/pitch-form.js"></script>
+  </body>
+</html>

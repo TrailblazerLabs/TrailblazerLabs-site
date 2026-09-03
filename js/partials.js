@@ -20,7 +20,12 @@
       .catch((err) => { console.error('partials:', err); });
   });
 
-  Promise.all(loads).then(wireNav);
+  Promise.all(loads).then(() => {
+    wireNav();
+    // Let other scripts (e.g. js/pitch-form.js) know all includes are now in the DOM,
+    // since they may run before the relevant partial's fetch has resolved.
+    document.dispatchEvent(new CustomEvent('partials:ready'));
+  });
 
   function wireNav() {
     // Hamburger drawer

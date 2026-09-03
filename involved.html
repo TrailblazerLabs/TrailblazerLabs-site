@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en" data-theme="day">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Involved | Trailblazer Labs</title>
+    <style>
+      @font-face {
+        font-family: "Avant Garde For Salesforce";
+        src: url("https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/fonts/AvantGardeForSalesforceW05-Dm.woff2") format("woff2");
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Salesforce Sans";
+        src: url("https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/fonts/SalesforceSans-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "Salesforce Sans";
+        src: url("https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/fonts/SalesforceSans-Bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+    <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/tokens.css" />
+    <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/icons.css" />
+    <link rel="stylesheet" href="./css/trailhead-tokens.css?v=1" />
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('tl.theme');
+          if (theme === 'night' || theme === 'day') document.documentElement.dataset.theme = theme;
+        } catch (error) { /* Use the default day theme when storage is unavailable. */ }
+      })();
+    </script>
+    <link rel="stylesheet" href="./css/styles.css?v=17" />
+  </head>
+  <body>
+    <div data-include="header"></div>
+
+    <main>
+      <section id="involved-intro">
+        <div class="sf-intro">
+          <h1 class="sf-intro__title">Build, Back, and Join the Community</h1>
+          <p class="sf-intro__lede">
+            Meet the current Builder in Residence cohort, see what the ecosystem is backing,
+            and join the conversation. Ready to contribute your own idea?
+            <a href="./pitch.html#pitch">Pitch Your Idea</a>.
+          </p>
+        </div>
+      </section>
+
+      <div class="sf-tabbar">
+        <div class="sf-tabs" role="tablist" aria-label="Get Involved sections">
+          <button type="button" class="sf-tab is-active" id="tab-builders"
+                  role="tab" aria-selected="true" aria-controls="panel-builders">
+            <span class="sf-tab__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </span>
+            <span class="sf-tab__label">Meet the Builders</span>
+            <span class="sf-tab__hint">Meet the Trailblazers building open-source solutions for the community.</span>
+          </button>
+          <button type="button" class="sf-tab" id="tab-explore"
+                  role="tab" aria-selected="false" aria-controls="panel-explore" tabindex="-1">
+            <span class="sf-tab__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l3 6 6 .5-4.5 4 1.5 6L12 16l-6 3.5 1.5-6L3 9.5 9 9z"/></svg>
+            </span>
+            <span class="sf-tab__label">Explore Pitches</span>
+            <span class="sf-tab__hint">See what the ecosystem is backing and upvote the ideas you want built.</span>
+          </button>
+          <button type="button" class="sf-tab" id="tab-community"
+                  role="tab" aria-selected="false" aria-controls="panel-community" tabindex="-1">
+            <span class="sf-tab__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </span>
+            <span class="sf-tab__label">Community Hub</span>
+            <span class="sf-tab__hint">Join announcements, ideas, questions, and show-and-tell from the community.</span>
+          </button>
+        </div>
+      </div>
+
+      <section class="sf-tab-panel" id="panel-builders" role="tabpanel" aria-labelledby="tab-builders">
+        <div class="sf-panel" id="builders">
+          <div class="sf-panel__head">
+            <div class="sf-panel__headmain">
+              <h2 class="sf-panel__title">The &ldquo;Builder in Residence&rdquo; Model</h2>
+              <p class="sf-panel__lede">
+                Inspired by &ldquo;Artist in Residence&rdquo; programs, we elevate top community
+                contributors by providing a dedicated platform to evangelize their solutions and
+                scale their impact.
+              </p>
+              <p class="sf-blade__eyebrow sf-badge">DF26 Cohort</p>
+            </div>
+          </div>
+          <div class="sf-carousel" id="builders-carousel">
+            <div class="sf-carousel__view">
+              <div class="sf-carousel__track" id="builders-grid" aria-live="polite">
+                <p class="sf-builder-card__bio">Loading builder profiles&hellip;</p>
+              </div>
+            </div>
+            <button type="button" class="sf-carousel__btn sf-carousel__btn--prev tds2-button" id="builders-prev" aria-label="Previous builders">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="sf-carousel__btn sf-carousel__btn--next tds2-button" id="builders-next" aria-label="More builders">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+            <div class="sf-carousel__dots" id="builders-dots" role="group" aria-label="Builder pages"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sf-tab-panel" id="panel-explore" role="tabpanel" aria-labelledby="tab-explore" hidden>
+        <div class="sf-panel" id="explore">
+          <div class="sf-panel__head">
+            <div class="sf-panel__headmain">
+              <h2 class="sf-panel__title">What the Ecosystem Is Backing</h2>
+              <p class="sf-panel__lede">Real pitches from the community. Upvotes signal demand and help shape who joins the next cohort.</p>
+              <p><a class="sf-cta sf-cta--primary sf-cta--medium sf-panel__action tds2-button" href="./pitch.html#pitch">Pitch Your Idea</a></p>
+            </div>
+          </div>
+          <div class="sf-pitch-controls">
+            <input type="search" id="pitches-search" class="sf-form__input sf-pitch-search tds2-input" placeholder="Search by GitHub user or title&hellip;" aria-label="Search pitches" />
+            <div class="sf-pitch-chips" id="pitches-tracks" role="group" aria-label="Filter pitches by track">
+              <button type="button" class="sf-pitch-chip tds2-button is-active" data-track="" aria-pressed="true">All</button>
+              <button type="button" class="sf-pitch-chip tds2-button" data-track="The Strategist" aria-pressed="false">Strategist</button>
+              <button type="button" class="sf-pitch-chip tds2-button" data-track="The Builder" aria-pressed="false">Builder</button>
+              <button type="button" class="sf-pitch-chip tds2-button" data-track="The Engineer" aria-pressed="false">Engineer</button>
+            </div>
+          </div>
+          <ol class="sf-pitch-list" id="pitches-grid" data-page-size="10"></ol>
+          <p class="sf-pitch-empty" id="pitches-empty" hidden>No pitches match your filter.</p>
+          <div class="sf-blade__actions">
+            <button type="button" class="sf-cta sf-cta--hero sf-cta--secondary tds2-button" id="pitches-load-more" hidden>Load More</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="sf-tab-panel" id="panel-community" role="tabpanel" aria-labelledby="tab-community" hidden>
+        <div class="sf-panel">
+          <div class="sf-panel__head">
+            <div class="sf-panel__headmain">
+              <h2 class="sf-panel__title">Community Hub</h2>
+              <p class="sf-panel__lede">Announcements, ideas, questions, and show-and-tell from across the ecosystem.</p>
+              <p>
+                <a class="sf-cta sf-cta--primary sf-cta--medium sf-panel__action tds2-button" href="https://github.com/TrailblazerLabs/community-hub/discussions/new/choose" target="_blank" rel="noopener">Start a Discussion</a>
+              </p>
+            </div>
+          </div>
+          <div class="sf-pitch-controls">
+            <input type="search" id="community-search" class="sf-form__input sf-pitch-search tds2-input" placeholder="Search by GitHub user or title&hellip;" aria-label="Search discussions" />
+            <div class="sf-pitch-chips" id="community-cats" role="group" aria-label="Filter discussions by category">
+              <button type="button" class="sf-pitch-chip tds2-button is-active" data-cat="" aria-pressed="true">All</button>
+              <button type="button" class="sf-pitch-chip tds2-button" data-cat="Announcements" aria-pressed="false">Announcements</button>
+              <button type="button" class="sf-pitch-chip tds2-button" data-cat="General" aria-pressed="false">General</button>
+              <button type="button" class="sf-pitch-chip tds2-button" data-cat="Ideas" aria-pressed="false">Ideas</button>
+              <button type="button" class="sf-pitch-chip tds2-button" data-cat="Q&amp;A" aria-pressed="false">Q&amp;A</button>
+              <button type="button" class="sf-pitch-chip tds2-button" data-cat="Show and tell" aria-pressed="false">Show &amp; Tell</button>
+            </div>
+          </div>
+          <ol class="sf-pitch-list" id="community-grid" data-page-size="10"></ol>
+          <p class="sf-pitch-empty" id="community-empty" hidden>No discussions match your filter.</p>
+          <div class="sf-blade__actions">
+            <button type="button" class="sf-cta sf-cta--hero sf-cta--secondary tds2-button" id="community-load-more" hidden>Load More</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div data-include="footer"></div>
+    <script src="./js/partials.js"></script>
+    <script src="./js/builders-carousel.js"></script>
+    <script src="./js/involved.js"></script>
+  </body>
+</html>

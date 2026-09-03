@@ -117,59 +117,97 @@ img { max-width: 100%; }
    CTA SYSTEM  (recipe-cta-buttons)
    ═══════════════════════════════════════════════════════════ */
 .sf-cta[hidden] { display: none; }
-.sf-cta {
+.sf-cta, .tds2-button {
+  --tds2-button-bg: transparent;
+  --tds2-button-border-color: transparent;
+  --tds2-button-text-color: var(--tds2-color-text-default);
+  --tds2-button-padding-y: var(--tds2-spacing-2);
+  --tds2-button-padding-x: var(--tds2-spacing-5);
+  --tds2-button-gap: var(--tds2-spacing-3);
+  --tds2-button-font-size: var(--tds2-font-size-md);
+  appearance: none;
   display: inline-flex; align-items: center; justify-content: center;
-  gap: 8px;
-  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
-  font-weight: 700;
+  gap: var(--tds2-button-gap);
+  padding: var(--tds2-button-padding-y) var(--tds2-button-padding-x);
+  font-family: var(--tds2-font-body);
+  font-size: var(--tds2-button-font-size);
+  font-weight: var(--tds2-font-weight-bold);
+  line-height: var(--tds2-line-height-normal);
   text-decoration: none;
-  border-radius: var(--radius-4);
-  border: 2px solid transparent;
+  border-radius: var(--tds2-radius-full, 999px);
+  border: 2px solid var(--tds2-button-border-color);
+  background-color: var(--tds2-button-bg);
+  color: var(--tds2-button-text-color);
   cursor: pointer;
-  /* transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; */
-  transition: all 0.15s ease-in-out;
+  outline: var(--tds2-a11y-outline);
+  outline-offset: var(--tds2-a11y-outline-offset);
+  transition: all var(--tds2-transition-fast);
+  user-select: none;
   white-space: nowrap;
 }
 /* Sizes */
-.sf-cta--hero   { font-size: 18px; line-height: 24px; padding: 16px 32px; }
-.sf-cta--medium { font-size: 16px; line-height: 24px; padding: 12px 24px; }
-.sf-cta--small  { font-size: 14px; line-height: 20px; padding: 8px 16px; }
+.sf-cta--hero, .tds2-button--extra-large { --tds2-button-font-size: var(--tds2-font-size-xl); --tds2-button-padding-y: var(--tds2-spacing-3); --tds2-button-padding-x: var(--tds2-spacing-8); line-height: 32px; }
+.sf-cta--medium, .tds2-button--large { --tds2-button-font-size: var(--tds2-font-size-lg); --tds2-button-padding-y: var(--tds2-spacing-2-5); --tds2-button-padding-x: var(--tds2-spacing-6); line-height: 28px; }
+.sf-cta--small, .tds2-button--small { --tds2-button-font-size: var(--tds2-font-size-sm); --tds2-button-padding-y: var(--tds2-spacing-1); --tds2-button-padding-x: var(--tds2-spacing-4); line-height: 20px; }
 /* Primary — brand blue fill */
-.sf-cta--primary {
-  background: var(--color-fill-accent, #066AFE);
-  color: var(--color-on-fill-accent, #FFFFFF);
+.sf-cta--primary, .tds2-button--primary {
+  --tds2-button-bg: var(--tds2-color-brand-primary);
+  --tds2-button-border-color: var(--tds2-color-brand-primary);
+  --tds2-button-text-color: var(--tds2-color-text-inverse);
 }
-.sf-cta--primary:hover { 
-  box-shadow: 0 2px 8px -2px rgba(6,106,254,0.32), 0 8px 12px -2px rgba(6,106,254,0.24);
-  transform: scale(1.03); 
+.sf-cta--primary:hover, .sf-cta--primary:focus-visible,
+.tds2-button--primary:hover, .tds2-button--primary:focus-visible {
+  background-color: var(--tds2-color-brand-primary-dark);
+  border-color: var(--tds2-color-brand-primary-dark);
+  color: var(--tds2-color-text-inverse);
 }
-/* Secondary — white inner fill, translucent border, brand-navy label */
+.sf-cta--primary:active, .tds2-button--primary:active {
+  background-color: var(--tds2-color-brand-primary-darker);
+  border-color: var(--tds2-color-brand-primary-darker);
+}
+/* TDS2 secondary marketing actions use the Glass treatment. */
 .sf-cta--secondary {
-  background: transparent;
-  color: var(--color-on-surface-highlight);
-  border-color: var(--color-on-surface-highlight);
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--tds2-color-brand-primary-darker);
+  border: none;
+  backdrop-filter: blur(0.5rem);
+  box-shadow: var(--tds2-elevation-2), inset 1px 1px 0 rgba(255,255,255,0.5), inset -1px -1px 0 rgba(255,255,255,0.5);
 }
-.sf-cta--secondary:hover { transform: scale(1.03); }
+.sf-cta--secondary:hover, .sf-cta--secondary:focus-visible { background: rgba(255, 255, 255, 0.35); }
+.sf-cta--secondary:active { background: rgba(255, 255, 255, 0.45); }
 /* Special — green "Try for free" pill */
 .sf-cta--special {
   background: var(--color-green-50, #2E844A);
   color: #FFFFFF;
 }
 .sf-cta--special:hover { transform: translateY(-1px); }
+
+.sf-cta--glass, .tds2-button--glass {
+  background: rgba(255, 255, 255, 0.2);
+  font-family: var(--tds2-font-heading);
+  color: var(--tds2-color-brand-primary-darker);
+  border: none;
+  backdrop-filter: blur(0.5rem);
+  box-shadow: var(--tds2-elevation-2), inset 1px 1px 0 rgba(255,255,255,0.5), inset -1px -1px 0 rgba(255,255,255,0.5);
+}
+.sf-cta--glass:hover, .sf-cta--glass:focus-visible,
+.tds2-button--glass:hover, .tds2-button--glass:focus-visible { background: rgba(255, 255, 255, 0.35); }
+.sf-cta--glass:active, .tds2-button--glass:active { background: rgba(255, 255, 255, 0.45); }
+.tds2-button--glass-dark { color: var(--tds2-color-text-inverse); }
+.tds2-button--glass-dark:focus-visible { outline-color: var(--tds2-color-text-inverse); }
+
+
 /* On-dark — Secondary variant repainted for dark blades */
-.hero-blade .sf-cta--secondary {
-  background: transparent;
+.hero-blade .sf-cta {
   color: var(--color-white);
-  border-color: var(--color-alpha-white-50);
-  box-shadow: none;
 }
 .sf-cta--on-dark.sf-cta--secondary:hover,
 [data-theme='night'] .hero-blade .sf-cta--secondary:hover {
   border-color: rgba(255,255,255,1);
 }
-.sf-cta:focus-visible {
-  outline: 3px solid var(--color-border-focus, #066AFE);
-  outline-offset: 2px;
+.sf-cta:focus-visible, .tds2-button:focus-visible {
+  outline: var(--tds2-a11y-outline-focus);
+  outline-offset: var(--tds2-a11y-outline-offset-focus);
 }
 /* Link-type CTA — underlined accent + chevron */
 .sf-cta-link {
@@ -299,6 +337,7 @@ img { max-width: 100%; }
   line-height: var(--font-style-display-4-line-height, 1.125);
   letter-spacing: var(--font-style-display-4-letter-spacing, -0.0025em);
   color: var(--color-white, #FFFFFF);
+  text-align: center;
 }
 .hero-blade__body {
   margin-top: var(--space-content-lg, 24px);
@@ -308,6 +347,8 @@ img { max-width: 100%; }
   line-height: var(--font-style-body-copy-1-line-height, 1.5);
   letter-spacing: var(--font-style-body-copy-1-letter-spacing, 0.00125em);
   color: var(--color-alpha-white-85, rgba(255,255,255,0.85));
+  text-align: center;
+  text-wrap: balance;
 }
 .hero-blade__ctas {
   display: inline-flex; gap: var(--space-4, 16px);
@@ -348,13 +389,12 @@ img { max-width: 100%; }
     column-gap: var(--space-grid-tablet-landscape-gutter, 32px);
     align-items: center; row-gap: 0;
   }
-  .hero-blade__content { grid-column: 1 / span 6; grid-row: 1; }
+  .hero-blade__content { grid-column: 4 / span 6; grid-row: 1; }
   .hero-blade__asset { grid-column: 7 / span 6; grid-row: 1; max-width: none; margin-inline: 0; }
   .hero-blade__headline {
     font-size: var(--font-style-display-3-size, 48px);
     letter-spacing: var(--font-style-display-3-letter-spacing, -0.0025em);
   }
-  .hero-blade__body { padding-right: calc((100% + var(--space-grid-tablet-landscape-gutter, 32px)) / 6); }
 }
 @media (min-width: 1440px) {
   .hero-blade {
@@ -367,19 +407,22 @@ img { max-width: 100%; }
     font-size: var(--font-style-display-2-size, 56px);
     letter-spacing: var(--font-style-display-2-letter-spacing, -0.003em);
   }
-  .hero-blade__body { padding-right: calc((100% + var(--space-grid-desktop-gutter, 40px)) / 6); }
 }
 
-.sf-badge, 
+.sf-badge, .tds2-badge,
 .sf-asset-card__tag {
-  display: inline-block;
-  padding: 4px 10px; border-radius: 100px;
-  background: var(--color-electric-blue-95); 
-  color: var(--color-on-surface-1);
-  font-family: var(--font-style-body-copy-3-bold-family, "Salesforce Sans", Arial, sans-serif);
-  font-weight: 700; font-size: 12px; line-height: 18px;
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: var(--tds2-spacing-1);
+  padding: var(--tds2-spacing-1) var(--tds2-spacing-3);
+  border-radius: var(--tds2-radius-md);
+  background: var(--tds2-color-brand-primary-light);
+  color: var(--tds2-color-text-brand-strong);
+  font-family: var(--tds2-font-body);
+  font-weight: var(--tds2-font-weight-bold); font-size: var(--tds2-font-size-xs); line-height: 18px;
   white-space: nowrap;
 }
+.tds2-badge--small { padding: 2px var(--tds2-spacing-2); font-size: var(--tds2-font-size-xxs); }
+.tds2-badge--medium { padding: var(--tds2-spacing-1) var(--tds2-spacing-3); font-size: var(--tds2-font-size-xs); }
 
 
 /* ═══════════════════════════════════════════════════════════
@@ -387,7 +430,6 @@ img { max-width: 100%; }
    ═══════════════════════════════════════════════════════════ */
 .sf-blade {
   width: 100%;
-  min-height: 100vh; min-height: 100svh;
   display: flex; flex-direction: column; justify-content: center;
   padding-inline: var(--space-grid-mobile-margin, 24px);
   padding-block: 64px;
@@ -408,6 +450,81 @@ img { max-width: 100%; }
 /* Development track personas (How it Works) */
 .sf-tracks { margin-top: 0; }
 .sf-card-grid--steps { margin-top: 56px; }
+
+/* ── Trailhead-style vertical path (How It Works) ── */
+.sf-path {
+  list-style: none;
+  margin: 56px auto 0;
+  padding: 0;
+  max-width: 900px;
+  position: relative;
+}
+/* Continuous connector line running down the markers */
+.sf-path::before {
+  content: "";
+  position: absolute;
+  top: 24px;
+  bottom: 84px;
+  left: 15px;
+  width: 2px;
+  background: var(--tds2-color-border-default, #E5E5E5);
+}
+.sf-path__step {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-content-lg, 24px);
+  padding-left: 48px;
+}
+.sf-path__step + .sf-path__step { margin-top: var(--space-content-lg, 24px); }
+.sf-path__marker {
+  position: absolute;
+  left: 4px;
+  top: 24px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--tds2-color-bg-default, #fff);
+  border: 2px solid var(--tds2-color-border-default, #E5E5E5);
+  z-index: 1;
+}
+.tds2-card.sf-path__card {
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-content-lg, 24px);
+  padding: var(--tds2-spacing-5, 20px) var(--tds2-spacing-6, 24px);
+}
+.sf-path__icon {
+  flex: 0 0 auto;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+.sf-path__copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tds2-spacing-2);
+  min-width: 0;
+}
+.sf-path__eyebrow {
+  width: fit-content;
+}
+.sf-path__label {
+  margin: 0;
+  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 18px; line-height: 1.3;
+  color: var(--tds2-color-brand-primary, #032D60);
+}
+.sf-path__desc {
+  margin: 0;
+  font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
+  font-size: 15px; line-height: 1.5;
+  color: var(--color-on-surface-3, #444);
+}
+@media (max-width: 560px) {
+  .sf-path__card { flex-direction: column; align-items: flex-start; text-align: left; }
+}
 .sf-tracks__header { text-align: center; max-width: 720px; margin: 0 auto 28px; }
 .sf-tracks__title {
   margin: 0 0 8px;
@@ -424,8 +541,8 @@ img { max-width: 100%; }
 @media (min-width: 768px) { .sf-tracks__grid { grid-template-columns: repeat(3, 1fr); } }
 .sf-track {
   border: 1px solid var(--color-neutral-90, #E5E5E5);
-  border-top: 4px solid var(--color-neutral-90, #E5E5E5);
-  border-radius: 12px; background: #FFFFFF; padding: 22px 22px 24px;
+  border-radius: var(--tds2-radius-4xl); background: var(--tds2-color-bg-default); padding: var(--tds2-spacing-6);
+  box-shadow: var(--tds2-elevation-0);
 }
 .sf-track__name {
   display: block; margin-bottom: 8px;
@@ -437,11 +554,8 @@ img { max-width: 100%; }
   font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
   font-size: 15px; line-height: 1.5; color: var(--color-on-surface-3, #444444);
 }
-.sf-track--strat { border-top-color: #5B2A86; }
 .sf-track--strat .sf-track__name { color: #5B2A86; }
-.sf-track--build { border-top-color: #1D6A3C; }
 .sf-track--build .sf-track__name { color: #1D6A3C; }
-.sf-track--eng { border-top-color: #022AC0; }
 .sf-track--eng .sf-track__name { color: #022AC0; }
 .sf-blade__eyebrow {
   margin: 0 0 var(--space-content-sm, 12px) 0;
@@ -466,6 +580,8 @@ img { max-width: 100%; }
 }
 .sf-blade__actions {
   display: flex;
+  flex-wrap: wrap;
+  gap: var(--tds2-spacing-4);
   margin: var(--space-8) 0;
   justify-content: center;
 }
@@ -494,17 +610,31 @@ img { max-width: 100%; }
 
 /* ── Card (Day-island, recipe-card) ── */
 .sf-card, .sf-card *, .sf-card *::before, .sf-card *::after { box-sizing: border-box; }
+.tds2-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  border: 1px solid var(--tds2-color-border-default);
+  border-radius: var(--tds2-radius-4xl);
+  background: var(--tds2-color-bg-default);
+  box-shadow: var(--tds2-elevation-0);
+  transition: all var(--tds2-transition-fast);
+  font-family: var(--tds2-font-body);
+}
 .sf-card, .sf-asset-card, .sf-builder-card {
   display: flex; flex-direction: column;
   width: 100%; height: 100%; text-align: left;
-  padding: var(--space-6, 32px) var(--space-5, 24px);
+  padding: var(--tds2-spacing-6);
   gap: var(--space-content-md, 16px);
-  background: var(--color-container-1);
-  box-shadow: 2px 2px 18px rgba(24, 24, 24, 0.16);
-  border-radius: 16px;
+  background: var(--tds2-color-bg-default);
+  border: 1px solid var(--tds2-color-border-default);
+  box-shadow: var(--tds2-elevation-0);
+  border-radius: var(--tds2-radius-4xl);
   overflow-wrap: anywhere; word-break: normal; hyphens: auto;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition: all var(--tds2-transition-fast);
 }
+.sf-pitch-row.tds2-card { flex-direction: row; }
 .sf-card__image {
   aspect-ratio: 271 / 180;
   background: var(--color-neutral-80, #C9C9C9);
@@ -548,8 +678,8 @@ img { max-width: 100%; }
 .sf-asset-card {
 }
 .sf-asset-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px -2px rgba(24,24,24,0.12), 0 12px 20px -2px rgba(24,24,24,0.20);
+  transform: translateY(calc(var(--tds2-spacing-1) * -1));
+  box-shadow: var(--tds2-elevation-1);
 }
 .sf-asset-card__author {
   display: flex; align-items: center; gap: 10px;
@@ -609,7 +739,10 @@ img { max-width: 100%; }
 
 /* ── Community showcase carousel (home #assets) ── */
 .sf-carousel { position: relative; }
-.sf-carousel__view { overflow: hidden; }
+.sf-carousel__view {
+  overflow: hidden;
+  margin: calc(var(--tds2-spacing-4) * -1) calc(var(--tds2-spacing-3) * -1) calc(var(--tds2-spacing-6) * -1);
+}
 .sf-carousel__track {
   display: flex;
   align-items: flex-start;
@@ -617,7 +750,8 @@ img { max-width: 100%; }
   overflow-x: auto;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-  padding: 6px 2px 8px;
+  /* Keep the scroll viewport while reserving room for TDS card elevation. */
+  padding: var(--tds2-spacing-4) var(--tds2-spacing-3) var(--tds2-spacing-6);
   scrollbar-width: none;
 }
 .sf-carousel__track::-webkit-scrollbar { display: none; }
@@ -651,11 +785,19 @@ img { max-width: 100%; }
 }
 .sf-carousel__btn:hover { background: var(--color-surface-container-2, #E5E5E5); border-color: var(--color-on-surface-1, #001E5B); }
 .sf-carousel__btn:disabled { opacity: 0; pointer-events: none; }
-.sf-carousel__btn svg { width: 18px; height: 18px; }
+.sf-carousel__btn svg { display: block; width: 18px; height: 18px; color: inherit; }
 .sf-carousel__btn--prev { left: -14px; }
 .sf-carousel__btn--next { right: -14px; }
 @media (max-width: 1023px) {
   .sf-carousel__btn { display: none; }
+}
+/* Desktop: reserve side gutters so the paging buttons sit fully outside the
+   cards instead of overlapping them. */
+@media (min-width: 1024px) {
+  .sf-carousel { padding-inline: 56px; }
+  .sf-carousel__view { margin-inline: 0; }
+  .sf-carousel__btn--prev { left: 2px; }
+  .sf-carousel__btn--next { right: 2px; }
 }
 
 .sf-carousel__dots {
@@ -670,16 +812,13 @@ img { max-width: 100%; }
 }
 .sf-carousel__dot.is-active { background: var(--color-accent-1, #066AFE); width: 20px; border-radius: 99px; }
 
-/* ── Rich asset card (carousel variant: track accent + stats footer) ── */
+/* ── Rich asset card (carousel variant: stats footer) ── */
 .sf-asset-card--rich { padding: 0; overflow: hidden; }
-.sf-asset-card__accent { display: block; height: 5px; background: var(--color-neutral-80, #C9C9C9); }
-.sf-asset-card--rich.is-strat .sf-asset-card__accent { background: #5B2A86; }
-.sf-asset-card--rich.is-build .sf-asset-card__accent { background: #1D6A3C; }
-.sf-asset-card--rich.is-eng   .sf-asset-card__accent { background: #022AC0; }
+.sf-asset-card__accent { display: none; }
 .sf-asset-card__body {
   flex: 1; display: flex; flex-direction: column;
   gap: var(--space-content-md, 16px);
-  padding: var(--space-6, 32px) var(--space-5, 24px) var(--space-5, 24px);
+  padding: var(--tds2-spacing-6);
 }
 .sf-asset-card__track { align-self: flex-start; }
 .sf-asset-card__track-dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
@@ -711,8 +850,8 @@ img { max-width: 100%; }
   align-items: center;
 }
 .sf-builder-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px -2px rgba(24,24,24,0.12), 0 12px 20px -2px rgba(24,24,24,0.20);
+  transform: translateY(calc(var(--tds2-spacing-1) * -1));
+  box-shadow: var(--tds2-elevation-1);
 }
 .sf-builder-card__avatar {
   width: 96px; height: 96px; flex-shrink: 0;
@@ -813,7 +952,7 @@ img { max-width: 100%; }
 .sf-blade__badge {
   display: inline-flex; align-items: center; gap: 8px;
   margin-top: var(--space-content-sm, 12px);
-  padding: 6px 14px; border-radius: 100px;
+  padding: 6px 14px; border-radius: var(--tds2-radius-md);
   background: #EAF5FE; color: #032D60;
   font-family: var(--font-style-body-copy-3-bold-family, "Salesforce Sans", Arial, sans-serif);
   font-weight: 700; font-size: 13px; line-height: 18px;
@@ -1080,25 +1219,34 @@ img { max-width: 100%; }
   color: var(--color-on-surface-1, #001E5B);
 }
 .sf-form__req { color: #B60554; margin-left: 2px; }
-.sf-form__input, .sf-form__textarea, .sf-form__select {
+.tds2-input, .sf-form__input, .sf-form__textarea, .sf-form__select {
   width: 100%;
-  padding: 12px 14px;
-  border: 1px solid var(--color-neutral-80, #C9C9C9);
-  border-radius: var(--radius-4, 8px);
-  background: var(--color-surface-1, #FFFFFF);
-  font-family: var(--font-style-body-copy-2-family, "Salesforce Sans", Arial, sans-serif);
-  font-weight: 400; font-size: 16px; line-height: 24px;
-  color: var(--color-on-surface-2, #181818);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  padding: var(--tds2-spacing-2) var(--tds2-spacing-3);
+  border: 1px solid var(--tds2-color-border-strong);
+  border-radius: var(--tds2-radius-lg);
+  background: var(--tds2-color-bg-default);
+  font-family: var(--tds2-font-body);
+  font-weight: var(--tds2-font-weight-normal); font-size: var(--tds2-font-size-md); line-height: var(--tds2-line-height-normal);
+  color: var(--tds2-color-text-default);
+  outline: var(--tds2-a11y-outline);
+  outline-offset: var(--tds2-a11y-outline-offset);
+  transition: var(--tds2-a11y-outline-transition), all var(--tds2-transition-fast);
 }
 .sf-form__textarea { min-height: 120px; resize: vertical; }
-.sf-form__input:focus, .sf-form__textarea:focus, .sf-form__select:focus {
-  outline: none;
-  border-color: var(--color-link, #022AC0);
-  box-shadow: 0 0 0 3px rgba(2, 42, 192, 0.18);
+.tds2-input:hover:not(:disabled):not(:focus-visible),
+.sf-form__input:hover:not(:disabled):not(:focus-visible),
+.sf-form__textarea:hover:not(:disabled):not(:focus-visible),
+.sf-form__select:hover:not(:disabled):not(:focus-visible) {
+  border-color: var(--tds2-color-border-hover);
 }
-.sf-form__input::placeholder, .sf-form__textarea::placeholder {
-  color: var(--color-on-surface-3, #444444); opacity: 0.6;
+.tds2-input:focus-visible, .sf-form__input:focus-visible, .sf-form__textarea:focus-visible, .sf-form__select:focus-visible {
+  outline: var(--tds2-a11y-outline-focus);
+  outline-offset: var(--tds2-a11y-outline-offset-focus);
+  border-color: var(--tds2-color-border-focus);
+  background-color: var(--tds2-color-brand-primary-light);
+}
+.tds2-input::placeholder, .sf-form__input::placeholder, .sf-form__textarea::placeholder {
+  color: var(--tds2-color-text-placeholder); opacity: 1;
 }
 
 .sf-form__acks { display: flex; flex-direction: column; gap: 12px; border: 0; padding: 0; margin: 0; }
@@ -1161,89 +1309,83 @@ img { max-width: 100%; }
    ═══════════════════════════════════════════════════════════════════════════ */
 
 /* ── Single page intro (replaces the per-tab eyebrow/title/subtitle stack) ── */
-#engage-intro {
+.sf-intro {
   padding: 72px var(--space-grid-mobile-margin, 24px) 8px;
 }
-.sf-engage-intro { max-width: 780px; margin: 0 auto; text-align: center; }
-.sf-engage-intro__eyebrow {
-  margin: 0 0 10px;
-  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
-  font-weight: 700; font-size: 14px; line-height: 1.4;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--color-link, #022AC0);
+.sf-intro { 
+  margin: 0 auto; 
+  text-align: center; 
 }
-.sf-engage-intro__title {
-  margin: 0;
+.sf-intro__title {
+  margin: 0 auto;
   font-family: var(--font-style-display-4-family, "Avant Garde For Salesforce", Arial, sans-serif);
   font-weight: var(--font-style-display-4-weight, 600);
   font-size: var(--font-style-display-4-size, 40px);
   line-height: var(--font-style-display-4-line-height, 1.125);
   letter-spacing: var(--font-style-display-4-letter-spacing, -0.0025em);
   color: var(--color-on-surface-1, #001E5B);
+  max-width: 40ch;
+  text-wrap: pretty;
 }
-.sf-engage-intro__lede {
-  margin: 16px auto 0; max-width: 620px;
+.sf-intro__lede {
+  margin: 16px auto 0;
+  max-width: 80ch;
+  text-wrap: balance;
   font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
   font-weight: 400; font-size: 18px; line-height: 1.55;
   color: var(--color-on-surface-3, #444444);
 }
 
 /* ── Card tabs (icon tile + label + hint; spread full content width) ── */
+/* ── TDS2 "base" style tabs (underline indicator, not cards) ── */
 .sf-tabbar { margin-top: 40px; }
 .sf-tabs {
-  display: grid; grid-template-columns: 1fr; gap: 16px;
+  display: flex; align-items: flex-end; justify-content: center; gap: 0;
   max-width: 1080px;
   margin-inline: auto;
   padding-inline: var(--space-grid-mobile-margin, 24px);
+  border-bottom: 1px solid var(--color-neutral-90, #E5E5E5);
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 .sf-tab {
-  height: 100%; text-align: center; cursor: pointer;
-  display: flex; flex-direction: column; align-items: center;
-  padding: 28px 28px 26px;
-  border: 1px solid var(--color-neutral-90, #E5E5E5); border-radius: 16px;
-  background: var(--color-container-1, #FFFFFF);
+  cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; white-space: nowrap;
+  padding: 11px 12px;
+  border: 0; background: transparent;
+  color: var(--color-on-surface-3, #444444);
   font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
-  transition: box-shadow 0.15s ease, border-color 0.15s ease,
-              background-color 0.15s ease, transform 0.15s ease;
+  font-weight: 400; font-size: 16px; line-height: 1.5;
+  position: relative;
+  transition: color 0.15s ease, box-shadow 0.15s ease;
 }
 .sf-tab:hover {
-  box-shadow: 0 8px 24px rgba(0, 30, 91, 0.10);
-  transform: translateY(-2px);
+  box-shadow: inset 0 -2px 0 0 var(--color-fill-accent, #066AFE);
 }
 .sf-tab:focus-visible {
   outline: 3px solid var(--color-border-focus, #066AFE); outline-offset: 2px;
+  z-index: 1;
 }
 .sf-tab__icon {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 44px; height: 44px; border-radius: 12px; margin-bottom: 16px;
-  background: var(--color-neutral-95, #F3F3F3);
-  color: var(--color-on-surface-1, #001E5B);
-  transition: background-color 0.15s ease, color 0.15s ease;
+  color: currentColor;
 }
-.sf-tab__icon svg { width: 24px; height: 24px; }
+.sf-tab__icon svg { width: 18px; height: 18px; }
 .sf-tab__label {
-  font-family: var(--font-style-body-copy-1-bold-family, "Salesforce Sans", Arial, sans-serif);
-  font-weight: 800; font-size: 18px; line-height: 1.2;
-  color: var(--color-on-surface-1, #001E5B);
+  font-family: inherit; font-weight: inherit; font-size: inherit;
+  line-height: 1.5; color: inherit;
 }
-.sf-tab__hint {
-  margin-top: 6px;
-  font-weight: 400; font-size: 14px; line-height: 1.4;
-  color: var(--color-on-surface-3, #444444);
-  text-wrap: balance;
-}
-/* Active card — color treatment only (no badge): accent border + faint wash +
-   tinted icon tile. All three cards stay structurally identical. */
+/* Hint text does not belong in the compact tds2 tab row. */
+.sf-tab__hint { display: none; }
+/* Active tab — brand underline + bold, default text color. */
 .sf-tab.is-active {
-  border-color: var(--color-fill-accent, #066AFE);
-  background: rgba(6, 106, 254, 0.04);
-  box-shadow: 0 0 0 2px rgba(6, 106, 254, 0.18);
+  color: var(--color-on-surface-1, #001E5B);
+  font-weight: 700;
+  box-shadow: inset 0 -3px 0 0 var(--color-fill-accent, #066AFE);
 }
 .sf-tab.is-active .sf-tab__icon {
-  background: #EAF1FE; color: var(--color-fill-accent, #066AFE);
-}
-@media (min-width: 768px) {
-  .sf-tabs { grid-template-columns: repeat(3, 1fr); gap: 32px; align-items: stretch; }
+  color: var(--color-fill-accent, #066AFE);
 }
 
 /* ── Tab panels (stack; top-aligned, normal padding) ── */
@@ -1259,19 +1401,25 @@ img { max-width: 100%; }
 }
 .sf-panel--narrow { max-width: 720px; }
 .sf-panel__head {
-  display: flex; justify-content: space-between; align-items: flex-end;
+  display: flex;
+  justify-content: center; 
+  align-items: flex-end;
+  text-align: center;
   gap: 20px 24px; flex-wrap: wrap; margin-bottom: 22px;
 }
 .sf-panel__headmain { min-width: 0; }
 .sf-panel__title {
-  margin: 0 0 6px;
+  margin: 0 0 var(--tds2-spacing-2);
   font-family: var(--font-style-display-4-family, "Avant Garde For Salesforce", Arial, sans-serif);
   font-weight: var(--font-style-display-4-weight, 600);
-  font-size: 28px; line-height: 1.15;
+  font-size: var(--font-style-display-4-size);
+  line-height: 1.15;
   color: var(--color-on-surface-1, #001E5B);
 }
 .sf-panel__lede {
-  margin: 0; max-width: 720px;
+  margin: 0; 
+  max-width: 80ch; 
+  text-wrap: balance;
   font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
   font-weight: 400; font-size: 16px; line-height: 1.5;
   color: var(--color-on-surface-3, #444444);
@@ -1283,8 +1431,9 @@ img { max-width: 100%; }
 /* Category / track badges — subtle WCAG-AA tints from the site palette. */
 .sf-disc-title { text-decoration: none; }
 .sf-disc-badge {
-  display: inline-block; padding: 2px 10px; border-radius: 999px;
-  border: 1px solid var(--color-neutral-90, #E5E5E5);
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 2px var(--tds2-spacing-2); border-radius: var(--tds2-radius-md);
+  border: 0;
   font-family: var(--font-style-body-copy-3-family, "Salesforce Sans", Arial, sans-serif);
   font-weight: 700; font-size: 12px; line-height: 18px;
   color: var(--color-on-surface-3, #444444);
@@ -1355,15 +1504,13 @@ img { max-width: 100%; }
 /* ── Pitch ranked list (read side) ── */
 .sf-pitch-list {
   list-style: none; margin: 0; padding: 0;
-  border: 1px solid var(--color-neutral-90, #E5E5E5);
-  border-radius: 16px; overflow: hidden;
-  background: var(--color-container-1, #FFFFFF);
 }
 .sf-pitch-row + .sf-pitch-row {
   border-top: 1px solid var(--color-neutral-90, #E5E5E5);
 }
 .sf-pitch-row {
   display: flex; align-items: flex-start; gap: 16px;
+  margin: 0 0 var(--tds2-spacing-4) 0;
   padding: 16px 20px;
   transition: background-color 0.12s ease;
 }
@@ -1519,6 +1666,8 @@ img { max-width: 100%; }
 }
 
 /* ── Get Involved: responsive grid margins (match .sf-blade breakpoints) ── */
+
+
 @media (min-width: 768px) {
   #engage-intro,
   .sf-tab-panel,

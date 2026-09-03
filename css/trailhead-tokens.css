@@ -1,0 +1,114 @@
+/* ═══════════════════════════════════════════════════════════
+   TRAILHEAD DESIGN SYSTEM (TDS2) — local token layer
+   ═══════════════════════════════════════════════════════════
+   Mirrors tokens from @trailhead-emu/design-system (aka "Trailhead
+   Next" / TDS2). This is a static, no-build site, so we can't consume
+   the React/Tailwind components directly — instead we bring the TDS2
+   token vocabulary in as plain custom properties and skin our own CSS
+   with it. Values extracted verbatim from the Trailhead Next Storybook
+   compiled bundle. Loaded AFTER the hosted Salesforce tokens.css (which
+   supplies the primitive scales) and BEFORE styles.css.
+
+   Scope note: only tokens used by the local card, button, badge, and
+   input implementations are included. */
+:root {
+  /* ── Primitives referenced by the gradients below (match the hosted
+        Salesforce bundle; re-declared so gradients resolve standalone) ── */
+  --color-blue-15: #03234d;
+  --color-electric-blue-30: #022ac0;
+  --color-electric-blue-50: #066afe;
+  --color-cloud-blue-68: #00b3ff;
+  --color-cloud-blue-80: #90d0fe;
+  --color-cloud-blue-95: #eaf5fe;
+
+  /* ── Time-of-day primary gradients ── */
+  --tds2-gradient-primary-morning: linear-gradient(180deg, var(--color-cloud-blue-80) 0%, var(--color-cloud-blue-95) 100%);
+  --tds2-gradient-primary-midday: linear-gradient(180deg, var(--color-cloud-blue-68) 0%, var(--color-cloud-blue-80) 52%, var(--color-cloud-blue-95) 100%);
+  --tds2-gradient-primary-dusk: linear-gradient(180deg, var(--color-electric-blue-50) 0%, var(--color-cloud-blue-68) 33%, var(--color-cloud-blue-80) 80%, var(--color-cloud-blue-95) 100%);
+  --tds2-gradient-primary-evening: linear-gradient(180deg, var(--color-blue-15) 0%, var(--color-electric-blue-30) 35%, var(--color-electric-blue-50) 80%, var(--color-cloud-blue-68) 100%);
+
+  /* ── Radius scale ── */
+  --tds2-radius-sm: .125rem;
+  --tds2-radius-md: .25rem;
+  --tds2-radius-lg: .5rem;
+  --tds2-radius-xl: .75rem;
+  --tds2-radius-2xl: 1rem;
+  --tds2-radius-3xl: 1.5rem;
+  --tds2-radius-4xl: 2rem;
+  --tds2-radius-full: 999px;
+
+  /* ── Component spacing and type scales ── */
+  --tds2-spacing-0-5: 0.125rem;
+  --tds2-spacing-1: 0.25rem;
+  --tds2-spacing-1-5: 0.375rem;
+  --tds2-spacing-2: 0.5rem;
+  --tds2-spacing-2-5: 0.625rem;
+  --tds2-spacing-3: 0.75rem;
+  --tds2-spacing-4: 1rem;
+  --tds2-spacing-5: 1.25rem;
+  --tds2-spacing-6: 1.5rem;
+  --tds2-spacing-8: 2rem;
+
+  --tds2-font-size-xxs: 0.625rem;
+  --tds2-font-size-xs: 0.75rem;
+  --tds2-font-size-sm: 0.875rem;
+  --tds2-font-size-md: 1rem;
+  --tds2-font-size-lg: 1.125rem;
+  --tds2-font-size-xl: 1.25rem;
+  --tds2-font-weight-normal: 400;
+  --tds2-font-weight-bold: 700;
+  --tds2-line-height-normal: 1.5;
+  
+
+  /* ── Elevation (blue-tinted shadows) ── */
+  --tds2-elevation-0: 0 1px 3px 1px #001e5b0f;
+  --tds2-elevation-1: 0 2px 4px 1px #001e5b29, 0 0 2px 0 #001e5b14;
+  --tds2-elevation-2: 0 8px 12px -2px #001e5b29, 0 2px 8px -2px #001e5b14;
+  --tds2-elevation-3: 0 16px 32px -4px #001e5b29, 0 12px 24px -4px #001e5b14;
+  --tds2-elevation-4: 0 24px 48px -4px #001e5b33;
+
+  /* ── Typography families (same faces the page already loads) ── */
+  --tds2-font-body: "Salesforce Sans", Arial, sans-serif;
+  --tds2-font-heading: "Avant Garde For Salesforce", Arial, sans-serif;
+
+  /* ── Semantic colors consumed by the extracted components ── */
+  --tds2-color-text-default: var(--color-neutral-10, #181818);
+  --tds2-color-text-muted: var(--color-neutral-40, #5c5c5c);
+  --tds2-color-text-disabled: var(--color-neutral-70, #aeaeae);
+  --tds2-color-text-inverse: var(--color-white, #ffffff);
+  --tds2-color-text-placeholder: var(--color-neutral-50, #747474);
+  --tds2-color-text-brand-strong: var(--color-electric-blue-40, #0250d9);
+  --tds2-color-text-on-brand: var(--color-electric-blue-15, #001e5b);
+  --tds2-color-bg-default: var(--color-white, #ffffff);
+  --tds2-color-bg-subtle: var(--color-neutral-95, #f3f3f3);
+  --tds2-color-bg-muted: var(--color-neutral-90, #e5e5e5);
+  --tds2-color-bg-disabled: var(--color-neutral-70, #aeaeae);
+  --tds2-color-bg-brand-active: var(--color-electric-blue-90, #d6e6ff);
+  --tds2-color-border-default: var(--color-neutral-90, #e5e5e5);
+  --tds2-color-border-strong: var(--color-neutral-70, #aeaeae);
+  --tds2-color-border-hover: var(--color-neutral-50, #747474);
+  --tds2-color-border-focus: var(--color-electric-blue-15, #001e5b);
+  --tds2-color-border-brand-strong: var(--color-electric-blue-15, #001e5b);
+  --tds2-color-brand-primary-light: var(--color-electric-blue-95, #edf4ff);
+  --tds2-color-brand-primary: var(--color-electric-blue-50, #066afe);
+  --tds2-color-brand-primary-dark: var(--color-electric-blue-30, #022ac0);
+  --tds2-color-brand-primary-darker: var(--color-electric-blue-15, #001e5b);
+  --tds2-color-black-h: 0;
+  --tds2-color-black-s: 0%;
+  --tds2-color-black-l: 9%;
+  --tds2-color-white-h: 0;
+  --tds2-color-white-s: 0%;
+  --tds2-color-white-l: 100%;
+
+  /* ── Transitions ── */
+  --tds2-transition-fast: .15s ease-out;
+  --tds2-transition-normal: .3s ease-out;
+  --tds2-transition-slow: .5s ease-out;
+
+  /* ── Accessible component outlines ── */
+  --tds2-a11y-outline: 2px solid transparent;
+  --tds2-a11y-outline-offset: 2px;
+  --tds2-a11y-outline-focus: 2px solid var(--tds2-color-brand-primary);
+  --tds2-a11y-outline-offset-focus: 2px;
+  --tds2-a11y-outline-transition: outline var(--tds2-transition-fast);
+}
