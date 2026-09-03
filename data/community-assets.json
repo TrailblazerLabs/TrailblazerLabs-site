@@ -1,5 +1,34 @@
 [
   {
+    "authorName": "PaceyMia",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/106040506?v=4",
+    "title": "Custom Confetti",
+    "description": "Give your users confetti they can get excited about. No developer required — pick the field and trigger value, and it showers them with a custom-coloured celebration. Every colour lives in Custom Metadata, so it's yours to reskin from Setup, any time.",
+    "track": "Builder",
+    "tags": [
+      "admin",
+      "lwc-component",
+      "pagelayout",
+      "ui"
+    ],
+    "repo": "https://github.com/TrailblazerLabs/Custom-Confetti",
+    "license": "Apache-2.0",
+    "stars": 1,
+    "forks": 0
+  },
+  {
+    "authorName": "TrailblazerLabs",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/315594257?v=4",
+    "title": "TrailblazerLabs.github.io",
+    "description": "",
+    "track": "",
+    "tags": [],
+    "repo": "https://github.com/TrailblazerLabs/TrailblazerLabs.github.io",
+    "license": "",
+    "stars": 0,
+    "forks": 0
+  },
+  {
     "authorName": "dcstuff",
     "authorAvatar": "https://avatars.githubusercontent.com/u/44416270?v=4",
     "title": "Permishifizer9000",
@@ -70,18 +99,6 @@
     "track": "",
     "tags": [],
     "repo": "https://github.com/TrailblazerLabs/Penny-Repo",
-    "license": "Apache-2.0",
-    "stars": 0,
-    "forks": 0
-  },
-  {
-    "authorName": "PaceyMia",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/106040506?v=4",
-    "title": "Custom Confetti",
-    "description": "A zero-dependency Lightning Web Component that fires a confetti animation on any Salesforce record page when a field reaches a specific value. Works on any object and any picklist or text field — Closed Won opportunities, resolved cases, approved records, whatever you want to celebrate.",
-    "track": "",
-    "tags": [],
-    "repo": "https://github.com/TrailblazerLabs/Custom-Confetti",
     "license": "Apache-2.0",
     "stars": 0,
     "forks": 0
