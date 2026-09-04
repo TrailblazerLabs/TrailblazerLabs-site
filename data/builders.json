@@ -1,17 +1,5 @@
 [
   {
-    "name": "Ohad Idan",
-    "github": "ohadios",
-    "avatar": "https://avatars.githubusercontent.com/u/7719114?v=4",
-    "country": "",
-    "role": "",
-    "bio": "",
-    "project": {
-      "title": "",
-      "url": ""
-    }
-  },
-  {
     "name": "ssisson",
     "github": "ssisson",
     "avatar": "https://avatars.githubusercontent.com/u/11198368?v=4",
@@ -36,12 +24,12 @@
     }
   },
   {
-    "name": "dcstuff",
+    "name": "David Cohen",
     "github": "dcstuff",
     "avatar": "https://avatars.githubusercontent.com/u/44416270?v=4",
-    "country": "",
+    "country": "Canada, eh? ",
     "role": "",
-    "bio": "",
+    "bio": "Salesforce things and stuff doer. ",
     "project": {
       "title": "",
       "url": ""
@@ -54,6 +42,30 @@
     "country": "",
     "role": "",
     "bio": "",
+    "project": {
+      "title": "",
+      "url": ""
+    }
+  },
+  {
+    "name": "Joseph Kubon | sforceROCKER",
+    "github": "sforceROCKER",
+    "avatar": "https://avatars.githubusercontent.com/u/96741460?v=4",
+    "country": "San Antonio, TX",
+    "role": "",
+    "bio": "5x Salesforce MVP | 40+ Salesforce-Slack-MuleSoft Certified Application & System Architect | Agentforce, Data360, & CRM-analytics COE Lead | Author | Inventor",
+    "project": {
+      "title": "",
+      "url": ""
+    }
+  },
+  {
+    "name": "Mia Pacey",
+    "github": "PaceyMia",
+    "avatar": "https://avatars.githubusercontent.com/u/106040506?v=4",
+    "country": "Sydney NSW Australia",
+    "role": "",
+    "bio": "Salesforce MVP · 8x Salesforce Certified · Digital Platform Lead · Golden Hoodie Recipient · YouTuber @ PaceYourself · Sydney Community Group Leader",
     "project": {
       "title": "",
       "url": ""

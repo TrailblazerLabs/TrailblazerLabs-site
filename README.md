@@ -1,6 +1,6 @@
-# Trailblazer Labs — Site
+# Trailblazer Labs — Github.io
 
-The Trailblazer Labs community agent-publishing masthead: a static, no-build page
+The Trailblazer Labs community: a static, no-build page
 (plain HTML/CSS/vanilla JS) with a Three.js 3D compass hero loaded from a CDN via
 an importmap. There is no bundler.
 
