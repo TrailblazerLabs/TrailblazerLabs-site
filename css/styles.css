@@ -951,6 +951,26 @@ img { max-width: 100%; }
   display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
 }
 
+/* Get Involved page: builders shown as a static 3-column grid (all loaded, no
+   carousel). Mirrors the carousel card's centered header treatment. */
+.sf-builder-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-content-xl, 32px);
+  padding: var(--tds2-spacing-4) 0 var(--tds2-spacing-6);
+}
+@media (min-width: 640px) {
+  .sf-builder-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .sf-builder-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.sf-builder-grid .sf-builder-card { height: auto; align-items: flex-start; text-align: left; padding: var(--space-5, 24px); gap: 12px; }
+.sf-builder-grid .sf-builder-card__avatar { align-self: center; width: 72px; height: 72px; }
+.sf-builder-grid .sf-builder-card__name { align-self: center; text-align: center; font-size: 19px; }
+.sf-builder-grid .sf-builder-card__country { align-self: center; }
+.sf-builder-grid .sf-builder-card__tracks { justify-content: center; align-self: center; }
+
 /* Residency pill in the section header. */
 .sf-blade__badge {
   display: inline-flex; align-items: center; gap: 8px;
