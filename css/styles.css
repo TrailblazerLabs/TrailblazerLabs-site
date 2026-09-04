@@ -2,11 +2,13 @@
   --color-background-1: var(--color-white);
   --color-surface-1: var(--color-neutral-95);
   --color-surface-container-1: var(--color-neutral-90);
+  --page-width: 1080px;
 }
 [data-theme='night'] {
   --color-background-1: var(--color-neutral-10);
   --color-surface-1: var(--color-neutral-15);
   --color-surface-container-1: var(--color-neutral-30);
+  --page-width: 1080px;
 }
 
 
@@ -1338,67 +1340,283 @@ img { max-width: 100%; }
 }
 
 /* ── Card tabs (icon tile + label + hint; spread full content width) ── */
-/* ── TDS2 "base" style tabs (underline indicator, not cards) ── */
-.sf-tabbar { margin-top: 40px; }
-.sf-tabs {
-  display: flex; align-items: flex-end; justify-content: center; gap: 0;
-  max-width: 1080px;
-  margin-inline: auto;
-  padding-inline: var(--space-grid-mobile-margin, 24px);
-  border-bottom: 1px solid var(--color-neutral-90, #E5E5E5);
-  overflow-x: auto; -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-}
-.sf-tab {
-  cursor: pointer;
-  display: inline-flex; align-items: center; justify-content: center;
-  gap: 8px; white-space: nowrap;
-  padding: 11px 12px;
-  border: 0; background: transparent;
-  color: var(--color-on-surface-3, #444444);
-  font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
-  font-weight: 400; font-size: 16px; line-height: 1.5;
-  position: relative;
-  transition: color 0.15s ease, box-shadow 0.15s ease;
-}
-.sf-tab:hover {
-  box-shadow: inset 0 -2px 0 0 var(--color-fill-accent, #066AFE);
-}
-.sf-tab:focus-visible {
-  outline: 3px solid var(--color-border-focus, #066AFE); outline-offset: 2px;
-  z-index: 1;
-}
-.sf-tab__icon {
-  display: inline-flex; align-items: center; justify-content: center;
-  color: currentColor;
-}
-.sf-tab__icon svg { width: 18px; height: 18px; }
-.sf-tab__label {
-  font-family: inherit; font-weight: inherit; font-size: inherit;
-  line-height: 1.5; color: inherit;
-}
-/* Hint text does not belong in the compact tds2 tab row. */
-.sf-tab__hint { display: none; }
-/* Active tab — brand underline + bold, default text color. */
-.sf-tab.is-active {
-  color: var(--color-on-surface-1, #001E5B);
-  font-weight: 700;
-  box-shadow: inset 0 -3px 0 0 var(--color-fill-accent, #066AFE);
-}
-.sf-tab.is-active .sf-tab__icon {
-  color: var(--color-fill-accent, #066AFE);
+/* Tabs Styles - Following TDS Design System */
+.sf-tabbar {
+  max-width: var(--page-width);
+  margin: var(--tds2-spacing-8) auto;
 }
 
-/* ── Tab panels (stack; top-aligned, normal padding) ── */
-.sf-tab-panel[hidden] { display: none; }
-.sf-tab-panel {
-  padding: 36px var(--space-grid-mobile-margin, 24px) 72px;
+.tds2-tabs-list {
+  font-family: var(--tds2-font-body);
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 0;
+  max-width: 100%;
+  position: relative;
 }
+
+.tds2-tabs-list[data-orientation='horizontal'] {
+  width: auto;
+}
+
+.tds2-tabs-list[data-orientation='vertical'] {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* Full-width: tabs span available space evenly */
+.tds2-tabs-list--full-width {
+  display: flex;
+  width: 100%;
+}
+
+.tds2-tabs-list--full-width .tds2-tabs-trigger {
+  flex: 1 1 0%;
+}
+
+/* Responsive: horizontal scroll on narrow viewports so all tabs stay accessible */
+.tds2-tabs-list--scroll[data-orientation='horizontal'] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  min-width: 0;
+  scrollbar-width: thin;
+}
+
+.tds2-tabs-trigger {
+  --tds2-tabs-trigger-bg: transparent;
+  --tds2-tabs-trigger-text-color: var(--tds2-color-text-muted);
+  --tds2-tabs-trigger-padding: var(--tds2-spacing-3) var(--tds2-spacing-4);
+  --tds2-tabs-trigger-gap: var(--tds2-spacing-2);
+  --tds2-tabs-trigger-font-size: var(--tds2-font-size-md);
+  --tds2-tabs-trigger-font-weight: var(--tds2-font-weight-normal);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--tds2-tabs-trigger-gap);
+  min-height: 0;
+  padding: var(--tds2-tabs-trigger-padding);
+  border: 0;
+  background-color: var(--tds2-tabs-trigger-bg);
+  color: var(--tds2-tabs-trigger-text-color);
+  cursor: pointer;
+  font-family: var(--tds2-font-body);
+  font-size: var(--tds2-tabs-trigger-font-size);
+  font-weight: var(--tds2-tabs-trigger-font-weight);
+  line-height: 1.5rem;
+  outline: none;
+  position: relative;
+  text-decoration: none;
+  transition: all var(--tds2-transition-fast);
+  white-space: nowrap;
+}
+
+.tds2-tabs-trigger:hover:not(:disabled) {
+  color: inherit;
+}
+
+.tds2-tabs-trigger:focus-visible {
+  outline: var(--tds2-a11y-outline-focus);
+  outline-offset: var(--tds2-a11y-outline-offset-focus);
+  z-index: 1;
+}
+
+.tds2-tabs-trigger:disabled {
+  color: var(--tds2-color-text-disabled);
+  cursor: not-allowed;
+  outline: none;
+  pointer-events: none;
+}
+
+.tds2-tabs-content {
+  font-family: var(--tds2-font-body);
+  outline: none;
+}
+
+.tds2-tabs-content[data-orientation='vertical'] {
+  margin-top: 0;
+}
+
+.tds2-tabs-content:focus-visible {
+  outline: var(--tds2-a11y-outline-focus);
+  outline-offset: var(--tds2-a11y-outline-offset-focus);
+  border-radius: var(--tds2-radius-sm);
+}
+
+/* Base */
+.tds2-tabs-list--base[data-orientation='horizontal'] {
+  width: 100%;
+  border-bottom: 1px solid var(--tds2-color-border-default);
+}
+
+.tds2-tabs-list--base .tds2-tabs-trigger {
+  --tds2-tabs-trigger-gap: var(--tds2-spacing-2);
+  --tds2-tabs-trigger-padding: 0.6875rem var(--tds2-spacing-3);
+  --tds2-tabs-trigger-text-color: var(--tds2-color-text-muted);
+  --tds2-tabs-trigger-font-size: var(--tds2-font-size-md);
+  --tds2-tabs-trigger-font-weight: var(--tds2-font-weight-normal);
+
+  font-family: var(--tds2-font-body);
+  line-height: 1.5rem;
+}
+
+.tds2-tabs-list--base .tds2-tabs-trigger:hover:not(:disabled) {
+  box-shadow: inset 0 -0.125rem 0 0 var(--tds2-color-brand-primary);
+}
+
+.tds2-tabs-list--base .tds2-tabs-trigger:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.125rem;
+}
+
+.tds2-tabs-list--base .tds2-tabs-trigger[data-state='active'] {
+  --tds2-tabs-trigger-text-color: var(--tds2-color-text-default);
+  --tds2-tabs-trigger-font-weight: var(--tds2-font-weight-bold);
+
+  box-shadow: inset 0 -0.1875rem 0 0 var(--tds2-color-brand-primary);
+}
+
+.tds2-tabs-list--base[data-orientation='vertical'] {
+  border-bottom: 0;
+  border-inline-end: 1px solid var(--tds2-color-border-default);
+}
+
+.tds2-tabs-list--base[data-orientation='vertical'] .tds2-tabs-trigger {
+  justify-content: flex-start;
+  min-width: 12rem;
+  padding-inline: var(--tds2-spacing-3);
+  box-shadow: none;
+}
+
+.tds2-tabs-list--base[data-orientation='vertical'] .tds2-tabs-trigger[data-state='active'] {
+  --tds2-tabs-trigger-bg: var(--tds2-color-bg-default);
+
+  box-shadow: inset 0.1875rem 0 0 0 var(--tds2-color-brand-primary);
+}
+
+/* Segmented */
+.tds2-tabs-list--segmented {
+  --tds2-tabs-list-segmented-gap: var(--tds2-spacing-1);
+  --tds2-tabs-list-segmented-bg: transparent;
+
+  gap: var(--tds2-tabs-list-segmented-gap);
+  padding: 0;
+  border: 0;
+  background-color: var(--tds2-tabs-list-segmented-bg);
+}
+
+.tds2-tabs-list--segmented[data-orientation='horizontal'] {
+  width: auto;
+}
+
+.tds2-tabs-list--segmented[data-orientation='vertical'] {
+  width: max-content;
+  border-inline-end: 0;
+}
+
+.tds2-tabs-list--segmented .tds2-tabs-trigger {
+  --tds2-tabs-trigger-gap: var(--tds2-spacing-1);
+  --tds2-tabs-trigger-padding: 0.75rem var(--tds2-spacing-4) 0.5rem;
+  --tds2-tabs-trigger-radius: var(--tds2-radius-lg);
+  --tds2-tabs-trigger-text-color: var(--tds2-color-text-muted);
+  --tds2-tabs-trigger-font-size: var(--tds2-font-size-md);
+
+  border-radius: var(--tds2-tabs-trigger-radius);
+  font-family: var(--tds2-font-heading);
+  line-height: 1.5rem;
+}
+
+.tds2-tabs-list--segmented .tds2-tabs-trigger:hover:not(:disabled) {
+  background-color: var(--tds2-color-bg-subtle);
+  color: var(--tds2-color-text-muted);
+}
+
+.tds2-tabs-list--segmented .tds2-tabs-trigger:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.125rem;
+}
+
+.tds2-tabs-list--segmented .tds2-tabs-trigger[data-state='active'] {
+  --tds2-tabs-trigger-bg: var(--tds2-color-brand-primary-light);
+  --tds2-tabs-trigger-text-color: var(--tds2-color-brand-primary);
+}
+
+.tds2-tabs-list--segmented[data-orientation='vertical'] .tds2-tabs-trigger {
+  justify-content: flex-start;
+  min-width: 12rem;
+}
+
+/* Large */
+.tds2-tabs-list--large[data-orientation='horizontal'] {
+  --tds2-tabs-list-large-gap: var(--tds2-spacing-2);
+
+  width: 100%;
+  gap: var(--tds2-tabs-list-large-gap);
+  border-bottom: 1px solid var(--tds2-color-border-default);
+}
+
+.tds2-tabs-list--large .tds2-tabs-trigger {
+  --tds2-tabs-trigger-gap: var(--tds2-spacing-2);
+  --tds2-tabs-trigger-padding: 0.75rem var(--tds2-spacing-6);
+  --tds2-tabs-trigger-radius: var(--tds2-radius-xl) var(--tds2-radius-xl) 0 0;
+  --tds2-tabs-trigger-text-color: var(--tds2-color-text-muted);
+  --tds2-tabs-trigger-font-size: var(--tds2-font-size-xl);
+
+  border-radius: var(--tds2-tabs-trigger-radius);
+  font-family: var(--tds2-font-heading);
+  line-height: 1.75rem;
+}
+
+.tds2-tabs-list--large .tds2-tabs-trigger:hover:not(:disabled) {
+  background-color: var(--tds2-color-brand-primary-light);
+  color: var(--tds2-color-brand-primary-dark);
+  box-shadow: inset 0 -0.125rem 0 0 var(--tds2-color-brand-primary-dark);
+}
+
+.tds2-tabs-list--large .tds2-tabs-trigger:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.125rem;
+}
+
+.tds2-tabs-list--large .tds2-tabs-trigger[data-state='active'] {
+  --tds2-tabs-trigger-text-color: var(--tds2-color-brand-primary);
+
+  box-shadow: inset 0 -0.25rem 0 0 var(--tds2-color-brand-primary);
+}
+
+.tds2-tabs-list--large[data-orientation='vertical'] {
+  --tds2-tabs-list-large-gap: var(--tds2-spacing-2);
+
+  border-bottom: 0;
+  border-inline-end: 1px solid var(--tds2-color-border-default);
+  gap: var(--tds2-tabs-list-large-gap);
+}
+
+.tds2-tabs-list--large[data-orientation='vertical'] .tds2-tabs-trigger {
+  /* Selector specificity is 0,3,0 — high enough to win over any inherited
+     box-shadow without !important. The override applies to the inactive
+     state; the [data-state='active'] rule below intentionally re-adds an
+     inset shadow with the same specificity tier. */
+  justify-content: flex-start;
+  min-width: 13rem;
+  box-shadow: none;
+}
+
+.tds2-tabs-list--large[data-orientation='vertical'] .tds2-tabs-trigger[data-state='active'] {
+  --tds2-tabs-trigger-bg: var(--tds2-color-bg-default);
+
+  box-shadow: inset 0.25rem 0 0 0 var(--tds2-color-brand-primary);
+}
+
+
 
 /* ── Panel wrapper + head (h2 + one-liner + right-aligned primary action) ── */
 .sf-panel {
   width: 100%; margin-inline: auto;
-  max-width: 1080px;
+  max-width: var(--page-width);
 }
 .sf-panel--narrow { max-width: 720px; }
 .sf-panel__head {
@@ -1672,17 +1890,20 @@ img { max-width: 100%; }
 @media (min-width: 768px) {
   #engage-intro,
   .sf-tab-panel,
-  .sf-tabs { padding-inline: var(--space-grid-tablet-portrait-margin, 32px); }
+  .sf-tabs,
+  .sf-tabbar { padding-inline: var(--space-grid-tablet-portrait-margin, 32px); }
 }
 @media (min-width: 1024px) {
   #engage-intro,
   .sf-tab-panel,
-  .sf-tabs { padding-inline: var(--space-grid-tablet-landscape-margin, 48px); }
+  .sf-tabs,
+  .sf-tabbar { padding-inline: var(--space-grid-tablet-landscape-margin, 48px); }
 }
 @media (min-width: 1440px) {
   #engage-intro,
   .sf-tab-panel,
-  .sf-tabs { padding-inline: var(--space-grid-desktop-margin, 48px); }
+  .sf-tabs,
+  .sf-tabbar { padding-inline: var(--space-grid-desktop-margin, 48px); }
 }
 /* On narrow screens, the panel action drops below the heading and goes full-width. */
 @media (max-width: 560px) {

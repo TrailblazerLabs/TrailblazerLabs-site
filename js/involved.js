@@ -177,7 +177,8 @@
   function activate(tab, updateHash) {
     tabs.forEach((candidate) => {
       const active = candidate === tab;
-      candidate.classList.toggle('is-active', active);
+      // TDS2 tabs key their active styling off data-state, not a class.
+      candidate.dataset.state = active ? 'active' : 'inactive';
       candidate.setAttribute('aria-selected', String(active));
       candidate.tabIndex = active ? 0 : -1;
       const panel = document.getElementById(candidate.getAttribute('aria-controls'));
