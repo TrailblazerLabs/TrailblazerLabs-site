@@ -1,5 +1,24 @@
 [
   {
+    "authorName": "ssisson",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/11198368?v=4",
+    "title": "Localized Product Lwc",
+    "description": "An AI-enabled Lightning Web Component (LWC) that leverages Prompt Builder to generate localized product summaries and positioning bullets for global sales reps and community catalogs. ",
+    "track": "",
+    "tags": [
+      "ai",
+      "localization",
+      "lwc",
+      "lwc-component",
+      "prompt-builder",
+      "sales-enablement"
+    ],
+    "repo": "https://github.com/TrailblazerLabs/localized-product-lwc",
+    "license": "Apache-2.0",
+    "stars": 0,
+    "forks": 0
+  },
+  {
     "authorName": "PaceyMia",
     "authorAvatar": "https://avatars.githubusercontent.com/u/106040506?v=4",
     "title": "Custom Confetti",
@@ -14,18 +33,6 @@
     "repo": "https://github.com/TrailblazerLabs/Custom-Confetti",
     "license": "Apache-2.0",
     "stars": 1,
-    "forks": 0
-  },
-  {
-    "authorName": "TrailblazerLabs",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/315594257?v=4",
-    "title": "TrailblazerLabs.github.io",
-    "description": "",
-    "track": "",
-    "tags": [],
-    "repo": "https://github.com/TrailblazerLabs/TrailblazerLabs.github.io",
-    "license": "",
-    "stars": 0,
     "forks": 0
   },
   {
@@ -111,25 +118,6 @@
     "track": "",
     "tags": [],
     "repo": "https://github.com/TrailblazerLabs/Temp-Kathy-Repo",
-    "license": "Apache-2.0",
-    "stars": 0,
-    "forks": 0
-  },
-  {
-    "authorName": "TrailblazerLabs",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/315594257?v=4",
-    "title": "Localized Product Lwc",
-    "description": "An AI-enabled Lightning Web Component (LWC) that leverages Prompt Builder to generate localized product summaries and positioning bullets for global sales reps and community catalogs. ",
-    "track": "",
-    "tags": [
-      "ai",
-      "localization",
-      "lwc",
-      "lwc-component",
-      "prompt-builder",
-      "sales-enablement"
-    ],
-    "repo": "https://github.com/TrailblazerLabs/localized-product-lwc",
     "license": "Apache-2.0",
     "stars": 0,
     "forks": 0
