@@ -1,14 +1,23 @@
+/* Content column follows the SLDS2 grid: edge-to-edge within the breakpoint
+   margin until the desktop breakpoint (1440px), then capped at the design
+   system's max content width. Every content container (blades, hero cap,
+   panels, tabs) references --content-max so widths stay consistent and stay
+   in lockstep with the root token system. */
+:root {
+  --content-max: none;
+}
+@media (min-width: 1440px) {
+  :root { --content-max: var(--space-grid-desktop-max-content-width, 1280px); }
+}
 [data-theme='day'] {
   --color-background-1: var(--color-white);
   --color-surface-1: var(--color-neutral-95);
   --color-surface-container-1: var(--color-neutral-90);
-  --page-width: 1080px;
 }
 [data-theme='night'] {
   --color-background-1: var(--color-neutral-10);
   --color-surface-1: var(--color-neutral-15);
   --color-surface-container-1: var(--color-neutral-30);
-  --page-width: 1080px;
 }
 
 
@@ -278,7 +287,7 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .hero-blade::after { animation: none; transform: translateX(-50%); opacity: 1; }
 }
-.hero-blade__cap { position: relative; z-index: 2; width: 100%; margin-inline: auto; }
+.hero-blade__cap { position: relative; z-index: 2; margin-inline: auto; margin-bottom: 10vh; max-width: var(--content-max); }
 /* Hero copy fades in on load, sequenced heading → paragraph → buttons. Straight
    opacity fade, ~1.2s total. */
 .hero-blade__headline,
@@ -311,33 +320,24 @@ img { max-width: 100%; }
 /* Masthead copy sits on the deep-blue background → white inks; the actual
    color values are set with theme-independent white tokens in the
    typographic rules below (.hero-blade__eyebrow/__headline/__body). */
-.hero-blade__grid {
-  display: flex; flex-direction: column;
-  gap: var(--space-content-2xl, 48px);
-}
 .hero-blade__content, .hero-blade__asset { width: 100%; min-width: 0; }
 .hero-blade__asset { aspect-ratio: 3 / 2; }
-.hero-blade__eyebrow {
-  margin: 0 0 var(--space-content-sm, 12px) 0;
-  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
-  font-weight: var(--font-style-body-copy-2-bold-weight, 700);
-  font-size: var(--font-style-body-copy-2-bold-size, 18px);
-  line-height: var(--font-style-body-copy-2-bold-line-height, 1.5);
-  letter-spacing: var(--font-style-body-copy-2-bold-letter-spacing, 0.00125em);
-  /* Masthead is an always-dark theater (theme-independent), so use the
-     theme-independent white primitives — NOT --color-on-surface-* (dark in
-     day) or --color-on-surface-brand-* (flips to navy in night). */
-  color: var(--color-alpha-white-85, rgba(255,255,255,0.85));
+.hero-blade__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .hero-blade__headline {
   margin: 0;
-  font-family: var(--font-style-display-4-family, "Avant Garde For Salesforce", Arial, sans-serif);
-  font-weight: var(--font-style-display-4-weight, 600);
-  font-size: var(--font-style-display-4-size, 40px);
-  line-height: var(--font-style-display-4-line-height, 1.125);
-  letter-spacing: var(--font-style-display-4-letter-spacing, -0.0025em);
+  font-family: var(--font-style-display-3-family, "Avant Garde For Salesforce", Arial, sans-serif);
+  font-weight: var(--font-style-display-3-weight, 600);
+  font-size: var(--font-style-display-3-size, 40px);
+  line-height: var(--font-style-display-3-line-height, 1.125);
+  letter-spacing: var(--font-style-display-3-letter-spacing, -0.0025em);
   color: var(--color-white, #FFFFFF);
   text-align: center;
+  max-width: 40ch;
+  text-wrap: balance;
 }
 .hero-blade__body {
   margin-top: var(--space-content-lg, 24px);
@@ -348,6 +348,7 @@ img { max-width: 100%; }
   letter-spacing: var(--font-style-body-copy-1-letter-spacing, 0.00125em);
   color: var(--color-alpha-white-85, rgba(255,255,255,0.85));
   text-align: center;
+  max-width: 80ch;
   text-wrap: balance;
 }
 .hero-blade__ctas {
@@ -385,17 +386,10 @@ img { max-width: 100%; }
     padding-inline: var(--space-grid-tablet-landscape-margin, 48px);
     padding-block: 64px;
   }
-  .hero-blade__grid {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    column-gap: var(--space-grid-tablet-landscape-gutter, 32px);
-    align-items: center; row-gap: 0;
-  }
-  .hero-blade__content { grid-column: 4 / span 6; grid-row: 1; }
   .hero-blade__asset { grid-column: 7 / span 6; grid-row: 1; max-width: none; margin-inline: 0; }
   .hero-blade__headline {
-    font-size: var(--font-style-display-3-size, 48px);
-    letter-spacing: var(--font-style-display-3-letter-spacing, -0.0025em);
+    font-size: var(--font-style-display-2-size, 48px);
+    letter-spacing: var(--font-style-display-2-letter-spacing, -0.0025em);
   }
 }
 @media (min-width: 1440px) {
@@ -403,11 +397,9 @@ img { max-width: 100%; }
     padding-inline: var(--space-grid-desktop-margin, 48px);
     padding-block: 64px;
   }
-  .hero-blade__cap { max-width: var(--space-grid-desktop-max-content-width, 1280px); }
-  .hero-blade__grid { column-gap: var(--space-grid-desktop-gutter, 40px); }
   .hero-blade__headline {
-    font-size: var(--font-style-display-2-size, 56px);
-    letter-spacing: var(--font-style-display-2-letter-spacing, -0.003em);
+    font-size: var(--font-style-display-1-size, 56px);
+    letter-spacing: var(--font-style-display-1-letter-spacing, -0.003em);
   }
 }
 
@@ -437,10 +429,13 @@ img { max-width: 100%; }
   padding-block: 64px;
   /* background: var(--color-background-1); */
 }
-.sf-blade__cap { width: 100%; margin-inline: auto; }
-.sf-blade__header { text-align: center; margin: 0 auto 48px; max-width: 720px; }
+.sf-blade__cap { width: 100%; margin-inline: auto; max-width: var(--content-max); }
+.sf-blade__header { text-align: center; margin: 0 auto 48px; }
 .sf-disclaimer {
-  margin: 20px auto 0; max-width: 720px; text-align: left;
+  margin: 20px auto 0; 
+  max-width: 80ch;
+  text-wrap: pretty;
+  text-align: left;
   border: 1px solid var(--color-neutral-90, #E5E5E5);
   border-radius: 12px; background: var(--color-neutral-95, #F3F3F3);
   padding: 16px 18px;
@@ -566,19 +561,23 @@ img { max-width: 100%; }
   color: var(--color-on-surface-1, #001E5B);
 }
 .sf-blade__title {
-  margin: 0;
+  margin: 0 auto;
   font-family: var(--font-style-display-4-family, "Avant Garde For Salesforce", Arial, sans-serif);
   font-weight: var(--font-style-display-4-weight, 600);
   font-size: var(--font-style-display-4-size, 40px);
   line-height: var(--font-style-display-4-line-height, 1.125);
   letter-spacing: var(--font-style-display-4-letter-spacing, -0.0025em);
   color: var(--color-on-surface-1, #001E5B);
+  max-width: 40ch;
+  text-wrap: balance;
 }
 .sf-blade__subtitle {
-  margin: var(--space-content-lg, 24px) 0 0;
+  margin: var(--space-content-lg, 24px) auto 0;
   font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
   font-weight: 400; font-size: 20px; line-height: 1.5;
   color: var(--color-on-surface-2, #181818);
+  max-width: 80ch;
+  text-wrap: pretty;
 }
 .sf-blade__actions {
   display: flex;
@@ -607,7 +606,6 @@ img { max-width: 100%; }
 }
 @media (min-width: 1440px) {
   .sf-blade { padding-inline: var(--space-grid-desktop-margin, 48px); }
-  .sf-blade__cap { max-width: var(--space-grid-desktop-max-content-width, 1280px); }
 }
 
 /* ── Card (Day-island, recipe-card) ── */
@@ -1217,7 +1215,9 @@ img { max-width: 100%; }
 /* ═══════════════════════════════════════════════════════════
    PITCH AN IDEA — on-brand form (#pitch) + pitch cards (#pitches)
    ═══════════════════════════════════════════════════════════ */
-
+#pitch {
+  padding-inline: 0 0 var(--tds2-spacing-8);
+}
 /* A narrower content cap so the form doesn't stretch full-bleed. */
 .sf-blade__cap--narrow { max-width: 720px; }
 
@@ -1362,7 +1362,7 @@ img { max-width: 100%; }
 /* ── Card tabs (icon tile + label + hint; spread full content width) ── */
 /* Tabs Styles - Following TDS Design System */
 .sf-tabbar {
-  max-width: var(--page-width);
+  max-width: var(--content-max);
   margin: var(--tds2-spacing-8) auto;
 }
 
@@ -1636,7 +1636,7 @@ img { max-width: 100%; }
 /* ── Panel wrapper + head (h2 + one-liner + right-aligned primary action) ── */
 .sf-panel {
   width: 100%; margin-inline: auto;
-  max-width: var(--page-width);
+  max-width: var(--content-max);
 }
 .sf-panel--narrow { max-width: 720px; }
 .sf-panel__head {
