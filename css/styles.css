@@ -556,18 +556,23 @@ img { max-width: 100%; }
 }
 .sf-track__avatar {
   display: block;
-  max-height: 200px;
+  max-height: 160px;
   width: auto;
   margin: 0 auto;
+  order: 3;
 }
 .sf-track__desc {
   margin: 0;
   font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
   font-size: 15px; line-height: 1.5; color: var(--color-on-surface-3, #444444);
+  text-align: center;
 }
-.tds2-card.sf-track--strat {   border-color: var(--color-violet-20);}
-.tds2-card.sf-track--build {   border-color: var(--color-green-40);}
-.tds2-card.sf-track--eng {   border-color: var(--color-electric-blue-30);}
+.tds2-card.sf-track {
+  border-width: 0;
+}
+.tds2-card.sf-track--strat {   box-shadow: inset 2px 2px 1px #ffffff88, inset -2px -2px 1px #ffffff88, inset 0 -6px 48px color-mix(in srgb, var(--color-violet-20), transparent 80%), var(--tds2-elevation-0);}
+.tds2-card.sf-track--build {   box-shadow: inset 2px 2px 1px #ffffff80, inset -2px -2px 1px #ffffff88, inset 0 -6px 48px color-mix(in srgb, var(--color-green-40), transparent 80%), var(--tds2-elevation-0);}
+.tds2-card.sf-track--eng {     box-shadow: inset 2px 2px 0px #ffffff80, inset -2px -2px 0px #ffffff88, inset 0 -6px 48px color-mix(in srgb, var(--color-electric-blue-30), transparent 80%), var(--tds2-elevation-0);}
 .sf-track--strat .sf-track__name { color: var(--color-violet-20); }
 .sf-track--build .sf-track__name { color: var(--color-green-40); }
 .sf-track--eng .sf-track__name { color: var(--color-electric-blue-30); }
