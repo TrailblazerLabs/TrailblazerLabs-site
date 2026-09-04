@@ -90,7 +90,7 @@ img { max-width: 100%; }
 }
 .sf-nav__logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .sf-nav__logo-bug { display: block; width: 32px; height: auto; }
-.sf-nav__wordmark { display: block; height: 18px; width: auto; }
+.sf-nav__wordmark { display: block; height: 32px; width: auto; }
 .sf-nav__hamburger { display: none; }
 
 .sf-nav__links { display: flex; align-items: center; gap: 8px; }
@@ -337,7 +337,7 @@ img { max-width: 100%; }
   color: var(--color-white, #FFFFFF);
   /* Subtle vertical sheen: white at the top fading to 90% gray. Falls back to
      the solid white color above where background-clip: text is unsupported. */
-  background-image: linear-gradient(180deg, #FFFFFF 0%, #E6E6E6 100%);
+  background-image: linear-gradient(180deg, var(--color-white) 0%, var(--color-neutral-80) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -451,7 +451,7 @@ img { max-width: 100%; }
 .sf-disclaimer__label { font-weight: 700; color: var(--color-on-surface-1, #001E5B); }
 
 /* Development track personas (How it Works) */
-.sf-tracks { margin-top: 0; }
+.sf-tracks { margin: 0 auto; max-width: 60rem;}
 .sf-card-grid--steps { margin-top: 56px; }
 
 /* ── Trailhead-style vertical path (How It Works) ── */
@@ -459,7 +459,7 @@ img { max-width: 100%; }
   list-style: none;
   margin: 56px auto 0;
   padding: 0;
-  max-width: 900px;
+  max-width: 60rem;
   position: relative;
 }
 /* Continuous connector line running down the markers */
@@ -548,18 +548,29 @@ img { max-width: 100%; }
   box-shadow: var(--tds2-elevation-0);
 }
 .sf-track__name {
-  display: block; margin-bottom: 8px;
-  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
-  font-weight: 800; font-size: 18px;
+  display: block; 
+  margin: var(--tds2-spacing-2-5) auto;
+  font-family: var(--font-style-body-copy-2-bold-family);
+  font-weight: 800; font-size: var(--font-style-body-copy-2-size);
+  text-align: center;
+}
+.sf-track__avatar {
+  display: block;
+  max-height: 200px;
+  width: auto;
+  margin: 0 auto;
 }
 .sf-track__desc {
   margin: 0;
   font-family: var(--font-style-body-copy-1-family, "Salesforce Sans", Arial, sans-serif);
   font-size: 15px; line-height: 1.5; color: var(--color-on-surface-3, #444444);
 }
-.sf-track--strat .sf-track__name { color: #5B2A86; }
-.sf-track--build .sf-track__name { color: #1D6A3C; }
-.sf-track--eng .sf-track__name { color: #022AC0; }
+.tds2-card.sf-track--strat {   border-color: var(--color-violet-20);}
+.tds2-card.sf-track--build {   border-color: var(--color-green-40);}
+.tds2-card.sf-track--eng {   border-color: var(--color-electric-blue-30);}
+.sf-track--strat .sf-track__name { color: var(--color-violet-20); }
+.sf-track--build .sf-track__name { color: var(--color-green-40); }
+.sf-track--eng .sf-track__name { color: var(--color-electric-blue-30); }
 .sf-blade__eyebrow {
   margin: 0 0 var(--space-content-sm, 12px) 0;
   font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
@@ -589,7 +600,7 @@ img { max-width: 100%; }
   display: flex;
   flex-wrap: wrap;
   gap: var(--tds2-spacing-4);
-  margin: var(--space-8) 0;
+  margin: var(--space-4) 0;
   justify-content: center;
 }
 
@@ -1025,6 +1036,9 @@ img { max-width: 100%; }
   .cta-blade { padding-inline: var(--space-grid-tablet-landscape-margin, 48px); padding-block: 96px; }
 }
 
+.sf-footer {
+  margin-top: var(--space-8);
+}
 /* ═══════════════════════════════════════════════════════════
    LEGAL FOOTER  (recipe-page-chrome — copied verbatim)
    ═══════════════════════════════════════════════════════════ */
@@ -1221,9 +1235,6 @@ img { max-width: 100%; }
 /* ═══════════════════════════════════════════════════════════
    PITCH AN IDEA — on-brand form (#pitch) + pitch cards (#pitches)
    ═══════════════════════════════════════════════════════════ */
-#pitch {
-  padding-inline: 0 0 var(--tds2-spacing-8);
-}
 /* A narrower content cap so the form doesn't stretch full-bleed. */
 .sf-blade__cap--narrow { max-width: 720px; }
 
