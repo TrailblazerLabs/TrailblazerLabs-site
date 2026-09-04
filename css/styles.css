@@ -166,12 +166,11 @@ img { max-width: 100%; }
   border-color: var(--tds2-color-brand-primary-darker);
 }
 /* TDS2 secondary marketing actions use the Glass treatment. */
-.sf-cta--secondary {
-  background: rgba(255, 255, 255, 0.2);
-  color: var(--tds2-color-brand-primary-darker);
-  border: none;
-  backdrop-filter: blur(0.5rem);
-  box-shadow: var(--tds2-elevation-2), inset 1px 1px 0 rgba(255,255,255,0.5), inset -1px -1px 0 rgba(255,255,255,0.5);
+.sf-cta--secondary,.tds2-button--secondary {
+    --tds2-button-border-color: var(--tds2-color-brand-primary);
+    --tds2-button-bg: var(--tds2-color-bg-default);
+    --tds2-button-text-color: var(--tds2-color-brand-primary);
+    box-shadow: none;
 }
 .sf-cta--secondary:hover, .sf-cta--secondary:focus-visible { background: rgba(255, 255, 255, 0.35); }
 .sf-cta--secondary:active { background: rgba(255, 255, 255, 0.45); }
@@ -184,7 +183,6 @@ img { max-width: 100%; }
 
 .sf-cta--glass, .tds2-button--glass {
   background: rgba(255, 255, 255, 0.2);
-  font-family: var(--tds2-font-heading);
   color: var(--tds2-color-brand-primary-darker);
   border: none;
   backdrop-filter: blur(0.5rem);
@@ -351,9 +349,11 @@ img { max-width: 100%; }
   text-wrap: balance;
 }
 .hero-blade__ctas {
-  display: inline-flex; gap: var(--space-4, 16px);
-  flex-wrap: wrap; align-items: center;
-  margin-top: var(--space-8, 48px);
+  display: inline-flex; 
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-4, 16px);
+  margin-top: var(--space-4);
 }
 /* Hero asset placeholder — fills its container per image-placeholders.md */
 .placeholder {
@@ -775,6 +775,7 @@ img { max-width: 100%; }
 .sf-carousel__btn {
   position: absolute; top: calc(50% - 22px); transform: translateY(-50%);
   width: 44px; height: 44px; border-radius: 50%;
+  padding: 0;
   border: 1px solid var(--color-neutral-80, #C9C9C9);
   background: var(--color-container-1, #fff);
   color: var(--color-on-surface-1, #001E5B);
