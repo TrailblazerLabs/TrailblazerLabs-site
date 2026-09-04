@@ -335,6 +335,12 @@ img { max-width: 100%; }
   line-height: var(--font-style-display-3-line-height, 1.125);
   letter-spacing: var(--font-style-display-3-letter-spacing, -0.0025em);
   color: var(--color-white, #FFFFFF);
+  /* Subtle vertical sheen: white at the top fading to 90% gray. Falls back to
+     the solid white color above where background-clip: text is unsupported. */
+  background-image: linear-gradient(180deg, #FFFFFF 0%, #E6E6E6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-align: center;
   max-width: 40ch;
   text-wrap: balance;
