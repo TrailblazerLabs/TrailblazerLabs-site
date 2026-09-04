@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Community Assets | Trailblazer Labs</title>
+    <title>Assets | Trailblazer Labs</title>
 
     <!-- ═══ BRAND FONTS (Avant Garde + Salesforce Sans) ═══ -->
     <style>
@@ -36,6 +36,9 @@
     <!-- ═══ SALESFORCE ICONS (496 icon set via CSS mask-image classes) ═══ -->
     <link rel="stylesheet" href="https://sfdc-ui-documentation-667d4c5e8394.herokuapp.com/salesforce-tokens/icons.css" />
 
+    <!-- ═══ TRAILHEAD DESIGN SYSTEM (TDS2) TOKENS — layered over the SF primitives ═══ -->
+    <link rel="stylesheet" href="./css/trailhead-tokens.css?v=1" />
+
     <!-- Pre-paint theme restore — mirrors the runtime toggle so a reload
          renders the stored theme immediately (no default-look flash). -->
     <script>
@@ -50,7 +53,7 @@
     </script>
 
     <!-- ═══ PAGE STYLES (nav, hero/compass, blades, cards, footer) ═══ -->
-    <link rel="stylesheet" href="./css/styles.css?v=12" />
+    <link rel="stylesheet" href="./css/styles.css?v=13" />
   </head>
 
   <body>
@@ -59,33 +62,32 @@
 
     <!-- ═══ PAGE INTRO ═══ -->
     <section id="engage-intro">
-      <div class="sf-engage-intro">
-        <p class="sf-engage-intro__eyebrow">Community Assets</p>
-        <h1 class="sf-engage-intro__title">Browse Everything the Community Has Built</h1>
-        <p class="sf-engage-intro__lede">
+      <div class="sf-intro">
+        <h1 class="sf-intro__title">Browse Everything the Community Has Built</h1>
+        <p class="sf-intro__lede">
           Open-source Salesforce solutions from Trailblazer Labs builders. Filter by track,
           search by topic, and sort by popularity. Every asset opens on GitHub in a new tab.
         </p>
       </div>
     </section>
 
-    <!-- ═══ ASSETS LIST ═══ -->
-    <div class="sf-tab-panel">
+    <!-- ═══ AGENTS & APPS ═══ -->
+    <section class="sf-tab-panel" id="panel-assets">
       <div class="sf-panel">
         <div class="sf-pitch-controls">
-          <input type="search" id="assets-search" class="sf-form__input sf-pitch-search"
+          <input type="search" id="assets-search" class="sf-form__input sf-pitch-search tds2-input"
                  placeholder="Search by title or topic…" aria-label="Search assets" />
           <div class="sf-pitch-chips" id="assets-tracks" role="group" aria-label="Filter by track">
-            <button type="button" class="sf-pitch-chip is-active" data-track="">All</button>
-            <button type="button" class="sf-pitch-chip" data-track="Strategist">Strategist</button>
-            <button type="button" class="sf-pitch-chip" data-track="Builder">Builder</button>
-            <button type="button" class="sf-pitch-chip" data-track="Engineer">Engineer</button>
+            <button type="button" class="sf-pitch-chip tds2-button is-active" data-track="" aria-pressed="true">All</button>
+            <button type="button" class="sf-pitch-chip tds2-button" data-track="Strategist" aria-pressed="false">Strategist</button>
+            <button type="button" class="sf-pitch-chip tds2-button" data-track="Builder" aria-pressed="false">Builder</button>
+            <button type="button" class="sf-pitch-chip tds2-button" data-track="Engineer" aria-pressed="false">Engineer</button>
           </div>
           <label class="sf-assets-sort">
             <span>Sort</span>
-            <select id="assets-sort" aria-label="Sort assets">
-              <option value="stars">Most stars</option>
-              <option value="forks">Most forks</option>
+            <select id="assets-sort" class="tds2-input" aria-label="Sort assets">
+              <option value="stars">Most Stars</option>
+              <option value="forks">Most Forks</option>
               <option value="az">A–Z</option>
             </select>
           </label>
@@ -97,7 +99,7 @@
 
         <ul class="sf-pitch-list" id="assets-list"></ul>
       </div>
-    </div>
+    </section>
 
     <!-- ═══ GLOBAL FOOTER (injected from partials/footer.html) ═══ -->
     <div data-include="footer"></div>
@@ -131,7 +133,7 @@
 
         function rowHTML(a) {
           const badge = a.track && BADGE[a.track]
-            ? `<span class="sf-disc-badge sf-disc-badge--${BADGE[a.track]}">${esc(a.track)}</span>`
+            ? `<span class="sf-disc-badge sf-disc-badge--${BADGE[a.track]} tds2-badge tds2-badge--small">${esc(a.track)}</span>`
             : '';
           const topics = (a.tags || []).map(esc).join(' &middot; ');
           const metaBits = [badge, topics ? `<span class="sf-assets-row__topics">${topics}</span>` : '',
@@ -148,7 +150,7 @@
               <span class="sf-assets-stat">${STAR_ICON}<b>${a.stars || 0}</b><span>stars</span></span>
               <span class="sf-assets-stat">${FORK_ICON}<b>${a.forks || 0}</b><span>forks</span></span>
             </span>
-            <a class="sf-pitch-row__upvote" href="${esc(a.repo)}" target="_blank" rel="noopener">${GH_ICON}<span>View</span></a>
+            <a class="sf-pitch-row__upvote tds2-button" href="${esc(a.repo)}" target="_blank" rel="noopener">${GH_ICON}<span>View</span></a>
           </li>`;
         }
 
@@ -171,7 +173,7 @@
           const count = document.getElementById('assets-count');
           const label = `${rows.length} asset${rows.length === 1 ? '' : 's'}`;
           count.innerHTML = activeAuthor
-            ? `${label} by <b>@${esc(activeAuthor)}</b> <button type="button" class="sf-assets-clear" id="assets-clear-author">Clear</button>`
+            ? `${label} by <b>@${esc(activeAuthor)}</b> <button type="button" class="sf-assets-clear tds2-button" id="assets-clear-author">Clear</button>`
             : label;
           list.innerHTML = rows.length
             ? rows.map(rowHTML).join('')
@@ -183,13 +185,17 @@
           assets.forEach((a) => (a.tags || []).forEach((t) => set.add(t)));
           const bar = document.getElementById('assets-topics');
           bar.innerHTML = [...set].sort().map((t) =>
-            `<button type="button" class="sf-assets-topic" data-topic="${esc(t)}">${esc(t)}</button>`).join('');
+            `<button type="button" class="sf-assets-topic tds2-button" data-topic="${esc(t)}" aria-pressed="false">${esc(t)}</button>`).join('');
           bar.addEventListener('click', (e) => {
             const c = e.target.closest('.sf-assets-topic');
             if (!c) return;
             const t = c.dataset.topic;
             activeTopic = activeTopic === t ? '' : t;
-            [...bar.children].forEach((x) => x.classList.toggle('is-active', x.dataset.topic === activeTopic));
+            [...bar.children].forEach((x) => {
+              const selected = x.dataset.topic === activeTopic;
+              x.classList.toggle('is-active', selected);
+              x.setAttribute('aria-pressed', String(selected));
+            });
             render();
           });
         }
@@ -198,8 +204,11 @@
           const c = e.target.closest('.sf-pitch-chip');
           if (!c) return;
           activeTrack = c.dataset.track;
-          [...document.getElementById('assets-tracks').children]
-            .forEach((x) => x.classList.toggle('is-active', x === c));
+          [...document.getElementById('assets-tracks').children].forEach((x) => {
+            const selected = x === c;
+            x.classList.toggle('is-active', selected);
+            x.setAttribute('aria-pressed', String(selected));
+          });
           render();
         });
         document.getElementById('assets-sort').addEventListener('change', (e) => { sortBy = e.target.value; render(); });

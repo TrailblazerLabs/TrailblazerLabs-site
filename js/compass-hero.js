@@ -18,7 +18,7 @@ import * as THREE from 'three';
    by ?fx= / data-fx as before.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-import { createConstellation, createStarfield, createContours } from './hero-effects.js';
+import { createConstellation, createStarfield } from './hero-effects.js';
 
 const SHAPE_LOADERS = {
   compass: () => import('./shapes/compass-shape.js'),
@@ -165,6 +165,10 @@ if (container) {
   // arbitrary URL input (unknown values fall back to the default shape).
   const SHAPE_MODE = Object.hasOwn(SHAPE_LOADERS, REQUESTED_SHAPE) ? REQUESTED_SHAPE : 'compass';
   const loadShape = SHAPE_LOADERS[SHAPE_MODE];
+  // When set, the shape still loads (so its camera framing + intro animation and
+  // any ambient FX choreography run), but the 3D object itself is hidden. Lets
+  // the hero keep the starfield/constellation intro pan without the compass.
+  const HIDE_SHAPE = container.dataset.hideShape != null;
 
   let shape = null; // { object, frame, applyAspect, update }
 
@@ -183,6 +187,9 @@ if (container) {
     .then((s) => {
       shape = s;
       scene.add(shape.object);
+      // Keep the shape's camera framing + intro animation driving the scene, but
+      // hide the object itself when requested (data-hide-shape on the mount).
+      if (HIDE_SHAPE) shape.object.visible = false;
       shape.frame(camera);
       resize();
       sync();
