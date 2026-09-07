@@ -50,6 +50,42 @@
     "forks": 0
   },
   {
+    "authorName": "klueckeman-edutb",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/217978407?v=4",
+    "title": "Kathy Prompt",
+    "description": "",
+    "track": "",
+    "tags": [],
+    "repo": "https://github.com/TrailblazerLabs/Kathy-prompt",
+    "license": "Apache-2.0",
+    "stars": 0,
+    "forks": 0
+  },
+  {
+    "authorName": "TrailblazerLabs",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/315594257?v=4",
+    "title": "Celia Repo",
+    "description": "",
+    "track": "",
+    "tags": [],
+    "repo": "https://github.com/TrailblazerLabs/Celia-Repo",
+    "license": "Apache-2.0",
+    "stars": 0,
+    "forks": 0
+  },
+  {
+    "authorName": "dubdubdata",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/323400322?v=4",
+    "title": "Fi Repo",
+    "description": "",
+    "track": "",
+    "tags": [],
+    "repo": "https://github.com/TrailblazerLabs/Fi-Repo",
+    "license": "Apache-2.0",
+    "stars": 0,
+    "forks": 0
+  },
+  {
     "authorName": "PaceyMia",
     "authorAvatar": "https://avatars.githubusercontent.com/u/106040506?v=4",
     "title": "Custom Confetti",
@@ -64,6 +100,30 @@
     "repo": "https://github.com/TrailblazerLabs/Custom-Confetti",
     "license": "Apache-2.0",
     "stars": 1,
+    "forks": 0
+  },
+  {
+    "authorName": "aliwaguespack",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/40503611?v=4",
+    "title": "Sales Slack Skills",
+    "description": "",
+    "track": "",
+    "tags": [],
+    "repo": "https://github.com/TrailblazerLabs/Sales-Slack-Skills",
+    "license": "Apache-2.0",
+    "stars": 0,
+    "forks": 0
+  },
+  {
+    "authorName": "aliwaguespack",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/40503611?v=4",
+    "title": "Service Slack Skills",
+    "description": "",
+    "track": "",
+    "tags": [],
+    "repo": "https://github.com/TrailblazerLabs/Service-Slack-Skills",
+    "license": "Apache-2.0",
+    "stars": 0,
     "forks": 0
   },
   {
