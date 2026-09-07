@@ -138,7 +138,8 @@ function sectionUnder(bodyText, heading) {
   if (start === -1) return '';
   const known = new Set([
     'elevator pitch', 'problem statement', 'development track',
-    'builder profile', 'required acknowledgments', 'submitted by',
+    'builder profile', 'trailblazer community profile',
+    'required acknowledgments', 'submitted by',
   ]);
   const answer = [];
   for (let i = start + 1; i < lines.length; i++) {
@@ -202,6 +203,7 @@ async function main() {
       elevator: sectionUnder(d.bodyText, 'Elevator Pitch'),
       problem: sectionUnder(d.bodyText, 'Problem Statement'),
       profile: sectionUnder(d.bodyText, 'Builder Profile'),
+      communityProfile: sectionUnder(d.bodyText, 'Trailblazer Community Profile').replace(/^_not provided_$/i, ''),
       track: sectionUnder(d.bodyText, 'Development Track'),
       url: d.url,
       upvotes: d.upvoteCount || 0,
