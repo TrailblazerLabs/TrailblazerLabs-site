@@ -90,6 +90,11 @@
     return value ? `<div class="sf-pitch-detail__row"><span class="sf-pitch-detail__label">${escapeHTML(label)}</span><span class="sf-pitch-detail__value">${escapeHTML(value)}</span></div>` : '';
   }
 
+  function pitchLinkDetail(label, url) {
+    if (!url) return '';
+    return `<div class="sf-pitch-detail__row"><span class="sf-pitch-detail__label">${escapeHTML(label)}</span><span class="sf-pitch-detail__value"><a href="${escapeHTML(url)}" rel="noopener" target="_blank">${escapeHTML(url)}</a></span></div>`;
+  }
+
   setupList({
     gridId: 'pitches-grid',
     loadMoreId: 'pitches-load-more',
@@ -107,7 +112,7 @@
     rowHTML: (pitch) => {
       const badge = trackBadge(pitch.track);
       const author = pitch.author ? escapeHTML('@' + pitch.author) : '';
-      const details = pitchDetail('Elevator Pitch', pitch.elevator || pitch.excerpt) + pitchDetail('Problem', pitch.problem);
+      const details = pitchDetail('Elevator Pitch', pitch.elevator || pitch.excerpt) + pitchDetail('Problem', pitch.problem) + pitchLinkDetail('Trailblazer Profile', pitch.communityProfile);
       const id = `pitch-detail-${pitchId++}`;
       return `<li class="sf-pitch-row tds2-card">
         <span class="sf-pitch-row__votes">${upIcon}<span>${escapeHTML(String(pitch.upvotes ?? 0))}</span></span>

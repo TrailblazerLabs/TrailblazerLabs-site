@@ -19,6 +19,14 @@
       if (invalidControl) invalidControl.focus();
     }
 
+    function isValidHttpUrl(value) {
+      try {
+        return ['http:', 'https:'].includes(new URL(value).protocol);
+      } catch {
+        return false;
+      }
+    }
+
     acknowledgments().forEach((checkbox) => checkbox.addEventListener('change', refreshSubmit));
     refreshSubmit();
 
@@ -31,6 +39,7 @@
       const problem = form.elements.problem.value.trim();
       const track = form.elements.track.value;
       const profile = form.elements.profile.value.trim();
+      const communityProfile = form.elements.communityProfile.value.trim();
       const firstEmpty = [...form.querySelectorAll('input[required], select[required], textarea[required]')]
         .find((control) => control.type !== 'checkbox' && !control.value.trim());
 
@@ -40,6 +49,10 @@
       }
       if (!/^[A-Za-z0-9-]{1,39}$/.test(username) || username.toLowerCase() === 'me') {
         showError('Please enter your real GitHub username (for example, your-handle), not "me".', form.elements.username);
+        return;
+      }
+      if (communityProfile && !isValidHttpUrl(communityProfile)) {
+        showError('Please enter a valid profile URL (starting with https://), or leave it blank.', form.elements.communityProfile);
         return;
       }
       const unchecked = acknowledgments().find((checkbox) => !checkbox.checked);
@@ -54,6 +67,7 @@
         '## Problem Statement', problem, '',
         '## Development Track', track, '',
         '## Builder Profile', profile, '',
+        '## Trailblazer Community Profile', communityProfile || '_Not provided_', '',
         '## Required Acknowledgments', acknowledgmentLines, '',
         '## Submitted by', '@' + username, '',
       ].join('\n');
