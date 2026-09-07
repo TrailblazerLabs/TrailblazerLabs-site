@@ -39,10 +39,7 @@
         ${dot}<span>${esc(repo.title)}</span>${ARROW_ICON}
       </a>`;
     }).join('');
-    const more = repos.length > 3
-      ? `<a class="sf-builder-card__repos-all" href="./assets.html?author=${encodeURIComponent(builder.github)}">View All ${repos.length} &rarr;</a>`
-      : '';
-    return `<div class="sf-builder-card__repos">${items}${more}</div>`;
+    return `<div class="sf-builder-card__repos">${items}</div>`;
   }
 
   function cardHTML(builder, repos) {
