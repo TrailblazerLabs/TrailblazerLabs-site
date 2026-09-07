@@ -936,7 +936,7 @@ img { max-width: 100%; }
 .sf-builder-card__tracks {
   display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;
 }
-.sf-builder-card__repos { display: flex; flex-direction: column; gap: 8px; }
+.sf-builder-card__repos { display: flex; flex-direction: column; gap: 8px; min-height: 76px; justify-content: center; }
 .sf-builder-card__repo {
   display: flex; align-items: center; gap: 8px;
   font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
@@ -944,6 +944,7 @@ img { max-width: 100%; }
   color: var(--color-link, #022AC0); text-decoration: none;
 }
 .sf-builder-card__repo:hover { text-decoration: underline; }
+.sf-builder-card__repo span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .sf-builder-card__repo svg { flex-shrink: 0; margin-left: auto; }
 .sf-builder-card__repo-dot {
   flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%;
