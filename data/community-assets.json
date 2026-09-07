@@ -1,9 +1,24 @@
 [
   {
+    "authorName": "dcstuff",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/44416270?v=4",
+    "title": "Permishifizer 9000",
+    "description": "Generate a \"Salesforce Backup\" permission set XML from live org metadata — ensuring your backup/restore integration user has access to every restorable object, field, and record type.",
+    "track": "Engineer",
+    "tags": [
+      "backup-and-restore",
+      "devsecops"
+    ],
+    "repo": "https://github.com/TrailblazerLabs/Permishifizer-9000",
+    "license": "Apache-2.0",
+    "stars": 2,
+    "forks": 0
+  },
+  {
     "authorName": "houssamsaoudy",
     "authorAvatar": "https://avatars.githubusercontent.com/u/77637247?v=4",
     "title": "Inactive User Deactivator",
-    "description": "Automatic Deactivation of Inactive Salesforce Users",
+    "description": "This solution automates the deactivation of Salesforce users who have not logged into the organization for a configurable number of days. The objective is to improve security, optimize license utilization, and ensure compliance with organizational access management policies.",
     "track": "Engineer",
     "tags": [
       "security",
@@ -49,21 +64,6 @@
     "repo": "https://github.com/TrailblazerLabs/Custom-Confetti",
     "license": "Apache-2.0",
     "stars": 1,
-    "forks": 0
-  },
-  {
-    "authorName": "dcstuff",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/44416270?v=4",
-    "title": "Permishifizer9000",
-    "description": "Generate a \"Salesforce Backup\" permission set XML from live org metadata — ensuring your backup/restore integration user has access to every restorable object, field, and record type.",
-    "track": "Engineer",
-    "tags": [
-      "backup-and-restore",
-      "devsecops"
-    ],
-    "repo": "https://github.com/TrailblazerLabs/Permishifizer9000",
-    "license": "Apache-2.0",
-    "stars": 2,
     "forks": 0
   },
   {
