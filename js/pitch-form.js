@@ -51,8 +51,8 @@
         showError('Please enter your real GitHub username (for example, your-handle), not "me".', form.elements.username);
         return;
       }
-      if (communityProfile && !isValidHttpUrl(communityProfile)) {
-        showError('Please enter a valid profile URL (starting with https://), or leave it blank.', form.elements.communityProfile);
+      if (!isValidHttpUrl(communityProfile)) {
+        showError('Please enter a valid Trailblazer Community Profile URL (starting with https://).', form.elements.communityProfile);
         return;
       }
       const unchecked = acknowledgments().find((checkbox) => !checkbox.checked);
@@ -67,7 +67,7 @@
         '## Problem Statement', problem, '',
         '## Development Track', track, '',
         '## Builder Profile', profile, '',
-        '## Trailblazer Community Profile', communityProfile || '_Not provided_', '',
+        '## Trailblazer Community Profile', communityProfile, '',
         '## Required Acknowledgments', acknowledgmentLines, '',
         '## Submitted by', '@' + username, '',
       ].join('\n');
