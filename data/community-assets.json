@@ -4,9 +4,11 @@
     "authorAvatar": "https://avatars.githubusercontent.com/u/77637247?v=4",
     "title": "Houssamsaoudy Repo",
     "description": "Automatic Deactivation of Inactive Salesforce Users",
-    "track": "",
+    "track": "Engineer",
     "tags": [
-      "security"
+      "security",
+      "user",
+      "user-management"
     ],
     "repo": "https://github.com/TrailblazerLabs/-houssamsaoudy-repo",
     "license": "Apache-2.0",
