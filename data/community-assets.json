@@ -46,7 +46,7 @@
   {
     "authorName": "shonnah-dev",
     "authorAvatar": "https://avatars.githubusercontent.com/u/322238027?v=4",
-    "title": "Agentforce System Readiness Assessment",
+    "title": "Agentforce Readiness Assessment",
     "description": "A 7-dimension scoring rubric and facilitation guide for assessing whether a Salesforce org is ready to deploy Agentforce. Covers data quality, Data Cloud and Einstein Trust Layer setup, permissions, automation conflicts, Topic/Action maturity, governance, and change management, plus a cost-estimation appendix for Data Cloud and Agentforce budgets.",
     "track": "Strategist",
     "tags": [
@@ -55,7 +55,7 @@
       "readiness-checker",
       "solution-architecture"
     ],
-    "repo": "https://github.com/TrailblazerLabs/Agentforce-System-Readiness-Assessment",
+    "repo": "https://github.com/TrailblazerLabs/Agentforce-Readiness-Assessment",
     "license": "Apache-2.0",
     "stars": 0,
     "forks": 0
@@ -63,11 +63,11 @@
   {
     "authorName": "klueckeman-edutb",
     "authorAvatar": "https://avatars.githubusercontent.com/u/217978407?v=4",
-    "title": "Kathy Prompt",
+    "title": "Case Spam Zapper",
     "description": "",
     "track": "",
     "tags": [],
-    "repo": "https://github.com/TrailblazerLabs/Kathy-prompt",
+    "repo": "https://github.com/TrailblazerLabs/Case-Spam-Zapper",
     "license": "Apache-2.0",
     "stars": 0,
     "forks": 0
