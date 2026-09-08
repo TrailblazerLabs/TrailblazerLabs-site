@@ -1,0 +1,90 @@
+:root {
+  color-scheme: light dark;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 2rem 1rem;
+  background: #f4f6f9;
+  color: #16171a;
+}
+
+.cla-page {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.cla-page__intro {
+  color: #3e3e3c;
+  margin-bottom: 1.5rem;
+}
+
+.cla-page__scrollbox {
+  border: 1px solid #c9c9c9;
+  border-radius: 8px;
+  background: #fff;
+  height: 320px;
+  overflow-y: auto;
+  padding: 1rem 1.25rem;
+  line-height: 1.5;
+}
+
+.cla-page__scrollbox h2 {
+  font-size: 1rem;
+  margin-top: 1.25rem;
+}
+
+.cla-page__scroll-hint {
+  font-size: 0.85rem;
+  color: #706e6b;
+  margin: 0.5rem 0 1.25rem;
+}
+
+.cla-page__scroll-hint.is-done {
+  color: #04844b;
+}
+
+.cla-page__checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+
+.cla-page__checkbox input {
+  margin-top: 0.2rem;
+}
+
+#cla-sign-button {
+  background: #0176d3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.65rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#cla-sign-button:disabled {
+  background: #c9c9c9;
+  cursor: not-allowed;
+}
+
+.cla-page__status {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 6px;
+  background: #eef4ff;
+}
+
+.cla-page__status.is-error {
+  background: #fef0ef;
+  color: #a5100e;
+}
+
+.cla-page__status.is-success {
+  background: #e9f9ee;
+  color: #04844b;
+}

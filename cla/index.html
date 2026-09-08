@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign the Trailblazer Labs CLA</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="cla-page">
+    <h1>Sign the Trailblazer Labs Contributor License Agreement</h1>
+    <p class="cla-page__intro" id="cla-context">
+      Before we can accept your contribution, you need to sign our CLA once.
+      This covers every Trailblazer Labs repo — you won't be asked again.
+    </p>
 
+    <div class="cla-page__scrollbox" id="cla-scrollbox" tabindex="0">
+      <div id="cla-text">Loading CLA text&hellip;</div>
+    </div>
+    <p class="cla-page__scroll-hint" id="cla-scroll-hint">
+      Scroll to the bottom to unlock the checkbox below.
+    </p>
+
+    <label class="cla-page__checkbox">
+      <input type="checkbox" id="cla-checkbox" disabled />
+      I have read and agree to the Trailblazer Labs Contributor License Agreement above.
+    </label>
+
+    <button type="button" id="cla-sign-button" disabled>Sign the CLA</button>
+
+    <div id="cla-status" class="cla-page__status" hidden></div>
+  </main>
+
+  <script src="./config.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
