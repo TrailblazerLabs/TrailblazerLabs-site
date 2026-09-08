@@ -13,7 +13,7 @@
   // it is NOT used to decide pass/fail, signing covers every repo.
   const repo = params.get('repo') || '';
   if (repo) {
-    contextEl.textContent = `Before "${repo}" can accept your contribution, you need to sign our CLA once. This covers every Trailblazer Labs repo — you won't be asked again.`;
+    contextEl.textContent = `Before your contribution to "${repo}" can be accepted, you must sign the Trailblazer Labs Contributor License Agreement (CLA). This signature applies to all Trailblazer Labs repositories, and you will not be asked to sign again.`;
   }
 
   function showStatus(message, kind) {
@@ -54,7 +54,7 @@
     const fitsWithoutScroll = scrollbox.scrollHeight <= scrollbox.clientHeight + 4;
     if (atBottom || fitsWithoutScroll) {
       checkbox.disabled = false;
-      hintEl.textContent = 'You can now check the box below.';
+      hintEl.textContent = 'You may now check the box below.';
       hintEl.classList.add('is-done');
     }
   }
@@ -70,10 +70,10 @@
       initScrollGate();
     })
     .catch(() => {
-      textEl.textContent = 'Unable to load the CLA text. Please refresh and try again.';
+      textEl.textContent = 'The agreement could not be loaded. Please refresh the page and try again.';
     });
 
-  // --- Step 2: kick off GitHub OAuth when "Sign the CLA" is clicked ---
+  // --- Step 2: kick off GitHub OAuth when "Sign the Agreement" is clicked ---
   signButton.addEventListener('click', () => {
     signButton.disabled = true;
     signButton.textContent = 'Redirecting to GitHub…';
@@ -107,11 +107,11 @@
 
     const expectedState = sessionStorage.getItem('cla_oauth_state');
     if (!expectedState || expectedState !== returnedState) {
-      showStatus('This sign-in link is invalid or expired. Please start over.', 'error');
+      showStatus('This sign-in link is no longer valid. Please begin the process again.', 'error');
       return;
     }
 
-    showStatus('Finishing up — verifying your GitHub account…');
+    showStatus('Verifying your GitHub account…');
 
     let repoFromState = '';
     try {
@@ -133,11 +133,11 @@
       .then(({ ok, body }) => {
         sessionStorage.removeItem('cla_oauth_state');
         if (!ok) {
-          showStatus(body.error || 'Something went wrong signing the CLA. Please try again.', 'error');
+          showStatus(body.error || 'The agreement could not be signed. Please try again.', 'error');
           return;
         }
-        const who = body.login ? `@${body.login}` : 'you';
-        let message = `Thanks, ${who} — you've signed the CLA. You can close this tab and return to your pull request.`;
+        const who = body.login ? `@${body.login} has` : 'You have';
+        let message = `${who} signed the Trailblazer Labs Contributor License Agreement. You may close this tab and return to your pull request.`;
         showStatus(message, 'success');
         if (repoFromState) {
           const link = document.createElement('a');
