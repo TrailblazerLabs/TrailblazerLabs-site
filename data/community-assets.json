@@ -1,5 +1,17 @@
 [
   {
+    "authorName": "pennysavage-1",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/178824867?v=4",
+    "title": "Penny Repo",
+    "description": "",
+    "track": "",
+    "tags": [],
+    "repo": "https://github.com/TrailblazerLabs/Penny-Repo",
+    "license": "Apache-2.0",
+    "stars": 0,
+    "forks": 0
+  },
+  {
     "authorName": "sforceROCKER",
     "authorAvatar": "https://avatars.githubusercontent.com/u/96741460?v=4",
     "title": "SforceROCKER TB Labs",
@@ -34,24 +46,16 @@
   {
     "authorName": "shonnah-dev",
     "authorAvatar": "https://avatars.githubusercontent.com/u/322238027?v=4",
-    "title": "Shonnah Hughes Repo",
+    "title": "Agentforce System Readiness Assessment",
     "description": "A 7-dimension scoring rubric and facilitation guide for assessing whether a Salesforce org is ready to deploy Agentforce. Covers data quality, Data Cloud and Einstein Trust Layer setup, permissions, automation conflicts, Topic/Action maturity, governance, and change management, plus a cost-estimation appendix for Data Cloud and Agentforce budgets.",
     "track": "Strategist",
     "tags": [
-      "agentforce",
-      "agentforce-specialist",
       "agentforce-specialist-guide",
-      "readiness",
       "readiness-assessment",
-      "readiness-check",
       "readiness-checker",
-      "readiness-probe",
-      "readiness-scaffolding",
-      "readiness-score",
-      "solution-architect",
       "solution-architecture"
     ],
-    "repo": "https://github.com/TrailblazerLabs/Shonnah-Hughes-Repo",
+    "repo": "https://github.com/TrailblazerLabs/Agentforce-System-Readiness-Assessment",
     "license": "Apache-2.0",
     "stars": 0,
     "forks": 0
@@ -71,11 +75,11 @@
   {
     "authorName": "klueckeman-edutb",
     "authorAvatar": "https://avatars.githubusercontent.com/u/217978407?v=4",
-    "title": "Education Trailblazers Campus Policy Navigator Prompt",
-    "description": "",
+    "title": "Campus Policy Navigator Prompt",
+    "description": "Agentforce Education prompt that helps students, faculty, and staff navigate academic holds, registration windows, and    institutional policy using verified Salesforce records.",
     "track": "",
     "tags": [],
-    "repo": "https://github.com/TrailblazerLabs/Education-Trailblazers-Campus-Policy-Navigator-Prompt-",
+    "repo": "https://github.com/TrailblazerLabs/Campus-Policy-Navigator-Prompt",
     "license": "Apache-2.0",
     "stars": 0,
     "forks": 0
@@ -188,18 +192,6 @@
     "track": "",
     "tags": [],
     "repo": "https://github.com/TrailblazerLabs/Ali-Waguespack-Repo",
-    "license": "Apache-2.0",
-    "stars": 0,
-    "forks": 0
-  },
-  {
-    "authorName": "pennysavage-1",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/178824867?v=4",
-    "title": "Penny Repo",
-    "description": "",
-    "track": "",
-    "tags": [],
-    "repo": "https://github.com/TrailblazerLabs/Penny-Repo",
     "license": "Apache-2.0",
     "stars": 0,
     "forks": 0
