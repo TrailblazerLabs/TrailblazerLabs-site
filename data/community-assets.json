@@ -1,5 +1,22 @@
 [
   {
+    "authorName": "sforceROCKER",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/96741460?v=4",
+    "title": "SforceROCKER TB Labs",
+    "description": "Salesforce Technical Architect, author, and AI strategist with deep platform architecture experience. 5x Salesforce MVP, 40x Certified, 2026 Architect Ambassador and winner of the TDX25 Agentforce Hackathon Grand Prize, focused on practical, scalable agentic solutions that deliver measurable business value.",
+    "track": "Strategist",
+    "tags": [
+      "architecure",
+      "business-analysis",
+      "process-automation",
+      "roadmap"
+    ],
+    "repo": "https://github.com/TrailblazerLabs/sforceROCKER-TB-Labs",
+    "license": "Apache-2.0",
+    "stars": 1,
+    "forks": 0
+  },
+  {
     "authorName": "dcstuff",
     "authorAvatar": "https://avatars.githubusercontent.com/u/44416270?v=4",
     "title": "Permishifizer 9000",
@@ -12,6 +29,55 @@
     "repo": "https://github.com/TrailblazerLabs/Permishifizer-9000",
     "license": "Apache-2.0",
     "stars": 2,
+    "forks": 0
+  },
+  {
+    "authorName": "shonnah-dev",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/322238027?v=4",
+    "title": "Shonnah Hughes Repo",
+    "description": "A 7-dimension scoring rubric and facilitation guide for assessing whether a Salesforce org is ready to deploy Agentforce. Covers data quality, Data Cloud and Einstein Trust Layer setup, permissions, automation conflicts, Topic/Action maturity, governance, and change management, plus a cost-estimation appendix for Data Cloud and Agentforce budgets.",
+    "track": "Strategist",
+    "tags": [
+      "agentforce",
+      "agentforce-specialist",
+      "agentforce-specialist-guide",
+      "readiness",
+      "readiness-assessment",
+      "readiness-check",
+      "readiness-checker",
+      "readiness-probe",
+      "readiness-scaffolding",
+      "readiness-score",
+      "solution-architect",
+      "solution-architecture"
+    ],
+    "repo": "https://github.com/TrailblazerLabs/Shonnah-Hughes-Repo",
+    "license": "Apache-2.0",
+    "stars": 0,
+    "forks": 0
+  },
+  {
+    "authorName": "klueckeman-edutb",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/217978407?v=4",
+    "title": "Kathy Prompt",
+    "description": "",
+    "track": "",
+    "tags": [],
+    "repo": "https://github.com/TrailblazerLabs/Kathy-prompt",
+    "license": "Apache-2.0",
+    "stars": 0,
+    "forks": 0
+  },
+  {
+    "authorName": "klueckeman-edutb",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/217978407?v=4",
+    "title": "Education Trailblazers Campus Policy Navigator Prompt",
+    "description": "",
+    "track": "",
+    "tags": [],
+    "repo": "https://github.com/TrailblazerLabs/Education-Trailblazers-Campus-Policy-Navigator-Prompt-",
+    "license": "Apache-2.0",
+    "stars": 0,
     "forks": 0
   },
   {
@@ -35,7 +101,7 @@
     "authorAvatar": "https://avatars.githubusercontent.com/u/11198368?v=4",
     "title": "Localized Product Lwc",
     "description": "An AI-enabled Lightning Web Component (LWC) that leverages Prompt Builder to generate localized product summaries and positioning bullets for global sales reps and community catalogs. ",
-    "track": "",
+    "track": "Engineer",
     "tags": [
       "ai",
       "localization",
@@ -45,18 +111,6 @@
       "sales-enablement"
     ],
     "repo": "https://github.com/TrailblazerLabs/localized-product-lwc",
-    "license": "Apache-2.0",
-    "stars": 0,
-    "forks": 0
-  },
-  {
-    "authorName": "klueckeman-edutb",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/217978407?v=4",
-    "title": "Kathy Prompt",
-    "description": "",
-    "track": "",
-    "tags": [],
-    "repo": "https://github.com/TrailblazerLabs/Kathy-prompt",
     "license": "Apache-2.0",
     "stars": 0,
     "forks": 0
@@ -139,30 +193,6 @@
     "forks": 0
   },
   {
-    "authorName": "shonnah-dev",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/322238027?v=4",
-    "title": "Shonnah Hughes Repo",
-    "description": "",
-    "track": "",
-    "tags": [],
-    "repo": "https://github.com/TrailblazerLabs/Shonnah-Hughes-Repo",
-    "license": "Apache-2.0",
-    "stars": 0,
-    "forks": 0
-  },
-  {
-    "authorName": "sforceROCKER",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/96741460?v=4",
-    "title": "Joseph Kubon Repo",
-    "description": "",
-    "track": "",
-    "tags": [],
-    "repo": "https://github.com/TrailblazerLabs/Joseph-Kubon-Repo",
-    "license": "Apache-2.0",
-    "stars": 1,
-    "forks": 0
-  },
-  {
     "authorName": "pennysavage-1",
     "authorAvatar": "https://avatars.githubusercontent.com/u/178824867?v=4",
     "title": "Penny Repo",
@@ -170,18 +200,6 @@
     "track": "",
     "tags": [],
     "repo": "https://github.com/TrailblazerLabs/Penny-Repo",
-    "license": "Apache-2.0",
-    "stars": 0,
-    "forks": 0
-  },
-  {
-    "authorName": "klueckeman-edutb",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/217978407?v=4",
-    "title": "Temp Kathy Repo",
-    "description": "",
-    "track": "",
-    "tags": [],
-    "repo": "https://github.com/TrailblazerLabs/Temp-Kathy-Repo",
     "license": "Apache-2.0",
     "stars": 0,
     "forks": 0
