@@ -633,6 +633,40 @@ img { max-width: 100%; }
   margin: var(--space-4) 0;
   justify-content: center;
 }
+.sf-blade__actions--start { justify-content: flex-start; margin-inline: 0; }
+
+/* ── Meet the Builders: centered stack (copy, avatar cluster, button) ── */
+.sf-builders-stack {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: var(--space-content-lg, 24px);
+}
+.sf-builders-stack__visual {
+  display: inline-flex; justify-content: center;
+  text-decoration: none;
+}
+.sf-builders-cluster {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  padding-left: 8px;
+}
+.sf-builders-cluster__item {
+  width: 72px; height: 72px; border-radius: 50%;
+  margin-left: -8px;
+  border: 3px solid var(--color-background-1, #fff);
+  background: var(--tds2-color-brand-primary-light, #edf4ff);
+  overflow: hidden; flex-shrink: 0;
+  box-shadow: var(--tds2-elevation-1);
+  transition: transform 0.15s ease;
+}
+.sf-builders-cluster__item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sf-builders-cluster__more {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-style-body-copy-1-bold-family, "Salesforce Sans", Arial, sans-serif);
+  font-weight: 700; font-size: 20px;
+  color: var(--tds2-color-brand-primary, #066afe);
+  background: var(--tds2-color-brand-primary-light, #edf4ff);
+}
+.sf-builders-stack__visual:hover .sf-builders-cluster__item { transform: translateY(-3px); }
+.sf-builders-stack .sf-blade__actions { margin: 0; }
 
 .sf-card-grid {
   display: grid;
@@ -1161,6 +1195,7 @@ img { max-width: 100%; }
   clip-path: circle(150vw at 50% -120vw);
   margin-top: -15vw;
   z-index: -1;
+  pointer-events: none;
 }
 .mountain-transition__l {
   display: block;
@@ -1193,6 +1228,7 @@ img { max-width: 100%; }
   height: 40vw;
   overflow: hidden;
   line-height: 0;
+  pointer-events: none;
   background: linear-gradient(180deg, rgba(198, 233, 255, 0) 30%, #c6e9ff 100%);
   margin-top: -15vw;
   margin-bottom: -5vw;
