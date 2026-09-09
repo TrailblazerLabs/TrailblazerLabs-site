@@ -771,7 +771,7 @@ img { max-width: 100%; }
 }
 .sf-carousel__track {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   gap: var(--space-content-xl, 32px);
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -1052,52 +1052,13 @@ img { max-width: 100%; }
 /* ═══════════════════════════════════════════════════════════
    LEGAL FOOTER  (recipe-page-chrome — copied verbatim)
    ═══════════════════════════════════════════════════════════ */
-.sf-footer__links {
-  display: flex; gap: 24px; padding: 64px;
-  background: var(--color-surface-1, #FFFFFF);
-}
-.sf-footer__brand {
-  display: flex; flex-direction: column; gap: 28px;
-  width: 280px; flex-shrink: 0;
-}
-.sf-footer__logo { display: block; }
-.sf-footer__social { display: flex; flex-wrap: wrap; gap: 14px; }
-.sf-footer__social a { display: block; line-height: 0; }
-.sf-footer__phone, .sf-footer__contact-link {
-  font-family: var(--font-style-body-copy-3-bold-family, "Salesforce Sans", Arial, sans-serif);
-  font-weight: 700; font-size: 14px; line-height: 20px; color: #444;
-  margin: 0;
-}
-.sf-footer__contact-link { text-decoration: underline; }
-.sf-footer__columns { display: flex; flex: 1; gap: 30px; }
-.sf-footer__column { flex: 1; }
-.sf-footer__column h3 {
-  font-family: var(--font-style-body-copy-3-bold-family, "Salesforce Sans", Arial, sans-serif);
-  font-weight: 700; font-size: 14px; line-height: 20px; color: #444;
-  margin: 0 0 36px;
-}
-.sf-footer__column ul {
-  list-style: none; margin: 0; padding: 0;
-  display: flex; flex-direction: column; gap: 14px;
-}
-.sf-footer__column a {
-  font-family: var(--font-style-body-copy-4-family, "Salesforce Sans", Arial, sans-serif);
-  font-weight: 400; font-size: 12px; line-height: 18px; letter-spacing: 0.03px;
-  color: #0B5CAB; text-decoration: none;
-}
-.sf-footer__column a:hover { text-decoration: underline; }
-.sf-footer__bottom { background: #032D60; padding: 20px 64px; }
+.sf-footer__bottom { background: #032D60; padding: 40px 64px; }
 .sf-footer__bottom-inner {
-  display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;
+  display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start;
 }
-.sf-footer__region {
-  display: flex; align-items: center; gap: 6px;
-  background: none; border: none; cursor: pointer; color: #fff;
-  font-family: var(--font-style-body-copy-2-bold-family, "Salesforce Sans", Arial, sans-serif);
-  font-weight: 700; font-size: 16px; line-height: 24px;
-  padding: 0 24px 11px;
+.sf-footer__logo {
+  display: block; flex-shrink: 0;
 }
-.sf-footer__region .icon { width: 18px; height: 18px; background-color: #fff; }
 .sf-footer__legal { flex: 1; min-width: 320px; display: flex; flex-direction: column; gap: 24px; }
 .sf-footer__legal-links { display: flex; flex-wrap: wrap; gap: 10px 20px; }
 .sf-footer__legal-links a, .sf-footer__copyright, .sf-footer__copyright a {
@@ -1108,14 +1069,11 @@ img { max-width: 100%; }
 .sf-footer__copyright { margin: 0; text-decoration: none; }
 
 @media (max-width: 1023px) {
-  .sf-footer__links { padding: 40px; }
-  .sf-footer__bottom { padding: 20px 40px; }
+  .sf-footer__bottom { padding: 32px 40px; }
 }
 @media (max-width: 767px) {
-  .sf-footer__links { display: none; }
-  .sf-footer__bottom { padding: 20px 24px; }
+  .sf-footer__bottom { padding: 32px 24px; }
   .sf-footer__bottom-inner { flex-direction: column; align-items: center; text-align: center; }
-  .sf-footer__region { padding-bottom: 0; }
   .sf-footer__legal-links { justify-content: center; }
 }
 
@@ -1794,7 +1752,8 @@ img { max-width: 100%; }
 .sf-pitch-row__votes svg { flex-shrink: 0; }
 .sf-pitch-row__body { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1 1 auto; }
 .sf-pitch-row__title {
-  display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex; align-items: center; justify-content: flex-start;
+  align-self: flex-start; gap: 6px;
   padding: 0; border: none; background: none; text-align: left; cursor: pointer;
   font-family: var(--font-style-body-copy-1-bold-family, "Salesforce Sans", Arial, sans-serif);
   font-weight: 700; font-size: 18px; line-height: 24px;
