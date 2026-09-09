@@ -1,5 +1,60 @@
 [
   {
+    "authorName": "aliwaguespack",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/40503611?v=4",
+    "title": "Slack Candidate Tracker",
+    "description": "Candidate Tracker is a self-hostable Slack app that logs candidates, moves them through a defined interview pipeline, and automatically creates a dedicated private channel with the right interviewers invited the moment they reach stage 1. ",
+    "track": "",
+    "tags": [],
+    "repo": "https://github.com/TrailblazerLabs/Slack-Candidate-Tracker",
+    "license": "Apache-2.0",
+    "stars": 0,
+    "forks": 0
+  },
+  {
+    "authorName": "aliwaguespack",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/40503611?v=4",
+    "title": "Slackbot Skill Sales Weekly Jumpstart",
+    "description": "",
+    "track": "",
+    "tags": [],
+    "repo": "https://github.com/TrailblazerLabs/Slackbot-Skill-Sales-Weekly-Jumpstart",
+    "license": "Apache-2.0",
+    "stars": 0,
+    "forks": 0
+  },
+  {
+    "authorName": "aliwaguespack",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/40503611?v=4",
+    "title": "Slackbot Skill Service CS Account Risk",
+    "description": "A Slackbot skill for support/CS teams: give it a customer name and it assembles a risk-flagged brief — ticket history, Slack mentions, CRM account health, and recent email tone — so a manager can see how serious a situation is without digging through different tools.",
+    "track": "",
+    "tags": [],
+    "repo": "https://github.com/TrailblazerLabs/Slackbot-Skill-Service-CS-Account-Risk",
+    "license": "Apache-2.0",
+    "stars": 0,
+    "forks": 0
+  },
+  {
+    "authorName": "ssisson",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/11198368?v=4",
+    "title": "Localized Product Lwc",
+    "description": "An AI-enabled Lightning Web Component (LWC) that leverages Prompt Builder to generate localized product summaries and positioning bullets for global sales reps and community catalogs. ",
+    "track": "Engineer",
+    "tags": [
+      "ai",
+      "localization",
+      "lwc",
+      "lwc-component",
+      "prompt-builder",
+      "sales-enablement"
+    ],
+    "repo": "https://github.com/TrailblazerLabs/localized-product-lwc",
+    "license": "Apache-2.0",
+    "stars": 0,
+    "forks": 0
+  },
+  {
     "authorName": "pennysavage-1",
     "authorAvatar": "https://avatars.githubusercontent.com/u/178824867?v=4",
     "title": "Penny Repo",
@@ -25,7 +80,7 @@
     ],
     "repo": "https://github.com/TrailblazerLabs/sforceROCKER-TB-Labs",
     "license": "Apache-2.0",
-    "stars": 1,
+    "stars": 3,
     "forks": 0
   },
   {
@@ -101,37 +156,6 @@
     "forks": 0
   },
   {
-    "authorName": "ssisson",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/11198368?v=4",
-    "title": "Localized Product Lwc",
-    "description": "An AI-enabled Lightning Web Component (LWC) that leverages Prompt Builder to generate localized product summaries and positioning bullets for global sales reps and community catalogs. ",
-    "track": "Engineer",
-    "tags": [
-      "ai",
-      "localization",
-      "lwc",
-      "lwc-component",
-      "prompt-builder",
-      "sales-enablement"
-    ],
-    "repo": "https://github.com/TrailblazerLabs/localized-product-lwc",
-    "license": "Apache-2.0",
-    "stars": 0,
-    "forks": 0
-  },
-  {
-    "authorName": "TrailblazerLabs",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/315594257?v=4",
-    "title": "Celia Repo",
-    "description": "",
-    "track": "",
-    "tags": [],
-    "repo": "https://github.com/TrailblazerLabs/Celia-Repo",
-    "license": "Apache-2.0",
-    "stars": 0,
-    "forks": 0
-  },
-  {
     "authorName": "dubdubdata",
     "authorAvatar": "https://avatars.githubusercontent.com/u/323400322?v=4",
     "title": "Fi Repo",
@@ -158,42 +182,6 @@
     "repo": "https://github.com/TrailblazerLabs/Custom-Confetti",
     "license": "Apache-2.0",
     "stars": 1,
-    "forks": 0
-  },
-  {
-    "authorName": "aliwaguespack",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/40503611?v=4",
-    "title": "Sales Slack Skills",
-    "description": "",
-    "track": "",
-    "tags": [],
-    "repo": "https://github.com/TrailblazerLabs/Sales-Slack-Skills",
-    "license": "Apache-2.0",
-    "stars": 0,
-    "forks": 0
-  },
-  {
-    "authorName": "aliwaguespack",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/40503611?v=4",
-    "title": "Service Slack Skills",
-    "description": "",
-    "track": "",
-    "tags": [],
-    "repo": "https://github.com/TrailblazerLabs/Service-Slack-Skills",
-    "license": "Apache-2.0",
-    "stars": 0,
-    "forks": 0
-  },
-  {
-    "authorName": "aliwaguespack",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/40503611?v=4",
-    "title": "Ali Waguespack Repo",
-    "description": "",
-    "track": "",
-    "tags": [],
-    "repo": "https://github.com/TrailblazerLabs/Ali-Waguespack-Repo",
-    "license": "Apache-2.0",
-    "stars": 0,
     "forks": 0
   }
 ]
