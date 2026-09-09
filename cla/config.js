@@ -6,6 +6,6 @@ window.CLA_CONFIG = {
   // writes to signatures.json. See ../worker/.
   WORKER_URL: 'https://cla-sign-worker.sklardie-trailblazerlabs.workers.dev/',
   // Must match the top-level "claVersion" in cla-signatures/signatures.json.
-  CLA_VERSION: '1.0-placeholder',
+  CLA_VERSION: '1.0',
   CLA_TEXT_PATH: './cla.md',
 };
