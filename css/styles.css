@@ -854,7 +854,7 @@ img { max-width: 100%; }
 .sf-asset-card--rich .sf-asset-card__title { font-size: 21px; }
 .sf-asset-card--rich .sf-asset-card__desc {
   font-size: 15px; line-height: 1.55;
-  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden;
 }
 .sf-asset-card--rich .sf-asset-card__footer { justify-content: space-between; flex-wrap: nowrap; }
 .sf-asset-card__author { display: inline-flex; align-items: center; gap: 8px; min-width: 0; }
