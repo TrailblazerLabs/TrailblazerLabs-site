@@ -736,6 +736,10 @@ img { max-width: 100%; }
   list-style: none; margin: 0; padding: 0;
 }
 .sf-asset-card__tag {
+  padding: 2px var(--tds2-spacing-2);
+  font-size: var(--tds2-font-size-xxs);
+  font-weight: 400;
+  line-height: 16px;
 }
 .sf-asset-card__footer {
   display: flex; align-items: center; justify-content: space-between;
