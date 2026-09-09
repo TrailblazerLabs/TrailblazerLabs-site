@@ -183,8 +183,17 @@ img { max-width: 100%; }
     --tds2-button-text-color: var(--tds2-color-brand-primary);
     box-shadow: none;
 }
-.sf-cta--secondary:hover, .sf-cta--secondary:focus-visible { background: rgba(255, 255, 255, 0.35); }
-.sf-cta--secondary:active { background: rgba(255, 255, 255, 0.45); }
+.sf-cta--secondary:hover, .sf-cta--secondary:focus-visible,
+.tds2-button--secondary:hover, .tds2-button--secondary:focus-visible {
+  background: var(--tds2-color-brand-primary);
+  border-color: var(--tds2-color-brand-primary);
+  color: var(--tds2-color-text-inverse);
+}
+.sf-cta--secondary:active, .tds2-button--secondary:active {
+  background: var(--tds2-color-brand-primary-dark);
+  border-color: var(--tds2-color-brand-primary-dark);
+  color: var(--tds2-color-text-inverse);
+}
 /* Special — green "Try for free" pill */
 .sf-cta--special {
   background: var(--color-green-50, #2E844A);
@@ -210,9 +219,25 @@ img { max-width: 100%; }
 .hero-blade .sf-cta {
   color: var(--color-white);
 }
-.sf-cta--on-dark.sf-cta--secondary:hover,
-[data-theme='night'] .hero-blade .sf-cta--secondary:hover {
-  border-color: rgba(255,255,255,1);
+/* On-dark secondary sits on the hero image: white outline + white text,
+   with a translucent-white fill on hover (not the light-blue used on white bg). */
+.sf-cta--on-dark.sf-cta--secondary,
+.sf-cta--on-dark.tds2-button--secondary {
+  --tds2-button-border-color: rgba(255, 255, 255, 0.7);
+  --tds2-button-bg: transparent;
+  --tds2-button-text-color: var(--color-white);
+}
+.sf-cta--on-dark.sf-cta--secondary:hover, .sf-cta--on-dark.sf-cta--secondary:focus-visible,
+.sf-cta--on-dark.tds2-button--secondary:hover, .sf-cta--on-dark.tds2-button--secondary:focus-visible {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 1);
+  color: var(--color-white);
+}
+.sf-cta--on-dark.sf-cta--secondary:active,
+.sf-cta--on-dark.tds2-button--secondary:active {
+  background: rgba(255, 255, 255, 0.28);
+  border-color: rgba(255, 255, 255, 1);
+  color: var(--color-white);
 }
 .sf-cta:focus-visible, .tds2-button:focus-visible {
   outline: var(--tds2-a11y-outline-focus);
