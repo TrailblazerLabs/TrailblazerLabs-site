@@ -69,8 +69,8 @@
   {
     "authorName": "sforceROCKER",
     "authorAvatar": "https://avatars.githubusercontent.com/u/96741460?v=4",
-    "title": "SforceROCKER TB Labs",
-    "description": "Salesforce Technical Architect, author, and AI strategist with deep platform architecture experience. 5x Salesforce MVP, 40x Certified, 2026 Architect Ambassador and winner of the TDX25 Agentforce Hackathon Grand Prize, focused on practical, scalable agentic solutions that deliver measurable business value.",
+    "title": "Agentforce Architecture And Strategy",
+    "description": "Discovery, architecture, and strategy guidance for designing and delivering Agentforce solutions",
     "track": "Strategist",
     "tags": [
       "architecure",
@@ -78,7 +78,7 @@
       "process-automation",
       "roadmap"
     ],
-    "repo": "https://github.com/TrailblazerLabs/sforceROCKER-TB-Labs",
+    "repo": "https://github.com/TrailblazerLabs/Agentforce-Architecture-and-Strategy",
     "license": "Apache-2.0",
     "stars": 3,
     "forks": 0
