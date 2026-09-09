@@ -53,7 +53,7 @@
     </script>
 
     <!-- ═══ PAGE STYLES (nav, hero/compass, blades, cards, footer) ═══ -->
-    <link rel="stylesheet" href="./css/styles.css?v=33" />
+    <link rel="stylesheet" href="./css/styles.css?v=37" />
   </head>
 
   <body>
@@ -130,21 +130,27 @@
       <img class="mountain-transition__r" src="./images/transition-mountains-r.png" alt="" />
     </div>
 
-    <!-- ═══ MEET THE BUILDERS (3-up) ═══ -->
+    <!-- ═══ MEET THE BUILDERS (centered stack: copy, avatar cluster, button) ═══ -->
     <section class="sf-blade" id="builders" style="background: var(--color-background-1);">
       <div class="sf-blade__cap">
-        <div class="sf-blade__header">
-          <p class="sf-blade__eyebrow">DF26 Cohort</p>
-          <h2 class="sf-blade__title">The &ldquo;Builder in Residence&rdquo; Model</h2>
-          <p class="sf-blade__subtitle">
-            Inspired by &ldquo;Artist in Residence&rdquo; programs, we elevate top community
-            contributors by providing a dedicated platform to evangelize their solutions and
-            scale their impact.
-          </p>
-        </div>
-
-        <div class="sf-blade__actions">
-          <a class="sf-cta sf-cta--hero sf-cta--secondary tds2-button tds2-button--secondary tds2-button--extra-large" href="./involved.html#builders">Meet the Builders &rarr;</a>
+        <div class="sf-builders-stack">
+          <div class="sf-blade__header">
+            <h2 class="sf-blade__title">The &ldquo;Builder in Residence&rdquo; Model</h2>
+            <p class="sf-blade__subtitle">
+              Inspired by &ldquo;Artist in Residence&rdquo; programs, our Builders in Residence
+              are community leaders creating open-source blueprints, components, and frameworks.
+              Explore the current cohort to see who&rsquo;s building, what they&rsquo;re solving,
+              and how you can get involved.
+            </p>
+          </div>
+          <a class="sf-builders-stack__visual" href="./involved.html#builders" aria-label="Meet the current cohort of builders">
+            <div class="sf-builders-cluster" id="builders-cluster" aria-hidden="true">
+              <!-- Avatar bubbles injected from ./data/builders.json -->
+            </div>
+          </a>
+          <div class="sf-blade__actions">
+            <a class="sf-cta sf-cta--hero sf-cta--secondary tds2-button tds2-button--secondary tds2-button--extra-large" href="./involved.html#builders">Meet the Builders &rarr;</a>
+          </div>
         </div>
       </div>
     </section>
@@ -393,6 +399,36 @@
           .catch((err) => {
             track.innerHTML = '<p class="sf-asset-card__desc">Unable to load community assets right now.</p>';
             console.error('community-assets:', err);
+          });
+      })();
+    </script>
+
+    <!-- ═══ BUILDER AVATAR CLUSTER (Meet the Builders split visual) ═══ -->
+    <script>
+      (function () {
+        const cluster = document.getElementById('builders-cluster');
+        if (!cluster) return;
+        const MAX = 6;
+
+        const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
+          ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+        fetch('./data/builders.json')
+          .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+          .then((data) => {
+            const builders = (Array.isArray(data) ? data : []).filter((b) => b.avatar);
+            if (!builders.length) { cluster.closest('.sf-builders-stack__visual').style.display = 'none'; return; }
+            const shown = builders.slice(0, MAX);
+            const extra = builders.length - shown.length;
+            cluster.innerHTML = shown.map((b) =>
+              `<span class="sf-builders-cluster__item"><img src="${esc(b.avatar)}" alt="" width="72" height="72" loading="lazy" /></span>`
+            ).join('') + (extra > 0
+              ? `<span class="sf-builders-cluster__item sf-builders-cluster__more">+${extra}</span>`
+              : '');
+          })
+          .catch((err) => {
+            cluster.closest('.sf-builders-stack__visual').style.display = 'none';
+            console.error('builders-cluster:', err);
           });
       })();
     </script>
