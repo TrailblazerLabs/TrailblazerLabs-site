@@ -53,7 +53,7 @@
     </script>
 
     <!-- ═══ PAGE STYLES (nav, hero/compass, blades, cards, footer) ═══ -->
-    <link rel="stylesheet" href="./css/styles.css?v=30" />
+    <link rel="stylesheet" href="./css/styles.css?v=33" />
   </head>
 
   <body>
@@ -74,7 +74,7 @@
           </p>
           <div class="hero-blade__ctas">
             <a class="sf-cta sf-cta--hero sf-cta--primary tds2-button tds2-button--primary tds2-button--extra-large" href="./assets.html">Browse Community Assets</a>
-            <a class="sf-cta sf-cta--hero sf-cta--glass sf-cta--on-dark tds2-button tds2-button--glass tds2-button--glass-dark tds2-button--extra-large" href="./pitch.html#pitch">Pitch Your Idea</a>
+            <a class="sf-cta sf-cta--hero sf-cta--secondary sf-cta--on-dark tds2-button tds2-button--secondary tds2-button--extra-large" href="./pitch.html#pitch">Pitch Your Idea</a>
           </div>
         </div>
       </div>
@@ -143,22 +143,8 @@
           </p>
         </div>
 
-        <div class="sf-carousel" id="builders-carousel">
-          <div class="sf-carousel__view">
-            <div class="sf-carousel__track" id="builders-grid">
-              <!-- Cards render here from ./data/builders.json (see script at end of body). -->
-            </div>
-          </div>
-          <button type="button" class="sf-carousel__btn sf-carousel__btn--prev" id="builders-prev" aria-label="Previous builders">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
-          </button>
-          <button type="button" class="sf-carousel__btn sf-carousel__btn--next" id="builders-next" aria-label="More builders">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
-          </button>
-          <div class="sf-carousel__dots" id="builders-dots" role="tablist" aria-label="Builder pages"></div>
-        </div>
         <div class="sf-blade__actions">
-          <a class="sf-cta sf-cta--hero sf-cta--secondary tds2-button tds2-button--secondary tds2-button--extra-large" href="./involved.html#builders">Meet the Builders</a>
+          <a class="sf-cta sf-cta--hero sf-cta--secondary tds2-button tds2-button--secondary tds2-button--extra-large" href="./involved.html#builders">Meet the Builders &rarr;</a>
         </div>
       </div>
     </section>
@@ -407,129 +393,6 @@
           .catch((err) => {
             track.innerHTML = '<p class="sf-asset-card__desc">Unable to load community assets right now.</p>';
             console.error('community-assets:', err);
-          });
-      })();
-    </script>
-    <!-- ═══ MEET THE BUILDERS — data-driven carousel (repos joined from assets) ═══ -->
-    <script>
-      (function () {
-        const track = document.getElementById('builders-grid');
-        const prev = document.getElementById('builders-prev');
-        const next = document.getElementById('builders-next');
-        const dots = document.getElementById('builders-dots');
-        if (!track) return;
-
-        const PIN_ICON = '<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C5.24 0 3 2.24 3 5c0 3.75 5 11 5 11s5-7.25 5-11c0-2.76-2.24-5-5-5zm0 7a2 2 0 110-4 2 2 0 010 4z"/></svg>';
-        const ARROW_ICON = '<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M1 8h11.17l-3.58-3.59L10 3l6 6-6 6-1.41-1.41L12.17 10H1z"/></svg>';
-
-        const TRACK_KEY = { Strategist: 'strat', Builder: 'build', Engineer: 'eng' };
-        const TRACK_ORDER = ['Strategist', 'Builder', 'Engineer'];
-
-        const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
-          ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-
-        function trackBadges(repos) {
-          const set = new Set(repos.map((r) => r.track).filter(Boolean));
-          const ordered = TRACK_ORDER.filter((t) => set.has(t));
-          if (!ordered.length) return '';
-          return `<div class="sf-builder-card__tracks">${ordered.map((t) =>
-            `<span class="sf-disc-badge sf-disc-badge--${TRACK_KEY[t]} tds2-badge tds2-badge--small">${esc(t)}</span>`).join('')}</div>`;
-        }
-
-        function reposBlock(b, repos) {
-          // No matched assets: fall back to the single residency project (seed/preview).
-          if (!repos.length) {
-            const p = b.project || {};
-            if (!p.title) return '';
-            return `<div class="sf-builder-card__repos">
-              <a class="sf-builder-card__repo" href="${esc(p.url)}" rel="noopener" target="_blank">
-                <span>${esc(p.title)}</span>${ARROW_ICON}
-              </a>
-            </div>`;
-          }
-          const top = repos.slice(0, 3);
-          const items = top.map((r) => {
-            const key = TRACK_KEY[r.track];
-            const dot = key ? `<span class="sf-builder-card__repo-dot is-${key}" aria-hidden="true"></span>` : '';
-            return `<a class="sf-builder-card__repo" href="${esc(r.repo)}" rel="noopener" target="_blank">
-              ${dot}<span>${esc(r.title)}</span>${ARROW_ICON}
-            </a>`;
-          }).join('');
-          return `<div class="sf-builder-card__repos">${items}</div>`;
-        }
-
-        function cardHTML(b, repos) {
-          return `<article class="sf-builder-card tds2-card">
-            <img class="sf-builder-card__avatar" src="${esc(b.avatar)}" alt="" width="96" height="96" loading="lazy" />
-            <h3 class="sf-builder-card__name">${esc(b.name)}</h3>
-            <span class="sf-builder-card__country">${PIN_ICON}${esc(b.country)}</span>
-            ${trackBadges(repos)}
-            <p class="sf-builder-card__bio">${esc(b.bio)}</p>
-            <div class="sf-builder-card__project">
-              <span class="sf-builder-card__project-label">Residency Builds</span>
-              ${reposBlock(b, repos)}
-            </div>
-          </article>`;
-        }
-
-        function pageWidth() { return track.clientWidth; }
-        function pageCount() {
-          const over = track.scrollWidth - track.clientWidth;
-          return over <= 2 ? 1 : Math.ceil(over / pageWidth()) + 1;
-        }
-        function currentPage() { return Math.round(track.scrollLeft / pageWidth()); }
-        function buildDots() {
-          if (!dots) return;
-          const n = pageCount();
-          if (n <= 1) { dots.innerHTML = ''; return; }
-          dots.innerHTML = Array.from({ length: n }, (_, i) =>
-            `<button type="button" role="tab" class="sf-carousel__dot${i === 0 ? ' is-active' : ''}" data-i="${i}" aria-label="Page ${i + 1}"></button>`).join('');
-        }
-        function syncControls() {
-          const max = track.scrollWidth - track.clientWidth - 2;
-          const single = max <= 2;
-          if (prev) prev.disabled = single || track.scrollLeft <= 2;
-          if (next) next.disabled = single || track.scrollLeft >= max;
-          if (dots) {
-            const p = currentPage();
-            [...dots.children].forEach((d, i) => d.classList.toggle('is-active', i === p));
-          }
-        }
-        if (prev) prev.addEventListener('click', () => track.scrollBy({ left: -pageWidth(), behavior: 'smooth' }));
-        if (next) next.addEventListener('click', () => track.scrollBy({ left: pageWidth(), behavior: 'smooth' }));
-        if (dots) dots.addEventListener('click', (e) => {
-          const btn = e.target.closest('.sf-carousel__dot');
-          if (!btn) return;
-          track.scrollTo({ left: pageWidth() * (+btn.dataset.i), behavior: 'smooth' });
-        });
-        track.addEventListener('scroll', () => { clearTimeout(track._t); track._t = setTimeout(syncControls, 60); });
-        window.addEventListener('resize', () => { buildDots(); syncControls(); });
-
-        Promise.all([
-          fetch('./data/builders.json').then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); }),
-          fetch('./data/community-assets.json').then((r) => (r.ok ? r.json() : [])).catch(() => []),
-        ])
-          .then(([bData, aData]) => {
-            const builders = Array.isArray(bData) ? bData : [];
-            const assets = Array.isArray(aData) ? aData : [];
-            const byLogin = new Map();
-            assets.forEach((a) => {
-              const key = String(a.authorName || '').toLowerCase();
-              if (!key) return;
-              if (!byLogin.has(key)) byLogin.set(key, []);
-              byLogin.get(key).push(a);
-            });
-            byLogin.forEach((list) => list.sort((x, y) => (y.stars || 0) - (x.stars || 0)));
-
-            builders.sort((a, b) =>
-              String(a.name || '').localeCompare(String(b.name || ''), undefined, { sensitivity: 'base' }));
-            track.innerHTML = builders.map((b) =>
-              cardHTML(b, byLogin.get(String(b.github || '').toLowerCase()) || [])).join('');
-            requestAnimationFrame(() => { buildDots(); syncControls(); });
-          })
-          .catch((err) => {
-            track.innerHTML = '<p class="sf-builder-card__bio">Unable to load builder profiles right now.</p>';
-            console.error('builders:', err);
           });
       })();
     </script>
