@@ -27,6 +27,7 @@ exclude_repos:
   - Cohort-Repo-Template
   - community-hub
   - cohort-applications
+  - TBLTest                 # CLA testing repo, not a community asset
 
 # Org members never shown as an asset's builder/author (program staff).
 # The repo's admin collaborator drives the "author" shown on the card; anyone
