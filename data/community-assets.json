@@ -97,11 +97,11 @@
   {
     "authorName": "pennysavage-1",
     "authorAvatar": "https://avatars.githubusercontent.com/u/178824867?v=4",
-    "title": "Penny Repo",
-    "description": "",
+    "title": "Business Rule Engine Example",
+    "description": "Business Rule Engine Framework Example",
     "track": "",
     "tags": [],
-    "repo": "https://github.com/TrailblazerLabs/Penny-Repo",
+    "repo": "https://github.com/TrailblazerLabs/Business-Rule-Engine-Example",
     "license": "Apache-2.0",
     "stars": 0,
     "forks": 0
