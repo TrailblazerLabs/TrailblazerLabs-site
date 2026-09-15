@@ -28,6 +28,7 @@ exclude_repos:
   - community-hub
   - cohort-applications
   - TBLTest                 # CLA testing repo, not a community asset
+  - Slack-Candidate-Tracker # not launch-ready yet — hide until finished
 
 # Org members never shown as an asset's builder/author (program staff).
 # The repo's admin collaborator drives the "author" shown on the card; anyone
