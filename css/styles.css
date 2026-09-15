@@ -103,9 +103,9 @@ img { max-width: 100%; }
 }
 .sf-nav__logo-icon { 
   display: block; 
-  width: 48px;
-  height: 48px; 
-  background-image: url('../images/trailblazer-labs-logo-outline.svg');
+  width: 56px;
+  height: 56px; 
+  background-image: url('../images/trailblazer-labs-logo-contained.svg');
   background-size: 100% 100%;
 }
 .sf-nav__logo-wordmark { display: block; height: 32px; width: auto; }
