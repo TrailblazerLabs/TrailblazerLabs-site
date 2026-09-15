@@ -37,7 +37,7 @@
     "authorName": "klueckeman-edutb",
     "authorAvatar": "https://avatars.githubusercontent.com/u/217978407?v=4",
     "title": "Case Spam Zapper",
-    "description": "One-click spam handling for Email-to-Case. Agents check a Spam checkbox on a Case; automation instantly closes it and moves it to a dedicated Spam Queue",
+    "description": "One-click spam handling for Cases created by spam. Users check a Spam checkbox on a Case; automation instantly closes it and moves it to a dedicated Spam Queue. Slackbot also can mark Cases as spam.",
     "track": "Engineer",
     "tags": [
       "case-management"
@@ -134,18 +134,6 @@
       "user-management"
     ],
     "repo": "https://github.com/TrailblazerLabs/Inactive-User-Deactivator",
-    "license": "Apache-2.0",
-    "stars": 0,
-    "forks": 0
-  },
-  {
-    "authorName": "aliwaguespack",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/40503611?v=4",
-    "title": "Slack Candidate Tracker",
-    "description": "Candidate Tracker is a self-hostable Slack app that logs candidates, moves them through a defined interview pipeline, and automatically creates a dedicated private channel with the right interviewers invited the moment they reach stage 1. ",
-    "track": "",
-    "tags": [],
-    "repo": "https://github.com/TrailblazerLabs/Slack-Candidate-Tracker",
     "license": "Apache-2.0",
     "stars": 0,
     "forks": 0
