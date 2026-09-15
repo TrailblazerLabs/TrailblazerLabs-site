@@ -51,9 +51,9 @@ img { max-width: 100%; }
 /* Dark nav (default — theater over the masthead): white inks across
    links, utilities, wordmark, hamburger. Transitions carry the fade to
    light once .is-scrolled is set (past the first 100vh). */
-.sf-nav .sf-nav__wordmark,
+.sf-nav .sf-nav__logo-wordmark,
+.sf-nav .sf-nav__logo-icon,
 .sf-nav .sf-nav__links a,
-.sf-nav .sf-nav__icon,
 .sf-nav .sf-nav__login-label,
 .tl-theme-toggle { color: #FFFFFF; transition: color 0.45s ease, background 0.45s ease; }
 .sf-nav .sf-nav__links a:hover,
@@ -63,7 +63,7 @@ img { max-width: 100%; }
 .tl-theme-toggle .icon { background-color: #FFFFFF; transition: background-color 0.45s ease; }
 .sf-nav .sf-nav__hamburger span { background: #FFFFFF; transition: background 0.45s ease; }
 /* Script wordmark ships as black vector paths → invert to white on the dark nav */
-.sf-nav__wordmark { filter: brightness(0) invert(1); transition: filter 0.45s ease; }
+/* .sf-nav__logo-icon { filter: hue-rotate(calc(345deg - 286deg)) brightness(calc(92 / 58)) saturate(calc(47 / 96)); transition: filter 0.45s ease; } */
 
 /* Scrolled state — nav fades to light once the masthead is behind it */
 .sf-nav.is-scrolled {
@@ -71,16 +71,18 @@ img { max-width: 100%; }
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 .sf-nav.is-scrolled .sf-nav__links a,
-.sf-nav.is-scrolled .sf-nav__icon,
+.sf-nav.is-scrolled .sf-nav__logo-wordmark,
 .sf-nav.is-scrolled .sf-nav__login-label,
 .sf-nav.is-scrolled .tl-theme-toggle { color: var(--color-on-surface-1, #001E5B); }
 .sf-nav.is-scrolled .sf-nav__links a:hover,
-.sf-nav.is-scrolled .sf-nav__icon:hover,
+.sf-nav.is-scrolled .sf-nav__logo:hover,
 .sf-nav.is-scrolled .tl-theme-toggle:hover { background: var(--color-surface-container-2, #E5E5E5); }
 .sf-nav.is-scrolled .sf-nav__icon .icon,
 .sf-nav.is-scrolled .tl-theme-toggle .icon { background-color: var(--color-on-surface-1, #001E5B); }
 .sf-nav.is-scrolled .sf-nav__hamburger span { background: var(--color-on-surface-1, #001E5B); }
-.sf-nav.is-scrolled .sf-nav__wordmark { filter: none; }
+.sf-nav.is-scrolled .sf-nav__logo-icon { 
+  background-image: url('../images/trailblazer-labs-logo.svg');
+ }
 .sf-nav__inner {
   display: flex;
   justify-content: space-between;
@@ -88,9 +90,25 @@ img { max-width: 100%; }
   padding-inline: 40px;
   margin: 0;
 }
-.sf-nav__logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.sf-nav__logo-bug { display: block; width: 32px; height: auto; }
-.sf-nav__wordmark { display: block; height: 32px; width: auto; }
+
+.sf-nav__logo { 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+  text-decoration: none; 
+  color: var(--color-white);
+  font-family: var(--font-style-display-8-family);
+  font-weight: var(--font-style-display-8-weight);
+  font-size: var(--font-style-display-6-size);
+}
+.sf-nav__logo-icon { 
+  display: block; 
+  width: 48px;
+  height: 48px; 
+  background-image: url('../images/trailblazer-labs-logo-outline.svg');
+  background-size: 100% 100%;
+}
+.sf-nav__logo-wordmark { display: block; height: 32px; width: auto; }
 .sf-nav__hamburger { display: none; }
 
 .sf-nav__links { display: flex; align-items: center; gap: 8px; }
@@ -1139,10 +1157,10 @@ img { max-width: 100%; }
 /* ═══ NAV COMPACT (< 1024px) ═══ */
 @media (max-width: 1023px) {
   .sf-nav__inner { height: 56px; padding-inline: 16px; }
-  .sf-nav__wordmark { display: none; }
-  .sf-nav__logo-bug { display: block; }
+  .sf-nav__logo-icon { display: block; }
+  .sf-nav__logo-wordmark { display: none; }
   .sf-nav__hamburger {
-    display: flex; flex-direction: column; gap: 5px;
+    display: flex; flex-direction: column; gap: 5px; justify-content: center;
     background: none; border: none; cursor: pointer; padding: 8px; order: -1;
   }
   .sf-nav__hamburger span {
