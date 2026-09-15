@@ -25,7 +25,18 @@
     // Let other scripts (e.g. js/pitch-form.js) know all includes are now in the DOM,
     // since they may run before the relevant partial's fetch has resolved.
     document.dispatchEvent(new CustomEvent('partials:ready'));
+    // Deep links like pitch.html#pitch target an anchor that lives inside an
+    // injected partial. The browser's initial hash scroll runs before the fetch
+    // resolves and finds nothing, so re-scroll now that the anchor exists.
+    scrollToHash();
   });
+
+  function scrollToHash() {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (target) target.scrollIntoView();
+  }
 
   function wireNav() {
     // Hamburger drawer
