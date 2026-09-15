@@ -94,13 +94,9 @@ img { max-width: 100%; }
 .sf-nav__logo { 
   display: flex; 
   align-items: center; 
-  gap: 10px; 
   text-decoration: none; 
-  color: var(--color-white);
-  font-family: var(--font-style-display-8-family);
-  font-weight: var(--font-style-display-8-weight);
-  font-size: var(--font-style-display-6-size);
 }
+
 .sf-nav__logo-icon { 
   display: block; 
   width: 56px;
@@ -108,7 +104,17 @@ img { max-width: 100%; }
   background-image: url('../images/trailblazer-labs-logo-contained.svg');
   background-size: 100% 100%;
 }
-.sf-nav__logo-wordmark { display: block; height: 32px; width: auto; }
+.sf-nav__logo-wordmark { 
+  display: block; 
+  height: 32px; 
+  width: auto; 
+  white-space: nowrap;
+  text-wrap: nowrap;
+  color: var(--color-white);
+  font-family: var(--font-style-display-6-family);
+  font-weight: var(--font-style-display-6-weight);
+  font-size: var(--font-style-display-6-size);
+}
 .sf-nav__hamburger { display: none; }
 
 .sf-nav__links { display: flex; align-items: center; gap: 8px; }
@@ -119,9 +125,10 @@ img { max-width: 100%; }
   line-height: 24px;
   color: var(--color-on-surface-1, #001E5B);
   text-decoration: none;
+  white-space: nowrap;
+  text-wrap: nowrap;
   padding: 8px 12px;
   border-radius: 4px;
-  white-space: nowrap;
 }
 
 .sf-nav__utilities { display: flex; align-items: center; gap: 0; }
@@ -1154,6 +1161,11 @@ img { max-width: 100%; }
   .sf-footer__legal-links { justify-content: center; }
 }
 
+@media (max-width: 1279px) {
+  .sf-nav__logo-wordmark { 
+    font-size: var(--font-style-display-8-size);
+  }
+}
 /* ═══ NAV COMPACT (< 1024px) ═══ */
 @media (max-width: 1023px) {
   .sf-nav__inner { height: 56px; padding-inline: 16px; }
