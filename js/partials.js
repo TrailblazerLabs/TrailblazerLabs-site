@@ -55,10 +55,12 @@
     });
 
     // Nav fade — dark over the masthead, light once scrolled past the hero.
-    // No-ops on pages without a .hero-blade (e.g. engage.html).
+    // Interior pages have no .hero-blade, so they pin the light (.is-scrolled)
+    // variant permanently rather than tracking scroll.
     const nav = document.querySelector('.sf-nav');
     const hero = document.querySelector('.hero-blade');
-    if (!nav || !hero) return;
+    if (!nav) return;
+    if (!hero) { nav.classList.add('is-scrolled'); return; }
 
     let ticking = false;
     function update() {
