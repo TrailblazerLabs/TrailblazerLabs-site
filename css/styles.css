@@ -312,7 +312,7 @@ img { max-width: 100%; }
 .hero-blade::after {
   content: "";
   position: absolute; z-index: 1;
-  left: 50%; top: 82%;
+  left: 50%; top: 82vh;
   width: 320vw; height: 320vw;
   transform: translateX(-50%);
   background: var(--color-background-1);
