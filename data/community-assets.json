@@ -1,5 +1,19 @@
 [
   {
+    "authorName": "klueckeman-edutb",
+    "authorAvatar": "https://avatars.githubusercontent.com/u/217978407?v=4",
+    "title": "Case Spam Zapper",
+    "description": "One-click spam handling for Cases created by spam. Users check a Spam checkbox on a Case; automation instantly closes it and moves it to a dedicated Spam Queue. Slackbot also can mark Cases as spam.",
+    "track": "Engineer",
+    "tags": [
+      "case-management"
+    ],
+    "repo": "https://github.com/TrailblazerLabs/Case-Spam-Zapper",
+    "license": "Apache-2.0",
+    "stars": 0,
+    "forks": 0
+  },
+  {
     "authorName": "PaceyMia",
     "authorAvatar": "https://avatars.githubusercontent.com/u/106040506?v=4",
     "title": "Custom Confetti",
@@ -13,7 +27,7 @@
     ],
     "repo": "https://github.com/TrailblazerLabs/Custom-Confetti",
     "license": "Apache-2.0",
-    "stars": 1,
+    "stars": 7,
     "forks": 0
   },
   {
@@ -30,21 +44,7 @@
     ],
     "repo": "https://github.com/TrailblazerLabs/Agentforce-Architecture-and-Strategy",
     "license": "Apache-2.0",
-    "stars": 3,
-    "forks": 0
-  },
-  {
-    "authorName": "klueckeman-edutb",
-    "authorAvatar": "https://avatars.githubusercontent.com/u/217978407?v=4",
-    "title": "Case Spam Zapper",
-    "description": "One-click spam handling for Cases created by spam. Users check a Spam checkbox on a Case; automation instantly closes it and moves it to a dedicated Spam Queue. Slackbot also can mark Cases as spam.",
-    "track": "Engineer",
-    "tags": [
-      "case-management"
-    ],
-    "repo": "https://github.com/TrailblazerLabs/Case-Spam-Zapper",
-    "license": "Apache-2.0",
-    "stars": 0,
+    "stars": 4,
     "forks": 0
   },
   {
@@ -150,7 +150,7 @@
     ],
     "repo": "https://github.com/TrailblazerLabs/Permishifizer-9000",
     "license": "Apache-2.0",
-    "stars": 2,
+    "stars": 3,
     "forks": 0
   },
   {
