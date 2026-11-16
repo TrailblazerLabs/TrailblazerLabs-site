@@ -4,9 +4,10 @@
 // Source of truth = the discussions in category "Cohort Applications". Each
 // discussion is a builder's pitch; the ecosystem upvotes them to signal demand.
 // This script pulls those discussions (GraphQL - discussions have no REST list
-// endpoint), drops staff test pitches (config exclude_authors), applies the
-// visibility gate, and writes data/pitches.json sorted by upvotes desc, in the
-// shape index.html's #pitches grid renders.
+// endpoint), keeps only pitches a maintainer has approved by labeling them
+// (config require_label, default "approved"), drops staff test pitches (config
+// exclude_authors), applies the visibility gate, and writes data/pitches.json
+// sorted by upvotes desc, in the shape index.html's #pitches grid renders.
 //
 // Run locally:   GITHUB_TOKEN=github_pat_xxx node scripts/build-pitches.mjs
 // In CI:         the workflow passes a token via GITHUB_TOKEN.
@@ -99,6 +100,7 @@ query($owner:String!, $repo:String!, $after:String) {
         upvoteCount
         bodyText
         category { name }
+        labels(first:20) { nodes { name } }
         author { login avatarUrl }
       }
     }
@@ -172,11 +174,14 @@ async function main() {
   const category = (cfg.category || 'Cohort Applications').toLowerCase();
   const mode = (cfg.visibility_mode || 'all').toLowerCase();
   const excludeAuthors = new Set((cfg.exclude_authors || []).map((s) => s.toLowerCase()));
+  // Moderation gate: only maintainer-labeled pitches are published. Falls back
+  // to "approved" if the key is missing so the gate can't be disabled by accident.
+  const requireLabel = (cfg.require_label || 'approved').trim().toLowerCase();
 
   if (!TOKEN) {
     console.warn('!  No GITHUB_TOKEN set - discussions read will likely fail (private repo data).');
   }
-  console.log(`> org=${org} repo=${repo} category="${category}" visibility=${mode}`);
+  console.log(`> org=${org} repo=${repo} category="${category}" label="${requireLabel}" visibility=${mode}`);
 
   const { discussions, isPrivate } = await fetchDiscussions(org, repo);
   console.log(`  discussions fetched: ${discussions.length}  repo private: ${isPrivate}`);
@@ -190,6 +195,11 @@ async function main() {
   const out = [];
   for (const d of discussions) {
     if ((d.category?.name || '').toLowerCase() !== category) continue;
+    const labels = (d.labels?.nodes || []).map((l) => (l?.name || '').toLowerCase());
+    if (!labels.includes(requireLabel)) {
+      console.log(`  - skipped (not labeled "${requireLabel}"): ${d.url}`);
+      continue;
+    }
     const login = d.author?.login || '';
     if (excludeAuthors.has(login.toLowerCase())) {
       console.log(`  - skipped (staff author ${login}): ${d.title}`);
