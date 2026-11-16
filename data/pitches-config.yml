@@ -4,9 +4,11 @@
 # The read-side "What the ecosystem is backing" grid is generated from the
 # GitHub Discussions in the Cohort-Applications repo (category below). Builders
 # submit a pitch via the on-brand form on the site, which opens a prefilled new
-# discussion; the ecosystem upvotes it on GitHub. This file only holds what the
-# GitHub API cannot tell us: which repo/category to read and which authors are
-# staff test pitches to hide.
+# discussion; the ecosystem upvotes it on GitHub. A pitch only appears on the
+# site once a maintainer adds the approval label (require_label below). This
+# file only holds what the GitHub API cannot tell us: which repo/category to
+# read, which label marks a pitch as approved, and which authors are staff test
+# pitches to hide.
 # -----------------------------------------------------------------------------
 
 # GitHub org that owns the applications repo.
@@ -19,19 +21,25 @@ repo: Cohort-Applications
 # NAME exactly as it appears in GitHub (case-insensitive here).
 category: Pitch an Idea
 
+# Moderation gate. Only pitches carrying this discussion label are published to
+# the site grid; anything unlabeled stays on GitHub only. Match the label NAME
+# exactly as it appears in the Cohort-Applications repo (case-insensitive here).
+# Removing the label from a pitch takes it off the site on the next rebuild.
+# Leave this key in place - without it the script falls back to "approved" and
+# never publishes unlabeled pitches.
+require_label: approved
+
 # Repo visibility gate.
-#   all         -> read discussions even from the private repo. Use this NOW,
-#                  pre-launch. Requires a token that can read the private repo's
+#   all         -> read discussions even from the private repo. Pre-launch only.
+#                  Requires a token that can read the private repo's
 #                  discussions (BUILDERS_TOKEN with Discussions: Read).
-#   public-only -> only publish pitches if the repo is public. At launch, once
-#                  Cohort-Applications is public, the built-in GITHUB_TOKEN works.
-visibility_mode: all
+#   public-only -> only publish pitches if the repo is public. Cohort-Applications
+#                  is public at launch, so the built-in GITHUB_TOKEN works.
+visibility_mode: public-only
 
 # Authors never shown on the pitch grid (program staff test pitches).
 # Same internal-staff list as the builders/assets pipelines.
 exclude_authors:
-  # - sklaride-Salesforce # TEMPORARILY un-excluded to test the read grid with an
-  #                         owner-authored pitch. RE-ADD THIS LINE BEFORE LAUNCH so
-  #                         staff pitches are hidden again.
+  - sklaride-Salesforce   # program owner - staff test pitches
   - SamirSalih1           # internal staff / org admin
   - mrbmc-sfdc-tbl        # internal staff / org admin
