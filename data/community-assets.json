@@ -45,7 +45,7 @@
     "repo": "https://github.com/TrailblazerLabs/Agentforce-Architecture-and-Strategy",
     "license": "Apache-2.0",
     "stars": 4,
-    "forks": 0
+    "forks": 1
   },
   {
     "authorName": "pennysavage-1",
@@ -136,7 +136,7 @@
     "repo": "https://github.com/TrailblazerLabs/Inactive-User-Deactivator",
     "license": "Apache-2.0",
     "stars": 0,
-    "forks": 0
+    "forks": 1
   },
   {
     "authorName": "dcstuff",
@@ -150,8 +150,8 @@
     ],
     "repo": "https://github.com/TrailblazerLabs/Permishifizer-9000",
     "license": "Apache-2.0",
-    "stars": 3,
-    "forks": 0
+    "stars": 6,
+    "forks": 1
   },
   {
     "authorName": "shonnah-dev",
